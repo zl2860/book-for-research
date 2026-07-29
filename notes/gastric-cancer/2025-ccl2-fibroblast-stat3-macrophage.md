@@ -1,39 +1,94 @@
 # Spatial dissection of tumour microenvironments in gastric cancers reveals the immunosuppressive crosstalk between CCL2+ fibroblasts and STAT3-activated macrophages
 
-## 本文目录
+<!-- wechat-style-reviewed: 2026-07-29 -->
 
-- [基本信息](#基本信息)
-- [本论文主图](#本论文主图)
-- [生物学故事前情](#生物学故事前情)
-- [重要缩写表](#重要缩写表)
-- [论文详细解读](#论文详细解读)
-  - [研究问题与科学背景](#研究问题与科学背景)
-  - [研究设计与数据结构](#研究设计与数据结构)
-  - [方法速览与分析框架](#方法速览与分析框架)
-  - [原文结果完整梳理](#原文结果完整梳理)
-    - [Spatial cellular maps of three GC subtypes](#spatial-cellular-maps-of-three-gc-subtypes)
-    - [Spatially resolved cellular and transcriptional dynamics with respect to GC TME architecture](#spatially-resolved-cellular-and-transcriptional-dynamics-with-respect-to-gc-tme-architecture)
-    - [Landscape of intercellular crosstalk and its functional consequences](#landscape-of-intercellular-crosstalk-and-its-functional-consequences)
-    - [CCL2+ cancer-associated fibroblasts regulate JAK-STAT3 signalling in macrophages](#ccl2-cancer-associated-fibroblasts-regulate-jak-stat3-signalling-in-macrophages)
-    - [CCL2+ CAFs recruit myeloid cells via STAT3-activated macrophages](#ccl2-cafs-recruit-myeloid-cells-via-stat3-activated-macrophages)
-    - [CCL2+ fibroblast-mixed syngeneic mouse tumours recapitulate fibrotic GC](#ccl2-fibroblast-mixed-syngeneic-mouse-tumours-recapitulate-fibrotic-gc)
-    - [Validation in a large GC cohort](#validation-in-a-large-gc-cohort)
-  - [作者结论与证据强度](#作者结论与证据强度)
-- [独立方法学详解](#独立方法学详解)
-  - [研究对象、样本和数据结构](#研究对象样本和数据结构)
-  - [实验流程和数据生成](#实验流程和数据生成)
-  - [数据预处理和特征构建](#数据预处理和特征构建)
-  - [统计学分析方法](#统计学分析方法)
-  - [统计模型、机器学习模型或计算框架](#统计模型机器学习模型或计算框架)
-  - [验证策略、稳健性和混杂控制](#验证策略稳健性和混杂控制)
-  - [可重复性资源和迁移注意点](#可重复性资源和迁移注意点)
-- [生物学与临床意义](#生物学与临床意义)
-- [局限性与危险假设](#局限性与危险假设)
-- [深度研究洞察](#深度研究洞察)
-- [可借鉴或迁移的思路](#可借鉴或迁移的思路)
-- [可复用学术表达](#可复用学术表达)
-- [相关论文与概念](#相关论文与概念)
-- [覆盖审计](#覆盖审计)
+同样是胃癌，有些肿瘤里免疫细胞能够进入恶性上皮周围；另一些肿瘤却被致密的成纤维细胞包围，巨噬细胞聚集，真正执行杀伤的 T 细胞很少。病理上可以看到这种差别，但很难回答：究竟是哪类细胞在组织这种“免疫冷”环境？
+
+过去的单细胞测序能把成纤维细胞、巨噬细胞和 T 细胞拆开，却会丢掉它们原本在组织里的位置。传统病理保留了位置，又很难系统追踪细胞之间的信号传递。
+
+这项研究把 9 例原发胃癌的 29,808 个空间转录组 spots，与单细胞数据、公共队列、体外扰动、小鼠模型和 675 例组织芯片连接起来。
+
+作者给出的核心答案是：在纤维化型胃癌中，一群表达 CCL2 的成纤维细胞可能通过招募髓系细胞、激活巨噬细胞 STAT3，进一步压低 T 细胞功能。成纤维细胞在这里不只是“搭支架”，而是在组织免疫抑制。
+
+## 01｜真正的问题不是“间质多不多”
+
+许多研究已经知道，胃癌中的 cancer-associated fibroblast（CAF，癌相关成纤维细胞）与差预后和免疫治疗抵抗有关。但“CAF 多”仍然只是一个组织学现象。
+
+要把它变成可验证的机制，至少要回答三个问题：这些 CAF 位于什么空间生态位？它们邻近哪类免疫细胞？从 CAF 到免疫细胞，究竟是哪条信号在起作用？
+
+作者因此没有先从某个候选分子出发，而是先画出胃癌的空间细胞组成，再从局部邻域中反推最值得验证的细胞对。
+
+## 02｜这项研究到底做了多大规模
+
+发现队列并不大：9 例手术切除的原发胃癌，每张切片包含 1,882–4,274 个 spots，合计 29,808 个。作者用既往胃癌单细胞数据进行去卷积，估计每个 spot 中 12 类细胞的组成。
+
+机制收敛阶段使用了 23,477 个肿瘤微环境单细胞，其中包括 726 个 fibroblasts。验证则分成四层：ACRG、TCGA 和四个 GEO 队列；CAF、THP-1、Jurkat 与人 PBMC 功能实验；小鼠同系移植模型；以及 675 例胃癌组织芯片。
+
+这套设计的价值不在于某一个队列特别大，而在于同一条假说依次经过空间定位、单细胞状态、外部预后、分子扰动和组织验证。
+
+## 03｜胃癌可以被拆成三种空间生态
+
+作者先按细胞组成把 9 例胃癌分为 epithelial、immunogenic 和 fibrotic 三类。Fibrotic GC 以 fibroblast 浸润为主，T cells 和 plasma cells 相对更少；它不是传统 Lauren 分型的简单替代，而是一种空间细胞组成分型。
+
+![Fig. 1：三类胃癌空间生态](../../assets/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage/page03.png)
+
+进一步加入相邻 spot 信息后，29,808 个 spots 被组织成六类 spatial niches。最关键的是 fibroblast-infiltrated niche：这里不仅有更多基质细胞，Treg 中的 PDCD1、CTLA4 等 exhaustion markers 也升高，髓系细胞尤其 macrophages 更丰富。
+
+换句话说，纤维化并不是免疫抑制旁边的背景现象。它与免疫检查点上调、细胞毒基因下降和髓系细胞聚集出现在同一个空间语境中。
+
+## 04｜关键细胞对如何收敛到 CCL2 和 STAT3
+
+作者把每个 spot 及其周围 18 个 spots 看作一个局部环境，再分析“某类细胞增多”与“邻近细胞功能程序改变”之间的关系。随着 fibroblast infiltration 增加，immune-cell IL6–JAK–STAT3、炎症反应和 immune checkpoint 程序同步增强。
+
+随后，NicheNet 从 fibroblast ligands 中寻找最能解释免疫细胞靶基因变化的分子，CCL2 排在首位。单细胞数据又把对象进一步缩小：CCL2 主要集中在一个 fibroblast cluster，而高 JAK–STAT3 score 主要集中在 macrophages。
+
+![Fig. 4：CCL2+ fibroblast 与 STAT3-activated macrophage](../../assets/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage/page06.png)
+
+作者最终定义了 251 个 STAT3-activated macrophages，并与其余 1,804 个 macrophages 比较。空间 signature、RNA-ISH 和 multiplex IHC 均支持 CCL2+ fibroblasts 与 pSTAT3+ macrophages 邻近出现。
+
+在 ACRG 和 TCGA 中，CCL2+ fibroblast 与 STAT3-activated macrophage 两个 signature 同高或同低的病例分别占 84% 和 87.6%。双高患者总体生存更差，log-rank P 值分别为 0.02 和 0.05；四个 GEO 队列中有两个达到 P < 0.05，另外两个方向一致但未达到常用显著性阈值。
+
+## 05｜从空间相关走到功能实验
+
+空间共定位仍然不能证明因果。作者接着测试 CCL2 是否真的能招募髓系细胞并改变免疫功能。
+
+CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL2 中和抗体，或敲低 CAF 中的 CCL2，迁移均下降。CAF 共培养和 100 ng/mL recombinant CCL2 都能提高 macrophage STAT3 phosphorylation。
+
+更关键的是下游 T 细胞读出。经过 CAF 刺激的 macrophages 会降低激活 Jurkat T cells 的 IFNG 表达；在人 PBMC 分化得到的 macrophages 和 cytotoxic T cells 中，作者也观察到相同方向的结果。
+
+![Fig. 5：CCL2 招募髓系细胞并激活 macrophage STAT3](../../assets/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage/page07.png)
+
+小鼠模型提供了组织层面的补充证据。YTN3 胃癌细胞与 mouse gastric fibroblasts 混合接种后，第 14 天肿瘤更大，macrophages 增多，而肿瘤中心的 CD8+ T cells 和 granzyme B 阳性细胞减少。
+
+## 06｜这项研究真正改变了什么
+
+这篇论文把“纤维化胃癌免疫较差”推进成了一条可分解的路径：CCL2+ fibroblast → myeloid recruitment → macrophage STAT3 activation → T-cell suppression。
+
+对临床研究而言，更现实的近期价值是患者分层。Fibrotic subtype、CCL2+ fibroblast 和 pSTAT3+ macrophage 可以在组织中检测，也可以形成外部队列 signature，用来识别可能由 stromal–myeloid axis 主导的免疫冷肿瘤。
+
+它也为联合治疗提供了明确假说：与其把 CCL2/CCR2 或 STAT3 阻断当作所有胃癌的单药策略，更合理的试验对象可能是 fibrotic subtype，并与免疫检查点抑制剂联合。不过，这一步仍未在患者中得到验证。
+
+## 07｜这些结果仍需要冷静看待
+
+首先，空间发现队列只有 9 例。它适合建立机制假说，不能单独证明三类空间亚型在不同人群中稳定存在。
+
+其次，Visium 一个 spot 包含多个细胞。去卷积可以估计细胞组成，却不足以精确解析 CD8 T-cell exhaustion 或 Treg 的全部状态。公开队列中的双 signature 也只是 bulk 推断，不等于两类细胞在组织中直接相邻。
+
+第三，体外实验和小鼠模型支持 CCL2–STAT3 链条，但人类胃癌原位环境中还有 IL6、CSF1、缺氧和肿瘤细胞因子等多种 macrophage STAT3 来源。论文没有证明阻断 CCL2、CCR2 或 STAT3 能改善胃癌患者的免疫治疗结局。
+
+最后，675 例组织芯片的分组数和生存 P 值在正文与图注之间存在轻微不一致。结论方向相同，但精确引用时仍应回到原始统计表。
+
+## 08｜对我们的研究有什么可借鉴
+
+最值得复用的是“空间发现—细胞对收敛—分子扰动—大队列验证”的证据路线。空间组学不应停在聚类图，而应继续回答：谁是 regulator，谁是 target，哪条 ligand–receptor 或 signaling axis 能被实验打断。
+
+如果迁移到胃癌癌前病变或免疫预防队列，可以同时记录 CAF 状态、髓系激活和 T-cell exclusion，而不是只使用一个 stromal score。候选轴进入转化研究前，至少需要一个分子扰动、一个免疫功能读出和一个独立组织队列。
+
+---
+
+## 技术附录
+
+以下内容保留论文基本信息、完整主图说明、Results/Methods 证据、复现参数和覆盖审计。
 
 ## 基本信息
 

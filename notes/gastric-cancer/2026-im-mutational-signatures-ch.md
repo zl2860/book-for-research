@@ -1,38 +1,98 @@
 # Mutational Signatures and Clonal Hematopoiesis in Intestinal Metaplasia across Countries with Varying Stomach Cancer Incidence
 
-## 本文目录
+<!-- wechat-style-reviewed: 2026-07-29 -->
 
-- [基本信息](#基本信息)
-- [本论文主图](#本论文主图)
-- [生物学故事前情](#生物学故事前情)
-- [重要缩写表](#重要缩写表)
-- [论文详细解读](#论文详细解读)
-  - [研究问题与科学背景](#研究问题与科学背景)
-  - [研究设计与数据结构](#研究设计与数据结构)
-  - [方法速览与分析框架](#方法速览与分析框架)
-  - [原文结果完整梳理](#原文结果完整梳理)
-    - [Data Collection](#data-collection)
-    - [Geographic Patterns of Hp Strains and Infection](#geographic-patterns-of-hp-strains-and-infection)
-    - [Driver Gene Landscape of Trans-geographic IM Samples](#driver-gene-landscape-of-trans-geographic-im-samples)
-    - [KRAS-MAPK mutations in IM](#kras-mapk-mutations-in-im)
-    - [SBS17 Is an IM-associated Mutational Signature](#sbs17-is-an-im-associated-mutational-signature)
-    - [Clonal Hematopoiesis in IM Samples](#clonal-hematopoiesis-in-im-samples)
-    - [CH expansions are associated with altered IM Microbiome-Immune Landscapes](#ch-expansions-are-associated-with-altered-im-microbiome-immune-landscapes)
-  - [作者结论与证据强度](#作者结论与证据强度)
-- [独立方法学详解](#独立方法学详解)
-  - [研究对象、样本和数据结构](#研究对象样本和数据结构)
-  - [实验流程和数据生成](#实验流程和数据生成)
-  - [数据预处理和特征构建](#数据预处理和特征构建)
-  - [统计学分析方法](#统计学分析方法)
-  - [统计模型、机器学习模型或计算框架](#统计模型机器学习模型或计算框架)
-  - [验证策略、稳健性和混杂控制](#验证策略稳健性和混杂控制)
-  - [可重复性资源和迁移注意点](#可重复性资源和迁移注意点)
-- [生物学与临床意义](#生物学与临床意义)
-- [局限性与危险假设](#局限性与危险假设)
-- [深度研究洞察](#深度研究洞察)
-- [可借鉴或迁移的思路](#可借鉴或迁移的思路)
-- [可复用学术表达](#可复用学术表达)
-- [相关论文与概念](#相关论文与概念)
+发现胃肠化生以后，临床上最难回答的问题往往不是“它是不是癌前病变”，而是“这个人究竟有多大概率会继续进展”。
+
+大多数胃肠化生长期稳定，只有少数病灶会走向异型增生或早期胃癌。如果所有患者都接受同样密集的胃镜随访，成本和负担很高；如果只依赖年龄、幽门螺杆菌和 OLGIM 分期，又可能漏掉已经开始克隆演化的高危病灶。
+
+地区差异让问题更复杂。日本、韩国等胃癌高风险地区，与新加坡、北美等中低风险地区相比，不仅发病率不同，幽门螺杆菌菌株、上皮突变过程和宿主炎症背景也可能不同。
+
+这项研究分析了 1,582 个胃肠化生样本。作者想知道：在胃癌真正形成之前，上皮细胞突变、突变签名和血液中的克隆性造血，能否共同标记那些更危险的胃肠化生？
+
+## 01｜只看幽门螺杆菌，为什么还不够
+
+幽门螺杆菌是胃癌最重要的危险因素之一，但感染状态无法解释所有个体差异。胃肠化生形成后，胃内环境已经改变，细菌丰度可能下降；一次检测阴性也不等于从未感染。
+
+作者在高风险地区观察到更高的高丰度 Hp 检出率：韩国近期队列为 24/106，日本为 2/33，而近期新加坡队列为 3/218。日本和韩国菌株还在 CagA N 端变异上与新加坡菌株分离，高风险地区 CagA variant 与 ASPP2 的结合更强。
+
+这说明问题不只是“有没有 Hp”。感染年代、菌株毒力和宿主上皮已经积累的分子改变，都可能影响后续风险。
+
+## 02｜这项研究到底做了多大规模
+
+研究以 1,582 个胃肠化生样本和 98 个正常胃样本为主体。靶向 panel 覆盖 277 个 human genes 和 6 个 Hp genes，平均测序深度达到 1,108×。
+
+近期招募的胃窦胃肠化生来自新加坡、韩国、香港、美国、日本和台湾；作者同时加入既往新加坡 TransGCEP1000 队列。除此之外，20 对 IM–normal 样本进行了平均 60.5× 的全基因组测序，韩国 14 名患者的正常、异型增生和早期胃癌样本接受了 EM-seq。
+
+转录组、单细胞、胃与唾液微生物组、类器官、FISH 和 Stereo-seq 并不是彼此独立的展示。它们围绕同一条主线工作：先用高深度 DNA 测序寻找低频克隆，再用多模态数据解释这些克隆可能对应的细胞状态和黏膜生态。
+
+## 03｜为什么普通测序深度可能看不见风险
+
+胃肠化生中的体细胞突变等位基因频率很低。作者比较后发现，全基因组测序只能恢复高深度 panel 检出的 17.5% somatic mutations；模拟 100× WES 只能恢复 15.5% somatic mutations，以及 15.1% driver protein-altering mutations。
+
+这不是单纯的技术细节。如果测序深度不够，最早期、最小的异常克隆会直接从数据里消失，研究者可能误以为癌前组织没有 driver。
+
+高深度 panel 最终识别到 47 个显著突变基因和 2,100 个 driver mutations，其中 25 个基因此前未在胃肠化生中报告。
+
+## 04｜最关键的结果：三类信号指向高风险胃肠化生
+
+第一类信号来自 driver genes。日本和韩国样本的总体突变率较高，而不同人群的 driver 构成并不相同。最有转化价值的是 ARID1A truncating mutation：跨地区合并分析中，它与同期或后续 early gastric neoplasia 相关，OR 为 6.2，P = 1.5 × 10^-3。
+
+![Fig. 2：跨地区 driver landscape 与 ARID1A 风险](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig2-page7.png)
+
+第二类信号是 SBS17。20 对 WGS 样本中，作者识别到 SBS1、SBS5/40、SBS17 和 SBS18。SBS17 在正常胃中并不典型，却出现在胃肠化生和胃癌中；映射到 1,095 个胃窦 IM 后，约 26.2% 样本可检测到 SBS17。
+
+SBS17 在最晚复制区域富集 14.5 倍，而且与吸烟相关，却没有随年龄显著增加。类器官中的 OXPHOS、氧耗和 8-oxo-dG 结果把它与氧化损伤联系起来，但这些实验仍不能证明 OXPHOS 直接制造了 SBS17。
+
+![Fig. 4：SBS17、复制时序与氧化损伤](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig4-page11.png)
+
+第三类信号来自克隆性造血。作者在 1,067 名受试者中识别到 286 个 reported CH gene mutations，涉及 225 人，主要 driver 为 DNMT3A、TET2、ASXL1 和 PPM1D。
+
+当 CH 变异等位基因频率超过 5% 时，high CH 与异型增生和 early gastric neoplasia 仍保持独立关联。只使用 OLGIM、年龄和性别的模型 AUC 为 0.72；加入 mutation count、ARID1A mutation 和 high CH 后，AUC 提高到 0.773。在 GCEP1000 长期随访子集中，AUC 从 0.671 提高到 0.811。
+
+## 05｜血液里的克隆，为什么会连接到胃黏膜
+
+CH 原本主要被视为血液系统老化现象。这篇论文更进一步，尝试把它连接到胃黏膜免疫和微生物生态。
+
+高 CH 与 PIGR truncating mutation 共现。PIGR 是上皮细胞把 polymeric IgA 转运到黏膜表面的受体；如果这条屏障受损，口腔来源细菌更可能在胃黏膜中出现。
+
+数据方向与这个模型一致。CH-high IM 中 IgA+ plasma cells 和 mature T cells 增多，Streptococcus、Neisseria、Gemella、Fusobacterium 等口腔来源菌属也更丰富。FISH 和 Stereo-seq 进一步显示，Streptococcus anginosus 或相关 reads 与 CXCL8 高表达炎症区域存在空间重叠。
+
+![Fig. 6：CH、PIGR、IgA 与口腔菌的关联模型](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig6-page16.png)
+
+但需要强调：共现、免疫组成和空间重叠构成的是一条机制线索，不是完整因果链。论文尚未证明 CH 先导致 PIGR 改变，再导致口腔菌定植并最终推动胃癌。
+
+## 06｜这项研究真正改变了什么
+
+胃肠化生过去常被当作一个静态病理标签。这项研究把它重新描述为一个正在演化的状态：上皮细胞积累 driver 和 mutational signatures，血液系统出现 CH，黏膜免疫与微生物环境也同步变化。
+
+近期最现实的应用不是用某一个 marker 取代胃镜，而是在 OLGIM、年龄和性别基础上增加分子信息。ARID1A truncation、mutation burden 和 high CH 有机会帮助识别需要更密集随访的人群。
+
+KRAS/MAPK-altered IM 和 pyrvinium 类器官结果也提供了干预线索，但距离人体癌前干预还有很长距离。选择性、毒性、体内可达性和真实预防效果都尚未建立。
+
+## 07｜这些结果仍需要冷静看待
+
+首先，跨国家样本很多，但长期进展事件主要依赖新加坡队列。其他地区不少结局只是基线观察，因此“预测未来进展”的证据没有样本总数看起来那么强。
+
+其次，高深度靶向 panel 以深度换广度。它适合捕捉低 VAF 克隆，却会遗漏 panel 外 driver、结构变异和非编码调控改变。
+
+第三，SBS17 与 OXPHOS 的关系仍以相关性为主；pyrvinium 的选择性只在类器官层面观察到。两者都不能直接转化为临床预防建议。
+
+第四，微生物分析容易受到低丰度 reads、污染和反向因果影响。FISH、单细胞和空间数据提供了多模态支持，但样本量有限，CH–PIGR–IgA–口腔菌这条链仍需要前瞻性队列和扰动实验。
+
+## 08｜对我们的研究有什么可借鉴
+
+如果要迁移到胃癌精准预防队列，可以把病理分层、高深度上皮 mutation panel、外周血 CH、吸烟与 Hp 暴露、口腔/胃微生物组和长期 EGN 终点放在同一设计中。
+
+风险模型必须保留 OLGIM 等临床基线，再检验 ARID1A truncation、SBS17 exposure、mutation burden 和 high CH 能带来多少增量预测，而不是只报告单变量显著性。
+
+机制研究则可以从 CH driver 分层开始。TET2、DNMT3A 和 ASXL1 不一定对应同一种黏膜炎症程序，需要用配套单细胞、空间转录组、IgA repertoire 和微生物组逐一验证。
+
+---
+
+## 技术附录
+
+以下内容保留论文基本信息、完整主图说明、Results/Methods 证据、复现参数和证据边界。
 
 ## 基本信息
 
