@@ -4,6 +4,7 @@
   "description": "A long-term curated atlas of top-tier cancer multi-omics research.",
   "main": "index.js",
   "scripts": {
+    "build": "honkit build . _book",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
