@@ -1,0 +1,26 @@
+# macOS metadata
+.DS_Store
+**/.DS_Store
+
+# Installed dependencies and generated GitBook output
+node_modules/
+_book/
+
+# Local source papers and temporary processing output
+pdfs/
+tmp/
+
+# Local binaries and installation bundles
+*.tar.gz
+install_codex.sh
+
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local secrets
+.env
+.env.*
+!.env.example

@@ -1,0 +1,8 @@
+root: .
+
+title: The Atlas of Multi-Omics Cancer Research
+description: A long-term curated atlas of top-tier cancer multi-omics research.
+
+structure:
+  readme: README.md
+  summary: SUMMARY.md
