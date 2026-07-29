@@ -1,4 +1,4 @@
-# 胃腺癌进展与演化中的空间肿瘤生态系统和细胞状态
+# Spatially Resolved Tumor Ecosystems and Cell States in Gastric Adenocarcinoma Progression and Evolution
 
 ## 本文目录
 

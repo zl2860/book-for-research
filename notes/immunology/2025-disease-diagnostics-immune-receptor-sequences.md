@@ -1,4 +1,4 @@
-# 基于 B 细胞与 T 细胞受体序列机器学习的疾病诊断
+# Disease diagnostics using machine learning of B cell and T cell receptor sequences
 
 ## 本文目录
 

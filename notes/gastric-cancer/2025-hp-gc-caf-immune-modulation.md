@@ -1,4 +1,4 @@
-# H. pylori 相关胃癌中 CAF 介导免疫调控的空间与功能解析
+# Spatial and functional dissection of cancer-associated fibroblasts-mediated immune modulation in H. pylori-associated gastric cancer
 
 ## 本文目录
 
@@ -286,4 +286,3 @@ CIBERSORT-ABS 使用 TCGA STAD expression matrix，permutations = 1,000，估计
 | Fig. 6 相关结果 | `P011.S0055-P013.S0026`, `P015.S0003-P015.S0017` | 已覆盖 |
 | Fig. 7 相关结果 | `P013.S0027-P013.S0058`, `P017.S0003-P017.S0021` | 已覆盖 |
 | Discussion | `P015.S0018-P018.S0003` | 已用于证据强度、局限性和迁移思路 |
-

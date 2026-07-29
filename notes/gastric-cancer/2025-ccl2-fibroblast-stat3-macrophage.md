@@ -1,4 +1,4 @@
-# CCL2+ 成纤维细胞与 STAT3 激活巨噬细胞构建胃癌免疫抑制生态位
+# Spatial dissection of tumour microenvironments in gastric cancers reveals the immunosuppressive crosstalk between CCL2+ fibroblasts and STAT3-activated macrophages
 
 ## 本文目录
 

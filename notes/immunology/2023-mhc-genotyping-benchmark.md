@@ -1,4 +1,4 @@
-# MHC I/II 基因型 NGS 体外预测工具 benchmark
+# Benchmark of tools for in silico prediction of MHC class I and class II genotypes from NGS data
 
 ## 本文目录
 

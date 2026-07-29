@@ -1,4 +1,4 @@
-# 单细胞多组学与空间图谱揭示 GPR116+ 周细胞在食管鳞癌转移中的免疫抑制作用
+# Single-cell multi-omic and spatial profiling of esophageal squamous cell carcinoma reveals the immunosuppressive role of GPR116+ pericytes in cancer metastasis
 
 ## 本文目录
 

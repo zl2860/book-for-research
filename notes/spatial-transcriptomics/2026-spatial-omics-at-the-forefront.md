@@ -1,4 +1,4 @@
-# 空间组学前沿：新兴技术、分析创新与临床应用
+# Spatial omics at the forefront: emerging technologies, analytical innovations, and clinical applications
 
 ## 本文目录
 
