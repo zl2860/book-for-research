@@ -5,12 +5,12 @@
 | 文章 | 最近审阅 | 状态 | 说明 |
 |---|---|---|---|
 | `notes/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage.md` | 2026-07-29 | 已优化 | 已增加问题导向开场、01–08 编号叙事、关键数字比较和具体局限；原技术内容完整保留。 |
-| `notes/gastric-cancer/2025-gastric-tumor-ecosystems.md` | — | 待优化 | — |
+| `notes/gastric-cancer/2025-gastric-tumor-ecosystems.md` | 2026-07-30 | 已优化 | 已增加取样困境开场、01–10 问题式叙事、G1/G2 与演化模式的数字比较及具体局限；479/479 Results、209/209 Methods 与原技术内容完整保留。 |
 | `notes/gastric-cancer/2025-hp-gc-caf-immune-modulation.md` | — | 待优化 | — |
 | `notes/gastric-cancer/2026-im-mutational-signatures-ch.md` | 2026-07-29 | 已优化 | 已重组跨国家队列、ARID1A、SBS17、CH 与微生物主线；原技术内容完整保留。 |
 | `notes/immunology/2023-mhc-genotyping-benchmark.md` | — | 待优化 | — |
 | `notes/immunology/2024-b-cell-clonal-persistence-breast-cancer.md` | — | 待优化 | — |
 | `notes/immunology/2025-disease-diagnostics-immune-receptor-sequences.md` | — | 待优化 | — |
 | `notes/immunology/2025-npc-tcr-early-detection.md` | — | 待优化 | — |
-| `notes/spatial-transcriptomics/2025-escc-gpr116-pericytes.md` | — | 待优化 | — |
+| `notes/spatial-transcriptomics/2025-escc-gpr116-pericytes.md` | 2026-07-30 | 已优化 | 已增加转移困境开场、01–10 问题式叙事、PRRX1–EGFL6–integrin β1 证据链与临床边界；228/228 Results、183/183 Methods、解析冲突及原技术内容完整保留。 |
 | `notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md` | — | 待优化 | — |

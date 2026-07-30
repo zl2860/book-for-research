@@ -1,49 +1,138 @@
 # Spatially Resolved Tumor Ecosystems and Cell States in Gastric Adenocarcinoma Progression and Evolution
 
-## 本文目录
+<!-- wechat-style-reviewed: 2026-07-30 -->
 
-- [基本信息](#基本信息)
-- [本论文主图](#本论文主图)
-- [生物学故事前情](#生物学故事前情)
-- [重要缩写表](#重要缩写表)
-- [论文详细解读](#论文详细解读)
-- [研究问题与科学背景](#研究问题与科学背景)
-- [研究设计与数据结构](#研究设计与数据结构)
-- [方法速览与分析框架](#方法速览与分析框架)
-- [原文结果完整梳理](#原文结果完整梳理)
-  - [Spatially Resolved Patterns of ITH in Gastric Cancer](#spatially-resolved-patterns-of-ith-in-gastric-cancer)
-  - [G2 RNA-ITH Regions Exhibit an Immunosuppressive TME](#g2-rna-ith-regions-exhibit-an-immunosuppressive-tme)
-  - [G1 and G2 RNA-ITH Relationships Are Linked with Distinct Patterns of Within-Tumor Evolution](#g1-and-g2-rna-ith-relationships-are-linked-with-distinct-patterns-of-within-tumor-evolution)
-  - [Clinical Impact of Internal Diaspora Evolution on Gastric Cancer Prognosis](#clinical-impact-of-internal-diaspora-evolution-on-gastric-cancer-prognosis)
-  - [Internal Diaspora Gastric Cancers Harbor a Specific Stromal Microenvironment – Evidence from scRNA-seq and GeoMx DSP](#internal-diaspora-gastric-cancers-harbor-a-specific-stromal-microenvironment-–-evidence-from-scrna-seq-and-geomx-dsp)
-  - [SOX9 is a Candidate Internal Diaspora Driver](#sox9-is-a-candidate-internal-diaspora-driver)
-  - [Spatial Analysis of the TSI Reveals a Unique TGF-β–Mediated State](#spatial-analysis-of-the-tsi-reveals-a-unique-tgf-β–mediated-state)
-- [作者结论与证据强度](#作者结论与证据强度)
-- [独立方法学详解](#独立方法学详解)
-  - [Methods 原文逐句覆盖](#methods-原文逐句覆盖)
-    - [GeoMx Digital Spatial Profiling](#geomx-digital-spatial-profiling)
-    - [GeoMx DSP Data Processing and Analysis](#geomx-dsp-data-processing-and-analysis)
-    - [scRNA-seq Data Processing and Analysis](#scrna-seq-data-processing-and-analysis)
-    - [WES Data Processing and Analysis](#wes-data-processing-and-analysis)
-    - [In silico KO Stimulations](#in-silico-ko-stimulations)
-    - [mIHC Experiment and Scoring](#mihc-experiment-and-scoring)
-    - [Stereo-seq Profiling and Analysis](#stereo-seq-profiling)
-    - [Survival and Statistical Analysis](#survival-analysis)
-    - [Data Availability](#data-availability)
-  - [研究对象、样本和数据结构](#研究对象、样本和数据结构)
-  - [实验流程和数据生成](#实验流程和数据生成)
-  - [数据预处理和特征构建](#数据预处理和特征构建)
-  - [统计学分析方法](#统计学分析方法)
-  - [统计模型、机器学习模型或计算框架](#统计模型、机器学习模型或计算框架)
-  - [验证策略、稳健性和混杂控制](#验证策略、稳健性和混杂控制)
-  - [可重复性资源和迁移注意点](#可重复性资源和迁移注意点)
-- [生物学与临床意义](#生物学与临床意义)
-- [局限性与危险假设](#局限性与危险假设)
-- [深度研究洞察](#深度研究洞察)
-- [可借鉴或迁移的思路](#可借鉴或迁移的思路)
-- [可复用学术表达](#可复用学术表达)
-- [相关论文与概念](#相关论文与概念)
-- [覆盖审计](#覆盖审计)
+在一例胃癌手术标本里，肿瘤核心、浸润边缘和肿瘤—基质交界可能相距不远。如果研究只取一块“代表性”组织，核心区看起来相对安静，并不代表边缘也处在同一种分子和免疫状态。
+
+多区域 DNA 测序可以重建克隆关系，却不容易说明每个克隆正在执行什么程序；单细胞 RNA 测序可以拆开细胞状态，又会丢掉原来的位置。真正困难的不是再次证明胃癌“很异质”，而是把位置、状态、演化和局部生态接到同一条证据链上。
+
+这项研究整合了 121 名患者的 226 份胃癌组织，包括 2,138 个 GeoMx 空间感兴趣区域（ROI）和 152,423 个单细胞表达谱。发现队列、整张切片验证、组织芯片、外部生存队列和功能扰动分别承担不同的验证任务。
+
+作者给出的第一层答案是：同一胃癌内可以共存 G1 和 G2 两种空间组织化的表达状态。G2 更靠近肿瘤边缘，T 细胞更少，并伴随更强的免疫抑制、EMT 和治疗耐受相关表达程序。
+
+第二层答案落在演化上：29 例单细胞胃癌中，21 例呈 branched evolution（分支演化），8 例呈 internal diaspora（内部离散式演化）；后者的表达签名在 TCGA、ACRG 和 GASCAD 队列中都与更差生存相关。SOX9 和特定内皮/巨噬细胞状态为 internal diaspora 提供了候选解释；研究还独立识别出 GREM1/TGF-β 富集的肿瘤—基质界面程序。这些线索都还不是已经验证的临床靶点。
+
+## 01｜为什么一块肿瘤核心回答不了真正的问题
+
+胃癌的异质性不只发生在患者之间，也发生在同一块肿瘤内部。若把多个区域混在一起测序，少量但重要的边缘状态会被平均；若只取一个核心区域，又可能完全看不到与侵袭和免疫抑制相关的空间程序。
+
+本文所说的 G1/G2，不是 Lauren 分型、TCGA 分型或病理分级。它们是同一患者肿瘤内可共存的 RNA-ITH（表达型肿瘤内异质性）状态：G1 更接近肿瘤核心，G2 更偏向肿瘤边缘。
+
+## 02｜这项研究到底做了多大规模
+
+核心发现队列包含 15 例同时接受整张切片 GeoMx DSP 与配对单细胞 RNA 测序的胃癌，共 1,063 个 ROI 和 75,807 个细胞。每个 ROI 中位包含 328 个细胞，可测约 3,800 个基因，因此 GeoMx 保留了区域位置，但并不是单细胞分辨率。
+
+空间验证分成两层：6 例独立整张切片队列提供 235 个 ROI；SGCC 组织芯片队列包含 86 名患者、180 份胃癌样本和 840 个 ROI，每份样本尽量同时表示肿瘤核心与边缘。另有 14 例胃癌进入单细胞分析，包括 11 个原发灶和 3 个腹膜转移灶，共 76,616 个细胞。
+
+作者先在患者内部寻找 G1/G2，再用配对单细胞数据解释细胞状态和推断体细胞拷贝数改变（sCNA）。独立 GeoMx、组织芯片、多重免疫组化和 Stereo-seq 用来检查空间状态是否只是取样、细胞混合或单一算法造成的假象；外部 bulk 队列验证演化签名与预后的关联，siRNA/CRISPR 扰动则检验 SOX9 等候选因子的功能。
+
+## 03｜G1 和 G2 是真实状态，还是区域混合造成的假象
+
+先看空间定位，因为它决定 G1/G2 是随机波动还是有组织的区域状态。
+
+![图 1：胃癌中空间分辨的 RNA-ITH](../../assets/gastric-cancer/2025-gastric-tumor-ecosystems/fig1-spatial-rna-ith.png)
+
+简明图注：发现队列先在单个患者内识别 G1/G2，再映射回组织；图中同时展示核心/边缘关系与组织成分检查，GeoMx ROI 不能当作单细胞。
+
+在代表性样本 NGC531 的 36 个肿瘤 ROI 中，G1/G2 的 Moran's I 为 0.92，P = 4.06 × 10^-7。其他 8 份胃癌也复现了空间聚集，平均 Moran's I 为 0.70，所有样本 P < 0.05。
+
+在每个肿瘤—基质界面 ROI 最近的 10 个肿瘤 ROI 中，G2 占 67.7%，P = 0.02。G2 更常出现在接近边界的位置，但最近邻关系本身不能证明细胞从核心向边缘迁移。
+
+作者随后排查“只是细胞比例不同”这个替代解释。G1/G2 ROI 的 CD45、SMA 和 PanCK 差异均未达到显著，P 值分别为 0.15、0.88 和 0.06；病理学家检查的 33 对 ROI 形态相似。380 个组织芯片 ROI 的多重免疫组化中，G2 样边缘与 G1 样核心的上皮细胞比例也没有显著差异，P = 0.37。
+
+高肿瘤纯度 ROI、62 个纯肿瘤上皮细胞系以及两份 Stereo-seq 胃癌又复现了 G1/G2。这使“癌细胞内在表达状态”的解释更可信，但仍不能完全排除局部基质信号对状态的诱导。
+
+## 04｜为什么 G2 更像一个免疫抑制的侵袭前沿
+
+关键不是给 G2 贴上“更坏”的标签，而是看它与 G1 相比具体改变了什么。
+
+![图 2：G2 区域的局部免疫生态](../../assets/gastric-cancer/2025-gastric-tumor-ecosystems/fig2-immune-heterogeneity.png)
+
+简明图注：10 例、超过 300 个肿瘤 ROI 的去卷积比较 G2 与 G1，组织芯片核心/边缘多重免疫组化提供蛋白层验证；表达签名不等于真实治疗反应。
+
+与 G1 相比，G2 的 T 细胞比例更低（P = 4.21 × 10^-7），浆细胞比例更高（P = 5.97 × 10^-6）。在组织芯片中，G2 样肿瘤边缘的 CD3+ T 细胞比例约为 G1 样核心的 1/2.19，方向与去卷积结果一致。
+
+24 个预定义抑制性免疫检查点中有 11 个在 G2 升高；10 种抑制性趋化因子中有 9 种、6 种抑制性细胞因子中有 5 种升高，均按文中 Wilcoxon 检验达到 P < 0.05。血管生成签名也更高，P = 3.98 × 10^-9。
+
+独立组织芯片只部分复现：边缘 ROI 的抑制性趋化因子更高，P = 0.04；细胞因子只有趋势，P = 0.06；免疫检查点差异不显著，P = 0.25。两项跨癌种治疗耐药签名在 G2 的评分更高，P 值分别为 7.25 × 10^-3 和 0.05，但论文没有在接受免疫治疗的胃癌患者中验证真实疗效。
+
+## 05｜两种肿瘤演化路线，哪一种更危险
+
+作者从 29 例胃癌的 19,805 个肿瘤上皮细胞中推断 sCNA，并以 10 份邻近正常组织的 9,904 个上皮细胞作为二倍体参考。CopyKAT 与 inferCNV 的中位相关系数为 0.55；5 份匹配 WES 样本的中位相关系数为 0.58，其中 4 份达到 P < 0.05。
+
+21 例的不同肿瘤亚群共享大部分基础拷贝数改变，更接近逐步分叉的 branched evolution；8 例的亚群较早呈现彼此不同的 sCNA 组合，被作者称为 internal diaspora。这里的“早”和“演化”来自横断面树形与拟时序推断，并非纵向追踪。
+
+真正值得看的是这种分类能否跨队列连接到结局。
+
+![图 4：internal diaspora 签名与胃癌预后](../../assets/gastric-cancer/2025-gastric-tumor-ecosystems/fig4-prognostic-evolution.png)
+
+简明图注：单细胞队列建立演化签名，再映射到 TCGA-STAD（n = 332）和 ACRG（n = 273）；外部队列验证的是表达签名及生存关联，不是直接重建每名患者的演化树。
+
+TCGA-STAD 中，internal diaspora 签名组生存更差，log-rank P = 0.04；校正性别和分期后，HR = 1.49（95% CI 1.05–2.11，P = 0.03）。ACRG 中调整后 HR = 1.88（95% CI 1.31–2.69，P = 6.44 × 10^-4）；GASCAD 的 83 例中也观察到较差生存，P < 0.05。
+
+这说明 internal diaspora 表达签名包含预后信息，但不能证明这种演化方式本身造成死亡风险上升。CIN、治疗、分期和取样差异仍可能参与其中。
+
+## 06｜这种危险模式由哪些肿瘤内外线索共同支撑
+
+与 branched evolution 相比，internal diaspora 伴随 VWF+ACKR1+ 的 Endo2 内皮状态和 SPP1+FN1+ 的 TAM1 巨噬细胞状态。在 GeoMx 肿瘤 ROI 中，Endo2 特征评分更高，P = 4.30 × 10^-5，但分析排除了 1 个离群值；TAM1 特征评分也更高，P = 2.16 × 10^-5。
+
+肿瘤细胞内部，SOX9 是作者收敛出的候选驱动因子。值得看这张图，是因为它把计算预测、两种基因扰动和单细胞读出放在同一条链上。
+
+![图 6：SOX9 是 internal diaspora 的候选驱动因子](../../assets/gastric-cancer/2025-gastric-tumor-ecosystems/fig6-sox9-driver.png)
+
+简明图注：CellOracle 预测 SOX9 敲除使 G2 样状态向 G1 样偏移；siRNA、3 个细胞系的 CRISPR KO 及 5,398 个单细胞提供功能支持，但尚未在动物或患者来源模型中证明 SOX9 会重塑演化轨迹。
+
+SOX9 CRISPR KO 在 SNU1967、AGS 和 YCC21 三个细胞系中均降低细胞活力和迁移。YCC21 的 KO 与对照共获得 5,398 个质控后单细胞，KO 后 G2M checkpoint、E2F targets 和 mitotic spindle 程序下降。
+
+这些实验支持 SOX9 维持增殖和 G2 样状态，却没有证明它单独启动 internal diaspora，也没有证明抑制 SOX9 能改善患者结局。
+
+## 07｜肿瘤—基质界面为什么不只是两类组织的混合
+
+作者分析了 85 个肿瘤—基质界面（TSI）ROI。这些区域被定义为同一 ROI 内可见 PanCK+ 肿瘤细胞与 SMA+ 间质交错；问题是界面表达只是“肿瘤加间质”的平均，还是存在额外程序。
+
+这张图把肿瘤、界面和间质放在同一空间坐标中。
+
+![图 7：肿瘤—基质界面的 GREM1/TGF-β 程序](../../assets/gastric-cancer/2025-gastric-tumor-ecosystems/fig7-tumor-stroma-interface.png)
+
+简明图注：85 个 TSI ROI 用于发现，热图展示满足 ROI 数量筛选的 7 份样本；scRNA-seq 映射、两份 Stereo-seq 和 CAF—类器官共培养提供补充验证。
+
+GREM1 在肠型和弥漫型胃癌的 TSI 均常见上调，TSI 特征主要映射到 TGF-β 活性较高的 Fib1 肌成纤维样 CAF。两份 Stereo-seq 中也能区分 TSI bin；越接近间质的肿瘤区域，TGF-β 通路评分越高，P < 2.20 × 10^-16。
+
+两个 GREM1+ CAF 细胞系与一个胃癌类器官共培养后，CAF 中 GREM1 表达升高。这支持界面存在超出简单线性混合的候选程序，但不能确定 GREM1 的确切来源、TGF-β 的信号方向或必要性。
+
+## 08｜为什么这套证据路线比一张空间图更有价值
+
+这项研究的说服力不来自某一张 UMAP，而来自连续排查替代解释。独立整张切片和组织芯片检查空间复现；病理复核、多重免疫组化、高纯度 ROI、细胞系和 Stereo-seq 检查“只是细胞混合”；inferCNV、WES 和多种轨迹算法检查单一计算方法；外部队列检查预后方向；siRNA、CRISPR 和共培养再把候选机制推进到功能层。
+
+它真正改变的是取样和分层思路。单一肿瘤核心可能遗漏 G2 和 TSI 状态；若研究问题涉及免疫治疗、侵袭或演化风险，核心、边缘、界面和邻近基质应被分别记录，而不是在建库前混在一起。
+
+现阶段更现实的价值是改进取样、空间分层和机制优先级，而不是立即把 SOX9、ACKR1、GREM1 或 TGF-β 当作治疗靶点。
+
+## 09｜这些结果仍需要冷静看待
+
+首先，核心配对发现队列只有 15 例，演化模式来自 29 例单细胞胃癌。2,138 个 ROI 和 152,423 个细胞扩大了观察数，却不能把 ROI 或单细胞当成同等数量的独立患者重复。
+
+其次，GeoMx ROI 中位包含 328 个细胞。作者用了多种办法降低混合偏差，但 G1/G2、Endo2、TAM1 和 TSI 的部分结论仍依赖去卷积、签名映射与人工 ROI 选择。
+
+第三，branched/internal diaspora 来自横断面的 RNA 推断 sCNA、系统发育树和拟时序，不是真实纵向记录。匹配 WES 只有 5 份；外部队列验证的也是表达签名，而不是每例患者的空间演化树。
+
+第四，生存模型主要校正性别和肿瘤分期，治疗、取样密度、平台和其他临床变量仍可能混杂。SOX9 扰动限于体外细胞系，GREM1/TGF-β 模型也没有完成原位阻断或动物验证。
+
+最后，本地 PDF 不含 Supplementary Fig. S1–S9 和 Supplementary Tables S1–S8。主文中还有跨页错序、图注文字冲突和大范围多重比较；技术附录已逐项标出这些低置信处。
+
+## 10｜如何把这套设计迁移到自己的研究
+
+第一步不是照搬 G1/G2 签名，而是改变取样。对每例样本成对保留肿瘤核心、侵袭边缘、TSI 和邻近基质；先在患者内部学习空间状态，再检验能否跨患者复现。
+
+第二步是为每类证据安排正交验证。区域表达需要病理复核和蛋白或高分辨率空间验证；scRNA 推断的谱系需要 DNA 数据校验；计算筛出的调控因子至少需要一种基因扰动和一个直接功能读出。
+
+若迁移到胃肠化生、异型增生或早癌队列，终点应改为病变进展和纵向空间变化，G1/G2、internal diaspora 与 TSI 签名都必须在相应阶段重新学习和校准。
+
+---
+
+## 技术附录
+
+以下从原版笔记“基本信息”起完整原样保留，包含论文与数据来源、PDF 解析质量、主图、全部 Results/Methods 句子 ID、逐句证据边界、方法参数、原文冲突、低置信抽取和覆盖审计。
 
 ## 基本信息
 
