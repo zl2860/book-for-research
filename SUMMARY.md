@@ -20,5 +20,6 @@
   * [Single-cell multi-omic and spatial profiling of esophageal squamous cell carcinoma reveals the immunosuppressive role of GPR116+ pericytes in cancer metastasis](notes/spatial-transcriptomics/2025-escc-gpr116-pericytes.md)
   * [Spatial omics at the forefront: emerging technologies, analytical innovations, and clinical applications](notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md)
 * [Precision Medicine](notes/precision-medicine/README.md)
+  * [Plasma signals of lung tumor promotion for molecular cancer prevention](notes/precision-medicine/2026-plasma-lung-tumor-promotion.md)
 * [AI](notes/AI/README.md)
 * [Epidemiology](notes/epidemiology/README.md)
