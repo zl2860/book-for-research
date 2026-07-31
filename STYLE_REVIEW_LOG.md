@@ -12,6 +12,7 @@
 | `notes/immunology/2024-b-cell-clonal-persistence-breast-cancer.md` | — | 待优化 | — |
 | `notes/immunology/2025-disease-diagnostics-immune-receptor-sequences.md` | — | 待优化 | — |
 | `notes/immunology/2025-npc-tcr-early-detection.md` | — | 待优化 | — |
+| `notes/methods/2026-cancer-genome-selection-signatures.md` | 2026-07-31 | 已优化 | 新增 dNdS-Fun 方法与 14,886 例泛癌选择图谱解读；225/225 Results、148/148 Methods、1,141/1,141 全文句子 ID 已审计，主图、解析错分、数字冲突和证据边界完整保留。 |
 | `notes/precision-medicine/2026-plasma-lung-tumor-promotion.md` | 2026-07-30 | 已优化 | 已建立 14 蛋白风险—KAC—IL-1β 预防主线；243/243 Results、290/290 Methods 与全文 1,690/1,690 句完成覆盖，解析错分和原文冲突已保留。 |
 | `notes/spatial-transcriptomics/2025-escc-gpr116-pericytes.md` | 2026-07-30 | 已优化 | 已增加转移困境开场、01–10 问题式叙事、PRRX1–EGFL6–integrin β1 证据链与临床边界；228/228 Results、183/183 Methods、解析冲突及原技术内容完整保留。 |
 | `notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md` | — | 待优化 | — |

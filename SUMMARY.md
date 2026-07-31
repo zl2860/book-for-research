@@ -15,6 +15,7 @@
   * [Immunosequencing identifies signatures of T cell responses for early detection of nasopharyngeal carcinoma](notes/immunology/2025-npc-tcr-early-detection.md)
   * [Disease diagnostics using machine learning of B cell and T cell receptor sequences](notes/immunology/2025-disease-diagnostics-immune-receptor-sequences.md)
 * [Methods](notes/methods/README.md)
+  * [Characterizing selection signatures in coding and noncoding regions of 14,886 cancer genomes](notes/methods/2026-cancer-genome-selection-signatures.md)
 * [Multiomics](notes/multiomics/README.md)
 * [Spatial Transcriptomics](notes/spatial-transcriptomics/README.md)
   * [Single-cell multi-omic and spatial profiling of esophageal squamous cell carcinoma reveals the immunosuppressive role of GPR116+ pericytes in cancer metastasis](notes/spatial-transcriptomics/2025-escc-gpr116-pericytes.md)
