@@ -17,6 +17,7 @@
 * [Methods](notes/methods/README.md)
   * [Characterizing selection signatures in coding and noncoding regions of 14,886 cancer genomes](notes/methods/2026-cancer-genome-selection-signatures.md)
 * [Multiomics](notes/multiomics/README.md)
+  * [Deep-coverage single-cell metabolomics enabled by ion mobility-resolved mass cytometry](notes/multiomics/2026-deep-coverage-single-cell-metabolomics.md)
 * [Spatial Transcriptomics](notes/spatial-transcriptomics/README.md)
   * [Single-cell multi-omic and spatial profiling of esophageal squamous cell carcinoma reveals the immunosuppressive role of GPR116+ pericytes in cancer metastasis](notes/spatial-transcriptomics/2025-escc-gpr116-pericytes.md)
   * [Spatial omics at the forefront: emerging technologies, analytical innovations, and clinical applications](notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md)
