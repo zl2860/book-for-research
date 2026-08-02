@@ -6,9 +6,9 @@
 |---|---|---|---|
 | `notes/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage.md` | 2026-07-29 | 已优化 | 已增加问题导向开场、01–08 编号叙事、关键数字比较和具体局限；原技术内容完整保留。 |
 | `notes/gastric-cancer/2025-gastric-tumor-ecosystems.md` | 2026-07-30 | 已优化 | 已增加取样困境开场、01–10 问题式叙事、G1/G2 与演化模式的数字比较及具体局限；479/479 Results、209/209 Methods 与原技术内容完整保留。 |
-| `notes/gastric-cancer/2025-hp-gc-caf-immune-modulation.md` | — | 待优化 | — |
+| `notes/gastric-cancer/2025-hp-gc-caf-immune-modulation.md` | 2026-08-02 | 已优化 | 已重组 01–09 问题式叙事，补充 71 例空间队列、250,310 个单细胞、相关/生存/Treg 比较数字，并保留 H. pylori 分组、CAF 亚型与生存分组的三处原文冲突；Results 328/328、Methods 130/130 来源 ID 范围已闭合。 |
 | `notes/gastric-cancer/2026-im-mutational-signatures-ch.md` | 2026-07-29 | 已优化 | 已重组跨国家队列、ARID1A、SBS17、CH 与微生物主线；原技术内容完整保留。 |
-| `notes/immunology/2023-mhc-genotyping-benchmark.md` | — | 待优化 | — |
+| `notes/immunology/2023-mhc-genotyping-benchmark.md` | 2026-08-02 | 已优化 | 已重组 01–09 条件化工具选择叙事，补充逐位点样本数、accuracy、资源和 TCGA 运行子集；人工校正语义 Results 145/145、Methods 92/92，并闭合自动标签 71/71、170/170，解析错分与补充材料边界完整保留。 |
 | `notes/immunology/2024-b-cell-clonal-persistence-breast-cancer.md` | — | 待优化 | — |
 | `notes/immunology/2025-disease-diagnostics-immune-receptor-sequences.md` | — | 待优化 | — |
 | `notes/immunology/2025-npc-tcr-early-detection.md` | — | 待优化 | — |
