@@ -1,5 +1,107 @@
 # Disease diagnostics using machine learning of B cell and T cell receptor sequences
 
+<!-- wechat-style-reviewed: 2026-08-03 -->
+
+面对急性 COVID-19、慢性 HIV、系统性红斑狼疮、1 型糖尿病和流感疫苗接种后的反应，这项研究要检验的是：它们是否会在外周血 BCR/TCR 中留下可彼此区分的模式。真正困难的不只是发现“免疫系统变了”，而是判断这种变化更像哪一种状态。
+
+这项研究汇集 593 名个体、1,620 万个 BCR 重链克隆和 2,350 万个 TCR beta 链克隆。其中 542 人同时有两类受体数据；三折交叉验证汇总后的 held-out 评估包含 550 份配对样本。
+
+难点在于，绝大多数受体序列高度个体化，单条序列又没有疾病特异性标签。年龄、祖源、治疗、采样批次和测序深度也都可能改变受体库；一个高分模型很容易把队列差异误当成疾病。
+
+论文给出的答案是 Mal-ID：分别读取受体库整体组成、跨人共享的相似 CDR3 簇和蛋白语言模型表示，再整合 BCR 与 TCR。它在内部 held-out 数据上的六状态 multiclass AUROC 为 0.986，但最高概率直接分类的准确率是 85.3%；这组差距正是理解其价值和边界的起点。
+
+## 01｜免疫受体库能不能成为一张“疾病状态化验单”？
+
+Mal-ID 试图读取的是采血时的免疫状态，而不是一个终身不变的诊断标签。BCR 和 TCR 会随抗原暴露、克隆扩增、BCR 体细胞高突变及治疗而改变，因此它们既可能留下疾病线索，也可能反映疾病活动度。
+
+成人狼疮患者提供了一个提醒：BCR-only 模型判为健康背景的 10 人，比判为狼疮的 23 人有更低的 SLEDAI 疾病活动评分（该评分只在部分成人患者中可得；单侧 Wilcoxon `P=0.004242`）。成人队列均在接受治疗，作者据此推测较静息的免疫状态影响了分类；这个结果不能解释为患者没有狼疮，也没有证明治疗导致误判。
+
+## 02｜六种状态用了多少人、多少序列？
+
+主数据包括 COVID-19 63 人、HIV 95 人、狼疮 86 人、1 型糖尿病 92 人、流感疫苗接种后 37 人和健康对照。健康对照数在原文 Results 与 Methods 中分别写为 220 和 217，本文保留这一不一致；不能用其中一个数字静默替换另一个。
+
+共有 542 人获得配对 IgH/TRB 数据。论文报告的 550 份配对样本，是把三折交叉验证中各折未参与训练的 test 预测合并后的样本数，不是一个另行固定的 550 人测试队列。同一个人的重复样本始终放在同一训练、验证或测试分区，避免同一受体库跨集合泄漏。
+
+## 03｜为什么同一套受体库要用三种读法？
+
+模型 1 读取 V/J 基因使用、BCR 同种型和体细胞高突变等整体组成；模型 2 寻找跨个体共享、在某一疾病中富集的相似 CDR3 簇；模型 3 用 30 层、1.5 亿参数的 ESM-2 把每条 CDR3 转成 640 维表示，再聚合为患者级预测。BCR 输入也不是完整 B 细胞库：作者只保留 class-switched IgG/IgA，以及 SHM 至少 1% 的 IgD/IgM，以富集抗原经验 B 细胞。
+
+三种读法分别捕捉“群体组成改变”“保守的公共序列”和“更宽松的序列模式”。三套 BCR 与三套 TCR 输出最终由 logistic regression 集成。模型 3 的单序列标签直接继承患者诊断，因此属于弱监督：高疾病分数不等于该受体已被证明能结合相应抗原。
+
+![Fig. 1：Mal-ID 的三层受体库表示与集成框架](../../assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig1-mal-id-framework.png)
+
+简明图注：Fig. 1 从外周血 IgH/TRB 测序开始，分别训练组成、CDR3 聚类和语言模型，再在患者层面整合六个基础模型；问号表示患者的大多数序列并不知道是否与疾病直接相关。
+
+## 04｜内部测试的 0.986 到底意味着什么？
+
+在 542 人的 550 份配对样本中，各折分别计算、再汇总的 class-size-weighted one-versus-one multiclass AUROC 为 0.986。550 份 held-out test prediction 只在计算混淆矩阵和 label-based accuracy 时合并；按最高预测概率直接给标签，准确率为 85.3%。
+
+两种指标对 abstention 的处理也不同：AUROC/AUPRC 排除没有概率输出的样本，accuracy 把它们计为错误。550 份样本中，2.9 个百分点因模型 2 没有匹配 CDR3 cluster 而 abstain；其余 11.8 个百分点属于没有 abstain 的误分类，作者用前两名预测概率差将这些错误描述为不确定。AUROC 衡量排序，accuracy 衡量既定决策规则后的分类，两者不能互换。
+
+BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合的 85.3%。仅用 CDR3 聚类时，BCR 与 TCR 的 AUROC 分别为 0.89 和 0.80；组合受体类型与信号层级，才得到主要增益。
+
+若把多疾病模型转为狼疮二分类器，阈值可换取 `97%` 灵敏度/`86%` 特异度，或 `84%` 灵敏度/`95%` 特异度；一个平衡点为 `93%`/`90%`。这些数字来自同一研究的交叉验证概念验证，不是前瞻临床定标结果。
+
+![Fig. 2：六状态分类、组件比较与狼疮阈值](../../assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig2-classification-performance.png)
+
+简明图注：Fig. 2 的 AUROC 先在各折计算；混淆矩阵则合并 550 份 held-out prediction。组件 AUROC、最高概率分类和狼疮灵敏度—特异度曲线回答的是不同问题。
+
+## 05｜换实验室或测序方式后，还能直接使用吗？
+
+外部 BCR 队列只有 7 例 COVID-19 和 6 名健康供者：排序 AUROC 为 1.0，但直接六分类准确率只有 69%；用一小部分外部样本调阈值后，剩余样本达到 100%。外部 TCR 队列为 17 例 COVID-19 和 39 名健康供者，AUROC 为 0.99、未调阈准确率为 68%，调阈后为 90%；去掉表现较弱的 CDR3 聚类模型后，未调阈准确率为 89%、AUROC 为 0.97。
+
+在 Adaptive Biotechnologies 的 genomic DNA TCR 数据中，作者不是直接套用原模型，而是用 1,365 份样本重新训练，区分另一组六种状态，得到 AUROC 0.97、准确率 88%，并处理超过 1.5 亿条序列。
+
+因此，外部结果支持的是框架可以迁移；它同时表明疾病先验、类别构成和测序技术改变后，需要重新校准，甚至重新训练。
+
+## 06｜模型是否只是记住了批次、年龄或祖源？
+
+内部批次留出包括 10 例使用不同样本处理流程的 COVID-19 患者和 13 份重新建库的健康样本；另一个留出队列中，5 例狼疮有 4 例分类正确、2 名健康对照均正确。13 名健康供者的技术重复里，9 人两次都判对且类别概率相关性至少 97%，其余样本出现 abstention 或分歧。
+
+仅用年龄、性别或祖源预测疾病，AUROC 分别为 0.68、0.59 和 0.79，三者合并为 0.85；在有完整人口学信息的个体中，从集成特征回归这些变量后，Mal-ID AUROC 从 0.98 降到 0.96。已测人口学变量贡献了一部分信号，但没有解释全部内部性能。
+
+外部 BCR 队列的情况更棘手：COVID-19 病例全为亚洲人，健康对照为白人或非裔，人口学模型的 AUROC 同样达到 1.0，尽管 accuracy 只有 58%。因此，这个外部小队列不能单独排除祖源与地理混杂；治疗、近期感染和疾病严重程度等未测变量也仍然存在。
+
+## 07｜它学到的是抗原特异性，还是更宽的免疫状态？
+
+只用 BCR 同种型比例，疾病 AUROC 为 0.68，明显低于 Mal-ID 的 0.98 以上；模型确实使用了序列内部信息。SHAP 分析又把 COVID-19 的 IGHV1-24/IGHV2-70、狼疮的 IGHV4-34/IGHV4-59 等已知线索排在前列，但 SHAP 解释的是模型行为，不是这些基因的因果作用。
+
+外部已知 binder 给出了更严格的检验。COVID-19 BCR 的模型 3 AUROC 按 IGHV 分层最高为 0.78，AUPRC 相对基线最高 6.9 倍；流感 BCR 最高为 0.65 和 4.0 倍。已知 SARS-CoV-2 特异 TCR 的最高 AUROC 只有 0.56，AUPRC 相对基线最高 1.30 倍。
+
+患者级分类很强，而单条 TCR 的抗原特异性排序接近随机，说明 Mal-ID 很可能同时读取直接抗原反应与更广泛的免疫组成、激活和治疗状态。这个解释比“模型找到了疾病特异受体”更符合数据。
+
+![Fig. 3：模型优先使用的 IGHV 与同种型线索](../../assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig3-ighv-isotype-shap.png)
+
+简明图注：Fig. 3 的 SHAP 值显示各 IGHV—同种型分组对模型 3 预测的贡献；它能与既有免疫学知识对照，但不能证明机制。
+
+![Fig. 4：外部 SARS-CoV-2 binder 的序列级验证](../../assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig4-known-sars-cov-2-binders.png)
+
+简明图注：Fig. 4 比较未用于训练的已知 SARS-CoV-2 结合 BCR 与健康序列。CDR3 聚类精确但召回低，语言模型召回更高；TCR 的对应验证明显较弱。
+
+## 08｜这项研究真正改变了什么？
+
+它显示，在这组经过整理的闭集队列中，BCR 与 TCR 可以作为分布式免疫状态读数，而且组成、公共序列和语言模型表示提供互补信息。对研究而言，这套框架可以把“受体库有没有变化”推进到“哪些层级共同区分状态”，并为后续抗原验证提供候选线索。
+
+临床价值目前更接近问题定义，而不是成品检测。若模型主要读取当前免疫活动，它可能适合纵向监测治疗或复发，也可能在疾病静息期漏掉既往诊断；这些用途都需要按目标重新建队列、设标签和定阈值，论文尚未验证。
+
+## 09｜这些结果仍需要冷静看待
+
+第一，这是六个预先定义类别的闭集分类，其中还包含流感疫苗接种后状态。真实患者可能有合并症、近期感染、疫苗接种、免疫抑制治疗或训练集中没有的新疾病，模型目前不会可靠处理开放集或多标签问题。
+
+第二，AUROC 0.986 不等于临床阳性预测值，也不等于 98.6% 的患者会被正确诊断。外部队列在调阈前只有 68%–69% accuracy，校准样本又很少；患病率与鉴别诊断构成改变后，阈值必须重新确定。
+
+第三，研究只测 IgH 与 TRB，没有抗体轻链或 TCR alpha 链配对；模型 3 又用患者标签弱监督单条序列。BCR binder 只有中等排序能力，TCR binder 验证更弱，不能把患者级预测解释为已识别出全部疾病特异性受体。
+
+第四，内部 COVID-19 训练队列有意排除轻症、血清转换前样本和已知免疫抑制患者，以保留明确活动期病例。0.986 的 AUROC 因而不能外推到轻症、极早期或免疫抑制背景。
+
+最后，Results 与 Methods 对健康对照分别报告 220 和 217 人；补充表图未作为完整对象进入本地 PDF；多栏排版还使部分图注与人口学、外部验证段落在文本抽取中交错。这些原文冲突和解析边界不能被高性能数字掩盖。
+
+---
+
+## 技术附录
+
+以下保留原笔记的论文信息、完整图注、结果顺序、方法参数、统计解释、原文冲突和证据边界，并在文末补入本次句子级 PDF 解析与覆盖审计。
+
 ## 本文目录
 
 - [基本信息](#基本信息)
@@ -32,6 +134,7 @@
 - [可借鉴或迁移的思路](#可借鉴或迁移的思路)
 - [可复用学术表达](#可复用学术表达)
 - [相关论文与概念](#相关论文与概念)
+- [覆盖审计](#覆盖审计)
 
 ## 基本信息
 
@@ -43,7 +146,13 @@
 - 通讯作者：Anshul Kundaje、Scott D. Boyd
 - 研究领域：免疫受体组学、机器学习诊断、感染性疾病、自身免疫病、BCR/TCR repertoire
 - 关键词：BCR、TCR、免疫受体库、Mal-ID、ESM-2、CDR3、系统性红斑狼疮、1 型糖尿病、COVID-19、HIV、流感疫苗
-- PDF 解析质量：正文、方法、图注、参考文献、数据可用性信息可解析；主文补充表格和补充图仅在正文中被引用，未作为完整表格对象嵌入主 PDF。
+- 本地 PDF：`pdfs/processed/science.adp2407.pdf`
+- PDF 解析质量：
+  - 使用 `scripts/build_pdf_llm_pack.py` 建立句子级解析包 `tmp/mal-id-llm-pack.md`；本地 PDF 共 17 页、1,335 个句子 ID。
+  - 三栏排版使正文、标题和图注严重交错，不能把一个连续 ID 区间都算作正文证据。人工按页面版式复原后，主文 Results 语义证据为 194 个 ID，Methods 为 278 个 ID；Fig. 1-4 的图内与图注 ID 另行保留，不冒充正文句。
+  - 自动清单标出 Results 296 个、Methods 332 个 ID，已逐一核对 `628/628`。其中含摘要残片、作者单位、页眉、图内文字和错标的 Discussion；文末同时给出自动标签闭环和校正后的真实阅读顺序。
+  - `P005-P007` 与 `P009-P014` 多处跨栏融合，结构和句序属于低置信；所有关键数字已回看相邻正文、图注和现有截图，按页面版式复原，不按抽取顺序补意。
+  - 主文补充表格和补充图仅在正文中被引用，未作为完整对象进入本地 PDF 解析包。
 - 重要数字提示：原文在研究摘要处写健康对照为 220 人，在方法处写健康对照为 217 人；本文保留该不一致，不自行修正。
 
 ## 本论文主图
@@ -114,7 +223,7 @@
 
 ![图2：Mal-ID多疾病分类结果](../../assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig2-classification-performance.png)
 
-原文首先报告，Mal-ID 在 550 个配对 BCR/TCR 测试样本、542 名个体中实现六类免疫状态分类，multiclass AUROC 为 0.986。图 2A 的混淆矩阵显示，当按最高预测概率直接给出类别标签时，总体准确率为 85.3%。这说明模型具有很强的排序能力，但并不是每个样本都能被完全正确归类。这个区别很重要：AUROC 衡量的是正负样本排序能力，而临床诊断最终还需要阈值和类别决策。
+原文首先报告，在三折交叉验证的各折 held-out test 中分别计算并汇总后，六类免疫状态的 class-size-weighted one-versus-one multiclass AUROC 为 0.986。来自 542 名个体的 550 份配对 BCR/TCR test prediction 只在计算混淆矩阵和 label-based accuracy 时合并；按最高预测概率直接给标签，总体准确率为 85.3%。AUROC/AUPRC 排除 abstention，accuracy 则把 abstention 计为错误，因此 AUROC 与 accuracy 不能互换。
 
 图 2B 比较了不同模型组件。单独使用 CDR3 聚类的模型性能较弱，BCR CDR3 聚类 AUROC 为 0.89，TCR CDR3 聚类 AUROC 为 0.80。相比之下，整体组成模型和蛋白语言模型表现更好，三类模型组合后性能最高。作者指出，TCR CDR3 聚类表现弱，可能与 HLA 基因型影响 TCR 识别有关；如果不纳入 HLA 信息，跨个体寻找公共 TCR 模式会更困难。
 
@@ -170,6 +279,14 @@ TCR 的 SARS-CoV-2 binder 验证更弱。模型 2 表现差，模型 3 对已知
 
 这一结果非常重要：Mal-ID 的患者级诊断表现很强，但单条抗原特异性 TCR 识别并不强。这说明模型的患者分类信号可能不仅来自直接结合抗原的 receptor，也可能来自更广泛的疾病相关免疫状态改变。
 
+### 容易被总体 AUROC 掩盖的结果数字
+
+- 550 份 held-out test prediction 中，469 份最高概率标签正确、81 份错误；2.9 个百分点因模型 2 没有匹配 cluster 而 abstain，其余 11.8 个百分点是没有 abstain、但前两名预测概率接近的误分类。病人和疫苗接种者中，92.9% 被识别为“非健康背景”，87.5% 被分到具体正确状态（`P004.S0029-P004.S0030`、`P005.S0007-P005.S0021`）。
+- exact-sequence-match 对照在 BCR 上只有 41% accuracy，40% 样本无命中；TCR 上为 42% accuracy、0.75 AUROC。模型 2 的 BCR/TCR 聚类虽提高到 0.89/0.80 AUROC，COVID-19 TCR 与 T1D B/T 仍只找到很少公共富集簇（`P004.S0009-P004.S0025`）。
+- 流感疫苗样本取自接种后第 7 天，即反应性 B 细胞通常处于峰值的窗口；这不是任意接种后时间的表现。研究摘要另报，在加入 51 名只有 BCR 数据的个体后，BCR-only 扩展队列 AUROC 为 0.959（`P001.S0035`、`P004.S0017`）。
+- Adaptive genomic-DNA TCR 数据在保留原研究 cohort division 做整队列留出时为 1.0 AUROC、98% accuracy；这属于重新训练后的同平台外部 cohort 检查，不是原 cDNA Mal-ID 模型的直接迁移（`P005.S0031-P005.S0035`）。
+- kBET 在 `k=50`、卡方检验并校正到 `P=0.05` 阈值下，整体有 18.2% 序列拒绝“批次分布相同”的零假设；COVID-19 BCR 为 44.1%。作者指出疾病严重度和时间点也可能造成这一差异，因此不能把该结果简单解释为纯技术批次（`P013.S0023-P013.S0030`）。
+
 ### 原文讨论中的主要结论
 
 作者在讨论中强调，Mal-ID 的性能来自三类互补信号：整体 repertoire composition、重要序列群的检测、以及语言模型对单条 receptor 序列的表示。BCR 和 TCR 联合优于单独使用任一数据类型，说明不同疾病对 B 细胞和 T 细胞反应的依赖不同。比如 1 型糖尿病通常被认为以 T 细胞介导为主，TCR-only 模型确实比 BCR-only 更能区分 T1D，但两者联合仍进一步提高性能。狼疮既有自身抗体又有 T 细胞参与，因此 BCR 与 TCR 都有信息，联合效果最好。
@@ -216,7 +333,7 @@ Mal-ID 的统计学核心是严格区分“序列级别样本很多”和“真�
 
 模型性能主要用 AUROC、AUPRC、accuracy、sensitivity 和 specificity 描述。AUROC 衡量模型对阳性和阴性样本的排序能力，适合比较不同疾病类别的一对其余任务；AUPRC 更受阳性类别比例影响，适合评估已知 binder 富集这种不平衡任务；accuracy 是最高概率分类后的正确比例，但在类别不均衡或阈值未校准时不如 AUROC 稳定。灵敏度和特异度用于临床阈值解释，必须结合具体场景选择，不能只追求总体准确率。
 
-模型 2 的疾病富集 CDR3 cluster 使用 Fisher exact test。输入是某个 cluster 是否出现在某疾病个体与其他个体中，回答的是该 cluster 是否在某疾病中富集。Fisher 检验适合稀疏列联表，但在大量 cluster 上反复检验会产生多重比较问题，因此需要训练集内筛选、验证集调参和独立测试集评估来控制过拟合。
+模型 2 的疾病富集 CDR3 cluster 使用 Fisher exact test。输入是某个 cluster 是否出现在某疾病个体与其他个体中，回答的是该 cluster 是否在某疾病中富集。作者比较 raw `P=0.0005–0.05` 的候选阈值，并在 train-2 用 MCC 选出每个 fold/locus 的阈值；原文没有报告 cluster-level FDR 校正。因此，训练集内筛选、验证集调参和 held-out test 评估能降低过拟合，却不能被写成已经正式解决了大规模 cluster 多重检验。
 
 模型 3 是弱监督学习，单条 receptor 继承患者疾病标签。这个标签策略统计上有噪声，因为一个患者的大多数 BCR/TCR 序列未必与疾病直接相关。作者通过按 V gene/isotype 或 TRBV 分层训练、再聚合到患者级模型，试图从大量噪声序列中提取稳定的疾病信号。解释时必须记住：sequence-level 高分表示模型认为这条序列有疾病相关模式，不等于它已经被证明是抗原特异性 receptor。
 
@@ -231,6 +348,16 @@ SHAP 用于解释模型 3 的 patient-level 特征贡献。输入是不同 IGHV/
 ### 稳健性验证和混杂控制
 
 稳健性验证层面，作者做了四类检查：第一，外部 cDNA BCR/TCR COVID-19 队列验证；第二，Adaptive Biotechnologies genomic DNA TCR 数据上的重新训练；第三，内部批次留出和重复测序样本一致性检验；第四，年龄、性别、祖源预测、demographics-only disease classifier 和人口学残差化分析。这些步骤共同服务于一个目的：判断模型是否主要学习疾病相关 repertoire signal，而不是批次、人口学或数据来源。
+
+### 本次审阅补充的关键复现参数
+
+- 样本选择与 QC：COVID-19 排除轻症、血清转换前和已知免疫抑制者；IgBLAST v1.3 的 IGHV/TRBV score 阈值分别为 200/80，CDR3 至少 8 aa。每份 replicate 至少需 100 个 IgG、100 个 IgA、500 个 IgD/M 和 500 个 TRB clone；IgD/M 还要求 SHM 至少 1%（`P010.S0023-P010.S0052`）。
+- 两类相似性阈值不能混用：个体内 clonal-lineage 去重为 TCR 95%、BCR 90% sequence identity；模型 2 的跨人疾病 CDR3 聚类则为 TCR 90%、BCR 85%（`P010.S0045`、`P011.S0040`、`P012.S0008`）。
+- 模型 1 只保留各 isotype/TRB 中出现频率前半的 V genes；每个 BCR isotype 使用 15 个 PCA 特征并加 2 个 SHM 特征，最终 BCR 为 51 维、TCR 为 15 维。验证集选择的最佳 BCR 分类器为 L1/L2 ratio 0.25 的 elastic net，TCR 为 lasso（`P011.S0023-P011.S0029`）。
+- 模型 2 用 clone-size-weighted consensus centroid 表示 cluster，忽略 IgH isotype；raw Fisher P 候选阈值在 train-2 以 MCC 选择。最佳 BCR/TCR 患者级模型分别为 ridge/lasso logistic regression；无匹配 cluster 时 abstain，比例低于 3%（`P011.S0039-P012.S0018`）。
+- 模型 3 使用 30 层、1.5 亿参数、640 维的 ESM-2。患者级聚合比较 mean、median、去除最低 10% 的 trimmed mean，以及 10%/20% entropy cutoff；只保留 top 50% V-gene categories，并按类别频率重权。最终 BCR 为 random forest sequence model 加 random-forest mean aggregation，TCR 为 one-versus-rest ridge 加 random-forest mean 与 20% entropy cutoff；其 one-versus-rest 概率未校准，因此基础模型 3 不报告 accuracy（`P012.S0028-P013.S0019`）。
+- 人级隔离有必要：任意两个人平均共享 IgH/TRB 序列仅 0.0003%/0.166%，但任意 train/validation/test 两组仍平均共享 0.05%/5.3%；同一人的所有样本始终在同一分区（`P010.S0053`、`P011.S0013-P011.S0019`）。
+- binder 评价使用 2023-06-13 版本 CoV-AbDab，以 `igblastp` 注释，保留 weak binder、排除 variant-selective 序列并做 95% 聚类；流感对照排除 H5N1/H7N9，TCR 使用 MIRA v002.1。外部 BCR 缺少 isotype 时按 IgG 模型评分，这会限制解释（`P014.S0029-P014.S0043`）。
 
 ## 生物学与临床意义
 
@@ -285,3 +412,46 @@ Bashford-Rogers 等关于多种 immune-mediated diseases 的 BCR repertoire 分�
 DeepTCR、免疫受体 autoencoder 和 antibody language model 相关工作是方法学比较对象。它们关注序列表示学习，而本文的特点是将序列表示放入 BCR/TCR 双模态、多层级、患者级诊断框架中。
 
 开放集识别、多标签分类、概率校准和不确定性估计是 Mal-ID 后续临床化必须引入的概念。没有这些机制，模型会把未知或混合免疫状态强制分配到已知疾病类别。
+
+## 覆盖审计
+
+本次审阅逐一处理本地 PDF 解析包中的语义 Results 与 Methods 句子 ID，并按原文顺序分配到下列模块。表格用于确认连续来源范围没有遗漏，不是 1,335 句逐句双语翻译；参考文献、作者单位和图内孤立字符不冒充结果或方法证据。
+
+### Results 证据范围
+
+三栏 PDF 的真实阅读顺序与 ID 顺序不完全一致。下表中的箭头表示需要按页面版式换栏；混合边界句只计一次。
+
+| 原文章节 | 真实阅读顺序中的句子 ID | 覆盖内容与解析边界 |
+|---|---|---|
+| Integrated repertoire models of immune states | `P003.S0006-P003.S0020` → `P003.S0027-P003.S0034` → `P004.S0002-P004.S0026` → `P005.S0002-P005.S0027` | 已覆盖三种表示、队列、个体分区、内部 AUROC/accuracy、组件与错误模式；`P005.S0027` 是与下一节标题融合的边界句 |
+| Limited impact of batch effects | `P005.S0027` → `P005.S0045-P005.S0064` → `P005.S0028-P005.S0044` | 已覆盖内部批次留出、外部 BCR/TCR 调阈、Adaptive gDNA TCR 重训和 cohort-division 留出；ID 顺序因三栏抽取倒置 |
+| Limited impact of age, sex, and race | `P005.S0064-P005.S0065` → `P006.S0002-P006.S0022` → `P006.S0046-P006.S0061` | 已覆盖健康人群人口学信号、队列差异、demographics-only 与 residualization；`P006.S0022` 同时混入下一节标题 |
+| Language model recapitulates immunological knowledge | `P006.S0062-P006.S0067` → `P006.S0022-P006.S0045` → `P007.S0008-P007.S0012` → `P007.S0027-P007.S0031` → `P007.S0012-P007.S0018` | 已覆盖 SHAP、同种型、COVID/流感 BCR binder、TCR 较弱结果及患者级信号边界；`P007.S0027` 是 Results/Discussion 混合句 |
+| **Results 正文合计** | 上述范围的 unique union | **194/194 个语义 Results 证据 ID 已分配到模块** |
+
+Fig. 1 图内 ID 为 `P003.S0021-P003.S0026`、`P003.S0035-P003.S0069`，图注为 `P003.S0070-P003.S0079`；Fig. 2 图内为 `P004.S0027-P004.S0046`，图注为 `P004.S0047-P004.S0067`；Fig. 3 图内为 `P007.S0002-P007.S0005`、`P007.S0019-P007.S0020`，图注为 `P007.S0006-P007.S0007`；Fig. 4 图注被自动标作 Discussion，位于 `P008.S0002-P008.S0018`。这些内容已通过技术附录完整图注和图片保留，但不计入 194 个正文证据 ID。
+
+### Methods 与复现范围
+
+| 方法模块 | 句子 ID | 覆盖内容 |
+|---|---|---|
+| 三类模型与 ensemble 总览 | `P009.S0020-P009.S0026`、`P009.S0031-P009.S0056`、`P010.S0002-P010.S0013` | 已覆盖 modeling approach、三个基础模型和 B/T ensemble；排除 `P009.S0027-P009.S0030` 的 Discussion 与 `P010.S0001` 页眉 |
+| 队列、样本、测序、QC 与 clonal lineage | `P010.S0014-P010.S0054` | Methods 报健康对照 217，并与 Results `P003.S0027` 的 220 交叉核对；其余已覆盖病例选择、IgBLAST 阈值、BCR 抗原经验筛选、clone 去重与数据入口 |
+| Cross-validation、评价指标与模型 1 | `P010.S0055-P010.S0057`、`P011.S0002-P011.S0038` | 已覆盖 train-1/train-2、人级隔离、nested CV、AUROC/AUPRC/accuracy 对 abstention 的不同处理、PCA 和分类器选择 |
+| 模型 2 与 exact-match baseline | `P011.S0039-P011.S0052`、`P012.S0002-P012.S0027` | 已覆盖 CDR3 聚类、raw P 阈值的 train-2 MCC 选择、cluster membership、abstention 和 exact-match 对照 |
+| ESM-2、模型 3 与 SHAP | `P012.S0028-P012.S0049`、`P013.S0002-P013.S0019` | 已覆盖 30 层/150M 参数/640 维、弱监督、聚合候选、top V gene、两阶段模型、TreeSHAP 和 Louvain |
+| Ensemble、批次检验与 kBET | `P013.S0020-P013.S0049` | 已覆盖 metamodel、held-out test、embedding batch test、`k=50` kBET 及 global model 起始 |
+| 外部队列、人口学与已知 binder | `P014.S0002-P014.S0043` | 已覆盖外部校准、Adaptive 重训、demographics prediction/residualization、CoV-AbDab/flu/MIRA 筛选和序列排序 |
+| **Methods 合计** | 上述范围的 unique union | **278/278 个语义 Methods ID 已分配到模块** |
+
+### 自动标签闭合与低置信范围
+
+解析清单的自动 Results/Methods 共 628 个 ID，已逐一核对 `628/628`，未覆盖为 0。自动 `results` 296 个 ID 中，189 个含主文 Results 语义，107 个是摘要残片、图内/图注、页眉或页脚；另从自动 Discussion 标签找回 `P007.S0027-P007.S0031` 的 5 个实际 Results ID，因此校正后的正文证据为 194 个。自动 `methods` 332 个 ID 中，278 个含 Methods 语义，54 个是引言、作者单位、页眉、Discussion 或 Fig. 1 标签。自动标签闭合不代表章节语义正确。
+
+需要保留的 `EXTRACTION_CHECK` 包括：
+
+- 非正文/图噪：`P001.S0050`、`P002.S0036-P002.S0075`、`P003.S0001-P003.S0005`、`P003.S0021-P003.S0026`、`P003.S0035-P003.S0069`、`P003.S0080`、`P004.S0027-P004.S0046`、`P004.S0068`、`P007.S0002-P007.S0007`、`P007.S0019-P007.S0020`；
+- Results 跨栏或混合边界：`P003.S0020/P003.S0027`、`P004.S0026/P005.S0002`、`P005.S0027`、`P005.S0064-P005.S0065`、`P006.S0022`、`P006.S0046`、`P006.S0062`、`P006.S0067`、`P007.S0012`、`P007.S0027`、`P007.S0031`、`P008.S0008`；
+- Methods 跨栏或混合边界：`P009.S0031`、`P009.S0056`、`P010.S0054`、`P010.S0057`、`P011.S0023`、`P011.S0039`、`P011.S0043`、`P011.S0048`、`P011.S0052`、`P012.S0012`、`P012.S0019`、`P012.S0034`、`P012.S0049`、`P013.S0020`、`P013.S0038`、`P013.S0043`、`P013.S0049`、`P014.S0012`、`P014.S0029`、`P014.S0036`、`P014.S0043`；
+- `P005.S0007` 的“Mal-ID achieved 85.3%...”落在 JSON `heading` 字段而非 `text`，只搜索正文会漏掉核心数字；
+- 补充表 S1-S7 与补充图 S1-S14 未作为完整对象进入本地 pack，依赖其中的逐队列明细不自行补造。
