@@ -17,3 +17,4 @@
 | `notes/precision-medicine/2026-plasma-lung-tumor-promotion.md` | 2026-07-30 | 已优化 | 已建立 14 蛋白风险—KAC—IL-1β 预防主线；243/243 Results、290/290 Methods 与全文 1,690/1,690 句完成覆盖，解析错分和原文冲突已保留。 |
 | `notes/spatial-transcriptomics/2025-escc-gpr116-pericytes.md` | 2026-07-30 | 已优化 | 已增加转移困境开场、01–10 问题式叙事、PRRX1–EGFL6–integrin β1 证据链与临床边界；228/228 Results、183/183 Methods、解析冲突及原技术内容完整保留。 |
 | `notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md` | 2026-08-04 | 已优化 | 已重组 01–09 平台取舍—分析链—九类 niche—临床反推设计叙事，补入分辨率、基因/蛋白覆盖和样本比较；明确本文无真实 Results/Methods，1,598/1,598 个来源 ID 已按综述结构分类，自动错分与 Table 1/双栏解析边界完整保留。 |
+| `notes/AI/2026-dna-diffusion-regulatory-elements.md` | 2026-08-04 | 已优化 | 新增 01–11 生成—筛选—STARR-seq—内源 AXIN2 叙事，拆清三细胞各 100,000 条、5,850 元件和单一内源位点边界；全文 1,182/1,182、Results 531/531、Methods 143/143 与数据/代码 23/23 完成审计，BLAT、100/105/92、4/5 replicates、软件版本及缺失补充材料冲突完整保留。 |

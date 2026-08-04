@@ -24,4 +24,5 @@
 * [Precision Medicine](notes/precision-medicine/README.md)
   * [Plasma signals of lung tumor promotion for molecular cancer prevention](notes/precision-medicine/2026-plasma-lung-tumor-promotion.md)
 * [AI](notes/AI/README.md)
+  * [Designing synthetic regulatory elements using the generative AI framework DNA-Diffusion](notes/AI/2026-dna-diffusion-regulatory-elements.md)
 * [Epidemiology](notes/epidemiology/README.md)
