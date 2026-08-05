@@ -22,6 +22,7 @@
   * [Single-cell multi-omic and spatial profiling of esophageal squamous cell carcinoma reveals the immunosuppressive role of GPR116+ pericytes in cancer metastasis](notes/spatial-transcriptomics/2025-escc-gpr116-pericytes.md)
   * [Spatial omics at the forefront: emerging technologies, analytical innovations, and clinical applications](notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md)
 * [Precision Medicine](notes/precision-medicine/README.md)
+  * [Genetic subtyping of obesity reveals biological insights into the uncoupling of adiposity from its cardiometabolic comorbidities](notes/precision-medicine/2025-obesity-genetic-subtypes-cardiometabolic-uncoupling.md)
   * [Plasma signals of lung tumor promotion for molecular cancer prevention](notes/precision-medicine/2026-plasma-lung-tumor-promotion.md)
 * [AI](notes/AI/README.md)
   * [Designing synthetic regulatory elements using the generative AI framework DNA-Diffusion](notes/AI/2026-dna-diffusion-regulatory-elements.md)
