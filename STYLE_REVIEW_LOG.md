@@ -4,10 +4,10 @@
 
 | 文章 | 最近审阅 | 状态 | 说明 |
 |---|---|---|---|
-| `notes/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage.md` | 2026-07-29 | 已优化 | 已增加问题导向开场、01–08 编号叙事、关键数字比较和具体局限；原技术内容完整保留。 |
+| `notes/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage.md` | 2026-08-05 | 已优化 | 已重整 01–09 空间亚型—局部 niche—CCL2/STAT3 候选链，补回全部 5 个在线补充文件；Supplementary Methods 第 1–9 页 153/153 个抽取 ID 完成分类、Notes 49/49 闭合，并保留未显著 GSEA、两套生存 comparator、GEO/TMA/716 等冲突。 |
 | `notes/gastric-cancer/2025-gastric-tumor-ecosystems.md` | 2026-07-30 | 已优化 | 已增加取样困境开场、01–10 问题式叙事、G1/G2 与演化模式的数字比较及具体局限；479/479 Results、209/209 Methods 与原技术内容完整保留。 |
 | `notes/gastric-cancer/2025-hp-gc-caf-immune-modulation.md` | 2026-08-02 | 已优化 | 已重组 01–09 问题式叙事，补充 71 例空间队列、250,310 个单细胞、相关/生存/Treg 比较数字，并保留 H. pylori 分组、CAF 亚型与生存分组的三处原文冲突；Results 328/328、Methods 130/130 来源 ID 范围已闭合。 |
-| `notes/gastric-cancer/2026-im-mutational-signatures-ch.md` | 2026-07-29 | 已优化 | 已重组跨国家队列、ARID1A、SBS17、CH 与微生物主线；原技术内容完整保留。 |
+| `notes/gastric-cancer/2026-im-mutational-signatures-ch.md` | 2026-08-05 | 已优化 | 已重组 01–10 ARID1A/KRAS–MAPK、SBS17/甲基化、CH 风险与微生物叙事，补回 germline 与 EM-seq Results；主 Results 521/521、Methods 226/226 和数据可用性 5/5 来源 ID 闭合，事件数、胃癌空间样本及原文冲突完整保留。 |
 | `notes/immunology/2023-mhc-genotyping-benchmark.md` | 2026-08-02 | 已优化 | 已重组 01–09 条件化工具选择叙事，补充逐位点样本数、accuracy、资源和 TCGA 运行子集；人工校正语义 Results 145/145、Methods 92/92，并闭合自动标签 71/71、170/170，解析错分与补充材料边界完整保留。 |
 | `notes/immunology/2024-b-cell-clonal-persistence-breast-cancer.md` | 2026-08-03 | 已优化 | 已重组 01–09 空间共享—时间持久—centrality 候选排序叙事，补明 8 人/27 灶与 10 人/25 活检、外部小样本和功能边界；语义 Results 306/306、Methods 201/201，原文异常与解析错序完整保留。 |
 | `notes/immunology/2025-disease-diagnostics-immune-receptor-sequences.md` | 2026-08-03 | 已优化 | 已重组 01–09 六状态免疫读数叙事，拆清 593 人、542 人配对、550 份 test prediction、AUROC 0.986 与 accuracy 85.3%，并保留外部校准/祖源混杂及 220/217 冲突；自动 R/M 628/628 已核对，校正后 Results 194、Methods 278 个语义证据 ID 闭合。 |
