@@ -5,7 +5,7 @@
 | 文章 | 最近审阅 | 状态 | 说明 |
 |---|---|---|---|
 | `notes/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage.md` | 2026-08-05 | 已优化 | 已重整 01–09 空间亚型—局部 niche—CCL2/STAT3 候选链，补回全部 5 个在线补充文件；Supplementary Methods 第 1–9 页 153/153 个抽取 ID 完成分类、Notes 49/49 闭合，并保留未显著 GSEA、两套生存 comparator、GEO/TMA/716 等冲突。 |
-| `notes/gastric-cancer/2025-gastric-tumor-ecosystems.md` | 2026-07-30 | 已优化 | 已增加取样困境开场、01–10 问题式叙事、G1/G2 与演化模式的数字比较及具体局限；479/479 Results、209/209 Methods 与原技术内容完整保留。 |
+| `notes/gastric-cancer/2025-gastric-tumor-ecosystems.md` | 2026-08-06 | 已优化 | 复审重整为 01–13 单问叙事，拆开演化定义/预后、微环境/SOX9、证据可信度/实际价值；补明 29 例 scRNA 汇总与 10 名配对患者的 Endo2/TAM1 比较及 EBER 阴性/EBV 队列外推边界，附录标题统一降为子层级，479/479 Results、209/209 Methods 和全部旧证据完整保留。 |
 | `notes/gastric-cancer/2025-hp-gc-caf-immune-modulation.md` | 2026-08-02 | 已优化 | 已重组 01–09 问题式叙事，补充 71 例空间队列、250,310 个单细胞、相关/生存/Treg 比较数字，并保留 H. pylori 分组、CAF 亚型与生存分组的三处原文冲突；Results 328/328、Methods 130/130 来源 ID 范围已闭合。 |
 | `notes/gastric-cancer/2026-im-mutational-signatures-ch.md` | 2026-08-05 | 已优化 | 已重组 01–10 ARID1A/KRAS–MAPK、SBS17/甲基化、CH 风险与微生物叙事，补回 germline 与 EM-seq Results；主 Results 521/521、Methods 226/226 和数据可用性 5/5 来源 ID 闭合，事件数、胃癌空间样本及原文冲突完整保留。 |
 | `notes/immunology/2023-mhc-genotyping-benchmark.md` | 2026-08-02 | 已优化 | 已重组 01–09 条件化工具选择叙事，补充逐位点样本数、accuracy、资源和 TCGA 运行子集；人工校正语义 Results 145/145、Methods 92/92，并闭合自动标签 71/71、170/170，解析错分与补充材料边界完整保留。 |
@@ -15,7 +15,7 @@
 | `notes/methods/2026-cancer-genome-selection-signatures.md` | 2026-07-31 | 已优化 | 新增 dNdS-Fun 方法与 14,886 例泛癌选择图谱解读；225/225 Results、148/148 Methods、1,141/1,141 全文句子 ID 已审计，主图、解析错分、数字冲突和证据边界完整保留。 |
 | `notes/multiomics/2026-deep-coverage-single-cell-metabolomics.md` | 2026-08-02 | 已优化 | 新增离子迁移—细胞叠加—MetCell—衰老肝脏 01–11 问题式叙事；Results 224/224、主 Methods 184/184，Results 版面 405/405 完成分类，六张主图、栅格 Reporting Summary、统计冲突和缺失补充材料边界完整保留。 |
 | `notes/precision-medicine/2025-obesity-genetic-subtypes-cardiometabolic-uncoupling.md` | 2026-08-05 | 已优化 | 新增 01–10 同 BMI 风险异质性—24 个解耦表型—266 个变异—八个变异簇—外周机制叙事，拆清 UKBB 452,768 人、PheWAS 373,747 人、ARIC/BioMe 与 HOLBAEK 口径；Results 区域 242/242、语义 Results 160/160、Methods 254/254、全文 1,359/1,359 闭合，六张主图、患者分型边界、原文冲突和缺失补充材料完整保留。 |
-| `notes/precision-medicine/2026-plasma-lung-tumor-promotion.md` | 2026-07-30 | 已优化 | 已建立 14 蛋白风险—KAC—IL-1β 预防主线；243/243 Results、290/290 Methods 与全文 1,690/1,690 句完成覆盖，解析错分和原文冲突已保留。 |
+| `notes/precision-medicine/2026-plasma-lung-tumor-promotion.md` | 2026-08-06 | 已优化 | 复审将 TRACERx 482 人、四谱系 n=9/7/12/13、活成像 n=4、胎肺 2 份独立样本、TALENT 251/501，以及抗 IL-1β 的 PCLS 配对设计和类器官/体内样本数前移正文；Results 243/243、Methods 290/290、全文 1,690/1,690 及原文冲突保持完整。 |
 | `notes/spatial-transcriptomics/2025-escc-gpr116-pericytes.md` | 2026-07-30 | 已优化 | 已增加转移困境开场、01–10 问题式叙事、PRRX1–EGFL6–integrin β1 证据链与临床边界；228/228 Results、183/183 Methods、解析冲突及原技术内容完整保留。 |
 | `notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md` | 2026-08-04 | 已优化 | 已重组 01–09 平台取舍—分析链—九类 niche—临床反推设计叙事，补入分辨率、基因/蛋白覆盖和样本比较；明确本文无真实 Results/Methods，1,598/1,598 个来源 ID 已按综述结构分类，自动错分与 Table 1/双栏解析边界完整保留。 |
 | `notes/AI/2026-dna-diffusion-regulatory-elements.md` | 2026-08-04 | 已优化 | 新增 01–11 生成—筛选—STARR-seq—内源 AXIN2 叙事，拆清三细胞各 100,000 条、5,850 元件和单一内源位点边界；全文 1,182/1,182、Results 531/531、Methods 143/143 与数据/代码 23/23 完成审计，BLAT、100/105/92、4/5 replicates、软件版本及缺失补充材料冲突完整保留。 |
