@@ -20,6 +20,7 @@
   * [Deep-coverage single-cell metabolomics enabled by ion mobility-resolved mass cytometry](notes/multiomics/2026-deep-coverage-single-cell-metabolomics.md)
 * [Spatial Transcriptomics](notes/spatial-transcriptomics/README.md)
   * [Single-cell multi-omic and spatial profiling of esophageal squamous cell carcinoma reveals the immunosuppressive role of GPR116+ pericytes in cancer metastasis](notes/spatial-transcriptomics/2025-escc-gpr116-pericytes.md)
+  * [Single cell resolved spatial immune repertoire unveils spatial heterogeneity of lymphoid aggregates in human immune disorders](notes/spatial-transcriptomics/2025-stereo-xcr-seq-spatial-immune-repertoire.md)
   * [Spatial omics at the forefront: emerging technologies, analytical innovations, and clinical applications](notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md)
 * [Precision Medicine](notes/precision-medicine/README.md)
   * [Genetic subtyping of obesity reveals biological insights into the uncoupling of adiposity from its cardiometabolic comorbidities](notes/precision-medicine/2025-obesity-genetic-subtypes-cardiometabolic-uncoupling.md)
