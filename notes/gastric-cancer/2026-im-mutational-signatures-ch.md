@@ -1,6 +1,6 @@
 # Mutational Signatures and Clonal Hematopoiesis in Intestinal Metaplasia across Countries with Varying Stomach Cancer Incidence
 
-<!-- wechat-style-reviewed: 2026-08-05 -->
+<!-- wechat-style-reviewed: 2026-08-10 -->
 
 发现胃肠化生以后，临床上最难回答的问题往往不是“它是不是癌前病变”，而是“这个人究竟有多大概率会继续进展”。
 
@@ -36,15 +36,19 @@
 
 ## 04｜上皮克隆里出现了哪些关键改变
 
-日本和韩国样本的总体突变率较高，不同人群的 driver 构成也不相同。最直接的风险信号是 ARID1A truncating mutation：跨地区合并分析中，它与同期或后续 early gastric neoplasia（EGN，高级别异型增生或早期胃癌）相关，OR 为 6.2，P = 1.5 × 10^-3。
+日本和韩国样本的总体突变率较高，不同人群的 driver 构成也不相同。Fig. 2 的 driver 图谱覆盖 1,095 个胃窦 IM，地区频率部分比较中国样本 909 例与日本/韩国样本 142 例。跨地区合并的 EGN 分析比较 ARID1A truncating mutation 携带者与未携带者：携带者发生同期或后续 early gastric neoplasia（EGN，高级别异型增生或早期胃癌）的优势比为 6.2（P = 1.5 × 10^-3）。
 
 ![Fig. 2：跨地区 driver landscape 与 ARID1A 风险](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig2-page7.png)
+
+简明图注：Fig. 2 的 driver 图谱覆盖 1,095 个胃窦 IM，地区频率比较包括中国样本 909 例和日本/韩国样本 142 例；跨地区合并后，ARID1A 截短突变携带者相对未携带者更常见同期或后续 EGN（OR = 6.2，P = 1.5 × 10^-3）。这是队列内关联，不是已经外部纵向验证的预测标志。
 
 另一组改变落在 KRAS–MAPK 通路。104 个同时有靶向 DNA 和 bulk RNA-seq 的 IM 中，10 个带有 KRAS/MAPK driver alterations；与其余 94 个样本相比，它们的 KRAS、ERK 和交集 signature 均升高。把对照随机下采样为 10 个、重复 1,000 次后，KRAS–ERK signature 仍有 983 次方向一致。
 
 作者随后比较 6 个 IM 与 4 个正常胃类器官。1 μmol/L pyrvinium 处理 72 小时后，IM 类器官的活力下降更多；但单独抑制 ERK 或 STAT3 没有复现这种选择性，因此不能把结果简化成某一条通路已经成为癌前治疗靶点。
 
 ![Fig. 3：KRAS–MAPK 改变、细胞状态与类器官实验](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig3-page9.png)
+
+简明图注：Fig. 3 的 bulk 比较为 10 个带 KRAS/MAPK driver alterations 的 IM 对 94 个无可检出改变的 IM，类器官比较为 6 个 IM 对 4 个正常胃来源；转录程序与 pyrvinium 敏感性方向一致，但单独抑制 ERK 或 STAT3 没有复现，不能据此把该通路定为人体干预靶点。
 
 ## 05｜SBS17 为什么不像普通的年龄累积噪音
 
@@ -53,6 +57,8 @@
 SBS17 在最晚复制区域富集 14.5 倍，而且与吸烟相关，却没有随年龄显著增加。类器官中的 OXPHOS、氧耗和 8-oxo-dG 结果把它与氧化损伤联系起来，但这些实验仍不能证明 OXPHOS 直接制造了 SBS17。
 
 ![Fig. 4：SBS17、复制时序与氧化损伤](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig4-page11.png)
+
+简明图注：Fig. 4 先在 20 对 IM–normal WGS 中识别突变签名，再映射到 1,095 个胃窦 IM，其中 287 个检出 SBS17；它在最晚复制区富集 14.5 倍，并与 IM 类器官的 OXPHOS/氧化损伤读出同向。后者仍是关联证据，不能证明 OXPHOS 直接产生 SBS17。
 
 甲基化数据给出了另一层背景。14 名韩国患者的 38 份正常、异型增生和早期胃癌样本中，CIN/MSI 相关病灶出现广泛低甲基化：受检 CpG 中 6,741,487 个（35.7%）低甲基化，而 326,646 个（1.7%）高甲基化；原文称 SBS17 在这些低甲基化区域的 specificity 为 75.7%。这里仍是区域重叠，不能证明低甲基化先造成 SBS17。
 
@@ -66,6 +72,8 @@ SBS17 在最晚复制区域富集 14.5 倍，而且与吸烟相关，却没有�
 
 ![Fig. 5：CH driver、临床关联与风险模型](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig5-page14.png)
 
+简明图注：Fig. 5 在 1,067 名受试者中描绘 CH，风险模型使用 765 人（43 例异型增生、26 例 EGN），并比较临床基线模型与加入 mutation count、ARID1A mutation、high CH 后的模型；AUC 由 0.72 升至 0.773，但事件少且没有独立外部验证。
+
 ## 07｜血液里的克隆为什么会连接到胃黏膜
 
 CH 原本主要被视为血液系统老化现象。这篇论文更进一步，尝试把它连接到胃黏膜免疫和微生物生态。
@@ -77,6 +85,8 @@ CH 原本主要被视为血液系统老化现象。这篇论文更进一步，�
 FISH 和 Stereo-seq 使用的不是 IM，而是胃癌组织。4 例胃癌的 Stereo-seq 中，2 例检出 Streptococcus 空间簇；其中 1 例与 CXCL8 高表达区域重叠，另 1 例与肠型上皮和 IgA plasma-cell signatures 重叠。这只能为机制模型提供探索性支持。
 
 ![Fig. 6：CH、PIGR、IgA 与口腔菌的关联模型](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig6-page16.png)
+
+简明图注：Fig. 6 的单细胞比较为 3 个 CH-high 对 10 个 CH-low IM，bulk 比较为 20 个 high CH 对 94 个 non/low CH IM；FISH 和 Stereo-seq 则来自 4 例胃癌，只有 2 例检出 Streptococcus 空间簇。这些结果支持横断面关联和机制线索，不能证明 CH 先造成黏膜屏障与微生物改变。
 
 但需要强调：共现、免疫组成和空间重叠构成的是一条机制线索，不是完整因果链。论文尚未证明 CH 先导致 PIGR 改变，再导致口腔菌定植并最终推动胃癌。
 
@@ -112,7 +122,7 @@ KRAS/MAPK-altered IM 和 pyrvinium 类器官结果也提供了干预线索，但
 
 以下内容保留论文基本信息、完整主图说明、Results/Methods 证据、复现参数和证据边界。
 
-## 基本信息
+### 基本信息
 
 - 原文题名：Mutational Signatures and Clonal Hematopoiesis in Intestinal Metaplasia across Countries with Varying Stomach Cancer Incidence
 - 期刊：Cancer Discovery 16, 497-520
@@ -130,7 +140,7 @@ KRAS/MAPK-altered IM 和 pyrvinium 类器官结果也提供了干预线索，但
 - LLM pack：`tmp/im-mutational-signatures-ch-llm-pack.md`
 - Manifest：`tmp/im-mutational-signatures-ch-manifest.json`
 
-## PDF 解析质量与覆盖审计
+### PDF 解析质量与覆盖审计
 
 - 抽取方式：使用 `scripts/build_pdf_llm_pack.py`，PyMuPDF 引擎。
 - 总体覆盖：24 页、1,164 个句子 ID；1,164/1,164 已按 title/introduction、Results、Discussion、Methods、数据可用性、披露/作者贡献和 References 分类，未覆盖 ID：无。
@@ -143,7 +153,7 @@ KRAS/MAPK-altered IM 和 pyrvinium 类器官结果也提供了干预线索，但
 
 ---
 
-## 本论文主图与完整 panel 注释
+### 本论文主图与完整 panel 注释
 
 | 原文图表 | 完整 panel 注释 | 样本、比较与统计 | 图像文件 | 正文位置 |
 |---|---|---|---|---|
@@ -155,7 +165,7 @@ KRAS/MAPK-altered IM 和 pyrvinium 类器官结果也提供了干预线索，但
 | Fig. 6 | A：high CH 关联的 IM drivers；B：PIGR mutation type；C：PIGR 与 CH genes；D：作者提出的屏障—微生物—炎症模型；E：scRNA immune composition；F：bulk deconvolution 与 bacterial/human reads；G：菌属差异；H：Streptococcus/S. anginosus FISH；I：Streptococcus 与 CXCL8 空间重叠。 | scRNA 为 3 high 对 10 low CH；bulk 为 20 对 94，另做 1,000 次平衡下采样；Fig. 6G 初始 `n = 104`，10 个 bacterial reads <0.02% 样本被排除；H–I 是胃癌组织，Stereo-seq 4 例中 2 例检出空间簇、图中展示其中 1 例。来源 `P015.S0003–P016.S0015`、图注 `P014.S0023–P014.S0034` 与 `P015.S0040–P015.S0048`。 | `fig6-page14.png`, `fig6-page15.png`, `fig6-page16.png` | [07](#07｜血液里的克隆为什么会连接到胃黏膜) |
 | Fig. 7 | 在 Correa cascade 上整合 Hp 菌株、上皮 driver/SBS、CH、免疫和微生物，并标出风险分层、pyrvinium 与抗菌等转化设想。 | 概念总结图，不是新增实验；蓝框中的干预均未在患者中验证。来源 `P017.S0001–P017.S0033`。 | `fig7-page17.png` | [08](#08｜这项研究真正改变了哪一步) |
 
-## 生物学故事前情
+### 生物学故事前情
 
 胃肠化生是 Correa cascade 中连接慢性萎缩性胃炎和异型增生/胃癌的关键癌前阶段。传统上，领域把风险主要放在幽门螺杆菌感染、OLGIM 分期、家族史、吸烟饮酒等临床流行病学因素上；但这些指标很难解释为什么大多数 IM 不进展，而少数病灶会跨过异型增生和早期癌的门槛。
 
@@ -163,7 +173,7 @@ KRAS/MAPK-altered IM 和 pyrvinium 类器官结果也提供了干预线索，但
 
 读这篇文章要抓住两条主线。第一条是上皮内事件：ARID1A、SOX9、KRAS/MAPK、SBS17 等改变如何标记 IM 的克隆演化和增殖状态。第二条是非上皮事件：CH 是否通过改变免疫炎症状态、PIGR/IgA 屏障和口腔来源细菌定植，推动 IM 向后期 Correa cascade 进展。
 
-## 重要缩写表
+### 重要缩写表
 
 | 缩写 | 中文含义 | 本文语境中的具体指代 | 阅读时注意 |
 |---|---|---|---|
@@ -180,21 +190,21 @@ KRAS/MAPK-altered IM 和 pyrvinium 类器官结果也提供了干预线索，但
 | Sa | Streptococcus anginosus | 文章关注的口腔来源细菌之一 | FISH 和 Stereo-seq 在胃癌组织中做探索性验证 |
 | OXPHOS | oxidative phosphorylation | IM organoid 中增强的线粒体氧化磷酸化 | 与 SBS17/氧化损伤关联主要是相关性证据 |
 
-## 论文详细解读
+### 论文详细解读
 
-### 研究问题与科学背景
+#### 研究问题与科学背景
 
 胃癌发病率在国家和地区之间差异很大，日本和韩国等高风险地区明显高于新加坡、北美等中低风险地区。Hp 是最强风险因素之一，但仅用 Hp 感染不能完全解释地区差异和 IM 个体间进展差异。IM 患者总体有更高胃癌风险，但绝对年进展风险较低，临床上不可能对所有 IM 患者进行同等强度随访。
 
 作者提出的科学瓶颈是：IM 阶段是否已经积累了足够的遗传、表观遗传、突变过程和免疫-微生物变化，可以解释胃癌风险异质性，并用于识别真正高危的 IM 患者。
 
-### 研究设计与数据结构
+#### 研究设计与数据结构
 
 本文用 277 个 human genes 和 6 个 Hp genes 的高深度靶向 DNA sequencing 分析 1,582 个 IM 样本，平均深度 1,108x。新近招募队列包括新加坡 218、韩国 106、香港 62、美国 36、日本 33、台湾 8 个 antral IM，并有配对 germline；同时加入既往 TransGCEP1000 新加坡 IM 样本 1,119 个和正常胃样本 98 个。
 
 作者还加入多个补充数据模态：20 个 IM-normal 配对样本做 WGS，平均覆盖 60.5x；韩国 14 名患者的 matched normal、dysplasia、early gastric cancer 共 38 个样本做 EM-seq；部分样本有 bulk RNA-seq、scRNA-seq、IM microbiome、saliva microbiome、organoid 和 Stereo-seq 数据。整体设计不是单一组学发现，而是用靶向深测序作为主轴，再用 WGS、转录组、表观组、类器官和微生物空间证据补强机制解释。
 
-### 方法速览与分析框架
+#### 方法速览与分析框架
 
 靶向测序用于捕捉低 VAF IM 突变。作者用统一 pipeline 调用 somatic mutations，并说明 WGS 或模拟 100x WES 只能恢复一小部分低频突变，因此高深度 panel 是本文发现 IM driver 的技术前提。
 
@@ -202,9 +212,9 @@ driver gene 发现用 IntOGen pipeline，整合 7 个互补算法并做组合 q 
 
 临床风险部分用 logistic regression，把年龄、性别、OLGIM、mutation count、ARID1A truncation、CH/高 CH 等变量与 dysplasia 或 EGN 关联。机制部分则通过 bulk/scRNA-seq deconvolution、PathSeq/lefser 微生物分析、FISH、IHC 和 Stereo-seq 连接 CH、PIGR、IgA+ plasma cells 和口腔菌。
 
-### 原文结果完整梳理
+#### 原文结果完整梳理
 
-#### Data Collection
+##### Data Collection
 
 来源范围：`P003.S0015–P003.S0029`。
 
@@ -212,7 +222,7 @@ driver gene 发现用 IntOGen pipeline，整合 7 个互补算法并做组合 q 
 
 关键技术点是测序深度。IM 里许多 somatic mutations 的 VAF 很低，若使用常规 WES/WGS 深度会大量漏检。作者后续结果表明，WGS 只能恢复靶向 panel 检出的 17.5% somatic mutations；模拟 100x WES 只能恢复 15.5% somatic mutations 和 15.1% driver protein-altering mutations。
 
-#### Geographic Patterns of Hp Strains and Infection
+##### Geographic Patterns of Hp Strains and Infection
 
 来源范围：`P003.S0030–P005.S0018`（含 Fig. 1 全 panel 图注与图页文本）。
 
@@ -224,7 +234,7 @@ Hp 阳性率在高风险地区更高。韩国近期 IM 中高丰度 Hp 为 24/10
 
 Hp 变异也有地区差异。作者在 Hp-positive 样本中看到日本/韩国与新加坡菌株的系统发育分离，并把差异定位到 cagA 的 E106D、R109K、N228H。高风险地区 CagA variant 与 ASPP2 结合更强，而东南亚常见 variant 结合减弱。作者据此提出：不仅 Hp 是否存在重要，Hp virulence gene 的遗传多样性也可能影响 Correa cascade 起点和地区胃癌风险。
 
-#### Driver Gene Landscape of Trans-geographic IM Samples
+##### Driver Gene Landscape of Trans-geographic IM Samples
 
 来源范围：`P005.S0019–P006.S0030`（含 Fig. 2 全 panel 图注与图页文本）。
 
@@ -240,7 +250,7 @@ antrum IM 的平均 somatic mutation count 为 23，平均 VAF 2.9%，中位 VAF
 
 最有转化价值的是 ARID1A。跨地区合并分析显示，ARID1A truncating mutations 与 concurrent 或 eventual EGN 关联，OR 6.2，P = 1.5e-3。作者将其解释为 SWI/SNF 失活可能促进 enhancer accessibility、lineage fidelity 和 epithelial plasticity 改变，从而提高 IM 向 neoplasia 转化的可能。
 
-#### KRAS-MAPK mutations in IM
+##### KRAS-MAPK mutations in IM
 
 来源范围：`P007.S0001–P009.S0007`（Fig. 3 跨第 8–9 页；图注分别为 `P008.S0002–P008.S0008` 与 `P009.S0037–P009.S0046`）。
 
@@ -256,7 +266,7 @@ KRAS/MAPK 通路改变存在于一部分 IM 中。作者观察到 KRASG12D、BRA
 
 类器官实验提供药物干预线索。作者建立 6 个 IM 和 4 个正常胃 organoids，IM organoids 表达 CDX2、REG4、FABP1、CDX1 等肠型标志。severe IM organoids 的 KRAS-ERK signaling 更高；在 Fig. 3G 的 1 μmol/L、72 小时实验中，每组 4 个 biological replicates，IM organoid viability 比正常胃 organoid 降得更多（linear mixed-effects P < 0.0005），100 nmol/L pyrvinium 也降低 IM 的 colony-forming ability。单独 ERK 或 STAT3 inhibition 没有复现同等选择性，说明 pyrvinium 作用可能不只是单一路径抑制。
 
-#### SBS17 Is an IM-associated Mutational Signature
+##### SBS17 Is an IM-associated Mutational Signature
 
 来源范围：`P009.S0008–P011.S0019`（Fig. 4 跨第 10–11 页；图注分别为 `P010.S0047–P010.S0057` 与 `P011.S0043–P011.S0052`）。
 
@@ -272,7 +282,7 @@ SBS17 的基因组分布有鲜明特征。按 replication timing 四分位分层
 
 映射到 1,095 个 antrum IM 靶向数据后，SBS5/40 和 SBS1 几乎普遍存在，SBS18 和 SBS17 分别在约 28.9% 和 26.2% 样本中可检测。高风险国家 IM 的所有 signature mutation rate 均更高，其中 SBS17 enrichment 更明显。SBS1、SBS5/40、SBS18 与年龄相关，SBS17 不随年龄显著相关，但与吸烟显著相关。这个结果把 SBS17 从“年龄累积噪音”中区分出来，使其成为潜在进展风险或暴露相关 biomarker。
 
-#### Hypomethylation in Developing Gastric Cancer
+##### Hypomethylation in Developing Gastric Cancer
 
 来源范围：`P011.S0020–P012.S0005`。
 
@@ -280,13 +290,13 @@ SBS17 的基因组分布有鲜明特征。按 replication timing 四分位分层
 
 CIN+/MSI+ 组相对另一组有 6,741,487 个低甲基化 CpG（35.7%）和 326,646 个高甲基化 CpG（1.7%）；按 1 kb 区域分析则为 750,775 个低甲基化区域（38.4%）和 11,273 个高甲基化区域（0.57%），阈值均为 q < 0.001、甲基化差异 >10%。原文把 SBS17 在这些低甲基化区域中的 specificity 报为 75.7%，并称它在晚复制、低甲基化区域进一步增加；本地 PDF 没有给出该 specificity 的独立公式。它支持区域重叠，不证明低甲基化、晚复制或 OXPHOS 中任何一项单独造成 SBS17。
 
-#### Germline variants associated with dysplasia and EGN
+##### Germline variants associated with dysplasia and EGN
 
 来源范围：`P012.S0006–P012.S0012`。
 
 在 47 个 somatic driver genes 中，44 个也观察到 protein-altering germline variants；其中 8 个 ClinVar pathogenic/likely pathogenic variants 涉及 11 人。BCORL1 同时出现 germline 与 somatic variants 时，与 EGN（OR = 3.72，P = 0.033）和 dysplasia（OR = 3.97，P = 0.0048）相关；BCOR 和 DDX3X 的双重改变也分别与 dysplasia 相关（OR = 2.71、4.00；P = 0.039、0.029）。这些事件稀少且来自探索性列联分析，不能当作已验证的遗传风险标志。
 
-#### Clonal Hematopoiesis in IM Samples
+##### Clonal Hematopoiesis in IM Samples
 
 来源范围：`P012.S0013–P015.S0002`（Fig. 5 图页插在正文续句之间）。
 
@@ -302,7 +312,7 @@ CH carriers 年龄更大，IM somatic mutation rate 更高。ASXL1 mutation 在�
 
 对 EGN 终点，高 CH 和 ARID1A truncation 在多变量模型中仍显著。765 名受试者中只有 26 例 EGN；GCEP1000 长期随访子集为 312 人、9 例 EGN。风险模型中，临床变量 OLGIM、年龄、性别的 AUC 为 0.72；加入 mutation count、ARID1A mutation 和 high CH 后 AUC 升至 0.773。GCEP1000 子集中，AUC 从 0.671 升至 0.811。这个结果支持把 CH 作为候选风险变量，但事件数少且缺少外部验证，尚不能称为可部署的血液预测指标。
 
-#### CH expansions are associated with altered IM Microbiome-Immune Landscapes
+##### CH expansions are associated with altered IM Microbiome-Immune Landscapes
 
 来源范围：`P015.S0003–P016.S0015`（Fig. 6 全 panel 图注分别为 `P014.S0023–P014.S0034` 与 `P015.S0040–P015.S0048`）。
 
@@ -320,7 +330,7 @@ CH carriers 年龄更大，IM somatic mutation rate 更高。ASXL1 mutation 在�
 
 CH-high IM 中多个口腔来源菌属升高，包括 Streptococcus、Neisseria、Gemella、Actinomyces、Haemophilus、Porphyromonas、Fusobacterium。唾液 metagenomics 支持这些菌属可能来自口腔。作者进一步用 FISH 在胃癌组织中检测 Streptococcus anginosus。Stereo-seq 只做了 4 例胃癌组织：2 例检出 Streptococcus 空间簇，其中一例与 CXCL8 高表达区域重叠，另一例与肠型上皮/IgA plasma cell signatures 重叠。由于样本少、对象是胃癌而不是 IM，这部分更适合作为机制假说支持，而不是 IM 阶段的最终因果证明。
 
-### 作者结论与证据强度
+#### 作者结论与证据强度
 
 ![Fig. 7：Correa cascade 中的综合模型和转化机会](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig7-page17.png)
 
@@ -330,7 +340,7 @@ CH-high IM 中多个口腔来源菌属升高，包括 Streptococcus、Neisseria�
 
 原文没有证明的是：SBS17 可单独作为临床进展预测指标，pyrvinium 可用于人体 IM 干预，或者针对非 Hp 口腔菌的抗菌策略能降低 IM 进展风险。这些都应视为转化机会，而非已成熟的临床建议。
 
-## Results 证据覆盖审计
+### Results 证据覆盖审计
 
 | 原文句子 ID | 忠实中文含义 | 读者正文对应 | 证据边界 |
 |---|---|---|---|
@@ -345,27 +355,27 @@ CH-high IM 中多个口腔来源菌属升高，包括 Streptococcus、Neisseria�
 
 审计结论：主 Results 连续范围 `P003.S0015–P016.S0015` 的 521/521 个 ID 已逐段归账，未覆盖 ID：无。Manifest 自动标为 `results` 的 165 个 ID 均属主 Results；另有 356 个真实 Results ID 因图页、双栏和跨页续接被误标为 `supplementary`，已全部人工校正。
 
-## 独立方法学详解
+### 独立方法学详解
 
-### 研究对象、样本和数据结构
+#### 研究对象、样本和数据结构
 
 主队列为跨国家 IM 样本，包含新近招募的 antrum IM 和既往新加坡 GCEP1000 队列。样本类型包括 IM、正常胃、配对 germline、部分 dysplasia/early gastric cancer、唾液和胃癌组织。临床信息包括年龄、吸烟、IM severity、OLGIM stage、家族史、dysplasia 或 EGN 结局。
 
 这个设计的优点是样本量大、地理来源多、靶向测序深度高；缺点是不同国家样本采集时间、随访长度和临床终点成熟度不一致。GCEP1000 有较长随访，国际样本多为基线记录，因此进展风险分析仍主要依赖有限终点数。
 
-### 实验流程和数据生成
+#### 实验流程和数据生成
 
 靶向 panel 使用 Agilent SureSelect XT HS2，覆盖 277 个人类基因和 6 个 Hp 基因，NovaSeq PE150 测序。WGS 使用 NEBNext Ultra II DNA library prep，NovaSeq PE150，平均约 60x。EM-seq 用 NEBNext Enzymatic Methyl-seq，结合 lambda/pUC19 controls 做甲基化 QC。
 
 转录组层面使用 bulk RNA-seq 和 scRNA-seq，并复用此前数据加新样本。organoid 实验从正常胃和 IM 建立类器官，用 CDX2 immunostaining 和 RNA-seq 证明 IM identity，随后做 pyrvinium、ERK inhibitor、STAT3 inhibitor 处理和 ATP/colony assays。微生物部分结合 targeted DNA-seq、bulk RNA-seq PathSeq、唾液 shotgun metagenomics、Gram stain、FISH 和 Stereo-seq。
 
-### 数据预处理和特征构建
+#### 数据预处理和特征构建
 
 DNA reads 对齐到 hs37d5，靶向测序用 molecular barcode 去重复，WGS 用 MarkDuplicates。germline mutation 用 HaplotypeCaller，somatic mutation 用 Mutect2。深测序 somatic calling 为提高敏感性调整 Mutect2 参数，并用 gnomAD、panel of normals、contamination 和 read orientation artifact filters 控制假阳性。最终 somatic variants 要求至少 5 条 variant-supporting reads 且 VAF >= 1%。
 
 Hp status 由 6 个 Hp genes 的 coverage 推断，>=1x 进入系统发育分析。driver genes 用 IntOGen 从 somatic mutations 中寻找正选择信号。SBS signatures 用 WGS 先拟合 COSMIC signatures，再把 SBS1、SBS5/40、SBS17、SBS18 映射到 targeted sequencing。CH calling 反向使用 blood/saliva as tumor、IM as control，并要求 blood/saliva VAF >= 2%，且至少为 matched IM VAF 的 2 倍。
 
-### 统计学分析方法
+#### 统计学分析方法
 
 Fisher exact test 用于二分类变量关联，例如 Hp positivity、CagA variants、driver mutation frequency、PIGR truncation 与 high CH 共现。其输入是 2x2 或类似列联表，估计 odds ratio 和 P value；适合稀疏突变事件，但不能处理多个混杂变量。
 
@@ -377,7 +387,7 @@ Logistic regression 用于 dysplasia/EGN 风险分析。输入包括临床变量
 
 Linear mixed-effects model 用于 organoid drug response/OCR 等实验，适合处理 biological replicates 和个体来源差异。GSEA/fgsea 用于判断 KRAS、ERK、OXPHOS 等 gene sets 是否在排序基因列表中系统富集，输出 NES 和 FDR。
 
-### 统计模型、机器学习模型或计算框架
+#### 统计模型、机器学习模型或计算框架
 
 IntOGen 是 driver discovery 框架，整合多个算法对突变频率、功能影响、聚集性和背景突变率进行正选择评估。它的优点是降低单一算法偏差；局限是候选基因受 panel 设计限制，不能发现 panel 外 driver。
 
@@ -387,19 +397,19 @@ CIBERSORTx 和 ESTIMATE 用于从 bulk RNA-seq 推断免疫成分。它们依赖
 
 PathSeq、lefser、Kraken2 和 Stereo-seq SAW 用于微生物 reads 识别和空间定位。微生物 reads 在人组织转录组中常有低丰度和污染风险，因此本文结合 saliva、FISH、Gram stain、IHC 和 spatial transcriptomics 增强可信度。
 
-### 验证策略、稳健性和混杂控制
+#### 验证策略、稳健性和混杂控制
 
 driver genes 通过独立 48 个 IM 样本、正常胃研究、TCGA pan-GI cancer 和 IntOGen 胃癌 driver lists 做外部/内部交叉验证。KRAS/MAPK RNA-seq 结果通过 1,000 次 down-sampling 控制组间样本数不平衡。CH 风险结果通过排除测序深度偏离均值 ±1 SD 的样本进行敏感性分析，说明 coverage 差异不是主要驱动。
 
 微生物和免疫结果用 scRNA-seq、bulk deconvolution、saliva metagenomics、FISH、IHC、Stereo-seq 多种证据链互相支持。弱点是空间和单细胞样本量较小，且许多分析是横断面关联。
 
-### 可重复性资源和迁移注意点
+#### 可重复性资源和迁移注意点
 
 原始数据存放在 EGA：EM-seq、WGS、targeted sequencing、transcriptomic sequencing 以及 GCEP1000 相关 targeted panel、bulk RNA-seq、WGS、scRNA-seq 均需向 Singapore Gastric Cancer Consortium Data Access Committee 申请。
 
 迁移到自己的 IM 队列时，最关键的是测序深度和 paired germline。低 VAF IM 突变不能用常规低深度 WES 直接复现；CH 分析也需要可靠 blood/saliva germline sequencing，并要处理白细胞污染、panel of normals 和 CH VAF 阈值。若做微生物分析，需要独立的污染控制、阴性对照和原位验证。
 
-### 关键复现参数
+#### 关键复现参数
 
 - Targeted panel：Agilent SureSelect XT HS2 custom tier 2；每个样本 100 ng DNA，16 个样本等量合并至每次 hybridisation 1.5 μg；NovaSeq 6000 PE150。Reads 对齐 hs37d5，并用 molecular barcode 去重复。深测序 Mutect2 使用 `--force-active true --pruning-lod-threshold -4 --max-reads-per-alignment-start 0`，再经过 gnomAD、panel of normals、contamination 和 orientation-artifact filters；最终至少 5 条 variant-supporting reads 且 VAF ≥1%（`P018.S0009–P018.S0031`）。
 - WGS：NEBNext Ultra II DNA Library Prep Kit 建库，NovaSeq 6000 PE150，20 对 IM–normal 样本平均覆盖 60.5×；对齐 hs37d5 后以 MarkDuplicates 处理重复 reads（`P003.S0022`、`P018.S0017–P018.S0026`）。
@@ -411,7 +421,7 @@ driver genes 通过独立 48 个 IM 样本、正常胃研究、TCGA pan-GI cance
 - Saliva/microbiome：采集 2 mL 唾液，50°C 60 分钟后每份 500 μL、−80°C 保存；250 μL 用 PowerFecal Pro 提取，6.0 m/s bead-beating 40 秒；NovaSeq X Plus PE150、约 6 GB/样本。PathSeq abundance 以 bacterial/human reads ×10^6 归一；bacterial reads <0.02% 的 RNA-seq 样本排除；lefser 比较菌属，CIBERSORTx relative mode 推断 7 类免疫细胞，ESTIMATE 计算 immune score（`P021.S0015–P021.S0035`）。
 - 原位验证：IHC 的 MPO/CXCL8/CXCL2 分别为 1:10,000、1:100、1:50；Gram stain 为 crystal violet 与 safranin 各 1 分钟。FISH probe 1 μmol/L，88°C 3 分钟预热、42°C overnight；Stereo-seq 用 5 μm FFPE、SAW `--detect-microorganism` 与 Kraken2，在 bin50 中去除 bacterial counts <5，并过滤 genes <3、total counts <20 或 mitochondrial transcripts >5% 的 bins（`P021.S0036–P022.S0028`）。
 
-## Methods 证据覆盖审计
+### Methods 证据覆盖审计
 
 | 原文句子 ID | 忠实中文含义 | 方法学解释 | 复现注意点 |
 |---|---|---|---|
@@ -426,17 +436,17 @@ driver genes 通过独立 48 个 IM 样本、正常胃研究、TCGA pan-GI cance
 
 审计结论：主 Methods 连续范围 `P018.S0004–P022.S0028` 的 226/226 个 ID 已覆盖，未覆盖 ID：无；数据可用性 `P022.S0029–P022.S0033` 的 5/5 个 ID 已覆盖。Manifest 自动标为 `methods` 的 115 个 ID 均属主 Methods；后 111 个真实 Methods ID 被误标为 `supplementary`，已全部人工校正。
 
-## 生物学与临床意义
+### 生物学与临床意义
 
 这篇文章把 IM 风险从“病理分期 + Hp 暴露”推进到“上皮克隆演化 + 突变过程 + 系统性造血克隆 + 黏膜免疫微生物生态”。ARID1A truncation、SBS17 和 high CH 是值得进入独立纵向验证的候选分子变量，但目前还不能用于识别单个患者的真实进展概率。
 
 临床转化边界也很清楚：这些 marker 目前不能替代内镜和病理，也不能直接指导药物干预。更现实的近期工作是把分子指标预先写入外部验证方案，检验其能否在 OLGIM、年龄和性别之外稳定改善校准、决策曲线和随访资源分配。
 
-## 局限性与危险假设
+### 局限性与危险假设
 
 第一，国际样本随访时间短，很多国家的临床结局是 baseline observation，因此“进展风险”仍主要依赖少量事件和新加坡长期队列。第二，靶向 panel 无法发现 panel 外 driver、结构变异和非编码调控突变。第三，SBS17 与 OXPHOS 的机制关系仍是相关性，缺少长期扰动后突变累积读出。第四，pyrvinium 的类器官结果提示可干预性，但药物选择性、毒性、体内可达性和真实预防效果都未证明。第五，微生物结果存在低丰度 reads、污染和因果方向问题，尽管作者用了多模态证据降低风险。
 
-## 证据强度、原文冲突与不能外推的结论
+### 证据强度、原文冲突与不能外推的结论
 
 **直接数据支持：** 高深度 panel 能比约 60× WGS 或模拟 100× WES 检出更多低 VAF IM mutations；ARID1A truncation、high CH 与 EGN 在本队列内相关；KRAS/MAPK-altered IM 有相应转录程序；SBS17 与 late replication、吸烟和低甲基化区域相关；high CH 组的免疫/微生物组成存在横断面差异。
 
@@ -452,7 +462,7 @@ driver genes 通过独立 48 个 IM 样本、正常胃研究、TCGA pan-GI cance
 
 **不能从本研究外推：** 不能把横断面关联写成 CH 导致胃黏膜改变；不能把胃癌组织中的 Streptococcus 空间重叠当作 IM 原位验证；不能把 AUC 提升当作已经外部验证或校准的随访工具；不能把类器官活力下降写成人体预防疗效；也不能认为 277-gene panel 已覆盖全部 IM driver 和突变过程。
 
-## 深度研究洞察
+### 深度研究洞察
 
 最值得学习的是作者把 CH 引入胃癌癌前病变研究。CH 通常被看作血液系统老化现象，本文则把它作为潜在的系统性修饰因素，连接到 IM epithelial mutations、PIGR、IgA、口腔菌和 EGN 风险。现有数据支持相关网络，不足以证明 CH 是这些黏膜改变的来源。
 
@@ -460,7 +470,7 @@ driver genes 通过独立 48 个 IM 样本、正常胃研究、TCGA pan-GI cance
 
 第三个洞察是高深度 targeted panel 的价值。对于癌前病变，低 VAF 是常态；如果研究问题是早期克隆演化，panel 深度可能比全外显子/全基因组广度更关键。本文为 IM、Barrett、炎症性肠病癌前病变等研究提供了技术论证。
 
-## 可借鉴或迁移的思路
+### 可借鉴或迁移的思路
 
 可迁移到胃癌精准预防队列的框架是：OLGIM/病理分层 + high-depth epithelial mutation panel + blood CH panel + smoking/Hp history + oral/gastric microbiome + longitudinal EGN endpoint。若样本量允许，可以把 ARID1A truncation、SBS17 exposure、mutation burden、high CH 和 PIGR status 纳入 joint risk model。
 
@@ -468,14 +478,14 @@ driver genes 通过独立 48 个 IM 样本、正常胃研究、TCGA pan-GI cance
 
 可迁移到干预研究的方向包括两类：一类是 KRAS/MEK/ERK/OXPHOS 相关上皮干预，另一类是非 Hp 口腔菌和黏膜免疫屏障干预。前者更接近药物安全性和癌前干预问题，后者更接近 antimicrobial/probiotic/oral hygiene 与胃癌风险的目标试验模拟。
 
-## 可复用学术表达
+### 可复用学术表达
 
 - “IM is not only a histologic intermediate but an evolutionary state shaped by epithelial and nonepithelial somatic alterations.” 这类表达适合把癌前病变从静态病理概念转为动态演化概念。
 - “High-depth targeted sequencing is required when the biological signal resides in low-VAF premalignant clones.” 适合写测序策略理由。
 - “CH may act as a systemic modifier of tissue-specific cancer risk through inflammatory and mucosal immune pathways.” 适合写 CH 与实体癌前病变连接的假说。
 - “Molecular risk stratification should be interpreted as an addition to, rather than a replacement for, established histopathologic staging.” 适合写临床转化边界。
 
-## 相关论文与概念
+### 相关论文与概念
 
 - Correa cascade：normal mucosa -> chronic gastritis/atrophy -> IM -> dysplasia -> gastric cancer，是本文所有结果的临床病理坐标。
 - OLGIM staging：当前 IM 风险分层基础，适合作为分子模型的临床 backbone。
