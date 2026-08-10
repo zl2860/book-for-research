@@ -23,6 +23,7 @@
   * [Single cell resolved spatial immune repertoire unveils spatial heterogeneity of lymphoid aggregates in human immune disorders](notes/spatial-transcriptomics/2025-stereo-xcr-seq-spatial-immune-repertoire.md)
   * [Spatial omics at the forefront: emerging technologies, analytical innovations, and clinical applications](notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md)
 * [Precision Medicine](notes/precision-medicine/README.md)
+  * [A cross-population compendium of gene–environment interactions](notes/precision-medicine/2026-cross-population-gene-environment-interactions.md)
   * [Genetic subtyping of obesity reveals biological insights into the uncoupling of adiposity from its cardiometabolic comorbidities](notes/precision-medicine/2025-obesity-genetic-subtypes-cardiometabolic-uncoupling.md)
   * [Plasma signals of lung tumor promotion for molecular cancer prevention](notes/precision-medicine/2026-plasma-lung-tumor-promotion.md)
 * [AI](notes/AI/README.md)
