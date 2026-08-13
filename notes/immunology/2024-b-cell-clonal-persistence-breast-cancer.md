@@ -1,6 +1,6 @@
 # Predictability of B cell clonal persistence and immunosurveillance in breast cancer
 
-<!-- wechat-style-reviewed: 2026-08-03 -->
+<!-- wechat-style-reviewed: 2026-08-13 -->
 
 当同一名转移性乳腺癌患者的肝、肺或淋巴结病灶同时被取样时，一个真正棘手的问题才会出现：同一种 B 细胞克隆若在多个病灶中都能找到，它只是被重复抽到，还是参与了跨部位、持续存在的免疫反应？
 
@@ -102,7 +102,7 @@ BCR 克隆结构还与共享的预测 MHC II 类新抗原相关，`R²=0.25–0.
 
 以下保留原笔记的论文信息、完整图注、Results 顺序、方法参数、统计解释和证据边界，并在文末补入本次句子级 PDF 解析与覆盖审计。
 
-## 本文目录
+### 本文目录
 
 - [基本信息](#基本信息)
 - [本论文主图](#本论文主图)
@@ -137,7 +137,7 @@ BCR 克隆结构还与共享的预测 MHC II 类新抗原相关，`R²=0.25–0.
 - [相关论文与概念](#相关论文与概念)
 - [覆盖审计](#覆盖审计)
 
-## 基本信息
+### 基本信息
 
 - 原文题名：Predictability of B cell clonal persistence and immunosurveillance in breast cancer
 - 期刊：Nature Immunology 25, 916-924
@@ -154,7 +154,7 @@ BCR 克隆结构还与共享的预测 MHC II 类新抗原相关，`R²=0.25–0.
   - Fig. 1 的图内内容位于 `P002.S0001-P002.S0007` 并与 `P002.S0020-P002.S0026` 的 Results 首段交错；Fig. 2 为 `P003.S0001-P003.S0045`、`P003.S0055-P003.S0086`，Fig. 3 为 `P005.S0001-P005.S0044`，Fig. 4 为 `P006.S0001-P006.S0022`。坐标、网络节点和图注被线性展平并插入正文，图内孤立标签不作独立证据。
   - 正文、Methods、主图与扩展数据图注、数据和代码可用性可解析；补充表格内容未嵌入主 PDF，本文不补造其中未核实的逐样本明细。
 
-## 本论文主图
+### 本论文主图
 
 | 原文图 | 原文图题/核心信息 | 是否截取 | 图像文件 | 放置位置 |
 |---|---|---|---|---|
@@ -163,7 +163,7 @@ BCR 克隆结构还与共享的预测 MHC II 类新抗原相关，`R²=0.25–0.
 | Fig. 3 | Immunosurveilling and persistent clones are enlarged and distinct from private clones：跨部位免疫监视和治疗中持久存在的 BCR 克隆更扩增、更抗原经验化 | 是 | `assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig3-shared-persistent-clones.png` | [Persistence and immunosurveillance of intra-tumoral B cells](#persistence-and-immunosurveillance-of-intra-tumoral-b-cells) |
 | Fig. 4 | Higher BCR centrality describes clonal structure and predicts B cell immunosurveillance and persistence：BCR degree centrality 可预测跨部位免疫监视和时间持久性 | 是 | `assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig4-bcr-centrality.png` | [High BCR centrality of immunosurveilling and persistent BCRs](#high-bcr-centrality-of-immunosurveilling-and-persistent-bcrs) |
 
-## 生物学故事前情
+### 生物学故事前情
 
 肿瘤免疫研究长期以 T 细胞为中心：CD8 T 细胞识别肿瘤抗原、TCR 克隆扩增、免疫检查点治疗反应，这些构成了主流叙事。B 细胞虽然经常在肿瘤组织中出现，也和 TLS、抗体反应、预后或治疗反应有关，但它们到底是旁观者、局部炎症标志物，还是参与抗肿瘤免疫监视的克隆系统，一直没有被充分拆开。
 
@@ -171,7 +171,7 @@ BCR 克隆结构还与共享的预测 MHC II 类新抗原相关，`R²=0.25–0.
 
 本文的关键前情是：BCR 不只是“有没有 B 细胞”的标志，还可以利用序列相似性重建克隆关系，观察体细胞突变和同种型转换，并比较同一克隆是否在不同部位或时间点被检测到。作者把 BCR/TCR repertoire、肿瘤突变、MHC II neoantigen、RNA-seq 免疫生态和图论 centrality 放在一起，想回答“哪些 B 细胞克隆更像值得继续验证的抗肿瘤免疫候选者”。
 
-## 重要缩写表
+### 重要缩写表
 
 | 缩写 | 中文含义 | 本文语境中的具体指代 | 阅读时注意 |
 |---|---|---|---|
@@ -186,9 +186,9 @@ BCR 克隆结构还与共享的预测 MHC II 类新抗原相关，`R²=0.25–0.
 | UMI | unique molecular identifier | BCR 测序中用于降低 PCR/测序偏倚的分子标签 | UMI 不能消除所有样本处理偏倚 |
 | degree centrality | 度中心性 | BCR clone 网络中某条序列连接的邻居数量 | 是候选优先级指标，不是功能验证结果 |
 
-## 论文详细解读
+### 论文详细解读
 
-### 研究问题与科学背景
+#### 研究问题与科学背景
 
 肿瘤免疫编辑和免疫监视通常被讨论为 T 细胞主导过程。乳腺癌中，T 细胞浸润、TCR 克隆扩增和免疫治疗反应之间的关系已有较多研究；相比之下，B 细胞在抗肿瘤免疫中的作用仍更模糊。已有证据显示，肿瘤浸润 B 细胞、浆细胞抗体反应和三级淋巴结构与较好预后或治疗反应相关，但这些 B 细胞克隆是否在不同转移灶之间迁移、是否在治疗过程中持续存在、是否与肿瘤基因组和新抗原架构共同演化，并不清楚。
 
@@ -196,7 +196,7 @@ BCR 克隆结构还与共享的预测 MHC II 类新抗原相关，`R²=0.25–0.
 
 这篇文章的关键不是简单证明“乳腺癌里有 B 细胞”，而是把 BCR repertoire 当作可追踪、可建模的抗肿瘤免疫轨迹。作者试图把空间多灶转移、时间序贯治疗、BCR/TCR 克隆结构、肿瘤 DNA/RNA 多组学和图论 centrality 放在同一个框架里。
 
-### 研究设计与数据结构
+#### 研究设计与数据结构
 
 ![图1：乳腺癌队列与研究设计](../../assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig1-study-design.png)
 
@@ -208,7 +208,7 @@ BCR 克隆结构还与共享的预测 MHC II 类新抗原相关，`R²=0.25–0.
 
 数据模态包括 BCR heavy chain repertoire、TCR alpha/beta repertoire、肿瘤全外显子测序、RNA-seq 免疫微环境反卷积、MHC I/II neoantigen 预测以及外部公共数据验证。转移性队列 BCR 过滤后每个转移灶平均得到 9,332 条 unique BCR，范围 701-80,409。早期队列每个活检样本平均得到 8,132 条 unique BCR，范围 762-15,493。
 
-### 方法与分析框架
+#### 方法与分析框架
 
 作者从 RNA 中扩增 BCR variable heavy domains，使用 IgA/IgD/IgE/IgG/IgM 同种型特异引物和 UMI，并在 Illumina MiSeq 2 x 300 bp 平台测序。BCR reads 用 Immcantation framework 处理，经过 paired-end 合并、质量过滤、primer/UMI/sample barcode 识别、UMI consensus、IgBLAST 注释和 productive sequence 保留。BCR/TCR 序列注释和 clonotype assembly 使用 IMGT/HighV-QUEST 与 MRDARCY。
 
@@ -218,15 +218,15 @@ BCR clone 定义为同一个体内由同一 pre-B cell 衍生、具有相同或�
 
 图论分析是本文最有辨识度的方法。作者另对符合条件的扩增 BCR clone 计算序列间 Hamming distance，并据此构建最小生成树，再计算每条 BCR sequence 的 degree centrality，也就是该节点在树中连接的边数。这里的树边由最小生成树决定，并不要求恰好相差 1 个核苷酸。高 centrality 的 BCR 被解释为更可能处于克隆演化网络的中心，可能是多个后续变体的祖先或局部最优状态；degree 为 1 的节点则更像末端或未继续分化的变体。
 
-### 原文结果完整梳理
+#### 原文结果完整梳理
 
-#### Multi-platform metastatic tumor profiling
+##### Multi-platform metastatic tumor profiling
 
 作者首先在 27 个转移灶中进行 BCR repertoire 测序，并考察不同转移部位的 BCR 同种型使用。图 2a 显示，肝和肺/胸膜转移灶中 IgA1 占比更高。作者进一步用 GTEx 健康组织 bulk RNA-seq 数据估计正常组织的 IGH isotype 表达，发现转移灶中的 BCR/TCR 模式不同于健康组织本底。同时，转移性肿瘤组织的 IGH 和 TCR gene 表达高于正常组织。
 
 这个结果用于排除一个基础替代解释：转移灶中的 BCR/TCR 差异不只是器官组织本身的免疫细胞组成差异，而更可能反映肿瘤相关免疫反应。不过这一层分析仍是表达和 repertoire 层面的关联，不能单独证明 BCR 对肿瘤抗原有直接特异性。
 
-#### B cell and T cell clonal structures are correlated
+##### B cell and T cell clonal structures are correlated
 
 作者用 Jaccard index 量化不同转移灶之间 BCR、TCR alpha 和 TCR beta VDJ 区域的克隆共享程度。不同患者之间的 BCR/TCR sequence sharing 很低，而同一患者不同转移灶之间共享程度明显更高，符合免疫受体库高度个体特异的特征。
 
@@ -234,7 +234,7 @@ BCR clone 定义为同一个体内由同一 pre-B cell 衍生、具有相同或�
 
 这一结果支持肿瘤内 B 细胞和 T 细胞不是独立噪声，而可能由共同的抗原、微环境或组织结构因素驱动。TLS 相关性尤其重要，因为 TLS 是肿瘤内 B/T 细胞协同、抗原呈递和局部免疫成熟的潜在组织基础。
 
-#### Adaptive immune and tumor genomic coevolution
+##### Adaptive immune and tumor genomic coevolution
 
 ![图2：B/T 克隆结构与肿瘤基因组景观相关](../../assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig2-b-t-tumor-coevolution.png)
 
@@ -248,7 +248,7 @@ neoantigen 分析提供了更具体的免疫解释。图 2f 显示，BCR clonal 
 
 需要注意，neoantigen 仍是计算预测，且作者不能区分 CD4 与 CD8 TCR。这里的证据更适合表述为“与 MHC II neoantigen architecture 相一致”，而不是直接证明这些 BCR 克隆都识别了具体 neoantigen。
 
-#### Persistence and immunosurveillance of intra-tumoral B cells
+##### Persistence and immunosurveillance of intra-tumoral B cells
 
 ![图3：共享和持久 BCR 克隆更扩增且更抗原经验化](../../assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig3-shared-persistent-clones.png)
 
@@ -260,7 +260,7 @@ neoantigen 分析提供了更具体的免疫解释。图 2f 显示，BCR clonal 
 
 作者还用已知病毒或细菌抗体数据库检查这些克隆类别是否富集已知非肿瘤抗原反应。结果没有看到显著富集，说明这些 shared/expanded BCR 不太可能只是常见感染或疫苗相关克隆的再扩增。当然，这并不等于证明它们一定是肿瘤特异性，只能说明没有明显被已知病原抗体库解释。
 
-#### Antigen experience of migratory and persistent clones
+##### Antigen experience of migratory and persistent clones
 
 作者用 OLGA 计算 BCR CDR3 probability of generation，估计某条 CDR3 由 VDJ 重排随机生成的概率。图 3c 显示，private unexpanded class C 的 Pgen 最高，接近健康外周血 naive 或 antigen-inexperienced B cells；而 class B 等共享或扩增类别 Pgen 更低，更像抗原经验化、个体特异选择后的 BCR。class B 的 Pgen 最低，支持 expanded immunosurveilling/persistent clones 经过选择，而不是随机背景。
 
@@ -268,13 +268,13 @@ neoantigen 分析提供了更具体的免疫解释。图 2f 显示，BCR clonal 
 
 图 3f 显示 isotype 使用随疾病过程变化：IGHA1 随时间或疾病阶段增加，IGHG1 降低，且该趋势主要由 class B 克隆驱动。图 3g 显示，高 SHM 与高 CSR 的肿瘤样本中，class B 比例更高，并伴随更高 B cell、T cell、TLS、IFN-gamma 和 T cell inflamed signature。整体上，shared expanded BCR 克隆更接近抗原驱动的肿瘤免疫反应，而非 naive B cell 背景。
 
-#### BCR centrality reveals sites of clonal diversification
+##### BCR centrality reveals sites of clonal diversification
 
 作者接着研究 BCR 克隆多样化发生在何处。图 4a 显示，淋巴结转移灶显示更低的 clonal unevenness，也就是更高的 clonal diversity；但淋巴结中 expanded clones 的数量更多。图 4b 显示，淋巴结中 immunosurveilling clones 的 unique BCR 比例更高。这一组结果被解释为：淋巴结可能是 BCR 克隆多样化和变体探索的主要场所，并向其他转移部位输出部分免疫监视 B 细胞。
 
 图 4c 的 degree centrality 分析进一步支持这个解释。淋巴结中更多 BCR 的 degree centrality 为 1，作者将这些序列解释为更接近末端或探索性变体；非淋巴结转移灶中 degree > 1 的 BCR 比例更高，被解释为更富集已经选择的中心性变体。由此形成了“淋巴结偏多样化探索、其他转移灶偏选择后驻留”的模型，但研究没有直接追踪细胞迁移，不能把它当作已证实的路线。
 
-#### High BCR centrality of immunosurveilling and persistent BCRs
+##### High BCR centrality of immunosurveilling and persistent BCRs
 
 ![图4：BCR degree centrality 预测免疫监视和时间持久性](../../assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig4-bcr-centrality.png)
 
@@ -288,14 +288,14 @@ neoantigen 分析提供了更具体的免疫解释。图 2f 显示，BCR clonal 
 
 这个结果是全文最具转化潜力的一点：BCR network centrality 可以作为候选抗体序列优先级指标。但它仍是观察性和结构预测，尚未证明高 centrality BCR 对肿瘤抗原有功能性结合，也未证明其抗体形式具有治疗活性。
 
-### 本次审阅补充的分母与外部验证规模
+#### 本次审阅补充的分母与外部验证规模
 
 - 两个队列合计 18 名患者、52 份肿瘤样本。Fig. 2 中患者 308 和 315 的病灶两两比较分别为 36 对和 28 对；这些 pairwise observations 共享同一患者和病灶，不能当作完全独立样本（`P003.S0086-P003.S0090`、`P005.S0041`）。
 - Fig. 3 的四类 clone 数分别为 class A 10,507、class B 6,358、class C 217,093、class D 15,988，总计 249,946；class B 在“BCR 序列/UMI 丰度”层面占比较高，不代表它是 clone 数量上的多数（`P004.S0029-P004.S0034`、`P005.S0017-P005.S0018`）。
 - Fig. 3 的转移灶分部位比较实际为肝、淋巴结、肺各 `n=5`；Fig. 4a/b 的淋巴结 `n=5` 对其他病灶 `n=22` 来自 4 名患者，而 Fig. 4c 的 `degree=1` 比较只来自患者 315 的 3 个淋巴结和 5 个其他病灶（`P005.S0019`、`P006.S0008-P006.S0011`）。
 - 外部一致性检查远小于主文“泛化”一词可能造成的印象：HMF 有 16 人但仅 HMFN_0320 可做同人跨灶比较，RAP 也只有患者 828433；1 型糖尿病和多发性硬化分别为 8 人和 3 人（`P012.S0053-P012.S0058`、`P022.S0006-P022.S0007`）。
 
-### 作者结论与证据强度
+#### 作者结论与证据强度
 
 作者较有力证明的是：乳腺癌转移灶中的 BCR 和 TCR 克隆结构彼此相关，并与肿瘤突变和 MHC II neoantigen 架构存在显著关联；跨转移灶或跨治疗时间点共享的 BCR 克隆更扩增、更抗原经验化；BCR degree centrality 与克隆免疫监视和时间持久性显著相关，并可作为预测指标。
 
@@ -303,35 +303,35 @@ neoantigen 分析提供了更具体的免疫解释。图 2f 显示，BCR clonal 
 
 作者没有证明的是：所有 shared/persistent BCR 都是肿瘤抗原特异性；BCR centrality 与患者生存或治疗获益存在因果关系；MHC II neoantigen 直接驱动了这些 BCR/TCR 克隆结构。本文的强项是多组学关联、空间时间克隆追踪和网络结构预测，而不是功能免疫学验证。
 
-## 独立方法学详解
+### 独立方法学详解
 
-### 队列结构和问题映射
+#### 队列结构和问题映射
 
 样本层面，转移性队列提供空间结构，早期队列提供治疗时间结构。这样的设计非常适合研究“共享”和“持久”这两个概念，但样本量有限：转移性队列 8 人，且真正用于多部位 clonal structure 深入分析的主要是具有多个转移灶数据的患者；早期队列 10 人，治疗完成样本只有 5 个。因此作者将大量分析放在 clone-level 或 sequence-level 上，但独立患者数仍是解释结果时的主要边界。
 
-### BCR/TCR 数据生成和 clone 定义
+#### BCR/TCR 数据生成和 clone 定义
 
 作者从 RNA 扩增 BCR variable heavy domains，使用 IgA/IgD/IgE/IgG/IgM 同种型特异引物和 UMI，在 Illumina MiSeq 2 x 300 bp 平台测序。BCR reads 经过 paired-end 合并、质量过滤、primer/UMI/sample barcode 识别、UMI consensus、IgBLAST 注释和 productive sequence 保留。BCR/TCR 序列注释和 clonotype assembly 使用 IMGT/HighV-QUEST 与 MRDARCY。
 
 BCR clone 被定义为同一个体内由同一 pre-B cell 衍生、具有相同或经 SHM 相关 BCR 序列的克隆群。TCR clone 则按相同 CDR3 与 V gene usage 相关序列聚类。这个定义决定了后续“共享”“持久”和“centrality”都是建立在克隆装配规则之上，因此不同 pipeline 或阈值可能改变边界。
 
-### Downsampling 和跨样本共享分析
+#### Downsampling 和跨样本共享分析
 
 BCR/TCR overlap 分析中，为减少测序深度影响，作者对样本进行 downsampling。例如患者 308 和 315 的 BCR/TCR clonal sharing 分析按最低深度的 90% 进行 10,000 次 subsampling，并使用 overlap 中位数。这一点很重要，因为跨样本共享序列数量很容易受测序深度驱动。
 
 空间队列中，同一患者多个转移灶之间共享的 BCR 克隆被解释为 immunosurveilling clones；时间队列中，新辅助治疗多个时间点都能检测到的 BCR 克隆被解释为 temporally persistent clones。这个定义有清晰优势，也有边界：共享说明克隆跨空间或时间可追踪，但不能自动证明抗原特异性或功能效应。
 
-### 肿瘤基因组、neoantigen 和免疫生态整合
+#### 肿瘤基因组、neoantigen 和免疫生态整合
 
 肿瘤基因组层面，somatic mutations 与 MHC I neoantigen 来自 WES；MHC II allele genotyping 用 HLA-HD，MHC II neoantigen 用 mixMHC2pred，保留 percentage rank cutoff 2% 的候选。RNA-seq 反卷积使用 MCPcounter、Danaher gene sets、TLS signature、CYT score、T cell inflamed score、IFN-gamma score 和 B cell activation score。也就是说，作者把免疫受体克隆结构和常规 bulk RNA-seq 免疫生态指标进行了交叉验证。
 
-### BCR clone 分类和 degree centrality
+#### BCR clone 分类和 degree centrality
 
 BCR clone classification 中，stem/clade/private 表示同一患者内全样本共享、部分样本共享或单样本私有；再结合 Gaussian mixture model 设定的 clone size cutoff，把克隆分成 A-D 四类。该分类把“空间/时间共享”和“局部扩增”拆开，使得作者可以区分单纯偶然共享、局部扩增和真正 shared expanded 的高优先级克隆。
 
 degree centrality 的核心假设是，BCR clone 内部的序列网络形状携带了克隆选择和迁移潜力的信息。作者保留至少两个肿瘤样本出现且至少 10 条 unique BCR sequence 的 clone，构建 pairwise Hamming distance、neighbor-joining tree、maximum parsimony tree 和 minimum spanning tree，再在 undirected graph 上计算 degree。这个方法比只按 clone size 或 SHM 数量排序更细，因为它关注每条 BCR sequence 在克隆网络中的位置。
 
-### 统计学分析方法
+#### 统计学分析方法
 
 本文的统计分析围绕三类问题：组间差异、跨模态相关、克隆共享/持久性的预测。组间差异方面，作者使用 Kruskal-Wallis test 比较多个转移部位的 BCR isotype 使用差异，使用 Wilcoxon rank-sum tests 比较两组样本的 clone size、centrality 或免疫特征。Kruskal-Wallis 和 Wilcoxon 都是非参数方法，适合样本量小、分布未知或明显偏态的 repertoire 指标；它们检验的是分布位置差异，不直接给出机制因果。
 
@@ -343,11 +343,11 @@ degree centrality 的核心假设是，BCR clone 内部的序列网络形状携�
 
 BCR centrality 的预测部分使用阈值分类，并报告 sensitivity、specificity 和 accuracy。degree > 2 这类阈值回答的是“用网络中心性筛选 immunosurveilling 或 persistent BCR 的实用表现”。敏感度高意味着少漏掉候选共享/持久 BCR，特异度高意味着少选入非共享/非持久 BCR；准确率会受类别比例影响，因此不能单独作为最佳阈值依据。作者还用 downsampling 和外部数据验证降低测序深度和数据集特异性的影响。
 
-### 可重复性和迁移注意点
+#### 可重复性和迁移注意点
 
 可重复性方面，作者提供了 EGA 数据访问编号，示例 processed data 和 R framework 位于 GitHub `sjslab/BCR-Immunosurveillance`。代码可用性对这类 repertoire network 分析很关键，因为 clone assembly、网络阈值、downsampling 和 centrality 计算都会影响结果。
 
-### 本次审阅补充的关键复现参数与原文异常
+#### 本次审阅补充的关键复现参数与原文异常
 
 - BCR 建库使用 15-nt UMI、6 个 FR1 引物和 7-nt sample barcode，目标扩增片段约 450 bp；每个样本不超过 500 ng 的纯化 BCR amplicon 用于连接 KAPA 双索引接头。paired reads 要求 overlap 至少 20 nt、最大错误率 0.2、Phred 至少 20；`usearch` identity 为 80%，UMI consensus 要有超过 2 条 reads，注释使用 IgBLAST 1.14/Immcantation 3.0（`P010.S0058-P011.S0007`）。
 - 病原抗体对照库只有 5,800 条序列，并允许 CDR3 最多 3 个氨基酸错配；“未见富集”只能削弱这一已知库的解释，不能排除所有病毒或细菌反应（`P011.S0008-P011.S0014`）。
@@ -357,7 +357,7 @@ BCR centrality 的预测部分使用阈值分类，并报告 sensitivity、speci
 - 进入 centrality 分析的 clone 数为患者 308：204、315：733、323：85、330：23。分类比较阈值 `degree>1`、`>2`、`>10`，使用 caret 6.0-90 计算 sensitivity、specificity 和 accuracy（`P012.S0040-P012.S0063`）。
 - 原文有三处不能静默修正的异常：`P004.S0039` 字面写成 “other clonal groups (B, C and D)”；`P010.S0065` 字面为 “2–83 PCR cycles”；Fig. 4 图注 `P006.S0021` 将 box bounds 写成 “IQR divided by median”。这些表述与上下文或常规箱线图定义冲突，复现时必须回看原 PDF/代码，本文不代作者改写。
 
-## 生物学与临床意义
+### 生物学与临床意义
 
 这篇文章把 B 细胞从“肿瘤浸润免疫细胞的一类”提升为可以追踪肿瘤免疫监视和免疫编辑的克隆系统。BCR 克隆结构不仅与 TCR 克隆结构相关，还与肿瘤突变和 MHC II neoantigen 相关，提示 B 细胞可能参与抗原摄取、MHC II 呈递、CD4 T 细胞协同和 TLS 相关局部免疫组织化。
 
@@ -365,7 +365,7 @@ BCR centrality 的预测部分使用阈值分类，并报告 sensitivity、speci
 
 临床转化上，BCR degree centrality 可作为候选抗体序列的排序规则。传统从肿瘤浸润 B 细胞中找抗体，常会面对海量 BCR 序列，不知道优先验证哪一条。本文提出：优先考虑在克隆网络中中心性高、跨部位共享或跨时间持久的 BCR，可能更有机会找到与肿瘤免疫监视相关的抗体。
 
-## 局限性与危险假设
+### 局限性与危险假设
 
 第一，样本量和患者覆盖有限。虽然 clone-level 数量很大，但真正决定泛化性的患者数不多。尤其 warm autopsy 转移性样本代表治疗耐受、晚期、死亡前疾病状态，不能直接外推到早期可治愈乳腺癌或免疫治疗敏感人群。
 
@@ -375,7 +375,7 @@ BCR centrality 的预测部分使用阈值分类，并报告 sensitivity、speci
 
 第四，centrality 可能受网络构建参数影响。BCR clone assembly 阈值、sequence identity cutoff、保留 clone 的最小 size、alignment trimming、Hamming distance 和 MST 构建都会影响 degree centrality。作者做了外部数据验证和测序深度稳健性分析，但实际使用时仍需要针对不同测序平台和组织来源校准。
 
-## 深度研究洞察
+### 深度研究洞察
 
 本文最重要的科研逻辑是把免疫受体序列的“网络位置”视为功能优先级，而不是只看序列丰度或突变数。clone size 说明某个克隆被扩增；SHM 说明经历过生发中心相关突变；但 centrality 说明某条序列在克隆演化空间中的结构位置。这个指标可能更接近“哪些 BCR 变体被反复选中并参与扩散”。
 
@@ -383,7 +383,7 @@ BCR centrality 的预测部分使用阈值分类，并报告 sensitivity、speci
 
 第三个启发是 B 细胞可能是连接肿瘤抗原、CD4 T 细胞、TLS 和系统免疫记忆的关键中介。过去乳腺癌免疫常围绕 CD8 T cells、PD-1/PD-L1 和 TILs 展开；本文提示 BCR repertoire、MHC II neoantigen 和 TLS 应作为同一个免疫生态模块考虑。
 
-## 可借鉴或迁移的思路
+### 可借鉴或迁移的思路
 
 对于胃癌、胃癌前病变和 H. pylori 相关研究，本文的设计有很强可迁移性。H. pylori 感染、慢性胃炎、萎缩、肠化、异型增生和胃癌构成长期抗原刺激和组织重塑过程，BCR/TCR repertoire 很可能记录了宿主-微生物-肿瘤之间的免疫历史。可借鉴的问题是：哪些胃黏膜或外周 BCR/TCR 克隆在不同病灶、不同时间点或根除治疗前后持续存在；这些克隆是否与局部 TLS、MHC II 表达、微生物抗原和癌前进展风险相关。
 
@@ -391,7 +391,7 @@ BCR centrality 的预测部分使用阈值分类，并报告 sensitivity、speci
 
 对于空间转录组，本文也提示可以把 receptor repertoire 与组织结构结合：TLS 区域、肿瘤边缘、黏膜腺体和淋巴滤泡中的 BCR/TCR clone 是否共享；高 centrality BCR 是否更集中在特定空间生态位；这些克隆是否与抗原呈递细胞、CXCL13/CCL19/CCL21 和 IFN-gamma 程序共定位。
 
-## 可复用学术表达
+### 可复用学术表达
 
 本文值得学习的表达是把 BCR clone 的跨部位出现称为 immunosurveillance，而不是简单说 clone sharing。这个词把观察到的空间共享转化为一个可检验的免疫学概念，但作者仍通过“seem to”“suggesting”等措辞保留观察性研究的边界。
 
@@ -399,7 +399,7 @@ BCR centrality 的预测部分使用阈值分类，并报告 sensitivity、speci
 
 第三种表达是把 BCR/TCR 与 tumor molecular landscape 的关系写成 coevolution。这个词比 correlation 更有生物学叙事力，但又没有直接声称因果机制已经被证明。未来写多组学免疫演化文章时，可以借鉴这种“结构相关 + 机制假说 + 谨慎边界”的叙述方式。
 
-## 相关论文与概念
+### 相关论文与概念
 
 Cancer immunoediting 和 immunosurveillance 是本文的理论背景，尤其是免疫系统限制但未完全清除肿瘤，进而与肿瘤克隆演化互相塑形的框架。
 
@@ -409,11 +409,11 @@ MHC class II neoantigen 是本文区别于传统 CD8/MHC I 肿瘤免疫叙事的
 
 MRDARCY、Immcantation、OLGA、TRUST4、MCPcounter、GSVA 和 graph centrality 是本文方法学相关工具。未来复现或迁移时，最应关注 clone assembly、downsampling、network construction 和 centrality threshold 的平台依赖性。
 
-## 覆盖审计
+### 覆盖审计
 
 本次审阅逐一处理本地 PDF pack 的 898 个句子 ID，并按论文真实章节语义纠正自动分节。下表确认 Results、Methods 的连续来源范围均已进入相应结果或方法模块；它不是 898 句逐句双语翻译，图内孤立坐标也不冒充独立证据。
 
-### Results 证据覆盖
+#### Results 证据覆盖
 
 | 原文 Results 子节 | 连续句子 ID | 数量 | 覆盖状态 |
 |---|---|---:|---|
@@ -426,7 +426,7 @@ MRDARCY、Immcantation、OLGA、TRUST4、MCPcounter、GSVA 和 graph centrality 
 | High BCR centrality of immunosurveilling and persistent BCRs | `P007.S0005-P007.S0034` | 30 | 已覆盖部位/时间关联、`degree>2`、外部小样本与结论 |
 | **Results 合计** | `P002.S0020-P007.S0034` | **306** | **306/306 个语义 Results ID 已分配到模块** |
 
-### Methods 与复现覆盖
+#### Methods 与复现覆盖
 
 | 原文方法模块 | 连续句子 ID | 数量 |
 |---|---|---:|
@@ -454,7 +454,7 @@ MRDARCY、Immcantation、OLGA、TRUST4、MCPcounter、GSVA 和 graph centrality 
 
 上述范围为 `201/201`；扣除 `P013.S0001` 的 DOI 页眉后，内容型 Methods 为 `200/200`。
 
-### 自动标签闭合与解析边界
+#### 自动标签闭合与解析边界
 
 自动 `results` 标签为 `P002.S0020-P002.S0033`，共 `14/14`，均属真实 Results。自动 `methods` 共 `328/328`，其中 127 个实际是 `P002.S0034-P004.S0016` 的 Results，201 个才是 `P010.S0002-P013.S0007` 的 Methods。自动 `supplementary` 共 `230/230`，其中 165 个实际是 `P004.S0017-P007.S0034` 的 Results，65 个为 `P014.S0002-P022.S0008` 的扩展数据/附属内容。校正后的全包分布为 title 38、other 19、Results 306、discussion 27、references 242、Methods 201、supplementary 65，总计 898。
 

@@ -1,6 +1,6 @@
 # Designing synthetic regulatory elements using the generative AI framework DNA-Diffusion
 
-<!-- wechat-style-reviewed: 2026-08-04 -->
+<!-- wechat-style-reviewed: 2026-08-13 -->
 
 做基因调控实验时，真正难的不是找到一个“可能有增强子活性”的片段，而是设计一段足够短的 DNA：它要在目标细胞里有足够强的活性，同时尽量不在其他细胞里启动表达。对载荷空间有限的 AAV 等递送系统，这个矛盾尤其具体。
 
@@ -167,7 +167,7 @@ STARR-seq 是质粒环境，唯一的内源验证又集中在 MEC-1 的 AXIN2 �
 | 原文图表 | 完整 panel 注释 | 样本、比较与统计 | 图像文件 | 正文位置 |
 |---|---|---|---|---|
 | Fig. 1 | A：生成 AI 示例；B：细胞特异表达、监测等设想；C：200 bp DNA 条件扩散框架；D：DHS 加噪训练；E：50 步条件去噪生成；F：motif、ChromBPNet、Enformer、MPRA predictor；G：按强度/特异性筛选与位点替换；H：STARR-seq 和 EXTRA-seq；I：motif 共现、富集和间距；J：模型比较框架。 | 方法总览；三种细胞各生成 100,000 条，无独立显著性检验。来源 `P002.S0019–P002.S0051` 与图像页 3。 | `fig1-framework.png` | [03](#03｜dna-diffusion-是怎样从噪声生成-200-bp-序列的) |
-| Fig. 2 | A：生成、测试和随机序列对训练集的 20 bp BLAT 命中，以及各组自比；B：生成/天然序列对三种测试集的 JS distance；C：单 motif 出现比例；D：motif 对共现比例。 | Fig. 2A 汇总比例与 Results 文字不同；C–D 突出 HNF4A、IRF1、GATA1–TAL1 等。来源 `P004.S0001–P004.S0026`、`P005.S0001–P005.S0018`、`P005.S0025–P005.S0027`。 | `fig2-sequence-motif-composition.png` | [04](#04｜生成序列是在复制训练集还是学到了调控语法) |
+| Fig. 2 | A：生成、测试和随机序列对训练集的 20 bp BLAT 命中，以及各组自比；B：生成/天然序列对三种测试集的 JS distance；C：单 motif 出现比例；D：motif 对共现比例。 | Fig. 2A 汇总比例与 Results 文字不同；C–D 突出 HNF4A、IRF1、GATA1–TAL1 等。来源 `P004.S0001–P004.S0026`、`P005.S0001–P005.S0018`、`P005.S0025–P005.S0027`。 | `fig2-sequence-motif-composition.png` | [04](#04｜生成序列是在复制训练集，还是学到了调控语法) |
 | Fig. 3 | A：在候选增强子位置替换 200 bp；B：ChromBPNet DNase；C：MPRA predictor；D：Enformer DNase；E：Enformer CAGE；F：GATA1 位点野生型与 HepG2 定向序列替换；G：两条序列的 motif。 | 生成序列每细胞 `n = 100,000`；训练 DHS 为 GM12878 9,903、HepG2 9,833、K562 9,769；箱线图为中位数、IQR 和 1.5×IQR。来源 `P005.S0020–P005.S0050` 与图像页 6。 | `fig3-in-silico-enhancer-replacement.png` | [05](#05｜计算预测能把强与只在目标细胞强分开吗) |
 | Fig. 4 | A：用目标细胞强度和相对非目标细胞特异性定义二维选择空间；B：HepG2 top 100 生成序列与训练 DHS 在三个 oracle 的 IS；C：高信号和高特异性集合中的 motif 比例；D：每序列 motif 命中数。 | 比较集合为每种细胞 top 100；主图没有独立湿实验终点。来源 `P007.S0001–P007.S0042`、`P008.S0001–P008.S0004` 及相关正文 `P008.S0035–P010.S0012`。 | `fig4-intensity-specificity.png` | [05](#05｜计算预测能把强与只在目标细胞强分开吗) |
 | Fig. 5 | A：同一 STARR-seq 库进入 K562、HepG2、GM12878，以 mRNA/DNA 衡量；B：八类序列的活性；C：Enformer DNase IS 与实验读数相关；D：按实验活性排序的 motif GSEA。 | 总库 5,850；图注称 “all generated” 可分析数为 GM12878 1,234、HepG2 1,010、K562 992；Pearson 为 0.74、0.74、0.42。来源 `P008.S0023–P008.S0031`、`P008.S0047–P008.S0054`、`P009.S0001–P009.S0042`、`P010.S0013–P010.S0039`。 | `fig5-starr-seq-validation.png` | [06](#06｜5850-个元件的-starr-seq-是否支持计算排序) |
@@ -178,7 +178,7 @@ STARR-seq 是质粒环境，唯一的内源验证又集中在 MEC-1 的 AXIN2 �
 
 | 原文句子 ID | 忠实中文含义 | 正文对应位置 | 证据边界 |
 |---|---|---|---|
-| `P002.S0011–P005.S0019` | 模型输入、DHS 数据、染色体切分、每类 100,000 条生成；BLAT 新颖性、motif 分布、关键 motif 与 CFG 调节。 | [02](#02｜这项研究到底做了多大规模)、[03](#03｜dna-diffusion-是怎样从噪声生成-200-bp-序列的)、[04](#04｜生成序列是在复制训练集还是学到了调控语法) | 含 Fig. 1–2 图中文字和跨栏图注；BLAT 正文与图不一致；motif 不是功能验证。 |
+| `P002.S0011–P005.S0019` | 模型输入、DHS 数据、染色体切分、每类 100,000 条生成；BLAT 新颖性、motif 分布、关键 motif 与 CFG 调节。 | [02](#02｜这项研究到底做了多大规模)、[03](#03｜dna-diffusion-是怎样从噪声生成-200-bp-序列的)、[04](#04｜生成序列是在复制训练集，还是学到了调控语法) | 含 Fig. 1–2 图中文字和跨栏图注；BLAT 正文与图不一致；motif 不是功能验证。 |
 | `P005.S0020–P008.S0034` | GATA1/HNF4A/CD19 位点的 ChromBPNet、MPRA predictor、Enformer 预测；野生型比较和预测器局限。 | [05](#05｜计算预测能把强与只在目标细胞强分开吗) | 全部是 in silico；Enformer 对 GATA1 CRISPRi 增强子失活预测失败。 |
 | `P008.S0035–P010.S0012` | 定义 signal intensity、specificity 与 IS；实验开放染色质相关；top 100 候选和高信号/高特异 motif 差异。 | [05](#05｜计算预测能把强与只在目标细胞强分开吗)、[08](#08｜为什么扩散模型能在活性与多样性之间调节) | 归一化和 IS 精确公式在缺失 Supplementary Methods 5；相关性不代表因果。 |
 | `P010.S0013–P010.S0039` | 5,850 元件 STARR-seq 的设计、对照、活性结果、预测—实验相关与 motif GSEA。 | [06](#06｜5850-个元件的-starr-seq-是否支持计算排序) | episomal assay；主 PDF 缺 Supplementary Methods 6 和 Table 5e，无法完整审计丢失/QC。 |
@@ -285,7 +285,7 @@ STARR-seq 是质粒环境，唯一的内源验证又集中在 MEC-1 的 AXIN2 �
 - 不能把预测器分数或 radar area 当作临床安全性、脱靶风险或递送效率。
 - 不能假定三个细胞系的模型自动适用于原代肿瘤、免疫细胞或其他祖源个体。
 
-## 发布前检查
+### 发布前检查
 
 - [x] 一级标题为论文正式英文原题；
 - [x] 开头从 200 bp、细胞特异性和递送限制的具体设计困境切入；
