@@ -1,6 +1,6 @@
 # Immunosequencing identifies signatures of T cell responses for early detection of nasopharyngeal carcinoma
 
-<!-- wechat-style-reviewed: 2026-08-04 -->
+<!-- wechat-style-reviewed: 2026-08-14 -->
 
 在鼻咽癌高发地区做筛查时，最难处理的往往不是已经出现症状的患者，而是一名没有症状、EBV VCA-IgA 却呈阳性的人：他是否已经接近鼻咽癌发生，是否应该优先接受鼻咽镜检查？
 
@@ -23,6 +23,8 @@ TCR repertoire 提供的是另一类信息。T 细胞遇到抗原后会发生克
 发现队列共 720 人：228 例新诊断、未治疗鼻咽癌，251 名 VCA-IgA 阴性人群对照，以及 241 名 VCA-IgA 阳性高风险对照。每人平均约有 80,000 条独特 CDR3β，且 80.2% 的序列只在一个人中出现；这说明研究面对的不是一个小型特征表，而是高度个体化的受体库。
 
 独立验证队列包括 90 例治疗前鼻咽癌、146 名 VCA-IgA 阴性对照和 107 名 VCA-IgA 阳性高风险对照。前瞻部分则从 2008–2015 年纳入的 15,796 人中随访到 68 例鼻咽癌；排除诊断资料不完整、缺少基线血样及晚期病例后，34 例早期病例用于诊断前验证。
+
+Fig. 3D–E 的时间窗比较另以 348 名 VCA-IgA 阳性高风险对照（AR）为参照。不能把 34 例前瞻病例或 15,796 人来源队列误写成这一病例—对照比较的全部样本。
 
 此外，发现队列 691 人和验证队列 370 人具有 HLA 信息。这个分层不可省略：TCR 识别抗原依赖 HLA 呈递，公共 TCR 能否跨人群复现，本来就会受到人群 HLA 频率影响。
 
@@ -52,11 +54,13 @@ TCR repertoire 提供的是另一类信息。T 细胞遇到抗原后会发生克
 
 前瞻验证只看入组时已经留存的基线血样。34 名后来被诊断为早期鼻咽癌的人中，基线 T-score 与距离诊断的时间呈负相关，`R=-0.63`，`p=7.2×10⁻⁵`：分数越高，临床诊断越近。
 
-`T-score>4` 的 17 人中位诊断间隔为 4 个月，`T-score≤4` 的 17 人为 27 个月；加速失效时间模型给出的 time ratio 为 0.24，`p=7.6×10⁻⁵`。在诊断前 6 个月至 1 年窗口，T-score 的 time-dependent AUC 超过 0.80，而 VCA-IgA 即使在诊断前 3 个月仍表现不足。
+`T-score>4` 的 17 人中位诊断间隔为 4 个月，`T-score≤4` 的 17 人为 27 个月；加速失效时间模型给出的 time ratio 为 0.24，`p=7.6×10⁻⁵`。在 34 例前瞻病例与 348 名 AR 对照的分层比较中，T-score 随诊断临近的总体趋势显著（Kruskal–Wallis `p=0.003`），VCA-IgA 的总体趋势不显著（`p=0.09`）。
+
+在诊断前 6 个月至 1 年窗口，T-score 的 time-dependent AUC 超过 0.80，而原文只把 VCA-IgA 描述为即使在诊断前 3 个月仍表现不足，没有报告可直接抄录的精确 AUC 数值。
 
 ![Fig. 3：基线 T-score 与早期鼻咽癌诊断间隔](../../assets/immunology/2025-npc-tcr-early-detection/fig3-early-diagnosis.png)
 
-简明图注：Fig. 3 的关键样本是 34 例前瞻早期病例，而不是整个 15,796 人队列；4 个月与 27 个月的差异提示临近诊断信号，但小样本不足以完成临床阈值定标。
+简明图注：Fig. 3B–C 基于 34 例前瞻早期病例，D–E 则比较这 34 例与 348 名 AR 对照，而不是整个 15,796 人来源队列；4 个月与 27 个月的差异提示临近诊断信号，但小样本不足以完成临床阈值定标。
 
 ## 06｜这些 TCR 为什么可能与鼻咽癌有关？
 
@@ -114,7 +118,7 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 
 以下完整保留原笔记的论文信息、主图与完整图注、原始 Results 顺序、方法参数、统计解释、证据强度、迁移思路和证据边界，并在文末补充句子级 PDF 覆盖审计。
 
-## 本文目录
+### 本文目录
 
 - [基本信息](#基本信息)
 - [本论文主图](#本论文主图)
@@ -148,7 +152,7 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 - [相关论文与概念](#相关论文与概念)
 - [覆盖审计](#覆盖审计)
 
-## 基本信息
+### 基本信息
 
 - 原文题名：Immunosequencing identifies signatures of T cell responses for early detection of nasopharyngeal carcinoma
 - 期刊：Cancer Cell 43, 1423-1441
@@ -171,7 +175,7 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 
 ---
 
-## 本论文主图
+### 本论文主图
 
 | 原文图表 | 原文图题/核心信息 | 是否截取 | 图像文件 | 放置位置 |
 |---|---|---|---|---|
@@ -183,7 +187,7 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 | Fig. 6 | Tumor-infiltrating NPC-enriched and EBV-reactive CD8+ T cells：TME 表型、克隆扩增与生存 | 是 | `assets/immunology/2025-npc-tcr-early-detection/fig6-tumor-infiltrating-cd8.png` | [Tumor-infiltrating NPC-enriched CD8+ T cells](#tumor-infiltrating-npc-enriched-cd8-t-cells) |
 | Fig. 7 | Peripheral expansion of NPC-enriched T cell clones correlates with their infiltration in NPC tumors：血液-肿瘤克隆共享 | 是 | `assets/immunology/2025-npc-tcr-early-detection/fig7-blood-tumor-sharing.png` | [The expansion of NPC-enriched CD8+ T cell clones in blood correlates with their infiltration in NPC tumors](#the-expansion-of-npc-enriched-cd8-t-cell-clones-in-blood-correlates-with-their-infiltration-in-npc-tumors) |
 
-## 生物学故事前情
+### 生物学故事前情
 
 鼻咽癌的生物学故事从 EBV、上皮细胞转化和地区性高发人群开始。EBV 感染在人群中非常普遍，但只有少数人在特定遗传背景、环境暴露和局部组织条件下发展为 NPC。因此，单纯检测 EBV 暴露或 EBV 再激活，无法很好地区分“普通 EBV 阳性”与“真正接近 NPC 发生”的人。
 
@@ -191,7 +195,7 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 
 TCR repertoire 提供了这个切入点。T 细胞扩增会留下 CDR3 序列痕迹，如果 NPC 发生过程中存在共享的 EBV 或非 EBV 肿瘤抗原反应，那么外周血中可能能捕捉到一组公共 TCRβ 签名。本文的故事主线就是：从外周血里找 NPC 富集 TCR，验证它是否能做早筛，再追问这些 TCR 是否真的和 EBV/HLA、肿瘤浸润和抗肿瘤免疫有关。
 
-## 重要缩写表
+### 重要缩写表
 
 | 缩写 | 中文含义 | 本文语境中的具体指代 | 阅读时注意 |
 |---|---|---|---|
@@ -207,9 +211,9 @@ TCR repertoire 提供了这个切入点。T 细胞扩增会留下 CDR3 序列痕
 | T-score | TCR 签名分数 | 个体 repertoire 中命中 208 条 NPC-enriched CDR3β 的数量 | 是计数型诊断信号，不是复杂机器学习概率 |
 | GLIPH2/GIANA | TCR 相似性聚类工具 | 用于推断 NPC-enriched TCR 是否类似已知 EBV-reactive TCR | 聚类是候选注释，不等于确定抗原特异性 |
 
-## 论文详细解读
+### 论文详细解读
 
-### 研究问题与科学背景
+#### 研究问题与科学背景
 
 鼻咽癌是 EBV 相关肿瘤，在中国南方和东南亚高发。早期鼻咽癌预后较好，但由于早期症状不明显，原文指出早诊比例低于 20%。EBV VCA-IgA 抗体可在发病前 3-5 年升高，长期用于筛查，但 EBV 再激活在健康人群中也常见，导致阳性预测值有限。EBV ctDNA 更接近肿瘤负荷，在进展期更敏感，但对最早期病变的窗口仍有限。
 
@@ -217,7 +221,7 @@ TCR repertoire 提供了这个切入点。T 细胞扩增会留下 CDR3 序列痕
 
 这篇文章的关键科学瓶颈有三个：第一，NPC 与 EBV 强相关，但 NPC 发生过程中的 T 细胞反应既可能指向 EBV，也可能指向非 EBV 肿瘤相关抗原；第二，TCR 识别受 HLA 限制，公共 TCR 的跨人群可迁移性天然受 HLA 背景影响；第三，外周血 TCR 信号是否真正连接肿瘤浸润和预后，而不只是 EBV 暴露或普通炎症反应，需要机制层面的验证。
 
-### 研究设计与数据结构
+#### 研究设计与数据结构
 
 ![图1：研究设计与队列概览](../../assets/immunology/2025-npc-tcr-early-detection/fig1-study-design.png)
 
@@ -229,7 +233,7 @@ TCR repertoire 提供了这个切入点。T 细胞扩增会留下 CDR3 序列痕
 
 作者还对发现队列 691 人和验证队列 370 人进行 HLA 分型。HLA 背景很关键，因为 TCR 抗原识别依赖 MHC 呈递；文章后续所有“NPC 富集 TCR 是否抗原驱动”的论证都部分依赖 HLA-TCR 关联。
 
-### 方法与分析框架
+#### 方法与分析框架
 
 核心分析从一个 meta TCRβ repertoire 开始。作者将发现队列的病例和对照合并，先筛选在超过 10 名个体中出现、且在健康个体中共享比例低于 40% 的 CDR3β，以保证公共序列有足够关联分析统计功效。随后排除在两个病例测序批次中差异显著的 CDR3β，降低批次效应风险，最终对 107,779 条 CDR3β 做关联分析。
 
@@ -239,27 +243,27 @@ T-score 的定义很简单：在一个个体的 TCR repertoire 中，完美匹�
 
 机制验证分为四层：第一，用 EBV-specific T cell expansion 和 VDJdb 建立 EBV-reactive TCRβ 参考库，再用 GLIPH2/GIANA 做相似性聚类；第二，在 1,061 名有 HLA 信息的个体中做 HLA-TCR 关联；第三，选取 3 条有完整 TCRαβ、血液和肿瘤均出现、且有 HLA 关联的 TCR 做体外功能验证；第四，将 NPC-enriched TCR 映射到单细胞 TCR/RNA-seq 和肿瘤 bulk RNA-seq，评估 TME 表型、血液-肿瘤共享和生存关联。
 
-### 原文结果完整梳理
+#### 原文结果完整梳理
 
-#### Study cohorts and data acquisition
+##### Study cohorts and data acquisition
 
 原文首先证明数据结构支持后续关联分析。发现队列有 720 人，验证队列包括独立病例和前瞻筛查样本。HLA 频率在发现和验证队列中总体一致，并复现了已知 NPC 风险相关等位基因富集，例如 HLA-A*02:07、B*46:01 在病例中更常见，保护性等位基因如 HLA-A*11:01、B*13:01 在对照中更常见。除已知 NPC 相关 HLA 外，其他常见 HLA 在病例和对照间没有显著差异。这个结果说明研究人群确实带有 NPC 遗传易感背景，同时也提示后续 TCR 关联必须处理 HLA 限制问题。
 
-#### Identification of NPC-enriched CDR3 beta sequences
+##### Identification of NPC-enriched CDR3 beta sequences
 
 ![图2：NPC 富集 TCR 签名与分类表现](../../assets/immunology/2025-npc-tcr-early-detection/fig2-tcr-classification.png)
 
-中文图注（基于原文图注）：Fig. 2A 比较发现队列中每条 CDR3β 在 NPC 与 PC、NPC 与 AR 中的发生率，并用 Venn 图展示两种比较识别出的 NPC 富集 CDR3β 及其重叠。Fig. 2B-D 分别展示 208 条 NPC-enriched CDR3β 在 PC、AR、NPC 中的发生率、累计条数和累计频率分布。Fig. 2E 定义 T-score：每个样本中检测到的 208 条 NPC 富集 CDR3β 的数量。Fig. 2F 在验证集中比较 PC、AR、NPC 的 T-score 分布。Fig. 2G 用 logistic regression 估计不同 T-score 分层的 NPC 风险。Fig. 2H 展示发现集、独立验证集和合并数据中的 ROC 曲线。缩写：HC，healthy control；ROC，receiver operating characteristic；AUC，area under curve。
+中文图注（完整 panel 信息）：Fig. 2A 在发现集中比较 NPC 228 例与 PC 251 名、AR 241 名，按 `FDR<0.15` 得到两组 NPC 富集 CDR3β 及其重叠；图面和原文图注的蓝/黄色映射冲突，具体边界见文末。B–D 展示 208 条序列的发生率、累计条数和累计频率，箱线为中位数、上下四分位及 `1.5×IQR`，组间用双侧 Wilcoxon 检验。E 定义 T-score 为个体命中的 208 条序列数。F 在验证集比较 PC 146 名、AR 107 名和 NPC 90 例，同样使用双侧 Wilcoxon。G 以 `T-score≤4` 为参照，用 logistic regression 估计 OR、95% CI 和 p 值；`T-score>10` 的 OR 为 35.3（95% CI 13.4–102.8）。H 展示发现集、独立验证集和合并数据的 ROC，AUC 分别为 0.896、0.814 和 0.875。HC：healthy controls；来源 `P006.S0030-P006.S0041`。
 
 作者在发现队列中分别比较 NPC vs PC 和 NPC vs AR。NPC vs PC 识别 117 条显著富集 CDR3β，NPC vs AR 识别 130 条，其中 39 条重叠，合并得到 208 条 NPC-enriched CDR3β。作者进一步检查这些 208 条序列在对照人群中不随性别或年龄显著偏移，降低年龄/性别造成假阳性的可能。
 
 这些 TCR 在 NPC 中不仅更常出现，也更扩增。每条 NPC-enriched CDR3β 平均出现在 8.31% NPC 患者中，而在 PC 中为 2.22%，在 AR 中为 1.90%。从个体层面看，NPC 患者平均携带 17.3 条 NPC-enriched CDR3β，PC 平均 4.61 条，AR 平均 3.96 条。累计频率也明显升高：NPC 中平均 0.37%，PC 为 0.022%，AR 为 0.040%。这说明信号不是单个稀有克隆偶然出现，而是一组公共 TCR 在 NPC 外周血中系统性扩增。
 
-#### Validation of NPC-enriched TCR signature for the early detection of NPC
+##### Validation of NPC-enriched TCR signature for the early detection of NPC
 
 ![图3：T-score 用于早期诊断](../../assets/immunology/2025-npc-tcr-early-detection/fig3-early-diagnosis.png)
 
-中文图注（基于原文图注）：Fig. 3A 展示前瞻性筛查队列中基线外周血用于 T-score 评估，随后观察从入组到早期 NPC 临床诊断的时间间隔。Fig. 3B 显示 34 名后续发生早期 NPC 个体的基线 T-score 与诊断间隔负相关。Fig. 3C 用 Kaplan-Meier 曲线比较 T-score > 4 与 T-score <= 4 人群到 NPC 诊断的时间。Fig. 3D-E 分别展示 AR 与不同诊断前时间分层的 prospective cases 中 T-score 和 EBV VCA-IgA 分布。Fig. 3F 展示 T-score 与 VCA-IgA 在不同诊断前时间窗的 time-dependent AUC。
+中文图注（完整 panel 信息）：Fig. 3A 展示基线采血与早期 NPC 临床诊断的时间轴。B 在 34 例前瞻早期病例中比较基线 T-score 与诊断间隔，阴影为 95% 置信带。C 在同一 34 例中比较 `T-score>4`（17 例，中位 4 个月）与 `≤4`（17 例，中位 27 个月），log-rank `p=1.4×10⁻⁴`；原文另用 AFT 模型得到 time ratio 0.24、`p=7.6×10⁻⁵`。D–E 将 348 名 AR 对照与 34 例前瞻病例按诊断前时间分层，比较 T-score 和 VCA-IgA；箱线为中位数、上下四分位及 `1.5×IQR`，两两比较用双侧 Wilcoxon 并做 FDR 校正，病例组整体趋势用 Kruskal–Wallis 检验（T-score `p=0.003`，VCA-IgA `p=0.09`）。F 展示两种指标的 time-dependent AUC，线为点估计、阴影为 95% 置信带；来源 `P006.S0007-P006.S0016`、`P007.S0018-P007.S0029`。
 
 在独立验证集中，90 例 NPC 的 T-score 平均为 8.46，明显高于 PC 的 4.43 和 AR 的 3.86。T-score 越高，NPC 风险越高；T-score > 10 的个体相比 T-score <= 4 的个体，NPC 风险 OR 为 35，95% CI 为 13.36-102.81。T-score 区分 NPC 与健康对照的 AUC 为 0.81；分别与 PC 和 AR 比较时，AUC 为 0.79 和 0.85。
 
@@ -267,11 +271,11 @@ T-score 的定义很简单：在一个个体的 TCR repertoire 中，完美匹�
 
 与 EBV VCA-IgA 相比，T-score 在诊断前 6 个月到 1 年的 time-dependent AUC 超过 0.80，而 VCA-IgA 在 3 个月内仍表现不足。原文因此提出，T-score 可能为 EBV 血清阳性高风险人群增加一层分层信息；是否能据此安排鼻咽镜优先级，仍需按真实患病率和筛查资源前瞻定标。
 
-#### Inference of antigen specificity and HLA restriction of NPC-enriched TCRs
+##### Inference of antigen specificity and HLA restriction of NPC-enriched TCRs
 
 ![图4：NPC 富集 TCR 的 EBV 反应性与 HLA 限制](../../assets/immunology/2025-npc-tcr-early-detection/fig4-ebv-hla.png)
 
-中文图注（基于原文图注）：Fig. 4A 展示 208 条 NPC-enriched CDR3β 的 EBV 特异性注释流程，使用 GLIPH2 和 GIANA 将查询 TCR 与 EBV-reactive 参考库聚类。Fig. 4B 展示 NPC-enriched CDR3β 与 assay-derived 或 VDJdb-curated EBV-reactive CDR3β 的聚类关系。Fig. 4C 是 NPC-enriched TCRβ 与 HLA 等位基因的关联热图，颜色表示 -log10 p 值。Fig. 4D 比较携带或不携带特定 HLA 等位基因的 NPC 和健康对照中，相关 NPC-enriched TCRβ 的数量。Fig. 4E 展示 3 条用于功能验证的完整 TCRαβ 信息。
+中文图注（完整 panel 信息）：Fig. 4A 用 GLIPH2 和 GIANA 对 208 条 NPC-enriched CDR3β 做 EBV 特异性注释。B 中圆点为 NPC-enriched CDR3β，红/蓝三角分别为实验来源/VDJdb 整理的潜在 EBV-reactive CDR3β，白三角为 VDJdb 中潜在非 EBV 反应序列，连线表示 GLIPH2 同簇。C 在合并数据中用单侧 Fisher 精确检验评估 TCRβ–HLA 关联，逐条 TCRβ 以 FDR 0.15 确定 `p=0.003` 阈值；顶部为各 HLA 的关联 TCRβ 数，左侧颜色区分共享同一 CDR3β 的簇，星号表示同一 CDR3β 因不同 BV gene 与不同 HLA 关联。该 panel 的 69 条 TCRβ 口径不同于正文的 45/208 条唯一 CDR3β。D 比较 HLA 阳性/阴性的 NPC 与健康对照携带相关 TCRβ 的数量，p 值来自 Cochran–Armitage trend test。E 列出肿瘤或 PBMC 单细胞数据中用于功能验证的 3 条完整 TCRαβ；来源 `P009.S0026-P009.S0040`。
 
 作者首先自建 EBV-reactive TCRβ 参考库。因为东亚常见 HLA 对应的公共 TCR 特异性数据库不足，作者从 19 名 NPC 患者 PBMC 中用 EBV 转化自体 LCL 和 EBV peptide pool 扩增 EBV-specific T cells，筛选扩增超过 10 倍且在至少两个共享 HLA 个体中出现的 TCR，得到 633 条 potentially EBV-reactive CDR3β。再与 VDJdb 高置信 EBV TCR 合并，作为 EBV 参考库。
 
@@ -279,11 +283,11 @@ T-score 的定义很简单：在一个个体的 TCR repertoire 中，完美匹�
 
 HLA-TCR 关联分析进一步支持抗原驱动选择。1,061 名有 HLA 信息的个体中，208 条 NPC-enriched CDR3β 有 45 条与至少一个 HLA 等位基因显著关联。分层分析显示，在携带相关 HLA 的 NPC 患者中，对应 NPC-enriched TCR 频率高于 HLA 匹配对照和 HLA 阴性的病例/对照。单细胞 TCR 数据也显示，大多数 NPC-enriched CDR3β 连接到单一 TRBV，且部分 TCRβ clonotype 有单一 TRAV 搭配，符合抗原选择而非随机扩增的预期。
 
-#### Experimental identification of the target specificity of three NPC-enriched TCRs
+##### Experimental identification of the target specificity of three NPC-enriched TCRs
 
 ![图5：NPC 富集 TCR 的功能验证与表位识别](../../assets/immunology/2025-npc-tcr-early-detection/fig5-cognate-epitopes.png)
 
-中文图注（基于原文图注）：Fig. 5A-C 测试 TCR-ID1、TCR-ID2、TCR-ID3 转导 T 细胞对 EBV 阳性或阴性 NPC 细胞系的杀伤，并用 HepG2 作为对照。Fig. 5D 展示 trogocytosis-based cognate epitope identification platform：表达 TCR 的 Jurkat 与呈递候选肽的 SCT-K562 共培养，分选 trogocytosis 阳性 K562 后测序识别抗原。Fig. 5E-F 展示 TCR-ID1 筛选后 trogocytosis 阳性细胞富集及候选肽结果。Fig. 5G-H 验证 TCR-ID1 对 BMLF1-GLC 和 LF1-GGK 的肽或内源性基因表达反应。Fig. 5I-K 验证 TCR-ID2 识别 EBV BRFR3 及 KFQELNQNNL 肽。
+中文图注（完整 panel 信息）：Fig. 5A–C 将 TCR-ID1/2/3 转导原代 T 细胞与未转导对照分别和 EBV 阳性或阴性 NPC 靶细胞共培养 48 h；靶细胞表达 luciferase 及相应 HLA-A*02:01、A*24:02 或 C*03:04，HK1 为 EBV 阴性 NPC，HK1+ 与 C666 为 EBV 阳性 NPC，HepG2 为对照。D 中 TCR-Jurkat 与呈递候选表位的 SCT-K562 共培养，分选 trogocytosis 阳性细胞后用 NGS 找靶抗原；E 比较分选前后 K562 的平均荧光和 TCR 染色，F 给出两轮筛选后的富集肽（`n=4`）。G 以不同浓度 BMLF1-GLCTLVAML 或 LF1-GGKLRVWGR 肽刺激 HLA-A*02:01-COS-7，24 h 后读出存活细胞；H 以 BMLF1/LF1 基因内源表达和不同 E:T 比例验证 48 h 杀伤。I 用 EBV gene constructs 筛 TCR-ID2 靶标；J 使用 10 μM 候选肽，K 使用 KFQELNQNNL 浓度梯度，均在 24 h 读出。误差线为 SEM；F 为 `n=4`，A–C、G–K 为 `n=3`。来源 `P010.S0003-P010.S0005`、`P011.S0026-P011.S0041`。
 
 作者从单细胞 TCR 数据中筛选 3 条用于功能验证的 TCR：TCR-ID1、TCR-ID2、TCR-ID3。入选标准包括有完整 TCRα/β 信息、在血液中发生率高且在肿瘤中可检出、与特定 HLA 显著关联。TCR-ID1 和 ID2 分别与 HLA-A*02:01 和 A*24:02 关联，并被前述聚类注释为 EBV-reactive；TCR-ID3 与 HLA-C*03:04 关联，未被注释为 EBV-reactive。
 
@@ -291,11 +295,11 @@ HLA-TCR 关联分析进一步支持抗原驱动选择。1,061 名有 HLA 信息�
 
 表位筛选进一步明确 TCR-ID1 识别 EBV BMLF1-derived GLCTLVAML 和 LF1-derived GGKLRVWGR，且表现出对两个 EBV 表位的交叉识别。TCR-ID2 通过 EBV ORF screening 和 NetMHCpan 候选肽验证，被定位到 BRFR3-derived KFQELNQNNL。该部分把统计学 TCR 签名推进到“具体 TCR-抗原-HLA”层面，是整篇文章机制可信度的重要支撑。
 
-#### Tumor-infiltrating NPC-enriched CD8+ T cells
+##### Tumor-infiltrating NPC-enriched CD8+ T cells
 
 ![图6：肿瘤浸润 NPC 富集和 EBV 反应性 CD8 T 细胞](../../assets/immunology/2025-npc-tcr-early-detection/fig6-tumor-infiltrating-cd8.png)
 
-中文图注（基于原文图注）：Fig. 6A 展示 17 个 NPC 肿瘤中 CD8+ TIL 的 UMAP 和转录状态。Fig. 6B 将 NPC-enriched、potentially EBV-reactive 及两者重叠的 CD8+ T 细胞投影到 UMAP。Fig. 6C 比较各 CD8+ T 细胞簇及 NPC-enriched/EBV-reactive 细胞的 marker、cytotoxicity 和 exhaustion 表达。Fig. 6D 比较 NPC-enriched 或 EBV-reactive TCR 克隆与随机 TCR 克隆的克隆扩增。Fig. 6E 在 86 个 NPC 肿瘤中展示 TCRβ 检出数量和 ssGSEA 免疫评分。Fig. 6F 用 Kaplan-Meier 曲线比较不同 TCR 类别丰度与患者生存。
+中文图注（完整 panel 信息）：Fig. 6A 展示 17 个 NPC 肿瘤的 CD8+ TIL UMAP，B 投影 NPC-enriched、potentially EBV-reactive 及重叠细胞。C 中点大小表示簇内阳性细胞比例，颜色表示 marker、cytotoxicity 和 exhaustion 基因的平均表达。D 比较 17 个 NPC-enriched 与 27 个 EBV-reactive clonotype 的扩增；各以同数背景克隆随机抽样 1,000 次并按细胞数排序，绿色为同一 rank 的中位细胞数，singleton 合并显示，p 值来自双侧配对 Wilcoxon。E 在 86 个 NPC bulk 肿瘤中展示检出 TCRβ 数和 ssGSEA 免疫评分，并区分 NPC、EBV、CMV/flu 相关 TCR。F 的 Kaplan–Meier/log-rank 实际使用 71 例，排除总体 T 细胞浸润最高 7 例和最低 8 例；完整 86 例见 Fig. S8。来源 `P012.S0002-P012.S0003`、`P013.S0028-P013.S0041`。
 
 作者将 NPC-enriched 和 EBV-reactive CDR3β 映射到两个公开 NPC 单细胞数据集，共 17 名治疗前 NPC 肿瘤。大多数携带这些 TCRβ 的肿瘤内 T 细胞为 CD8+。在 CD8+ TIL 中，作者识别 9 个转录状态，从 tissue-resident memory、central memory、effector memory，到 activated pre-exhausted 和 terminally exhausted。
 
@@ -303,17 +307,17 @@ HLA-TCR 关联分析进一步支持抗原驱动选择。1,061 名有 HLA 信息�
 
 生存分析使用 86 个有生存信息的 NPC bulk mRNA-seq 肿瘤样本。总体 T 细胞浸润高与较好生存相关。进一步排除总体 T 细胞浸润最高和最低样本后，NPC-enriched TCR 丰度仍与较长生存相关，log rank p = 0.042；potentially EBV-reactive TCR 也显著，p = 0.0011；CMV/flu-reactive TCR 不预测生存。这使“全部只是常见病毒旁观者反应”的解释变得不充分，但仍不能证明这些 TCR 主动控制了肿瘤。
 
-#### The expansion of NPC-enriched CD8+ T cell clones in blood correlates with their infiltration in NPC tumors
+##### The expansion of NPC-enriched CD8+ T cell clones in blood correlates with their infiltration in NPC tumors
 
 ![图7：外周血扩增与肿瘤浸润的克隆联系](../../assets/immunology/2025-npc-tcr-early-detection/fig7-blood-tumor-sharing.png)
 
-中文图注（基于原文图注）：Fig. 7A 展示 10 对血液-肿瘤配对样本中 NPC-enriched 和 EBV-reactive CD8+ T 细胞在血液和肿瘤 UMAP 上的位置，放大点表示血液与肿瘤共享 TCRαβ。Fig. 7B 比较血液中 NPC-enriched、EBV-reactive 和随机 CD8 TCR 克隆扩增。Fig. 7C 用 STARTRAC-transition index 展示血液与肿瘤之间的克隆迁移/共享程度。Fig. 7D 比较血液中被肿瘤检出的克隆与仅血液检出的克隆频率。Fig. 7E 用 Jaccard similarity 和频率分箱分析血液克隆丰度与肿瘤对应克隆出现的关系。
+中文图注（完整 panel 信息）：Fig. 7A 使用 10 对血液—肿瘤单细胞样本，放大点表示两处共享完整 TCR pair。B 比较血液中的 8 个 NPC-enriched 与 23 个 EBV-reactive clonotype；分别匹配同数背景克隆、随机抽样 1,000 次，p 值来自双侧配对 Wilcoxon。C 用 STARTRAC-transition index 描述血液与肿瘤簇间共享，点大小表示指数，红/蓝表示较频繁/较少。D 比较与肿瘤共享（`+`）或只在血液检出（`−`）的 TCRβ 频率，使用 Wilcoxon；箱线为中位数、上下四分位及 `1.5×IQR`。E 将血液 TCRβ 频率分成 10 个分位，报告肿瘤—血液 Jaccard similarity 及各分位中有血液对应克隆的肿瘤 TCRβ 比例，使用 31 对 bulk TCRβ 样本。来源 `P014.S0003-P014.S0005`、`P015.S0032-P015.S0045`。
 
 作者在 10 对配对血液和 NPC 肿瘤单细胞数据中追踪完整 TCRαβ 克隆。外周血中的 NPC-enriched 和 potentially EBV-reactive clones 明显扩增，但不像肿瘤内对应细胞那样呈耗竭状态，说明耗竭更可能发生在肿瘤微环境中。
 
 血液-肿瘤共享分析显示，NPC-enriched CD8+ T cell clones 比 EBV-reactive clones 和总体 repertoire 更倾向于跨血液和肿瘤共享。血液中频率更高的克隆更容易在配对肿瘤中被检出；这一趋势在 NPC-enriched clones 中尤其明显。超过 20% 的肿瘤内 NPC-enriched clones 在血液中对应克隆位于频率 top 10%。这给 T-score 的生物学解释提供了关键支撑：外周血 TCR 签名不仅是血液现象，还与肿瘤浸润克隆存在可追踪联系。
 
-### 作者结论与证据强度
+#### 作者结论与证据强度
 
 作者已经较有力证明：NPC 患者外周血中存在一组公共、可重复识别的 NPC-enriched CDR3β；这些 TCR 可构成简洁 T-score，在独立验证集中区分 NPC 与 EBV VCA-IgA 阴性/阳性对照；在前瞻筛查队列中，诊断前 T-score 越高，距离早期 NPC 临床诊断越近；部分 NPC-enriched TCR 具有 EBV 表位或 NPC 细胞反应性，并与 HLA 限制一致；肿瘤内 NPC-enriched CD8+ T cells 呈活化、非终末耗竭状态，并与较好生存相关。
 
@@ -321,29 +325,29 @@ HLA-TCR 关联分析进一步支持抗原驱动选择。1,061 名有 HLA 信息�
 
 原文没有证明的是：208 条 NPC-enriched TCR 全部都是肿瘤反应性或具有抗肿瘤功能。作者仅功能验证 3 条 TCR，且多数 TCR 缺少 TCRα 配对和 cognate antigen。统计富集、HLA 关联和肿瘤映射支持抗原驱动，但不能替代逐条功能验证。
 
-## 独立方法学详解
+### 独立方法学详解
 
-### 外周血 TCRβ 测序与 clonotype 构建
+#### 外周血 TCRβ 测序与 clonotype 构建
 
 TCRβ 测序使用外周血 gDNA，采用两步 multiplex PCR 和 Illumina NovaSeq。每个样本输入 1 microgram DNA，使用 32 个 TRBV forward primers 和 13 个 TRBJ reverse primers。原始 reads 先按 index 去除交叉污染，再用 cutadapt 去低质量序列，MiXCR v3.0.6 做 clonotype assembly 和 V/J assignment。低质量过滤包括去除 CDR3β amino acid singletons、不符合 IMGT C...F 结构的 CDR3β，以及 V gene 无法解析的序列。每个 repertoire 保留 top 30,000 TCRβ clonotypes；作者说明这些 top clonotypes 平均覆盖 96.56% 累计频率。
 
-### 检测灵敏度、重复性和 PCR 偏倚评估
+#### 检测灵敏度、重复性和 PCR 偏倚评估
 
 平台可靠性方面，作者用 Jurkat clonal T cell gDNA spike-in 测试灵敏度，声称可检测低至 1e-5 的 TCR 频率；用 16 个 synthetic TCRβ templates 做不同浓度重复，检测 PCR 偏倚；用同一供者 9 个重复计算 Morisita-Horn index，top 1%、5%、10% clonotypes 的重复相似度为 0.6-0.8。
 
-### NPC-enriched CDR3β 筛选与 T-score 构建
+#### NPC-enriched CDR3β 筛选与 T-score 构建
 
 NPC-enriched TCR 发现采用病例-对照发生率关联，而不是频率回归。每条 CDR3β 的出现被编码为 present/absent，Firth logistic regression 调整年龄和性别。这个选择适合稀有公共 TCR，因为许多序列会出现分离问题；但也意味着克隆扩增强度主要在后续 T-score frequency 和图示中体现，不直接进入筛选模型。
 
 T-score 是每个个体 repertoire 中命中 208 条 NPC-enriched CDR3β 的数量。这个分数不使用黑箱模型，也不直接使用每条 TCR 的丰度权重，因此解释上更接近“公共 NPC 相关 TCR 负荷”。它的关键前提是 208 条公共 TCR 在发现队列中已经经过年龄、性别和批次过滤，并且能在独立验证与前瞻筛查样本中复现。
 
-### HLA 分型、TCR-HLA 关联和抗原特异性推断
+#### HLA 分型、TCR-HLA 关联和抗原特异性推断
 
 HLA 分型使用两种方式：部分样本做 11 个 HLA 位点 panel typing，部分用 Illumina Infinium Asian Screening Array-24 提取 MHC SNP 后 SNP2HLA imputation。低质量 imputation 按 R2 < 0.3 和 MAF < 0.01 过滤。TCR-HLA 关联对频率 >0.5% 的 HLA 等位基因和 730 条 NPC-enriched TCRβ 做 one-sided Fisher exact test，并以每条 TCRβ FDR 0.15 决定 p 阈值 0.003。
 
 EBV 反应性推断不是只查数据库。作者先用 EBV 转化 LCL 和 EBV peptide pool 在 NPC 患者 PBMC 中扩增 EBV-specific T cells，得到实验来源的 EBV-reactive TCRβ，再合并 VDJdb 高置信 EBV TCR。随后用 GLIPH2 和 GIANA 做相似性聚类，把 NPC-enriched CDR3β 映射到可能共享抗原特异性的 TCR 群。这一步只能生成候选注释，不能替代功能实验。
 
-### 统计学分析方法
+#### 统计学分析方法
 
 这篇文章的统计学主线是“先发现 NPC 富集 TCR，再验证其诊断和机制相关性”。发现阶段使用 Firth logistic regression，对每条公共 CDR3β 建立 present/absent 的病例-对照模型，并调整年龄和性别。Firth 回归适合稀有事件或分离问题，因为许多 TCR 只出现在少数人中，普通 logistic regression 容易产生不稳定或无限大的估计。这里的输入是一条 CDR3β 是否在某个人 repertoire 中出现，输出是该 TCR 与 NPC 病例状态的关联强度；它回答的是“这条 TCR 是否更常见于 NPC”，不是“这条 TCR 是否功能性识别肿瘤”。
 
@@ -355,13 +359,13 @@ EBV 反应性推断不是只查数据库。作者先用 EBV 转化 LCL 和 EBV p
 
 HLA-TCR 关联使用 one-sided Fisher exact test，输入是个体是否携带某 HLA 等位基因和是否携带某 TCR。它适合样本量不大、稀疏列联表的关联检验；方向性检验用于寻找 HLA 携带者中更富集的 TCR。生存分析使用 Kaplan-Meier 和 log-rank test 比较不同 TCR 丰度组的总体生存差异；该结果是预后相关性，不是因果效应，因为总体免疫浸润、治疗敏感性和肿瘤负荷都可能共同影响生存。
 
-### 功能验证、单细胞映射和血液-肿瘤共享
+#### 功能验证、单细胞映射和血液-肿瘤共享
 
 功能实验选择 3 条有完整 TCRαβ、血液和肿瘤均可检出、且带有 HLA 关联线索的 TCR。作者把 TCR 转导到 T 细胞或 Jurkat 系统中，评估对 EBV 阳性/阴性 NPC 细胞的反应，并用 trogocytosis-based screening 识别候选 cognate epitopes。这个设计把统计富集推进到 TCR-抗原-HLA 机制验证，但只覆盖少数代表性 TCR。
 
 单细胞分析下载 GSE162025 和 GSE150825，Cell Ranger 比对 GRCh38，Seurat v4 做整合，DoubletFinder 去 doublets，SoupX 处理 ambient RNA，RPCA 降低批次影响。CD8+ T cells 根据 CD8A/CD8B、TCR 和 cluster 注释筛选。TCRαβ 只保留 high-confidence、productive、full-length；同一细胞多个链时取 UMI 最高者。血液-肿瘤共享在单细胞层面要求同一患者中 TCRα 和 TCRβ 完全一致。
 
-## 生物学与临床意义
+### 生物学与临床意义
 
 这篇文章最重要的临床意义是把 NPC 筛查从“EBV 是否再激活”推进到“机体是否出现 NPC 相关 T 细胞反应”。EBV VCA-IgA 阳性在高发区常见，但许多阳性个体并不会发生 NPC；T-score 试图在这批高风险人群中识别更接近真实肿瘤发生的免疫反应。
 
@@ -369,7 +373,7 @@ HLA-TCR 关联使用 one-sided Fisher exact test，输入是个体是否携带�
 
 血液与肿瘤共享结果为外周血读数提供了生物学连接：部分外周扩增克隆在配对肿瘤中也可检出，肿瘤内对应细胞呈活化效应状态。共享不能确定迁移方向；更克制的解释是，T-score 可能捕捉肿瘤—免疫系统相互作用的外周投影，而不是传统意义上的肿瘤释放物。
 
-## 局限性与危险假设
+### 局限性与危险假设
 
 第一，T-score 的阳性阈值仍未完成临床定标。T-score > 4 在本文前瞻病例中很有信息量，但筛查工具需要按真实患病率、随访成本、鼻咽镜容量和假阳性后果重新估计阳性预测值。
 
@@ -381,7 +385,7 @@ HLA-TCR 关联使用 one-sided Fisher exact test，输入是个体是否携带�
 
 第五，肿瘤浸润与生存的关联不等于因果。NPC-enriched 或 EBV-reactive TIL 丰度高可能反映更强抗肿瘤免疫，也可能是整体炎症型 TME、HLA-I 表达、肿瘤负荷或治疗敏感性的共同结果。
 
-## 深度研究洞察
+### 深度研究洞察
 
 这篇文章的强点在于把“诊断签名”和“免疫机制”连成一条证据链。很多液体活检研究停在 AUC；本文从外周血 TCR 关联出发，继续做 HLA 限制、EBV 反应性、TCR 功能杀伤、单细胞 TME 映射、血液-肿瘤共享和生存关联。即使每一层都有局限，整体证据链比单纯分类模型更接近可转化科学。
 
@@ -389,7 +393,7 @@ T-score 的朴素定义也值得注意。作者没有使用复杂深度学习预
 
 同时，这篇文章提醒我们：早筛标志物不一定来自肿瘤本身，也可以来自宿主对肿瘤发生的反应。对于病毒相关癌、慢性感染相关癌和炎症-癌转化过程，免疫 repertoire 可能比肿瘤负荷指标更早出现可检测变化。
 
-## 可借鉴或迁移的思路
+### 可借鉴或迁移的思路
 
 对胃癌预防和 GIMs 研究最有启发的是高危人群前瞻嵌套设计。NPC 的 EBV VCA-IgA 阳性人群类似于胃癌研究中的 H. pylori 阳性、萎缩或肠化高风险人群。真正有价值的问题不是病例-健康横断面分类，而是在已知高风险人群中，谁会在短期内进展。
 
@@ -397,7 +401,7 @@ T-score 的朴素定义也值得注意。作者没有使用复杂深度学习预
 
 更进一步，可以把本文的血液-肿瘤共享逻辑改造为“外周血-胃黏膜病灶共享”。如果某些外周扩增 T/B cell clones 能在肠化或早癌局部组织中追踪到，并与空间转录组中的免疫生态位对应，它们就可能成为癌前进展的动态免疫读数。
 
-## 可复用学术表达
+### 可复用学术表达
 
 本文值得学习的表达是把 TCR repertoire 写成“records of clonal selection and expansion”。这种表述比“我们测了 TCR”更能说明为什么免疫测序可用于早筛。
 
@@ -405,7 +409,7 @@ T-score 的朴素定义也值得注意。作者没有使用复杂深度学习预
 
 第三个表达方式是用“peripheral blood may serve as a source for detecting tumor-reactive T cells”连接液体活检和免疫治疗。外周血不只是检测材料，也可能是可追踪、可开发的肿瘤反应性 TCR 来源。
 
-## 相关论文与概念
+### 相关论文与概念
 
 Emerson 等关于 CMV 暴露的 TCR immunosequencing 是本文重要前身，证明公共 TCR 模式可以记录病毒暴露史。本文将这一思想推进到病毒相关癌症早筛。
 
@@ -415,13 +419,13 @@ GLIPH2 和 GIANA 是本文用于 TCR 特异性聚类推断的核心工具。它�
 
 STARTRAC 的 transition index 用于量化配对血液与肿瘤中 T 细胞克隆共享。这个框架对理解外周免疫克隆是否进入组织病灶非常有用，可迁移到肿瘤、感染和自身免疫病的配对样本研究。
 
-## 覆盖审计
+### 覆盖审计
 
 本次审阅以 `scripts/build_pdf_llm_pack.py --engine pymupdf` 生成的 `tmp/npc-tcr-early-detection-llm-pack.md` 和 JSON manifest 为依据。本地主 PDF 共 30 页、1,196 个句子 ID；自动分节为 Results 228、Methods 361、Discussion 99、Introduction 20、References 479、Supplementary 2、Title 6、Other 1。
 
 自动标签不能直接当成语义章节。人工逐项分类后，真实 Results 正文为 151 个 ID；自动 Results 余下 62 个为主图图注，15 个为页眉、空壳或跨页伪句。真实 Methods 正文为 228 个 ID；自动 Methods 余下 62 个为 Key Resources Table、60 个为被误标的参考文献、11 个为页眉页脚或空壳。下列范围用于确认事实锚点已经保留，不把图内孤立标签或版面噪声冒充正文证据。
 
-### Results 证据覆盖
+#### Results 证据覆盖
 
 | 原文 Results 子节 | 正文来源 ID | 数量 | 覆盖状态 |
 |---|---|---:|---|
@@ -436,7 +440,7 @@ STARTRAC 的 transition index 用于量化配对血液与肿瘤中 T 细胞克�
 
 自动 Results 的 62 个主图图注 ID 也已保留：Fig. 1 `P004.S0002-P004.S0003`；Fig. 2 `P006.S0030-P006.S0041`；Fig. 3 `P007.S0018-P007.S0029`；Fig. 4 `P009.S0026-P009.S0040`；Fig. 5 `P010.S0003-P010.S0005`、`P011.S0026-P011.S0041`；Fig. 6 起始 `P012.S0002-P012.S0003`。Fig. 6 续篇 `P013.S0028-P013.S0041` 与 Fig. 7 `P014.S0003-P014.S0005`、`P015.S0032-P015.S0045` 被自动标成 Discussion，已作为完整图注保留；`P011.S0025`、`P013.S0028` 是正文与图注混合句，标为 `EXTRACTION_CHECK`。
 
-### Methods 与复现覆盖
+#### Methods 与复现覆盖
 
 | 方法模块 | 正文来源 ID | 数量 |
 |---|---|---:|
@@ -461,10 +465,12 @@ STARTRAC 的 transition index 用于量化配对血液与肿瘤中 T 细胞克�
 
 上述正文范围为 `228/228`。Key Resources Table 共 62 个内容 ID，位于 `P021.S0002-P024.S0006` 并夹有跨页空壳；资源可用性见 `P016.S0015-P016.S0019`，STAR Methods 内容索引见 `P016.S0034`。自动 Methods 的 `P020.S0006-P020.S0065` 实际是参考文献；`P026.S0008-P026.S0010` 的公式先于小节标题出现，`P029.S0028-P029.S0029` 的 primer 列表抽取不完整，`P030.S0019-P030.S0027` 的 heading 误标为统计分析，这些位置均保留为 `EXTRACTION_CHECK`。
 
-### 数字口径、原文不一致与证据边界
+#### 数字口径、原文不一致与证据边界
 
 - Results 将 34 例描述为 stage I/II，Methods 写为 T1–T2；分期组别和 T 分类并非同一口径，本文并列保留，不自行统一。
 - T-score 固定签名是 208 条唯一 CDR3β；HLA 共现分析使用 730 条按 `CDR3+V+J` 定义的 TCRβ，聚类模块又写为 518 条带 TRBV/TRBJ 的 TCRβ。208 与 730 不是同一计数单位，但原文没有交代 730 到 518 的模块过滤，不能静默合并。
+- VDJdb 高置信 EBV 参考库按唯一 CDR3β 计为 245 条，纳入 TRBV/TRBJ 定义后计为 247 条 TCRβ（`P027.S0034`、`P030.S0023`）。这是两个计数单位，不应把 245 静默改成 247，也不能与 208 条 NPC 固定签名合并。
+- Fig. 2A 图面与原文图注对蓝/黄色组的映射相反：图面为蓝色 `NPC vs PC`、黄色 `NPC vs AR`，`P006.S0031` 的图注则反写。本文以 117/130/39/208 的数字关系和明确比较对象叙述，不用颜色替代组别，并将该处标为 `EXTRACTION_CHECK`。
 - Results 写表位库含 676 个 oligonucleotides，Methods 写 SCT library 含 675 个 epitopes；Results 写逐一测试 86 个 EBV ORF genes，Methods 写 85 个 ORF、另将 BPLF1 拆成 3 个质粒。这两组口径均保留为待核对，不自行修正。
 - 86 是 bulk 生存来源池，71 是排除 15 个总体 T 细胞浸润极端样本后的 Fig. 6F 子集；10 对是完整单细胞 TCRαβ，31 对是 bulk TCRβ。它们是不同分析层级，不是数字冲突。
 - 18 条 EBV 反应性来自计算聚类注释，45 条来自 HLA 共现；只有 3 条 TCR 完成功能实验。共享、相关和生存结果均不能替代迁移方向、抗原特异性或抗肿瘤因果证明。
