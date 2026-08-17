@@ -1,6 +1,6 @@
 # Genetic subtyping of obesity reveals biological insights into the uncoupling of adiposity from its cardiometabolic comorbidities
 
-<!-- wechat-style-reviewed: 2026-08-05 -->
+<!-- wechat-style-reviewed: 2026-08-17 -->
 
 门诊里两位 BMI 相近的人，可能走向完全不同的结局：一位同时出现高血糖、高血压和血脂异常，另一位暂时没有这些心代谢问题。只用 BMI 给两人贴上同一个“肥胖”标签，体重相近这个事实被保留了，风险为什么不同却被抹平了。
 
@@ -330,7 +330,7 @@ DEPICT 只纳入至少 10 个基因的 GO、KEGG、REACTOME 条目；全体 266 
 - 不能认为儿童期横断面信号已证明成年结局预测，也不能认为多祖源可计算就等于跨祖源校准完成。
 - 本研究未分析癌症结局，不能外推任何肿瘤风险方向。
 
-## 发布前检查
+### 发布前检查
 
 - [x] 一级标题为论文正式英文原题；
 - [x] 开头从同 BMI、不同心代谢风险的具体困境切入；
