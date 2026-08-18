@@ -1,6 +1,6 @@
 # Single cell resolved spatial immune repertoire unveils spatial heterogeneity of lymphoid aggregates in human immune disorders
 
-<!-- wechat-style-reviewed: 2026-08-06 -->
+<!-- wechat-style-reviewed: 2026-08-18 -->
 
 一张肿瘤切片上，两群相邻的 T 细胞可能表达相似的活化基因，却来自完全不同的受体克隆。常规空间转录组能告诉我们细胞在哪里、表达了什么，却很难把完整 TCR/BCR 序列、细胞坐标和组织形态同时接起来。
 
@@ -341,7 +341,7 @@ Results 的连续物理范围为 `P006.S0008-P015.S0009`，共 150 个 ID。下�
 | References | `P040.S0001-P043.S0051` | 297 | 最后 31 个被自动误标 methods |
 | **全文合计** |  | **1,044** | **1,044/1,044 已完成语义分类** |
 
-## 发布前检查
+### 发布前检查
 
 - [x] 一级标题使用预印本英文原题；
 - [x] 开头从空间免疫组库的具体技术困境切入；

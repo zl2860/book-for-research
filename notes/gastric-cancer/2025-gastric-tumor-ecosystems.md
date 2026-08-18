@@ -1,6 +1,6 @@
 # Spatially Resolved Tumor Ecosystems and Cell States in Gastric Adenocarcinoma Progression and Evolution
 
-<!-- wechat-style-reviewed: 2026-08-06 -->
+<!-- wechat-style-reviewed: 2026-08-18 -->
 
 在一例胃癌手术标本里，肿瘤核心、浸润边缘和肿瘤—基质交界可能相距不远。如果研究只取一块“代表性”组织，核心区看起来相对安静，并不代表边缘也处在同一种分子和免疫状态。
 
