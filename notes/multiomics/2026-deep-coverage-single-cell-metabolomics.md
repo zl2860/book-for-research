@@ -1,6 +1,6 @@
 # Deep-coverage single-cell metabolomics enabled by ion mobility-resolved mass cytometry
 
-<!-- wechat-style-reviewed: 2026-08-12 -->
+<!-- wechat-style-reviewed: 2026-08-20 -->
 
 一次单细胞质谱采集通常只有约 **0.1 秒**。在这段时间里，仪器既要捕捉阿摩尔（amol，10⁻¹⁸ mol）级的小分子，又要分清真实代谢物、随机噪声和同质量干扰；任何一个信号稍弱，都可能在结果里变成“这个细胞没有该代谢物”。
 
@@ -1033,7 +1033,7 @@ Discussion 的正文语义从 `P009.S0002` 延续至 `P010.S0005`（排除页脚
 - **复现边界：**缺失 Supplementary Tables 4–5 使选择性离子累积和 PRM-PASEF 的关键参数不完整；缺失 Supplementary Figs. 18–23、Data 1–6、Source Data 与视频又限制 frame gating、blank、marker、60 周龄队列和外部比较的独立核查。本次没有联网补证，也没有用摘要填补这些空白。
 - **不可外推：**本文没有人类或肿瘤样本，只有雄性小鼠；HSC 氧化应激来自代谢物模式推断，肝细胞“空间来源”来自组织染色旁证，pseudotime 是横断面计算排序。三者都不能写成直接测量、空间单细胞共定位或纵向命运追踪。
 
-## 发布前检查
+### 发布前检查
 
 - [x] 英文原题无误；
 - [x] 开头从具体测量困境切入；
