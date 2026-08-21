@@ -4,7 +4,7 @@
 
 | 文章 | 最近审阅 | 状态 | 说明 |
 |---|---|---|---|
-| `notes/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage.md` | 2026-08-10 | 已优化 | 复审补齐 Fig. 1/4/5 的读者版简明图注，并将旧技术正文完整收归“技术附录”层级；01–09 空间亚型—局部 niche—CCL2/STAT3 候选链及全部 5 个在线补充文件保持完整，Supplementary Methods 第 1–9 页 153/153 个抽取 ID、Notes 49/49 继续闭合，未显著 GSEA、两套生存 comparator、GEO/TMA/716 等冲突均保留。 |
+| `notes/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage.md` | 2026-08-21 | 已优化 | 重新抽查最早审阅文章：4 段导语、01–09 单问叙事及 CCL2+ fibroblast—STAT3-activated macrophage 候选链继续达标，读者正文无需改写；9 例/29,808 个 spots、23,477 个单细胞、251 对 1,804 个 macrophages、ACRG/TCGA comparator、体外/小鼠/TMA 边界均清楚。主 PDF 544/544、Results 262/262、Supplementary Methods 153/153、Notes 49/49、全部 5 个在线补充文件，以及未显著 GSEA、两套生存口径、716/726 和 675 例 TMA 冲突继续完整保留。 |
 | `notes/gastric-cancer/2025-gastric-tumor-ecosystems.md` | 2026-08-18 | 已优化 | 重新抽查最早审阅文章：4 段导语、01–13 单问叙事和“仍需冷静看待”继续达标；英文原题、29 例 scRNA 汇总、10 名配对患者 Endo2/TAM1 比较、EBER 阴性/EBV 队列外推边界，以及 479/479 Results、209/209 Methods 和全部旧证据均未改变。 |
 | `notes/gastric-cancer/2025-hp-gc-caf-immune-modulation.md` | 2026-08-12 | 已优化 | 复审确认 4 段导语与 01–09 问题式叙事无需改写，将“技术附录”后的 15 个同级标题及其子标题整体降一级；标题文字、段落、图表、链接目标和来源 ID 均未改变，71 例空间队列、250,310 个单细胞、三处原文冲突及 Results 328/328、Methods 130/130 继续闭合。 |
 | `notes/gastric-cancer/2026-im-mutational-signatures-ch.md` | 2026-08-19 | 已优化 | 重新抽查最早审阅文章：将原 04 节拆为上皮 driver–EGN 关联与 KRAS–MAPK/类器官干预两个问题，形成 01–11 单问叙事；补明日本/韩国对中国的每样本突变数中位数 28.5 对 20，以及建立 6 个 IM/4 个正常类器官但 Fig. 3G 实际每组 4 个生物学重复（P < 0.0005），并把缺失补充材料、MSKCC 24,146/24,126 及 1,067 名受试者/1,095 份样本冲突前移至读者限制。Results 521/521、Methods 226/226、数据可用性 5/5 和全部旧证据保持闭合。 |
