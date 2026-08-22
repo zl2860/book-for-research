@@ -1,6 +1,6 @@
 # Single-cell multi-omic and spatial profiling of esophageal squamous cell carcinoma reveals the immunosuppressive role of GPR116+ pericytes in cancer metastasis
 
-<!-- wechat-style-reviewed: 2026-08-11 -->
+<!-- wechat-style-reviewed: 2026-08-22 -->
 
 食管鳞状细胞癌（ESCC）真正棘手的时刻，往往不是病理已经确认肿瘤，而是患者初诊时转移已经发生。论文引用的临床背景显示，超过一半患者初诊时已有转移，5 年总生存率约为 20%；只盯着肿瘤细胞本身，很难解释为什么有些原发灶更早形成转移能力。
 
