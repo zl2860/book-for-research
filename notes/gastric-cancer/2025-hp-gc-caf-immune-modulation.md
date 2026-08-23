@@ -1,6 +1,6 @@
 # Spatial and functional dissection of cancer-associated fibroblasts-mediated immune modulation in H. pylori-associated gastric cancer
 
-<!-- wechat-style-reviewed: 2026-08-12 -->
+<!-- wechat-style-reviewed: 2026-08-23 -->
 
 在 H. pylori 阳性胃癌切片里，癌细胞、成纤维细胞和免疫细胞常同时出现。真正难回答的不是“有没有炎症”，而是哪类基质状态与调节性 T 细胞聚集、细胞毒性 T 细胞参与减少相伴。
 
@@ -8,15 +8,15 @@
 
 这项研究分析了 71 例 FFPE（福尔马林固定石蜡包埋）胃癌的空间转录组，并整合中国、美国和新加坡 58 例胃癌、250,310 个单细胞。TCGA、ACRG 提供 bulk 表达关联，4 个来自同一 HGC-27 细胞系的 LACE-seq 文库提供 RNA 结合证据；这些证据层级不能相互替代。
 
-作者给出的答案是两条互补但证据强度不同的 CAF（癌相关成纤维细胞）轴：THBS1+ CAF 与 Treg（调节性 T 细胞）空间邻近，并指向 WNT5–FZD 信号；ZFP36 则与 FN1 负相关，并有 RNA 结合证据支持其作用于 FN1 3′UTR。两条轴共同提出了 H. pylori 相关胃癌的基质免疫抑制模型，但尚未完成 CAF 特异性扰动验证。
+作者给出的答案是两条互补但证据强度不同的 CAF（癌相关成纤维细胞）轴：THBS1+ CAF 与 Treg（调节性 T 细胞）空间邻近，并指向 WNT5–FZD 信号；ZFP36 则与 FN1 负相关，并有 RNA 结合证据支持其结合 FN1 3′UTR。两条轴共同提出了 H. pylori 相关胃癌的基质免疫抑制模型，但尚未完成 CAF 特异性扰动验证。
 
-## 01｜H. pylori 阳性与阴性肿瘤有哪些不同？
+## 01｜H. pylori 阳性与阴性肿瘤，最先出现了什么差别？
 
 作者先在 71 例空间队列中比较 H. pylori 阳性与阴性胃癌。与阴性肿瘤相比，阳性肿瘤中的 CAF 丰度更高，THBS1 和 ZFP36 也是最突出的上调基因之一；单细胞数据将两者的主要表达来源定位到 fibroblasts。
 
-在 TCGA 和 ACRG 中，THBS1 与 ZFP36 表达相关系数分别为 `r = 0.34` 和 `r = 0.45`，均为 `P < 0.001`。高表达组总体生存更短：THBS1 在 TCGA 为 183 对 185 例、`P = 0.0138`，在 ACRG 为 150 对 150 例、`P = 0.0101`；ZFP36 在 TCGA 为 184 对 184 例、`P = 0.0134`，在 ACRG 为 24 对 276 例、`P = 0.0386`。
+但原文没有给出 71 例中阳性与阴性各有多少人，也没有报告 Fig. 5A 中 CAF 丰度差的效应量和精确 `P` 值；THBS1、ZFP36 的空间队列与 ACRG 组间图只标为 `P < 0.05`。因此，这部分可以判断变化方向，不能判断感染分层的差异有多大。
 
-这比“感染伴随炎症”更具体：感染状态与 CAF 组成和转录程序同时变化。但这里仍是患者样本中的分层关联；生存分析也没有 HR 或充分的多变量模型，不能排除 Lauren 分型、肿瘤区域、分期和炎症程度共同造成差异。
+这比“感染伴随炎症”更具体，却仍是患者样本中的分层关联。Lauren 分型、肿瘤区域、分期和炎症程度都可能与感染状态同时变化。
 
 ## 02｜这项研究到底做了多大规模？
 
@@ -26,53 +26,71 @@
 
 因此，这是一条“空间发现—单细胞整合—公共队列关联—RNA 结合”的证据链。它覆盖多个层级，却没有独立空间队列、H. pylori 感染扰动、原代 CAF 敲降或动物治疗实验。
 
-## 03｜病理空间如何改变四类 CAF 的解释？
+## 03｜四类 CAF 在肿瘤组织里分别靠近谁？
 
-作者沿用既有 pan-cancer 分类，把 CAF 分成 proCAF、iCAF、matCAF 和 myCAF。轨迹分析把 proCAF 放在较早状态，并推断其向其余三个分支转变；这是 pseudotime 推断，不是谱系追踪。
+作者沿用既有 pan-cancer 分类，把 CAF 分成 proCAF、iCAF、matCAF 和 myCAF。空间邻域和 SAI（空间聚集指数）给出一致排序：iCAF 与癌细胞的聚集最强，其次是 myCAF 和 matCAF，proCAF 最弱。
 
-空间邻域和 SAI（空间聚集指数）两种分析给出一致排序：iCAF 与癌细胞的聚集最强，其次是 myCAF 和 matCAF，proCAF 最弱。Tangram 将整合的单细胞参考投射到独立空间数据后也得到相同排序；这是跨模态计算一致性，不是 58 例患者的配对空间复现。
+Tangram 将整合的单细胞参考投射回空间数据后也得到相同排序；这是跨模态计算一致性，不是 58 例患者的配对空间复现。intestinal-type 的癌细胞更紧密成团，diffuse-type 则与 CAF、免疫细胞混杂得更明显。
 
-这张图值得看的不是四种标签本身，而是病理结构如何改变 CAF 与癌细胞的关系：intestinal-type 的癌细胞更紧密成团，diffuse-type 则与 CAF、免疫细胞混杂得更明显。
+这张图值得看的不是四种标签本身，而是它们与癌细胞的相对位置如何随病理结构改变。
 
 ![Fig. 3：四类 CAF 的空间分布与邻近关系](../../assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page09.png)
 
 简明图注：Fig. 3 在 71 例空间队列中比较 proCAF、iCAF、matCAF、myCAF 与癌细胞的邻近和 SAI；完整 panel、公式低置信处和来源句子 ID 见技术附录。
 
-## 04｜为什么 THBS1+ CAF 会指向 Treg-rich 生态位？
+## 04｜THBS1 和 ZFP36 为什么会成为两条候选轴？
+
+感染分层锁定这两个基因后，轨迹分析又把 proCAF 放在较早状态，并推断其向 iCAF、matCAF 和 myCAF 三个分支转变；THBS1 和 ZFP36 沿 fibroblast terminal state 增加。这是状态轨迹，不是谱系追踪，也不能证明 H. pylori 驱动了这条变化。
+
+在 TCGA 和 ACRG 中，THBS1 与 ZFP36 的表达相关系数分别为 `r = 0.34` 和 `r = 0.45`，均为 `P < 0.001`。高表达组总体生存更短：THBS1 在 TCGA 为 183 对 185 例、`P = 0.0138`，在 ACRG 为 150 对 150 例、`P = 0.0101`；ZFP36 在 TCGA 为 184 对 184 例、`P = 0.0134`，在 ACRG 为 24 对 276 例、`P = 0.0386`。
+
+Fig. 5 值得看，因为它把感染分层、轨迹、两队列相关和四组生存曲线放在同一页，也暴露出缺失的分组人数、效应量和内部口径冲突。
+
+![Fig. 5：H. pylori 分层、THBS1/ZFP36 表达与生存关联](../../assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page12.png)
+
+简明图注：Fig. 5 基于 71 例空间队列，并连接 ACRG、TCGA 与 CAF pseudotime；原文没有报告空间队列的 H. pylori 阳性/阴性人数，Fig. 5B 图注方向与 Results 相反，四组生存分析也没有 HR 或充分的多变量模型。完整 panel、样本数和来源句子 ID 见技术附录。
+
+## 05｜为什么 THBS1+ CAF 会指向 Treg-rich 生态位？
 
 在 H. pylori 阳性与阴性肿瘤的比较中，THBS1 主要富集于 matCAF。进一步把 CAF 按 THBS1 表达分层后，THBS1+ CAF 富集 FOXP3/TGF-β 和 CD4+ T-cell activation 相关程序。
 
-作者把空间 T 细胞拆成 CTL（细胞毒性 T 淋巴细胞）、Treg、Th1、Th2、Th17 和增殖型 T 细胞 6 类。THBS1+ CAF 相对 THBS1− CAF 的 Treg SAI 更高（`P < 0.05`）；在 THBS1+ CAF 背景下，Treg recruitment 高、低两组各 19 例，总体生存也不同（`P = 0.007`）。配体—受体模型又把 WNT5A–FZD6 和 WNT5B–FZD5 列为突出互作。
+作者把空间 T 细胞拆成 CTL（细胞毒性 T 淋巴细胞）、Treg、Th1、Th2、Th17 和增殖型 T 细胞 6 类。THBS1+ CAF 相对 THBS1− CAF 的 Treg SAI 更高（`P < 0.05`），但正文和图注没有给出 Fig. 6F 的精确 `P` 值、绘图 cell 数、贡献患者/FOV 数或患者级聚合方式，Methods 也没有公开 THBS1+ 的表达阈值。
+
+在 THBS1+ CAF 背景下，Treg recruitment 高、低两组各 19 例，总体生存不同（`P = 0.007`）。配体—受体模型又把 WNT5A–FZD6 和 WNT5B–FZD5 列为突出互作；前者是患者分层关联，后者是计算预测。
+
+这张图值得看的是，空间邻近、19 对 19 例生存分层和 WNT5–FZD 预测被放在同一链条上，但没有一项是 CAF 特异性扰动。
 
 ![Fig. 6：THBS1+ CAF 与 Treg 的空间关系](../../assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page14.png)
 
-简明图注：Fig. 6 比较 THBS1+ 与 THBS1− CAF 的通路、Treg 空间邻近和候选互作轴。它支持空间关联与计算推断，尚不能证明 WNT5–FZD 直接招募或稳定 Treg。
+简明图注：Fig. 6 比较 THBS1+ 与 THBS1− CAF 的通路、Treg 空间邻近、19 对 19 例生存分层和候选互作轴；细胞/邻域层 SAI 的绘图 n、患者/FOV 贡献与 THBS1+ 阈值未报告。它支持空间关联与计算推断，尚不能证明 WNT5–FZD 直接招募或稳定 Treg。
 
-## 05｜ZFP36–FN1 这条链有多少直接证据？
+## 06｜ZFP36–FN1 这条链有多少直接证据？
 
-作者先筛出在 CAF 中与 ZFP36 负相关、且 3′UTR 至少含 5 个 ATTTA motifs 的基因，得到 735 个候选。FN1 是其中负相关最强且排名稳定的靶点之一。
+作者先筛出在 CAF 中与 ZFP36 呈 `Pearson R < -0.2`、且 3′UTR 至少含 5 个 ATTTA motifs 的基因，得到 735 个候选。FN1 是其中负相关最强且排名稳定的靶点之一。
 
-随后，4 个独立 LACE-seq 样本显示 ZFP36 可结合 FN1 3′UTR。这一步提供了 RNA—蛋白结合证据，但实验发生在 HGC-27 胃癌细胞，而不是患者原位 CAF，也没有证明结合后在 CAF 中必然导致 FN1 降低。
+随后，原文所称的 4 个“独立样本”均来自同一 HGC-27 胃癌细胞系的 LACE-seq 文库，显示 ZFP36 可结合 FN1 3′UTR。这一步提供了 RNA—蛋白结合证据，但不是跨生物来源复现，也没有证明结合后在患者 CAF 中必然导致 FN1 降低。
 
-CIBERSORT-ABS（bulk 表达免疫去卷积）显示，TCGA 中 FN1 表达与 activated CD8+ T cells、γδ T cells 的推定比例正相关。另一组配体—受体和空间通讯模型则预测，与 FN1− CAF 相比，FN1+ CAF 和多类 T 细胞联系更广，其中也包括 CD86–CTLA4 等可能抑制性互作。作者据此解释 ZFP36 抑制 FN1 可能削弱一个与细胞毒免疫参与相关的 CAF 程序，但没有功能实验直接证明“更多互作”等于“激活”。
+CIBERSORT-ABS（bulk 表达免疫去卷积）显示，TCGA 中 FN1 表达与 activated CD8+ T cells、γδ T cells 的推定比例正相关；图中只有色阶和显著性星号，没有给出这些比较的精确 `r`、`P` 与有效样本数。另一组配体—受体和空间通讯模型预测，与 FN1− CAF 相比，FN1+ CAF 和多类 T 细胞联系更广，其中也包括 CD86–CTLA4 等可能抑制性互作；“更多互作”不等于“激活”。
+
+这张图值得看的是，735 个候选筛选、同一细胞系的 4 个文库、bulk 去卷积和空间通讯分别回答不同层级的问题，不能合并成一条已证实的因果通路。
 
 ![Fig. 7：ZFP36 候选靶点与 FN1+ CAF 互作](../../assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page16.png)
 
-简明图注：Fig. 7 从 735 个候选靶点收敛到 FN1，并结合 4 个 LACE-seq 样本、bulk 免疫去卷积和空间通讯推断建立证据链；完整统计与证据边界见技术附录。
+简明图注：Fig. 7 从 735 个候选靶点收敛到 FN1，并连接同一 HGC-27 细胞系的 4 个 LACE-seq 文库、bulk 免疫去卷积和空间通讯推断；它支持 FN1 3′UTR 结合和候选模型，不证明 CAF 中的 FN1 降解或 CTL 功能变化。
 
-## 06｜为什么作者把两条 CAF 轴放进同一模型？
+## 07｜两条证据强度不同的 CAF 轴，为什么还能放进同一模型？
 
 THBS1 轴对应 Treg-rich 空间生态位，ZFP36–FN1 轴则与细胞毒 T 细胞参与相关。作者认为一个方向可能增强免疫调节，另一个方向可能削弱免疫激活，因此把二者纳入同一个 immune-cold 模型。
 
 但两条链的证据并不对等。ZFP36–FN1 至少有 RNA 结合实验；THBS1–WNT5–FZD 主要来自通路富集、空间邻近和配体—受体推断。把它们写成已经证实的因果通路，会超过论文设计。
 
-## 07｜这项研究真正改变了什么？
+## 08｜这项研究真正改变了什么？
 
 它把“H. pylori 阳性胃癌的免疫环境不同”推进成可拆解的空间问题：先区分 CAF 状态，再定位它们与 Treg、CTL 的邻近关系，最后寻找可验证的调控分子。
 
 近期最现实的价值是研究分层。THBS1+ CAF–Treg 邻域和 ZFP36–FN1 程序可以作为组织层面的候选特征，用于选择后续功能实验和验证队列；它们还不是经过前瞻试验确认的预后标志物或治疗靶点。
 
-## 08｜这些结果仍需要冷静看待
+## 09｜这些结果仍需要冷静看待
 
 首先，71 例空间样本来自单一医院的历史 FFPE 队列，H. pylori、Lauren 分型、组织区域和临床阶段之间可能存在混杂，外推到其他人群前需要独立空间队列。
 
@@ -82,9 +100,11 @@ THBS1 轴对应 Treg-rich 空间生态位，ZFP36–FN1 轴则与细胞毒 T 细
 
 第四，原文内部有三处不能静默消除的不一致：Results 写 THBS1/ZFP36 在 H. pylori 阳性组上调，Fig. 5B 图注却写阴性组；亚型结果写 THBS1 偏 matCAF、ZFP36 偏 proCAF，后文又把两者概括为 proCAF 程序；Methods 称生存按中位数分组，但 ACRG 的 ZFP36 高、低组实际为 24 对 276 例。
 
-最后，SAI 是作者自定义、默认 `n_neighbors=30` 的距离惩罚指标，结果会受组织密度和参数影响；本地 PDF 中公式还有符号抽取噪音。原文也没有交代历史队列的 H. pylori 判定方式、THBS1+ CAF 的精确阈值，以及空间统计如何处理患者和视野内聚类。补充材料与精确公式在复现时仍需回到原始来源核对。
+最后，SAI 是作者自定义、默认 `n_neighbors=30` 的距离惩罚指标，结果会受组织密度和参数影响；本地 PDF 中公式还有符号抽取噪音。原文也没有交代历史队列的 H. pylori 判定方式、THBS1+ CAF 的精确阈值，以及空间统计如何处理患者和视野内聚类。
 
-## 09｜对新的胃癌研究，哪些设计可以直接借鉴？
+出版社在线补充文件共 7 页、包含 Fig. S1–S6，但本项目尚未为它建立句子 ID，也未把补充图纳入 Results/Methods 覆盖计数；当前也未见单列 Source Data 文件。补充图证据不能冒充已经完成本地审计的材料。
+
+## 10｜对新的胃癌研究，哪些设计可以直接借鉴？
 
 可以把同一空间框架前移到 H. pylori 阳性胃炎、肠化生、异型增生和早癌连续谱，观察 CAF–Treg/CTL 邻域是在癌前阶段出现，还是只在肿瘤形成后建立。
 
@@ -111,8 +131,8 @@ THBS1 轴对应 Treg-rich 空间生态位，ZFP36–FN1 轴则与细胞毒 T 细
   - [CAF 包含四类功能亚型并具有不同空间分布偏好](#caf-包含四类功能亚型并具有不同空间分布偏好)
   - [单细胞转录组揭示 CAF 亚型发育轨迹和转录特征](#单细胞转录组揭示-caf-亚型发育轨迹和转录特征)
   - [H. pylori 感染重塑 CAF 组成并诱导 THBS1 和 ZFP36 表达](#h-pylori-感染重塑-caf-组成并诱导-thbs1-和-zfp36-表达)
-  - [THBS1+ CAF 通过 WNT5-FZD 互作促进 Treg 招募和免疫抑制](#thbs1-caf-通过-wnt5-fzd-互作促进-treg-招募和免疫抑制)
-  - [ZFP36 通过转录后抑制 FN1 削弱 FN1+ CAF 介导的细胞毒 T 细胞激活](#zfp36-通过转录后抑制-fn1-削弱-fn1-caf-介导的细胞毒-t-细胞激活)
+  - [THBS1+ CAF 与 Treg 空间邻近，WNT5-FZD 是预测互作轴](#thbs1-caf-与-treg-空间邻近，wnt5-fzd-是预测互作轴)
+  - [ZFP36-FN1 有哪些结合、相关与通讯证据](#zfp36-fn1-有哪些结合、相关与通讯证据)
 - [作者结论与证据强度](#作者结论与证据强度)
 - [独立方法学详解](#独立方法学详解)
 - [统计学分析方法](#统计学分析方法)
@@ -142,6 +162,7 @@ THBS1 轴对应 Treg-rich 空间生态位，ZFP36–FN1 轴则与细胞毒 T 细
   - `P008.S0023` 与 `P009.S0002` 被 Fig. 2 图注 `P008.S0024-P008.S0029` 及页眉 `P009.S0001` 打断；覆盖审计保留全部 ID，正文按连续语义重接。
   - Manifest 将语义上属于 Discussion 末段的 `P017.S0022-P018.S0003` 标为 Results；这是章节分类错分，不把它当成新结果。
   - LLM pack: `tmp/hp-gc-caf-immune-modulation-llm-pack.md`
+- 在线补充材料状态：出版社提供一份 [7 页 Supplementary material 1](https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs12943-025-02490-9/MediaObjects/12943_2025_2490_MOESM1_ESM.pdf)，只含 Fig. S1–S6（`P018.S0025`）。本项目未保存或句子化该 PDF，补充图未进入下述覆盖计数；出版社页面当前也未见独立 Supplementary Table 或 Source Data 链接。
 - 图像截取说明: 主图以整页渲染方式保存，避免漏 panel；后续需要展示时可再按 panel 裁剪。
 - LLM 覆盖审计:
   - Results 覆盖：`P001.S0022-P002.S0004`, `P006.S0017-P013.S0058`，并结合 Fig. 1-7 图注。
@@ -154,13 +175,14 @@ THBS1 轴对应 Treg-rich 空间生态位，ZFP36–FN1 轴则与细胞毒 T 细
 
 | 原文图表 | 原文图题/核心信息 | 是否截取 | 图像文件 | 放置位置 |
 |---|---|---|---|---|
-| Fig. 1 | CAF-mediated immunoregulation in H. pylori-associated GC 的研究框架和机制模型 | 是 | `assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page07.png` | [方法速览与分析框架](#方法速览与分析框架) |
+| Fig. 1 | 分析框架，以及作者提出、尚待功能扰动验证的 CAF 免疫调控模型 | 是 | `assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page07.png` | [方法速览与分析框架](#方法速览与分析框架) |
 | Fig. 2 | 空间转录组揭示 GC 细胞组成和 Lauren/H. pylori 亚型差异 | 是 | `assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page08.png` | [胃癌病理类型具有不同空间结构、细胞组成和免疫景观](#胃癌病理类型具有不同空间结构、细胞组成和免疫景观) |
 | Fig. 3 | CAF 四类亚型及其与癌细胞的空间关系 | 是 | `assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page09.png` | [CAF 包含四类功能亚型并具有不同空间分布偏好](#caf-包含四类功能亚型并具有不同空间分布偏好) |
 | Fig. 4 | 单细胞整合、CAF 发育轨迹和空间反卷积验证 | 是 | `assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page10.png`; `page11.png` | [单细胞转录组揭示 CAF 亚型发育轨迹和转录特征](#单细胞转录组揭示-caf-亚型发育轨迹和转录特征) |
 | Fig. 5 | H. pylori 相关 CAF 扩增、THBS1/ZFP36 上调和预后关联 | 是 | `assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page12.png`; `page13.png` | [H. pylori 感染重塑 CAF 组成并诱导 THBS1 和 ZFP36 表达](#h-pylori-感染重塑-caf-组成并诱导-thbs1-和-zfp36-表达) |
-| Fig. 6 | THBS1+ CAF 与 Treg 空间聚集及 WNT5-FZD 互作 | 是 | `assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page14.png`; `page15.png` | [THBS1+ CAF 通过 WNT5-FZD 互作促进 Treg 招募和免疫抑制](#thbs1-caf-通过-wnt5-fzd-互作促进-treg-招募和免疫抑制) |
-| Fig. 7 | ZFP36 结合 FN1 3'UTR 并抑制 FN1+ CAF-CTL 互作程序 | 是 | `assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page16.png`; `page17.png` | [ZFP36 通过转录后抑制 FN1 削弱 FN1+ CAF 介导的细胞毒 T 细胞激活](#zfp36-通过转录后抑制-fn1-削弱-fn1-caf-介导的细胞毒-t-细胞激活) |
+| Fig. 6 | THBS1+ CAF–Treg 空间聚集、生存关联与 WNT5-FZD 预测互作 | 是 | `assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page14.png`; `page15.png` | [THBS1+ CAF 与 Treg 空间邻近，WNT5-FZD 是预测互作轴](#thbs1-caf-与-treg-空间邻近，wnt5-fzd-是预测互作轴) |
+| Fig. 7 | ZFP36–FN1 结合、bulk 相关与 FN1+ CAF–T 细胞通讯推断 | 是 | `assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page16.png`; `page17.png` | [ZFP36-FN1 有哪些结合、相关与通讯证据](#zfp36-fn1-有哪些结合、相关与通讯证据) |
+| Fig. S1–S6 | 细胞通讯、marker、CAF 基因表达、FN1 3′UTR motif、SCENIC 与 T 细胞亚群 | 否；官网可得 | [Supplementary material 1](https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs12943-025-02490-9/MediaObjects/12943_2025_2490_MOESM1_ESM.pdf) | 未进入本地句子 ID 与覆盖审计 |
 
 ### 生物学故事前情
 
@@ -168,7 +190,7 @@ THBS1 轴对应 Treg-rich 空间生态位，ZFP36–FN1 轴则与细胞毒 T 细
 
 CAF 不是一种均质细胞。作者沿用其既往 pan-cancer CAF 分类，把 CAF 拆成 proCAF、iCAF、myCAF 和 matCAF 四类。这里真正的问题不是“CAF 多不多”，而是不同 CAF 亚型在肿瘤组织里站在哪里、靠近谁、和哪些免疫细胞发生信号互作、是否在 H. pylori 阳性背景下偏向免疫抑制程序。
 
-读这篇文章的主线可以概括为两条轴。第一条是 THBS1+ CAF 轴：H. pylori 阳性胃癌中 THBS1+ CAF 与 Treg 空间邻近，并通过 WNT5A-FZD6、WNT5B-FZD5 等互作指向 Treg 稳定和免疫抑制。第二条是 ZFP36-FN1 轴：ZFP36 作为 RNA-binding protein 结合 FN1 3'UTR AU-rich elements，使 FN1 mRNA 不稳定，从而削弱 FN1+ CAF 与 CTL 的免疫激活相关互作。这两条轴共同构成作者提出的 H. pylori-CAF-免疫抑制模型。
+读这篇文章的主线可以概括为作者提出的两轴模型。直接观察到的是 THBS1+ CAF 与 Treg 空间邻近，WNT5A-FZD6/WNT5B-FZD5 来自配体—受体预测；ZFP36 与 FN1 负相关，同一 HGC-27 细胞系的 4 个 LACE-seq 文库支持 ZFP36 结合 FN1 3′UTR。作者据此提出 Treg 稳定、FN1 mRNA 降低和 CTL 参与减少的解释，但这些下游环节尚无 CAF 特异性扰动证明。
 
 ### 重要缩写表
 
@@ -181,10 +203,10 @@ CAF 不是一种均质细胞。作者沿用其既往 pan-cancer CAF 分类，把
 | iCAF | inflammatory CAF | 与癌细胞空间距离最近的 CAF 亚型之一 | 与 THBS1/ZFP36 免疫抑制主轴不是完全同一概念 |
 | matCAF | matrix CAF | 基质/ECM 相关 CAF，THBS1 表达更偏向此类 | ECM 程序和免疫抑制可能相关但机制需验证 |
 | Treg | 调节性 T 细胞 | THBS1+ CAF 邻近和 WNT5-FZD 互作的主要免疫细胞对象 | 空间邻近和 ligand-receptor 推断不证明真实趋化 |
-| CTL | 细胞毒 T 淋巴细胞 | FN1+ CAF 互作增强的细胞毒免疫细胞对象 | FN1 在本文中被解释为更偏免疫激活相关，和“ECM 物理屏障”常识存在语境差异 |
+| CTL | 细胞毒 T 淋巴细胞 | 计算预测中与 FN1+ CAF 互作更广的细胞毒免疫细胞对象 | FN1 在本文中被解释为更偏免疫激活相关，和“ECM 物理屏障”常识存在语境差异 |
 | THBS1 | Thrombospondin 1 | H. pylori 阳性 CAF 上调基因，关联 Treg 空间聚集和差预后 | 可能通过 TGF-beta/CD47-SIRPalpha 等既有机制参与免疫抑制，但本文主推 WNT5-FZD |
 | ZFP36 | AU-rich element binding protein | H. pylori 阳性 CAF 上调，预测并经 LACE-seq 支持结合 FN1 3'UTR | 直接功能扰动不足，是本文机制链条的关键待验证点 |
-| FN1 | Fibronectin 1 | ZFP36 负相关并被 LACE-seq 支持为结合靶标；FN1+ CAF 与 CTL 互作更强 | 本文中 FN1 被放在“促 CTL 互作”的语境，不能简单套用免疫排斥模型 |
+| FN1 | Fibronectin 1 | ZFP36 负相关并被 LACE-seq 支持为结合靶标；计算预测中 FN1+ CAF 与 CTL 互作更强 | 本文中 FN1 被放在“促 CTL 互作”的语境，不能简单套用免疫排斥模型 |
 | SAI | Spatial Aggregation Index | 作者用于量化两类细胞空间邻近/聚集的距离惩罚指标 | PDF 公式抽取有噪音；复现需回看原文公式或代码 |
 | LACE-seq | Laser-assisted crosslinking and immunoprecipitation sequencing | 用于验证 ZFP36 RNA 结合靶点 | 在 HGC-27 细胞中完成，不是在 CAF 原代细胞中直接完成 |
 
@@ -206,7 +228,7 @@ CAF 不是一种均质细胞。作者沿用其既往 pan-cancer CAF 分类，把
 
 ![Fig. 1 整页](../../assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page07.png)
 
-中文图注（基于原文图注）：Fig. 1A 展示整合分析框架：scRNA-seq 与空间转录组共同用于 CAF 异质性、空间定位、细胞通讯、轨迹动态和功能状态分析；关键步骤包括 neighborhood enrichment、ligand-receptor inference、pseudotime reconstruction、spatial deconvolution、spatially variable gene detection 和 functional annotation。Fig. 1B 给出机制模型：THBS1+ CAF 通过 THBS1-WNT5 轴促进 Treg recruitment/stabilization；ZFP36+ CAF 通过下调 FN1 削弱 cytotoxic lymphocyte engagement；两者共同塑造 immune-cold TME。
+中文图注（基于原文图注）：Fig. 1A 展示整合分析框架：scRNA-seq 与空间转录组共同用于 CAF 异质性、空间定位、细胞通讯、轨迹动态和功能状态分析；关键步骤包括 neighborhood enrichment、ligand-receptor inference、pseudotime reconstruction、spatial deconvolution、spatially variable gene detection 和 functional annotation。Fig. 1B 是作者提出、尚待功能扰动验证的机制模型：THBS1-WNT5 轴可能关联 Treg recruitment/stabilization，ZFP36-FN1 轴可能关联 cytotoxic lymphocyte engagement，两者被解释为共同塑造 immune-cold TME。
 
 本文分析链条是：先在空间数据中识别主要细胞类型和 Lauren/H. pylori 分层差异，再映射四类 CAF 亚型，随后用单细胞整合和 Tangram 反卷积验证 CAF 亚型空间分布，最后围绕 H. pylori 阳性样本中上调的 THBS1 和 ZFP36 分别构建 Treg 轴和 CTL/FN1 轴。
 
@@ -258,7 +280,7 @@ CAF 不是一种均质细胞。作者沿用其既往 pan-cancer CAF 分类，把
 
 需要注意：THBS1/ZFP36 与 H. pylori、CAF 和预后之间是空间/转录组关联加队列验证，并非感染干预或 CAF 特异性敲除证明。原文 Fig. 5B 图注称突出的是阴性组上调（`P013.S0006-P013.S0008`），与正文及 Fig. 5D-F 所述阳性组更高（`P011.S0039`, `P011.S0044-P011.S0047`）方向相反；本文按正文方向叙述，同时保留该疑似图注错误。
 
-#### THBS1+ CAF 通过 WNT5-FZD 互作促进 Treg 招募和免疫抑制
+#### THBS1+ CAF 与 Treg 空间邻近，WNT5-FZD 是预测互作轴
 
 ![Fig. 6 第 1 页](../../assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page14.png)
 
@@ -266,25 +288,25 @@ CAF 不是一种均质细胞。作者沿用其既往 pan-cancer CAF 分类，把
 
 中文图注（基于原文图注）：Fig. 6A-B 区分 THBS1+ 与 THBS1- CAF，并用 violin plot 验证 THBS1 表达差异。Fig. 6C 展示 THBS1+ CAF 中 FOXP3/TGF-beta 和 CD4+ T cell upregulation 相关通路富集。Fig. 6D-E 注释空间数据中的 CTL、Treg、Th1、Th2、Th17 和 proliferative T cells。Fig. 6F 用 SAI 比较 THBS1+/- CAF 与 Treg 的空间关系。Fig. 6G 显示 THBS1+ CAF 背景下 Treg recruitment 高低与生存差异。Fig. 6H-I 展示 THBS1+ CAF、Treg 及 Treg gene activity 的空间重叠。Fig. 6J-L 展示 THBS1+ CAF 与 T cell subsets 的 ligand-receptor 推断，突出 WNT5A-FZD6 和 WNT5B-FZD5。
 
-原文结果梳理：作者把 CAF 按 THBS1 表达分层，识别出 THBS1+ 和 THBS1- CAF（`P011.S0055-P011.S0057`）。THBS1+ CAF 富集 Treg 相关通路，包括 FOXP3/TGF-beta signaling 和 CD4+ T-cell activation pathways（`P011.S0058-P011.S0059`）。随后作者在空间数据中注释 T 细胞六类亚群：CTL、Treg、Th1、Th2、Th17 和 proliferating T cells（`P011.S0060-P011.S0061`）。THBS1+ CAF 相对 THBS1- CAF 的 Treg SAI 更高（Fig. 6F, `P < 0.05`）；THBS1+ CAF 背景下 Treg recruitment 高、低组各 19 例，生存曲线 `P = 0.007`（Fig. 6G）。Treg gene activity 与 THBS1+ CAF 定位部分重叠（`P011.S0062-P013.S0022`）。
+原文结果梳理：作者把 CAF 按 THBS1 表达分层，识别出 THBS1+ 和 THBS1- CAF（`P011.S0055-P011.S0057`）。THBS1+ CAF 富集 Treg 相关通路，包括 FOXP3/TGF-beta signaling 和 CD4+ T-cell activation pathways（`P011.S0058-P011.S0059`）。随后作者在空间数据中注释 T 细胞六类亚群：CTL、Treg、Th1、Th2、Th17 和 proliferating T cells（`P011.S0060-P011.S0061`）。THBS1+ CAF 相对 THBS1- CAF 的 Treg SAI 更高（Fig. 6F, `P < 0.05`），但原文没有给出该细胞/邻域层分布的绘图 cell 数、贡献患者或 FOV 数、患者级聚合方式和具体检验；THBS1+ CAF 背景下 Treg recruitment 高、低组各 19 例，生存曲线 `P = 0.007`（Fig. 6G）。Treg gene activity 与 THBS1+ CAF 定位部分重叠（`P011.S0062-P013.S0022`）。
 
-细胞通讯分析预测 THBS1+ CAF 与 Tregs 有偏好性 ligand-receptor 互作，其中 WNT5A-FZD6 和 WNT5B-FZD5 是突出轴（`P013.S0023-P013.S0025`）。作者结论是：THBS1+ CAF 与 Tregs 空间相关，并通过 WNT5-FZD signaling 参与 H. pylori 相关胃癌局部免疫抑制微环境（`P013.S0026`）。
+细胞通讯分析预测 THBS1+ CAF 与 Tregs 有偏好性 ligand-receptor 互作，其中 WNT5A-FZD6 和 WNT5B-FZD5 是突出轴（`P013.S0023-P013.S0025`）。作者据此提出 THBS1+ CAF 可能通过 WNT5-FZD signaling 参与局部免疫抑制；直接数据支持的是空间相关和预测互作，不是招募机制（`P013.S0026`）。
 
 证据边界：WNT5-FZD 是 ligand-receptor inference，不是蛋白互作或阻断实验。Treg 招募也可能由多种 chemokine、TGF-beta、抗原呈递或组织区域因素共同驱动。
 
-#### ZFP36 通过转录后抑制 FN1 削弱 FN1+ CAF 介导的细胞毒 T 细胞激活
+#### ZFP36-FN1 有哪些结合、相关与通讯证据
 
 ![Fig. 7 第 1 页](../../assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page16.png)
 
 ![Fig. 7 第 2 页](../../assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page17.png)
 
-中文图注（基于原文图注）：Fig. 7A 图示 ZFP36 结合 3'UTR AU-rich elements 介导 mRNA degradation。Fig. 7B 将 ZFP36 负相关基因和 ATTTA motif 数量结合，筛选候选靶点。Fig. 7C 展示 ZFP36 target genes 的 GO 富集。Fig. 7D-E 展示 ZFP36 与 FN1、FAP、INHBA、COL10A1、STC1 等免疫调控相关基因的空间表达和相关性。Fig. 7F 展示四个 LACE-seq 样本中 ZFP36 在 FN1 locus 的 binding sites。Fig. 7G 展示 ZFP36-associated targets 的 pathway enrichment。Fig. 7H 用 CIBERSORT-ABS 分析 CAF genes 与 immune cell types 的相关性。Fig. 7I-J 展示 FN1+/- CAF 与 T cell subsets 的 ligand-receptor 互作和空间通讯网络。
+中文图注（基于原文图注）：Fig. 7A 图示作者提出的 ZFP36–mRNA degradation 模型。Fig. 7B 将 ZFP36 负相关基因和 ATTTA motif 数量结合，筛选候选靶点。Fig. 7C 展示 ZFP36 target genes 的 GO 富集。Fig. 7D-E 展示 ZFP36 与 FN1、FAP、INHBA、COL10A1、STC1 等免疫调控相关基因的空间表达和相关性。Fig. 7F 展示原文所称四个独立样本中的 binding sites，但 Methods 说明它们均来自 HGC-27 细胞系。Fig. 7G 展示 ZFP36-associated targets 的 pathway enrichment。Fig. 7H 用 CIBERSORT-ABS 分析 CAF genes 与 immune cell types 的相关性。Fig. 7I-J 展示 FN1+/- CAF 与 T cell subsets 的 ligand-receptor 互作和空间通讯网络。
 
-原文结果梳理：作者在 THBS1-Treg 轴之外寻找另一个 CAF 免疫调控程序，聚焦 ZFP36 这个通过 AU-rich elements 促进 mRNA degradation 的 RNA-binding protein（`P013.S0027-P013.S0029`）。筛选逻辑是：在 CAF 中与 ZFP36 负相关且 3'UTR 含不少于 5 个 ATTTA motifs 的基因，共得到 735 个候选靶点（`P013.S0030-P013.S0031`）。这些靶点富集免疫相关通路（`P013.S0032-P013.S0033`）。在候选基因中，FN1 与 ZFP36 负相关最强且稳定排名靠前（`P013.S0034-P013.S0037`）。LACE-seq 四个独立样本显示 ZFP36 直接结合 FN1 3'UTR，支持转录后调控（`P013.S0038-P013.S0041`）。
+原文结果梳理：作者在 THBS1-Treg 轴之外寻找另一个 CAF 免疫调控程序，聚焦 ZFP36 这个已知可通过 AU-rich elements 促进 mRNA degradation 的 RNA-binding protein（`P013.S0027-P013.S0029`）。筛选逻辑是：在 CAF 中与 ZFP36 呈 `Pearson R < -0.2`、3′UTR 含不少于 5 个 ATTTA motifs 且通过 `FDR < 0.05` 的基因，共得到 735 个候选靶点（`P013.S0030-P013.S0031`, `P005.S0033-P005.S0039`）。这些靶点富集免疫相关通路（`P013.S0032-P013.S0033`）。在候选基因中，FN1 与 ZFP36 负相关最强且稳定排名靠前（`P013.S0034-P013.S0037`）。原文称四个独立 LACE-seq 样本显示 ZFP36 结合 FN1 3′UTR，但 Methods 只报告同一 HGC-27 细胞系；这支持结合和候选靶向，未证明患者 CAF 中的 FN1 降解（`P003.S0017-P003.S0021`, `P013.S0038-P013.S0041`）。
 
-SCENIC regulon 分析提示 ZFP36+ CAF 富集 ATF3、JUN、FOS 等 stress/immune signaling 相关转录程序（`P013.S0042-P013.S0046`）。ZFP36-associated targets 的 pathway enrichment 指向 T cell activation 和 costimulatory signaling（`P013.S0047-P013.S0048`）。CIBERSORT-ABS 显示 CAF 中 FN1 表达与多种 T cell subsets 正相关，尤其 activated CD8+ T cells 和 gamma-delta T cells（`P013.S0049-P013.S0051`）。Ligand-receptor modeling 预测 FN1+ CAF 比 FN1- CAF 更广泛地与 T cells 互作，包括 alpha5beta1-FN1、CD86-CTLA4、TNFSF4-TNFRSF4 等；空间通讯网络也显示 FN1+ CAF 与 CTL 等细胞毒 T 细胞 subsets 更强互作（`P013.S0052-P013.S0057`）。
+SCENIC regulon 分析提示 ZFP36+ CAF 富集 ATF3、JUN、FOS 等 stress/immune signaling 相关转录程序（`P013.S0042-P013.S0046`）。ZFP36-associated targets 的 pathway enrichment 指向 T cell activation 和 costimulatory signaling（`P013.S0047-P013.S0048`）。CIBERSORT-ABS 显示 TCGA STAD bulk 中 FN1 表达与多种 T cell subsets 的推定比例正相关，尤其 activated CD8+ T cells 和 gamma-delta T cells（`P013.S0049-P013.S0051`）；Fig. 7H 只用色阶与星号表示相关和显著性，没有逐项报告精确 `r`、`P` 或 TCGA 有效样本数。Ligand-receptor modeling 预测 FN1+ CAF 比 FN1- CAF 更广泛地与 T cells 互作，包括 alpha5beta1-FN1、CD86-CTLA4、TNFSF4-TNFRSF4 等；Fig. 7I-J 同样没有报告参与样本数或量化效应（`P013.S0052-P013.S0057`）。
 
-作者最终解释为：ZFP36 通过转录后抑制 FN1，下调一个与 cytotoxic T cell activation 相关的 CAF 程序，从而参与 H. pylori 相关胃癌免疫调控（`P013.S0058`）。这里最值得注意的是语境差异：FN1 常被视为 ECM barrier 或免疫排斥相关因子，但本文数据中 FN1+ CAF 更偏向 CTL/NK 互作。因此不能把 FN1 简单归为免疫抑制或免疫激活，需要看癌种、空间位置、CAF 亚型和互作对象。
+作者最终提出的假说是：ZFP36 可能通过转录后抑制 FN1，下调一个与 cytotoxic T cell activation 相关的 CAF 程序（`P013.S0058`）。这里最值得注意的是语境差异：FN1 常被视为 ECM barrier 或免疫排斥相关因子，但本文计算结果中 FN1+ CAF 更偏向 CTL/NK 互作；没有降解或免疫功能实验时，不能把 FN1 简单归为免疫抑制或免疫激活。
 
 ### 作者结论与证据强度
 
@@ -324,7 +346,7 @@ scRNA-seq 使用 Python 3.8、Scanpy 1.9.6，三个公开单细胞数据通过 `
 
 #### 空间邻域和 SAI
 
-Neighborhood enrichment 使用 CosMx 空间坐标和细胞类型注释，比较观察到的邻近频率和随机打乱 cell-type labels 后的 null distribution，输出 log observed/expected enrichment scores（`P004.S0016-P004.S0021`）。SAI 是作者自定义的 distance-penalized 指标，整合邻域中 center/target cell 数量、全局细胞数量和局部平均欧氏距离；默认 `n_neighbors=30`（`P004.S0022-P004.S0038`）。SAI 公式在 PDF 抽取中有明显符号噪音，复现时必须以原文公式或代码为准。
+Neighborhood enrichment 使用 CosMx 空间坐标和细胞类型注释，比较观察到的邻近频率和随机打乱 cell-type labels 后的 null distribution，输出 log observed/expected enrichment scores（`P004.S0016-P004.S0021`）。SAI 是作者自定义的 distance-penalized 指标，整合邻域中 center/target cell 数量、全局细胞数量和局部平均欧氏距离；它按每个 cell 的局部邻域计算并存入 `adata.obs`，默认 `n_neighbors=30`（`P004.S0022-P004.S0038`）。原文未说明 Fig. 6F 是否按患者聚合或如何处理同一患者、FOV 内的聚类，PDF 公式抽取也有明显符号噪音；复现时必须以原文公式或代码为准。
 
 #### 轨迹、空间反卷积和细胞通讯
 
@@ -350,9 +372,9 @@ CIBERSORT-ABS 使用 TCGA STAD expression matrix，permutations = 1,000，估计
 
 ### 生物学与临床意义
 
-本文把 H. pylori 相关胃癌中的免疫抑制解释为“感染响应的 CAF 空间程序”，这比单纯看免疫细胞浸润比例更进一步。THBS1+ CAF 代表一个 Treg-rich spatial niche，ZFP36+ CAF 代表一个通过转录后调控 FN1 影响 cytotoxic lymphocyte engagement 的程序。两条轴都把 H. pylori、CAF 和免疫逃逸连接起来。
+本文提出“感染响应的 CAF 空间程序”模型，这比单纯看免疫细胞浸润比例更进一步。THBS1+ CAF–Treg 邻域由空间数据支持；ZFP36–FN1 则由表达负相关和同一细胞系的结合峰支持。两者与免疫逃逸的下游因果关系仍是待验证解释。
 
-临床上，这提示 H. pylori 阳性胃癌可能存在 stromal-directed immunotherapy 的窗口：阻断 THBS1/WNT5/FZD 或恢复 FN1+ CAF-CTL 互作，理论上可能把 immune-cold TME 转向更可响应免疫治疗的状态。但当前证据还没有达到药物靶点层级，主要是发现和机制假说生成。
+作者据此提出 stromal-directed immunotherapy 的转化假说：未来可检验阻断 THBS1/WNT5/FZD 或恢复 FN1+ CAF–CTL 互作是否改变免疫状态。当前没有治疗扰动、疗效或安全性数据，这一设想还没有达到药物靶点或临床窗口的证据层级。
 
 ### 局限性与危险假设
 
@@ -362,7 +384,7 @@ CIBERSORT-ABS 使用 TCGA STAD expression matrix，permutations = 1,000，估计
 
 这篇文章最有启发的地方不是发现 THBS1 或 ZFP36 单个基因，而是把“感染-基质-免疫”拆成空间细胞生态位。对于胃癌癌前病变研究，可以借鉴这个框架去问：H. pylori、肠化生、萎缩和异型增生阶段是否已经出现类似 proCAF/iCAF 转换和 Treg/CTL 空间偏移？如果在癌前病变中也能看到 THBS1+ CAF-Treg niche 或 ZFP36-FN1 轴，可能会成为精准预防和免疫风险分层的空间 biomarker。
 
-另一个重要启发是 FN1 的语境依赖。许多研究把 ECM/FN1 与 T cell exclusion 连接，但本文显示 FN1+ CAF 与 CTL/NK 互作更强，ZFP36 下调 FN1 反而可能削弱细胞毒免疫。这提醒我们，ECM molecule 不能脱离 CAF 亚型、空间位置和免疫对象解释。
+另一个重要启发是 FN1 的语境依赖。许多研究把 ECM/FN1 与 T cell exclusion 连接，但本文的计算推断显示 FN1+ CAF 与 CTL/NK 互作更强，作者据此推测 ZFP36 下调 FN1 反而可能削弱细胞毒免疫。这提醒我们，ECM molecule 不能脱离 CAF 亚型、空间位置和免疫对象解释。
 
 ### 可借鉴或迁移的思路
 
