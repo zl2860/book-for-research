@@ -1,6 +1,6 @@
 # Disease diagnostics using machine learning of B cell and T cell receptor sequences
 
-<!-- wechat-style-reviewed: 2026-08-14 -->
+<!-- wechat-style-reviewed: 2026-08-25 -->
 
 面对急性 COVID-19、慢性 HIV、系统性红斑狼疮、1 型糖尿病和流感疫苗接种后的反应，这项研究要检验的是：它们是否会在外周血 BCR/TCR 中留下可彼此区分的模式。真正困难的不只是发现“免疫系统变了”，而是判断这种变化更像哪一种状态。
 
@@ -58,31 +58,35 @@ BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合
 
 内部批次留出包括 10 例使用不同样本处理流程的 COVID-19 患者和 13 份重新建库的健康样本；另一个留出队列中，5 例狼疮有 4 例分类正确、2 名健康对照均正确。13 名健康供者的技术重复里，9 人两次都判对且类别概率相关性至少 97%，其余样本出现 abstention 或分歧。
 
-仅用年龄、性别或祖源预测疾病，AUROC 分别为 0.68、0.59 和 0.79，三者合并为 0.85；在有完整人口学信息的个体中，从集成特征回归这些变量后，Mal-ID AUROC 从 0.98 降到 0.96。已测人口学变量贡献了一部分信号，但没有解释全部内部性能。
+仅用年龄、性别或祖源预测疾病，AUROC 分别为 0.68、0.59 和 0.79，三者合并为 0.85；在有完整人口学信息的个体中，从集成特征回归这些变量后，Mal-ID AUROC 从 0.98 降到 0.96。已测人口学变量贡献了一部分信号，但没有解释全部内部性能；这个完整人口学信息子集的精确样本量未在主文报告，明细依赖未进入本地证据包的表 S7。
 
 外部 BCR 队列的情况更棘手：COVID-19 病例全为亚洲人，健康对照为白人或非裔，人口学模型的 AUROC 同样达到 1.0，尽管 accuracy 只有 58%。因此，这个外部小队列不能单独排除祖源与地理混杂；治疗、近期感染和疾病严重程度等未测变量也仍然存在。
 
 ## 07｜它学到的是抗原特异性，还是更宽的免疫状态？
 
-只用 BCR 同种型比例，疾病 AUROC 为 0.68，明显低于 Mal-ID 的 0.98 以上；模型确实使用了序列内部信息。SHAP 分析又把 COVID-19 的 IGHV1-24/IGHV2-70、狼疮的 IGHV4-34/IGHV4-59 等已知线索排在前列，但 SHAP 解释的是模型行为，不是这些基因的因果作用。
+只用 BCR 同种型比例，疾病 AUROC 为 0.68，明显低于 Mal-ID 的 0.98 以上；模型确实使用了序列内部信息，但这一同种型比例对照的精确样本量未在主文单列，Fig. S14 也未进入本地证据包。SHAP 分析在 COVID-19 14、HIV 21、流感疫苗 8、狼疮 22 和 1 型糖尿病 22 份阳性样本中，把 IGHV1-24/IGHV2-70、IGHV4-34/IGHV4-59 等既有线索排在前列，但 SHAP 解释的是模型行为，不是这些基因的因果作用。
 
-外部已知 binder 给出了更严格的检验。COVID-19 BCR 的模型 3 AUROC 按 IGHV 分层最高为 0.78，AUPRC 相对基线最高 6.9 倍；流感 BCR 最高为 0.65 和 4.0 倍。已知 SARS-CoV-2 特异 TCR 的最高 AUROC 只有 0.56，AUPRC 相对基线最高 1.30 倍。
-
-患者级分类很强，而单条 TCR 的抗原特异性排序接近随机，说明 Mal-ID 很可能同时读取直接抗原反应与更广泛的免疫组成、激活和治疗状态。这个解释比“模型找到了疾病特异受体”更符合数据。
+要看模型在患者层面优先使用哪些 V 基因—同种型组合，先看 Fig. 3。
 
 ![Fig. 3：模型优先使用的 IGHV 与同种型线索](../../assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig3-ighv-isotype-shap.png)
 
-简明图注：Fig. 3 的 SHAP 值显示各 IGHV—同种型分组对模型 3 预测的贡献；它能与既有免疫学知识对照，但不能证明机制。
+简明图注：Fig. 3A–E 分别汇总 COVID-19 14、HIV 21、流感疫苗 8、狼疮 22 和 1 型糖尿病 22 份阳性样本的 IGHV—同种型 SHAP 贡献；数值重标到 0–1，只解释模型行为，不证明机制。
+
+外部已知 binder 给出了更严格的检验。COVID-19 BCR 的模型 3 AUROC 按 IGHV 分层最高为 0.78，AUPRC 相对基线最高 6.9 倍；图中明确给出完整样本量的 IGHV1-24 比较为 79 条 binder 对 1,777 条健康供者序列。流感 BCR 最高为 0.65 和 4.0 倍，已知 SARS-CoV-2 特异 TCR 的最高 AUROC 只有 0.56、AUPRC 相对基线最高 1.30 倍；这两类分析的各分层样本量未在本地主 PDF 报告，缺失补充材料时不能补造。
+
+患者级分类很强，而单条 TCR 的抗原特异性排序接近随机，说明 Mal-ID 很可能同时读取直接抗原反应与更广泛的免疫组成、激活和治疗状态。这个解释比“模型找到了疾病特异受体”更符合数据。
+
+要检验这些患者级模式是否也能命中真正的抗原结合序列，再看 Fig. 4 的外部对照。
 
 ![Fig. 4：外部 SARS-CoV-2 binder 的序列级验证](../../assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig4-known-sars-cov-2-binders.png)
 
-简明图注：Fig. 4 比较未用于训练的已知 SARS-CoV-2 结合 BCR 与健康序列。CDR3 聚类精确但召回低，语言模型召回更高；TCR 的对应验证明显较弱。
+简明图注：外部 binder 与健康序列均未用于训练；Fig. 4 明示的 IGHV1-24 比较共 1,856 条序列（79 条 binder 对 1,777 条健康序列），其余结果按 34 个 V gene 分层但未逐层报告样本量。模型 2 更精确但召回低，模型 3 召回更高但假阳性更多。
 
 ## 08｜这项研究真正改变了什么？
 
 它显示，在这组经过整理的闭集队列中，BCR 与 TCR 可以作为分布式免疫状态读数，而且组成、公共序列和语言模型表示提供互补信息。对研究而言，这套框架可以把“受体库有没有变化”推进到“哪些层级共同区分状态”，并为后续抗原验证提供候选线索。
 
-临床价值目前更接近问题定义，而不是成品检测。若模型主要读取当前免疫活动，它可能适合纵向监测治疗或复发，也可能在疾病静息期漏掉既往诊断；这些用途都需要按目标重新建队列、设标签和定阈值，论文尚未验证。
+临床价值目前更接近问题定义，而不是成品检测。论文没有测试治疗反应或复发的纵向监测；狼疮低活动患者的结果只提示模型可能更敏感于当前免疫活动，也可能在疾病静息期漏掉既往诊断。若要检验这些用途，必须按目标重新建队列、设标签和定阈值。
 
 ## 09｜这些结果仍需要冷静看待
 
@@ -319,7 +323,7 @@ TCR 的 SARS-CoV-2 binder 验证更弱。模型 2 表现差，模型 3 对已知
 
 #### 样本与测序
 
-样本与测序层面，作者从外周血 RNA 中扩增 TCR beta chain 和不同 IgH 同种型，采用 Illumina MiSeq paired-end 测序。BCR 只保留 class-switched IgG/IgA，以及具有至少 1% SHM 的 IgD/IgM，以尽量排除 naive B cells；TCR 不存在体细胞高突变。VDJ 注释使用 IgBLAST v1.3.0，只保留 productive rearrangements，并对低质量 V gene 匹配进行过滤。
+样本与测序层面，作者从外周血 RNA 中扩增 TCR beta chain 和不同 IgH 同种型，采用 Illumina MiSeq paired-end 测序；paired-end reads 由 FLASH v1.2.11 合并。BCR 只保留 class-switched IgG/IgA，以及具有至少 1% SHM 的 IgD/IgM，以尽量排除 naive B cells；TCR 不存在体细胞高突变。VDJ 注释使用 IgBLAST v1.3.0，只保留 productive rearrangements，并对低质量 V gene 匹配进行过滤（`P010.S0030-P010.S0040`）。
 
 #### 序列预处理与 clonal lineage 压缩
 
@@ -361,19 +365,27 @@ SHAP 用于解释模型 3 的 patient-level 特征贡献。输入是不同 IGHV/
 
 #### 本次审阅补充的关键复现参数
 
-- 样本选择与 QC：COVID-19 排除轻症、血清转换前和已知免疫抑制者；IgBLAST v1.3 的 IGHV/TRBV score 阈值分别为 200/80，CDR3 至少 8 aa。每份 replicate 至少需 100 个 IgG、100 个 IgA、500 个 IgD/M 和 500 个 TRB clone；IgD/M 还要求 SHM 至少 1%（`P010.S0023-P010.S0052`）。
-- 两类相似性阈值不能混用：个体内 clonal-lineage 去重为 TCR 95%、BCR 90% sequence identity；模型 2 的跨人疾病 CDR3 聚类则为 TCR 90%、BCR 85%（`P010.S0045`、`P011.S0040`、`P012.S0008`）。
-- 模型 1 只保留各 isotype/TRB 中出现频率前半的 V genes；每个 BCR isotype 使用 15 个 PCA 特征并加 2 个 SHM 特征，最终 BCR 为 51 维、TCR 为 15 维。验证集选择的最佳 BCR 分类器为 L1/L2 ratio 0.25 的 elastic net，TCR 为 lasso（`P011.S0023-P011.S0029`）。
-- 模型 2 用 clone-size-weighted consensus centroid 表示 cluster，忽略 IgH isotype；raw Fisher P 候选阈值在 train-2 以 MCC 选择。最佳 BCR/TCR 患者级模型分别为 ridge/lasso logistic regression；无匹配 cluster 时 abstain，比例低于 3%（`P011.S0039-P012.S0018`）。
-- 模型 3 使用 30 层、1.5 亿参数、640 维的 ESM-2。患者级聚合比较 mean、median、去除最低 10% 的 trimmed mean，以及 10%/20% entropy cutoff；只保留 top 50% V-gene categories，并按类别频率重权。最终 BCR 为 random forest sequence model 加 random-forest mean aggregation，TCR 为 one-versus-rest ridge 加 random-forest mean 与 20% entropy cutoff；其 one-versus-rest 概率未校准，因此基础模型 3 不报告 accuracy（`P012.S0028-P013.S0019`）。
+- 样本选择与 QC：COVID-19 排除轻症、血清转换前和已知免疫抑制者；IgBLAST v1.3.0 的 IGHV/TRBV score 阈值分别为 200/80，CDR3 至少 8 aa。每份 replicate 至少需 100 个 IgG、100 个 IgA、500 个 IgD/M 和 500 个 TRB clone；IgD/M 还要求 SHM 至少 1%（`P010.S0023-P010.S0052`）。
+- 人级分区与调参：个体先分为 3 个 stratified folds，每折含 train/test；train 再划出 validation，余下分为 train-1/train-2。多阶段模型的序列层在 train-1 拟合、患者层在 train-2 拟合，logistic regression 的正则参数另做 nested CV；外部验证使用只有 train/validation 的 global fold，二者比例与原 cross-validation 相同，由独立队列充当 test（`P010.S0055-P011.S0022`、`P013.S0044-P013.S0046`）。
+- clonal-lineage 去重把同一人的全部时间点和全部 isotype 核苷酸序列一起做 single-linkage clustering：V/J gene 与 CDR3 长度须相同，string substitution distance 对应的 sequence identity 阈值为 TCR 95%、BCR 90%。这与模型 2 的跨人疾病聚类阈值 TCR 90%、BCR 85% 不能混用（`P010.S0043-P010.S0048`、`P011.S0039-P011.S0040`、`P012.S0008`）。
+- 模型 1 每个 clone 只计一次，仅保留 training prevalence 前 50% 的 V genes；V–J counts 先归一到和为 1，再 log transform、Z-score 并降到 15 个 PCA 特征，所有变换只在 train 拟合后应用于 validation/test。每个 BCR isotype 另加 2 个 SHM 特征，最终 BCR 为 51 维、TCR 为 15 维；最佳 BCR 分类器为 L1/L2 ratio 0.25 的 elastic net，TCR 为 lasso（`P011.S0023-P011.S0029`、`P011.S0043-P011.S0047`）。
+- 候选分类器不只包含最终胜出的 logistic regression：作者还比较 `python-glmnet` 的 multinomial logistic regression（正则强度在交叉验证中选择）、100 棵树的 random forest，以及 one-versus-rest、linear kernel、`C=1.0` 的 support vector machine；所有候选都使用与类别频率成反比的平衡权重（`P011.S0030-P011.S0031`）。
+- 模型 2 以 unique people 构造 Fisher 2×2 表，single-linkage clustering 使用 normalized Hamming distance；raw `P=0.0005–0.05` 的候选阈值在 train-2 以 MCC 选择，同一 fold/受体类型内各疾病共用阈值，但阈值可随 fold 和 BCR/TCR 改变。cluster 用 clone-size-weighted consensus centroid 表示且忽略 IgH isotype；cluster-count features 标准化后，最佳 BCR/TCR 患者级模型分别为 ridge/lasso logistic regression，无匹配 cluster 时 abstain（低于 3%）（`P009.S0050-P009.S0051`、`P011.S0039-P012.S0018`）。
+- exact-match baseline 也以疾病命中数除以样本总序列数，零命中时 abstain，并使用同一组 Fisher P 候选和 train-2 MCC 选阈；它与模型 2 的差别只在 exact match 对 fuzzy match，不能用不同调参流程解释性能差异（`P012.S0019-P012.S0027`）。
+- 模型 3 使用 bio-transformers v0.1.17 调用 30 层、1.5 亿参数的 ESM-2，将 hidden state 沿序列长度取均值得 640 维向量，再做 Z-score；BCR 另加 SHM。不同 IGHV–isotype/TRBV category 的模型概率未校准，不能直接跨 category 比较（`P012.S0028-P012.S0039`、`P012.S0047-P012.S0048`）。
+- 患者级聚合比较 mean、median、去除最低 10% 的 trimmed mean，以及 10%/20% entropy cutoff；第二阶段 one-versus-rest 子模型只读取对应疾病概率，保留 top 50% V-gene categories，BCR 在各 isotype 内按 category 频率重权，并在 train-2 拟合。最终 BCR 为 random-forest sequence model 加 random-forest mean aggregation，TCR 为 one-versus-rest ridge 加 random-forest mean 与 20% entropy cutoff；概率未校准，因此基础模型 3 不报告 accuracy。TreeSHAP 在各 one-versus-rest random forest 上计算，对 train-2 阳性样本取均值并缩放至 0–1；Louvain `resolution=1.0`（`P012.S0040-P013.S0019`）。
+- ensemble 将 validation 上六个基础模型的概率拼接，以 ridge logistic regression 拟合 metamodel，同时传递模型 2 的 abstention，再在 held-out test 评价；组件消融通过特征子集重新拟合 metamodel，而不是直接删除输出（`P013.S0031-P013.S0037`）。
 - 人级隔离有必要：任意两个人平均共享 IgH/TRB 序列仅 0.0003%/0.166%，但任意 train/validation/test 两组仍平均共享 0.05%/5.3%；同一人的所有样本始终在同一分区（`P010.S0053`、`P011.S0013-P011.S0019`）。
-- binder 评价使用 2023-06-13 版本 CoV-AbDab，以 `igblastp` 注释，保留 weak binder、排除 variant-selective 序列并做 95% 聚类；流感对照排除 H5N1/H7N9，TCR 使用 MIRA v002.1。外部 BCR 缺少 isotype 时按 IgG 模型评分，这会限制解释（`P014.S0029-P014.S0043`）。
+- 外部 cDNA 队列只纳入症状后至少 2 周的 acute COVID-19，并尽量使用同版 IgBLAST/reference；Britanova 数据无 raw reads 时沿用其 gene calls，并核对 TRBV6-2/6-3 与 TRBV12-3/12-4。作者留出少量外部样本，以最大化 MCC 的类别概率重权做校准；权重 `1/5` 表示该类别需高 5 倍置信度才胜出，而且只改变 label-based metrics（`P013.S0044-P014.S0009`）。Adaptive gDNA TCR 数据也用同版 IgBLAST 重处理后再训练（`P014.S0010-P014.S0011`）。
+- 年龄、性别或祖源预测任务只使用健康对照，年龄分别离散为 deciles、`<50/≥50` 和 `<18/≥18`，并排除唯一超过 80 岁者；疾病混杂分析则使用疾病预测数据中人口学信息完整的个体子集，对 ensemble 的每个特征逐列做线性回归并以 residual 替换，同时另做 demographic dummy-only 以及 demographic、sequence 与 interaction 联合模型（`P014.S0012-P014.S0028`）。
+- binder 评价使用 2023-06-13 版本 CoV-AbDab，以 `igblastp` 按氨基酸突变估计 SHM，只保留人类患者/疫苗者，保留 weak binder、排除 variant-selective 序列，并按相同 IGHV、IGHJ、CDR-H3 长度及至少 95% identity 做 single-linkage 与 consensus；流感对照排除 H5N1/H7N9（`P014.S0036-P014.S0041`）。外部 BCR binder 没有 isotype，因此用 IgG sequence model 评分，健康 comparator 是 global-fold validation 中未参与训练的 IgG 序列。TCR 使用 MIRA v002.1，只留 productive、acute COVID-19 且训练集存在的 TRBV，并按 TRBV+TRBJ+CDR3b 完全一致去重（`P014.S0042-P014.S0043` → `P014.S0029`）。统计使用 global-fold 模型 2/3 和单侧 1,000 次 donor-grouped permutation，以 AUPRC 相对 baseline prevalence 的 fold change 为统计量；P 值是置换统计量超过观察值的比例（`P014.S0030-P014.S0035`）。
+- 完整计算环境为 Python 3.9.17、NumPy 1.24.3、pandas 1.5.3、SciPy 1.11.1、scikit-learn 1.2.2、python-glmnet 2.2.1、PyTorch 2.0.1、bio-transformers 0.1.17、Matplotlib 3.7.1 和 seaborn 0.12.2（`P011.S0038`）。
 
 ### 生物学与临床意义
 
 这篇文章最重要的生物学意义是：疾病可以通过分布式方式改变 adaptive immune repertoire，而不只是留下少数可直接识别的抗原特异性克隆。感染可能产生抗原特异性 B 细胞扩增；自身免疫病可能形成慢性自身反应和 T-B 协同异常；疫苗接种在特定时间窗会提高血液中反应性浆母细胞或相关克隆频率。Mal-ID 试图把这些不同层级的免疫改变统一为可计算表型。
 
-临床上，最值得注意的是模型可能更接近“免疫状态读数”而非“终身诊断标签”。狼疮低活动患者被判为健康的结果说明，模型可能对当前疾病活动、治疗后免疫静息状态或外周血免疫扰动更敏感。若目标是初诊筛查，这可能造成漏诊；若目标是监测病情活动或治疗反应，则可能成为优势。
+临床上，最值得注意的是模型可能更接近“免疫状态读数”而非“终身诊断标签”。狼疮低活动患者被判为健康的结果提示，模型可能对当前疾病活动、治疗后免疫静息状态或外周血免疫扰动更敏感；若目标是初诊筛查，这可能造成漏诊。论文没有研究纵向病情或治疗反应，因此目前不能把这种敏感性写成监测优势。
 
 因此，未来临床应用必须先定义问题：是诊断是否患病，还是判断当前免疫活动，还是预测复发、进展或治疗反应。不同目标需要不同队列、标签、随访和阈值。
 
@@ -391,7 +403,7 @@ SHAP 用于解释模型 3 的 patient-level 特征贡献。输入是不同 IGHV/
 
 最值得借鉴的是模型架构与生物层级一致。作者没有把所有序列压成一个黑箱向量，而是保留 BCR/TCR、V gene、isotype、CDR3、sequence embedding、patient-level aggregation 等层级。这种设计让模型解释和生物学验证成为可能。对于多组学、空间组学和肿瘤微环境研究，这个原则非常重要：模型结构应该尽量尊重生物组织层级，而不是只追求端到端预测。
 
-这篇文章也提醒我们，未来真正有价值的可能不是横断面诊断，而是纵向免疫轨迹。若 repertoire 能读出当前免疫状态，那么更强的问题是：它能否预测感染后恢复、自身免疫复发、癌前病变进展、疫苗反应持续时间或治疗获益。静态分类只是第一步，动态转归预测才更接近精准医学。
+以下是本笔记延伸的研究假设，并非论文结论：若 repertoire 能读出当前免疫状态，可以进一步检验它能否预测感染后恢复、自身免疫复发、癌前病变进展、疫苗反应持续时间或治疗获益。论文只完成静态分类，尚未验证任何动态转归预测。
 
 ### 可借鉴或迁移的思路
 
