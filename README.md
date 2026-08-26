@@ -88,7 +88,7 @@ python scripts/build_pdf_llm_pack.py pdfs/processed/example.pdf \
       - [重要缩写表](notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md#重要缩写表)
       - [论文详细解读](notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md#论文详细解读)
       - [领域方法学与复现提示](notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md#领域方法学与复现提示)
-      - [被综述领域常用的统计与分析方法](notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md#被综述领域常用的统计与分析方法)
+      - [原综述点名的计算方法索引](notes/spatial-transcriptomics/2026-spatial-omics-at-the-forefront.md#原综述点名的计算方法索引)
   - [Precision Medicine](notes/precision-medicine/README.md)
   - [AI](notes/AI/README.md)
   - [Epidemiology](notes/epidemiology/README.md)
