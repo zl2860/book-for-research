@@ -1,6 +1,6 @@
 # Mutational Signatures and Clonal Hematopoiesis in Intestinal Metaplasia across Countries with Varying Stomach Cancer Incidence
 
-<!-- wechat-style-reviewed: 2026-08-19 -->
+<!-- wechat-style-reviewed: 2026-08-27 -->
 
 发现胃肠化生以后，临床上最难回答的问题往往不是“它是不是癌前病变”，而是“这个人究竟有多大概率会继续进展”。
 
@@ -124,7 +124,7 @@ KRAS/MAPK-altered IM 和 pyrvinium 类器官结果也提供了干预线索，但
 
 ## 技术附录
 
-以下内容保留论文基本信息、完整主图说明、Results/Methods 证据、复现参数和证据边界。
+以下内容保留论文基本信息、完整主图说明、Results/Methods 证据、复现参数和证据边界。读者正文已经展示的 5 个图页不在附录重复嵌入；完整 panel 图注、图像路径和正文位置均保留。
 
 ### 基本信息
 
@@ -244,8 +244,6 @@ Hp 变异也有地区差异。作者在 Hp-positive 样本中看到日本/韩国
 
 ![Fig. 2a：IM driver gene landscape](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig2-page6.png)
 
-![Fig. 2b-c：地区差异和 ARID1A 与 EGN](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig2-page7.png)
-
 中文图注（基于原文图注）：Fig. 2 展示 36 个代表性 driver genes 的 oncoprint、不同人群/地区的关键 driver mutation rate，以及 ARID1A truncating mutations 与 EGN 的关联。图中重点是中国人群中 SOX9 truncation 频率高，而日本/韩国高风险人群中 ARID1A、ARID2、ERBB3 等更常见。
 
 IntOGen 在 IM 中识别 47 个显著突变基因，共 2,100 个 driver mutations，其中 25 个此前未在 IM 中报告。47 个 driver genes 中 37 个也出现在正常胃、TCGA pan-GI cancer 或 IntOGen 胃癌 driver 资源中，说明这些基因与胃上皮癌变相关性较强。
@@ -260,8 +258,6 @@ antrum IM 的平均 somatic mutation count 为 23，平均 VAF 2.9%，中位 VAF
 
 ![Fig. 3a-b：KRAS/MAPK driver 与通路激活](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig3-page8.png)
 
-![Fig. 3c-g：scRNA-seq、IM organoid 和 pyrvinium](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig3-page9.png)
-
 中文图注（基于原文图注）：Fig. 3 展示 KRAS、BRAF、MAP2K1 的 gain-of-function 以及 MAP2K4、MAP3K1、NF1 的 loss-of-function 改变；bulk RNA-seq 证明 KRAS/MAPK-mutated IM 激活 KRAS-ERK signatures；scRNA-seq 显示 cycling intestinal stem/TA cells KRAS-ERK 分数更高；IM organoid 通过 CDX2 和转录组确认，并对 pyrvinium 更敏感。
 
 KRAS/MAPK 通路改变存在于一部分 IM 中。作者观察到 KRASG12D、BRAFD594G、MAP2K1F53L 等激活性突变，以及 MAP2K4、MAP3K1、NF1 等负调控因子的失活。104 个同时有 DNA 和 bulk RNA-seq 的 IM 样本中，10 个带 KRAS/MAPK driver alterations，这些样本显著上调 KRAS、ERK 和 KRAS-ERK intersected signatures；下采样 1,000 次后结果仍稳定。
@@ -275,8 +271,6 @@ KRAS/MAPK 通路改变存在于一部分 IM 中。作者观察到 KRASG12D、BRA
 来源范围：`P009.S0008–P011.S0019`（Fig. 4 跨第 10–11 页；图注分别为 `P010.S0047–P010.S0057` 与 `P011.S0043–P011.S0052`）。
 
 ![Fig. 4a-e：IM mutational signatures 与复制时序](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig4-page10.png)
-
-![Fig. 4f-h：OXPHOS、8-oxo-dG、年龄和吸烟](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig4-page11.png)
 
 中文图注（基于原文图注）：Fig. 4 展示 20 个 IM WGS 样本的 SBS1、SBS5/40、SBS17、SBS18 组成；与正常胃和胃癌比较；SBS17 的 VAF 偏低；SBS17 在 late-replicating regions 高度富集；IM organoids 中 OXPHOS、OCR 和 8-oxo-dG 增强；SBS17 与吸烟相关而不随年龄显著增加。
 
@@ -306,8 +300,6 @@ CIN+/MSI+ 组相对另一组有 6,741,487 个低甲基化 CpG（35.7%）和 326,
 
 ![Fig. 5a-d：IM 患者 CH driver 与年龄/吸烟](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig5-page13.png)
 
-![Fig. 5e：CH 与 dysplasia/EGN 风险模型](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig5-page14.png)
-
 中文图注（基于原文图注）：Fig. 5 展示 1,067 名 IM subject 中 CH mutations 的分布，DNMT3A、TET2、ASXL1、PPM1D 等 CH genes 的突变位置与 MSKCC pan-cancer CH 数据对照，CH carriers 年龄更大且 IM somatic mutation rate 更高，ASXL1 mutation 与吸烟相关；logistic regression 显示 high CH 与 dysplasia/EGN 风险相关。
 
 作者在 1,067 名 IM subjects 中识别 286 个 reported CH gene mutations，分布于 225 人。显著 CH driver genes 为 DNMT3A、TET2、ASXL1、PPM1D，突变谱与既往 MSK-IMPACT 大队列中的 CH 规律一致，例如 DNMT3A R882 missense、TET2/ASXL1 truncation、PPM1D 3' 区域 truncation。
@@ -323,8 +315,6 @@ CH carriers 年龄更大，IM somatic mutation rate 更高。ASXL1 mutation 在�
 ![Fig. 6a-d：CH、PIGR 和黏膜免疫模型](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig6-page14.png)
 
 ![Fig. 6e-g：CH-high IM 的免疫和细菌组成](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig6-page15.png)
-
-![Fig. 6h-i：Streptococcus/Sa FISH 和空间炎症](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig6-page16.png)
 
 中文图注（基于原文图注）：Fig. 6 展示 high CH 与 IM driver genes 的共现，其中 PIGR truncating mutation 与 high CH 关联；PIGR 参与 IgA transcytosis；CH-high IM 中 IgA+ plasma cells 和 mature T cells 增加；口腔来源细菌如 Streptococcus、Neisseria、Gemella、Fusobacterium 增加；FISH 和 Stereo-seq 在胃癌组织中显示 Streptococcus/Sa 与 CXCL8 炎症区域空间重叠。
 

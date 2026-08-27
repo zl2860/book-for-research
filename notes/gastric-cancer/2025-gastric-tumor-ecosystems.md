@@ -1,6 +1,6 @@
 # Spatially Resolved Tumor Ecosystems and Cell States in Gastric Adenocarcinoma Progression and Evolution
 
-<!-- wechat-style-reviewed: 2026-08-18 -->
+<!-- wechat-style-reviewed: 2026-08-27 -->
 
 在一例胃癌手术标本里，肿瘤核心、浸润边缘和肿瘤—基质交界可能相距不远。如果研究只取一块“代表性”组织，核心区看起来相对安静，并不代表边缘也处在同一种分子和免疫状态。
 
@@ -68,6 +68,8 @@
 
 ## 06｜哪一种演化路线与更差预后相关
 
+要判断这种横断面分类是否具有临床信息，关键是看它的表达签名能否在独立队列中复现生存差异。
+
 ![图 4：internal diaspora 签名与胃癌预后](../../assets/gastric-cancer/2025-gastric-tumor-ecosystems/fig4-prognostic-evolution.png)
 
 简明图注：单细胞队列建立演化签名，再映射到 TCGA-STAD（n = 332）和 ACRG（n = 273）；外部队列验证的是表达签名及生存关联，不是直接重建每名患者的演化树。
@@ -92,7 +94,7 @@ TCGA-STAD 中，internal diaspora 签名组生存更差，log-rank P = 0.04；�
 
 简明图注：CellOracle 预测 SOX9 敲除使 G2 样状态向 G1 样偏移；siRNA、3 个细胞系的 CRISPR KO 及 5,398 个单细胞提供功能支持，但尚未在动物或患者来源模型中证明 SOX9 会重塑演化轨迹。
 
-SOX9 CRISPR KO 在 SNU1967、AGS 和 YCC21 三个细胞系中均降低细胞活力和迁移。YCC21 的 KO 与对照共获得 5,398 个质控后单细胞，KO 后 G2M checkpoint、E2F targets 和 mitotic spindle 程序下降。
+SOX9 CRISPR KO 在 SNU1967、AGS 和 YCC21 三个细胞系中，与野生型对照相比均降低细胞活力和迁移。Supplementary Fig. S8J 对细胞活力给出 3 次独立实验的均值 ± 标准差，并用 Student's t-test 标星，但没有列出可直接引用的各细胞系精确效应数值和精确 P 值；这个重复数不能外推到迁移实验。YCC21 的 KO 与阴性对照共获得 5,398 个质控后单细胞，KO 后 G2M checkpoint、E2F targets 和 mitotic spindle 程序下降。
 
 这些实验支持 SOX9 维持增殖和 G2 样状态，却没有证明它单独启动 internal diaspora，也没有证明抑制 SOX9 能改善患者结局。
 
@@ -110,7 +112,7 @@ SOX9 CRISPR KO 在 SNU1967、AGS 和 YCC21 三个细胞系中均降低细胞活�
 
 GREM1 在肠型和弥漫型胃癌的 TSI 均被作者描述为常见上调，但原文没有报告跨患者出现频率或效应量；TSI 特征主要映射到 TGF-β 活性较高的 Fib1 肌成纤维样 CAF。两份 Stereo-seq 中也能区分 TSI bin；越接近间质的肿瘤区域，TGF-β 通路评分越高，P < 2.20 × 10^-16。
 
-两个 GREM1+ CAF 细胞系与一个胃癌类器官共培养后，CAF 中 GREM1 表达升高。这支持界面存在超出简单线性混合的候选程序，但不能确定 GREM1 的确切来源、TGF-β 的信号方向或必要性。
+两个 GREM1+ CAF 细胞系与一个胃癌类器官共培养后，两个 CAF 系中的 GREM1 表达均升高。Supplementary Fig. S9D 用相对表达柱图展示这一方向，并报告 Student's t-test、`* P ≤ 0.05`；图注没有列出可直接引用的精确效应数值、精确 P 值，也未说明技术复孔或生物学重复数。这支持界面存在超出简单线性混合的候选程序，但不能确定 GREM1 的确切来源、TGF-β 的信号方向或必要性。
 
 <a id="08｜为什么这套证据路线比一张空间图更有价值"></a>
 
@@ -136,7 +138,7 @@ GREM1 在肠型和弥漫型胃癌的 TSI 均被作者描述为常见上调，但
 
 第四，生存模型主要校正性别和肿瘤分期，治疗、取样密度、平台和其他临床变量仍可能混杂。SOX9 扰动限于体外细胞系，GREM1/TGF-β 模型也没有完成原位阻断或动物验证。
 
-最后，本地 PDF 不含 Supplementary Fig. S1–S9 和 Supplementary Tables S1–S8。主文中还有跨页错序、图注文字冲突和大范围多重比较；技术附录已逐项标出这些低置信处。
+最后，本地 PDF 不含 Supplementary Fig. S1–S9 和 Supplementary Tables S1–S8。本轮另从官方补充包定点核验了 S8J 与 S9D 的统计标注，但其余补图、补表仍未纳入句子 ID 审计。主文中还有跨页错序、图注文字冲突和大范围多重比较；技术附录已逐项标出这些低置信处。
 
 <a id="10｜如何把这套设计迁移到自己的研究"></a>
 
@@ -152,7 +154,7 @@ GREM1 在肠型和弥漫型胃癌的 TSI 均被作者描述为常见上调，但
 
 ## 技术附录
 
-以下为旧版完整笔记与证据留档，包含论文与数据来源、PDF 解析质量、主图、全部 Results/Methods 句子 ID、逐句证据边界、方法参数、原文冲突、低置信抽取和覆盖审计。标题降为技术附录的子层级，内容不删减。
+以下为旧版完整笔记与证据留档，包含论文与数据来源、PDF 解析质量、主图、全部 Results/Methods 句子 ID、逐句证据边界、方法参数、原文冲突、低置信抽取和覆盖审计。标题降为技术附录的子层级，内容不删减。读者正文已经展示的 5 张图不在附录重复嵌入；完整 panel 图注、图像路径和正文位置均保留。
 
 ### 基本信息
 
@@ -169,7 +171,7 @@ GREM1 在肠型和弥漫型胃癌的 TSI 均被作者描述为常见上调，但
 - PDF 解析质量：
   - 文字抽取方式：使用 `scripts/build_pdf_llm_pack.py --engine pymupdf` 建立 `tmp/2025-gastric-tumor-ecosystems-llm-pack.md` 和 JSON manifest。
   - 覆盖范围：26 页，共抽取 1,431 个句子 ID；脚本初始分类为 Results 216 句、Methods 427 句。人工版面审计发现第 5–15 页的多段真实 Results 因正文引用 “Supplementary Fig./Table” 被误分到 `supplementary`，第 23–26 页部分作者贡献、披露、致谢和参考文献又被误分到 `methods`；本笔记按 PDF 原始章节边界纠偏，不直接采用自动分类计数。
-  - 图表与补充材料：主文 Fig. 1–7 和图注均在 PDF 中；正文频繁引用 Supplementary Fig. S1–S9、Supplementary Tables S1–S8，但 inbox PDF 不含这些补充文件，故不补写其不可见 panel、数值或实验细节。
+  - 图表与补充材料：主文 Fig. 1–7 和图注均在 PDF 中；inbox PDF 不含 Supplementary Fig. S1–S9 或 Supplementary Tables S1–S8。本轮通过 [Europe PMC 官方补充包](https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11962405/supplementaryFiles) 定点核验 S8J 与 S9D：前者对 SOX9 KO 细胞活力给出 3 次独立实验的均值 ± 标准差、Student's t-test 和星号阈值；后者给出 GREM1 相对表达柱图、Student's t-test 与 `* P ≤ 0.05`。其余补图和补表未完整纳入句子 ID 审计，不从主文引用反推不可见细节。
   - 低置信内容：双栏版面在第 2 页将作者单位穿插进 Introduction；跨页句、页眉页脚、整页主图的基因名/坐标轴/显著性标记被拆成孤立“句子”；Fig. 4–7 的跨页图注与正文有局部错序。所有这类内容均在覆盖审计中单列，不把图内标签冒充正文结果。
 - 图像截取说明：主图按原 PDF 页面对 Fig. 1–7 进行整页或跨页截取，保留 panel、坐标轴、图例和图注上下文；正文图片只服务于相应原始 Results 小节。
 - LLM 覆盖审计：
@@ -236,8 +238,6 @@ GREM1 在肠型和弥漫型胃癌的 TSI 均被作者描述为常见上调，但
 ### 原文结果完整梳理
 
 #### Spatially Resolved Patterns of ITH in Gastric Cancer
-
-![图1：胃癌中空间分辨的 RNA-ITH](../../assets/gastric-cancer/2025-gastric-tumor-ecosystems/fig1-spatial-rna-ith.png)
 
 中文图注（基于原文图注）：
 
@@ -362,8 +362,6 @@ GREM1 在肠型和弥漫型胃癌的 TSI 均被作者描述为常见上调，但
 | `P007.S0013` | 对 LA ROI，样本内和样本间细胞类型组成的相关性很高（0.61–0.92，中位数 = 0.78），提示 LA ROI 更均一。 | 量化 LA 组成一致性；“更均一”相对于所比较的 ROI，相关性并不意味着完全一致。 |
 
 #### G2 RNA-ITH Regions Exhibit an Immunosuppressive TME
-
-![图2：G2 RNA-ITH 区域的免疫抑制微环境](../../assets/gastric-cancer/2025-gastric-tumor-ecosystems/fig2-immune-heterogeneity.png)
 
 中文图注（基于原文图注）：
 
@@ -525,8 +523,6 @@ GREM1 在肠型和弥漫型胃癌的 TSI 均被作者描述为常见上调，但
 | `P010.S0015` | 3E）与既往胃癌 bulk WES 研究推断的发现一致（66），从而表明肿瘤进化模式在宏观和微观尺度具有一致性（见“Discussion”）。 | `EXTRACTION_CHECK`：补全上一 ID；跨研究一致性增强可解释性，但并非在全部相同样本中直接比较单细胞与 WES。 |
 
 #### Clinical Impact of Internal Diaspora Evolution on Gastric Cancer Prognosis
-
-![图4：internal diaspora 演化与胃癌进展和预后](../../assets/gastric-cancer/2025-gastric-tumor-ecosystems/fig4-prognostic-evolution.png)
 
 中文图注（基于原文图注）：
 
@@ -695,8 +691,6 @@ GREM1 在肠型和弥漫型胃癌的 TSI 均被作者描述为常见上调，但
 
 > 小标题按 PDF 第 15 页原文保留。Fig. 6 图注横跨第 14–15 页，尽管其句子被 manifest 归入 `supplementary`，均为主文图注，故全部纳入。
 
-![图6：SOX9 是内部离散演化的候选驱动因子](../../assets/gastric-cancer/2025-gastric-tumor-ecosystems/fig6-sox9-driver.png)
-
 **图 6 面板解读。** A，TSPAN8 与 SOX9 在 G1 样和 G2 样肿瘤细胞中的表达比较。B，两个空间样本中 A/G1 样与 B/G2 样状态的 UMAP。C–D，CellOracle 预测的 A→B 状态转移以及 SOX9 虚拟敲除后的 B→A 偏移。E–F，SOX9、TSPAN8 或 AGR2 siRNA 后的表达、活力、迁移或克隆形成实验；各基因、细胞系和终点并不完全相同。G，三种细胞系中 SOX9 CRISPR KO 的蛋白验证。H，SOX9 KO 与非靶向对照共 5,398 个细胞的整合 UMAP。I，GSEA 显示 KO 后 G2M checkpoint、E2F targets 与 mitotic spindle 程序下降。计算扰动、体外功能实验和通路变化共同支持“候选驱动”，但尚不能证明 SOX9 单独决定患者肿瘤中的演化轨迹。
 
 ##### Results 正文逐句证据
@@ -769,8 +763,6 @@ GREM1 在肠型和弥漫型胃癌的 TSI 均被作者描述为常见上调，但
 #### Spatial Analysis of the TSI Reveals a Unique TGF-β–Mediated State
 
 > 原始小标题横跨两行：`P016.S0022` 抽取到第一行 “Spatial Analysis of the TSI Reveals a Unique”，第二行 “TGF-β–Mediated State” 被置入 `P016.S0023` 的 heading 字段；此处按 PDF 恢复完整标题。TSI 指 tumor–stroma interface（肿瘤—间质交界）。Fig. 7 续页图注 `P017.S0043–P017.S0051` 被误归入 `discussion`，但 PDF 版面明确属于主图图注，故一并覆盖。
-
-![图7：肿瘤—间质交界处的独特 TGF-β 相关状态](../../assets/gastric-cancer/2025-gastric-tumor-ecosystems/fig7-tumor-stroma-interface.png)
 
 **图 7 面板解读。** A，NGC521 样本中肿瘤、TSI 与间质 ROI 的选取示例。B，三类 ROI 的 UMAP，TSI 位于肿瘤与间质之间。C，7 个样本的肿瘤、TSI 与间质签名热图，并标注 Lauren 分型、演化类型和 ROI 类别；GREM1 被突出显示。D，以 CIBERSORTx 将 scRNA-seq 细胞群映射到 GeoMx 样本。E，CAF 亚型特征点图。F，肿瘤上皮、TSI 与间质 ROI 的 TGF-β 程序 ssGSEA 评分。图中关联支持 TSI 特异程序，但不能仅凭空间共现确定配体—受体方向或因果关系。
 
@@ -1228,7 +1220,7 @@ GeoMx WTA DSP 原始数据位于 EGA `EGAS50000000345`，SGCC TMA GeoMx 数据�
 
 第五，SOX9 的证据链包含计算模拟、敲低和敲除，但尚未完成动物体内、患者来源模型中的演化重塑与治疗响应验证。SOX9 也可能是维持 G2 状态的必要因子，而非产生 internal diaspora 的初始事件。
 
-第六，补充材料未随 inbox PDF 提供。本文许多阈值、额外队列细节和扩展图证据只在主文中被引用；本笔记没有从摘要或上下文反推缺失 panel。
+第六，补充材料未随 inbox PDF 提供。本轮只用官方补充包定点复核了 S8J 与 S9D 的图注和统计标注；其余阈值、额外队列细节和扩展图证据没有纳入句子 ID 审计，也没有从摘要或上下文反推缺失 panel。
 
 第七，多重比较范围很大。局部报告的显著 P 值不自动等于稳定效应；跨平台、跨队列的方向一致性比单个极小 P 值更值得重视。
 
@@ -1276,4 +1268,4 @@ GeoMx WTA DSP 原始数据位于 EGA `EGAS50000000345`，SGCC TMA GeoMx 数据�
 - **Results 低置信边界：** 跨页、跨栏、图号拆分、heading/source 混排和 OCR 异常均在逐句表内显式标为 `EXTRACTION_CHECK`。特别核回了被抽取遗漏的 `P007.S0029`（TGFB1，P = 2.88 × 10−13；TNFSF12，P = 4.44 × 10−7）以及被 OCR 写成 “EF2 targets” 的 Fig. 6I；后者依据可见图注和 panel 恢复为 “E2F targets”。
 - **Methods 完整性：** 原 PDF 的真实 Methods（含 Statistical Analysis 与 Data Availability）为 `P019.S0016–P023.S0030`，共 209/209 个 ID，已按 22 个原始方法小标题逐句覆盖；无真实 Methods 缺失。manifest 误标的 218 个 ID 已排除：`P023.S0031–P024.S0010`（76 个，作者披露、贡献、致谢与资助）和 `P025.S0088–P026.S0110`（142 个，参考文献及版面噪音）。
 - **Methods 低置信与复现边界：** PDF 可见的一抗、qPCR 引物、gRNA 寡核苷酸和 Western blot 抗体列表未被抽取器编码为独立 ID，已在相邻句中记录并标记 `EXTRACTION_CHECK`。论文给出 EGA/GEO 登录号，但部分额外验证数据需向通讯作者索取，且未提供统一代码仓库、完整工具版本、随机种子、CellOracle 参数或全部设计矩阵，因此不能仅凭主文完全复现。
-- **缺失补充材料：** inbox 仅含主论文 PDF，不含文中引用的 Supplementary Fig. S1–S9 与 Supplementary Tables S1–S8。本笔记只记录主文对这些材料的引用，不臆造不可见 panel、数值、试剂细节或额外分析。
+- **补充材料边界：** inbox 仅含主论文 PDF，不含文中引用的 Supplementary Fig. S1–S9 与 Supplementary Tables S1–S8。本轮从 Europe PMC 官方补充包定点核验 S8J 与 S9D，补入其可见的实验重复、汇总方式、检验和 P 值阈值；其余补图、补表未完整纳入句子 ID 审计，不臆造不可见 panel、数值、试剂细节或额外分析。
