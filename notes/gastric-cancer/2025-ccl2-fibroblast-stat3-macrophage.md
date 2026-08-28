@@ -1,6 +1,6 @@
 # Spatial dissection of tumour microenvironments in gastric cancers reveals the immunosuppressive crosstalk between CCL2+ fibroblasts and STAT3-activated macrophages
 
-<!-- wechat-style-reviewed: 2026-08-21 -->
+<!-- wechat-style-reviewed: 2026-08-28 -->
 
 同样是胃癌，有些肿瘤里免疫细胞能够进入恶性上皮周围；另一些肿瘤却被致密的成纤维细胞包围，巨噬细胞聚集，真正执行杀伤的 T 细胞很少。病理上可以看到这种差别，但很难回答：究竟是哪类细胞在组织这种“免疫冷”环境？
 
@@ -98,7 +98,7 @@ CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL
 
 ## 技术附录
 
-以下内容保留论文基本信息、完整主图说明、Results/Methods 证据、复现参数和覆盖审计。
+以下内容保留论文基本信息、完整主图说明、Results/Methods 证据、复现参数和覆盖审计。读者正文已经展示的 3 张图不在附录重复嵌入；完整 panel 图注、图像路径和正文位置均保留。
 
 ### 基本信息
 
@@ -132,11 +132,11 @@ CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL
 
 | 原文图表 | 原文图题/核心信息 | 是否截取 | 图像文件 | 放置位置 |
 |---|---|---|---|---|
-| Fig. 1 | 9 例胃癌按空间细胞组成分为 epithelial、immunogenic、fibrotic 三类 | 是 | `assets/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage/page03.png` | [Spatial cellular maps of three GC subtypes](#spatial-cellular-maps-of-three-gc-subtypes) |
+| Fig. 1 | 9 例胃癌按空间细胞组成分为 epithelial、immunogenic、fibrotic 三类 | 是 | `assets/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage/page03.png` | [03｜胃癌能被拆成哪三种空间生态](#03｜胃癌能被拆成哪三种空间生态) |
 | Fig. 2 | 29,808 个 Visium spots 聚类为六类 spatial niches，并推断 niche 相关转录动态 | 是 | `page04.png` | [Spatially resolved cellular and transcriptional dynamics with respect to GC TME architecture](#spatially-resolved-cellular-and-transcriptional-dynamics-with-respect-to-gc-tme-architecture) |
 | Fig. 3 | 构建 regulator-target cell crosstalk landscape，突出 fibroblast infiltration 与 IL6-JAK-STAT3/免疫检查点上调 | 是 | `page05.png` | [Landscape of intercellular crosstalk and its functional consequences](#landscape-of-intercellular-crosstalk-and-its-functional-consequences) |
-| Fig. 4 | NicheNet、scRNA-seq、CellphoneDB、空间签名和外部队列支持 CCL2+ fibroblast 与 STAT3-activated macrophage 轴 | 是 | `page06.png` | [CCL2+ cancer-associated fibroblasts regulate JAK-STAT3 signalling in macrophages](#ccl2-cancer-associated-fibroblasts-regulate-jak-stat3-signalling-in-macrophages) |
-| Fig. 5 | 体外验证 CAF/CCL2 促进单核细胞迁移、激活巨噬细胞 STAT3，并抑制 T 细胞 IFNG | 是 | `page07.png` | [CCL2+ CAFs recruit myeloid cells via STAT3-activated macrophages](#ccl2-cafs-recruit-myeloid-cells-via-stat3-activated-macrophages) |
+| Fig. 4 | NicheNet、scRNA-seq、CellphoneDB、空间签名和外部队列支持 CCL2+ fibroblast 与 STAT3-activated macrophage 轴 | 是 | `page06.png` | [05｜哪一对细胞把空间状态与患者结局连起来](#05｜哪一对细胞把空间状态与患者结局连起来) |
+| Fig. 5 | 体外验证 CAF/CCL2 促进单核细胞迁移、激活巨噬细胞 STAT3，并抑制 T 细胞 IFNG | 是 | `page07.png` | [06｜空间相关怎样走到功能实验](#06｜空间相关怎样走到功能实验) |
 | Fig. 6 | 小鼠同系移植和 675 例 TMA 验证 fibrotic GC 的巨噬细胞富集、CD8/GrzB 降低和差预后 | 是 | `page08.png` | [CCL2+ fibroblast-mixed syngeneic mouse tumours recapitulate fibrotic GC](#ccl2-fibroblast-mixed-syngeneic-mouse-tumours-recapitulate-fibrotic-gc) |
 | Fig. 7 | 总结模型: CAF 促 EMT，招募并激活 macrophage STAT3，导致 T cell suppression | 是 | `page10.png` | [作者结论与证据强度](#作者结论与证据强度) |
 
@@ -172,7 +172,7 @@ CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL
 |---|---|---|---|
 | GC | gastric cancer，胃癌 | 9 例 Visium 原发胃癌、公共胃癌转录组队列和 675 例 TMA 队列 | 不是单一分子亚型，包含 intestinal/diffuse、MSI/EBV 等异质背景 |
 | TME | tumour microenvironment，肿瘤微环境 | 恶性细胞、CAF/ fibroblast、内皮、髓系、T/B/NK/plasma cell 等组成的空间生态 | 本文强调空间关系和功能互作，不只是细胞比例 |
-| Visium | 10x Genomics 空间转录组平台 | 9 例 FFPE/组织切片上每个 spot 的表达和空间坐标 | spot 不是单细胞，需要 deconvolution |
+| Visium | 10x Genomics 空间转录组平台 | 9 例 OCT 冷冻组织切片上每个 spot 的表达和空间坐标 | spot 不是单细胞，需要 deconvolution |
 | spot | 空间转录组采样点 | 每例 1,882-4,274 个 spot，9 例合计 29,808 个 spot | 每个 spot 可混合多种细胞 |
 | CAF | cancer-associated fibroblast，癌相关成纤维细胞 | 本文主线中的 fibroblast/CAF，尤其 CCL2+ fibroblast | 文中有时用 fibroblast，有时用 CAF；功能验证主要用 CAF 细胞 |
 | CCL2 | C-C motif chemokine ligand 2 | fibroblast 表达的关键 chemokine，NicheNet 指向 IL6-JAK-STAT3 免疫轴 | CCL2 阻断临床单药历史并不理想，本文更支持 subtype/联合策略假说 |
@@ -216,8 +216,6 @@ CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL
 
 ##### Spatial cellular maps of three GC subtypes
 
-![Fig. 1 整页](../../assets/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage/page03.png)
-
 中文图注（基于原文图注）：Fig. 1A 用 heatmap 和 bar plots 展示 9 例 GC 中 12 类细胞的丰度，并通过层次聚类将样本分成 epithelial、immunogenic、fibrotic 三类。Fig. 1B 选取 GC1、GC3、GC4 分别代表 immunogenic、epithelial、fibrotic GC，左侧为病理区域注释，中间为每个 spot 中占优势的 deconvoluted cell type，右侧为 cell-type abundance 的 spot-level correlation heatmap。缩写包括 DC、EBV、MSI-H、MSS、NK、PC 和 Treg（`P003.S0005-P003.S0011`）。
 
 作者首先用 Visium 处理 9 例原发胃癌，获得每例 1,882-4,274 个 spots，中位数 3,491（`P002.S0017-P002.S0019`）。基于既往 scRNA-seq 参考进行 deconvolution 后，作者对 12 类细胞丰度进行聚类，得到三类胃癌空间生态：epithelial、immunogenic、fibrotic（`P002.S0020-P002.S0022`）。
@@ -256,8 +254,6 @@ Fig. 3B 中第一组信号是 proliferation。G2M checkpoint、MYC targets、E2F
 
 ##### CCL2+ cancer-associated fibroblasts regulate JAK-STAT3 signalling in macrophages
 
-![Fig. 4 整页](../../assets/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage/page06.png)
-
 中文图注（基于原文图注）：Fig. 4A 用 NicheNet 分析 fibroblast-to-immune crosstalk，CCL2 在 fibroblast ligands 中具有最高 ligand activity，并连接到 target/receptor genes。Fig. 4B 图注写 716 个 scRNA-seq fibroblasts；主 Results、Supplementary Methods 和 Supplementary Note 7 均支持 726 个（143 个 CCL2+ 加 583 个 CCL2−），因此这里保留为原文内部冲突。Fig. 4C 比较 CCL2 与其他 ligand、iCAF score、myCAF score 及 IL6/ACTA2 markers 的关系。Fig. 4D 在 23,477 个 TME single cells 中显示 JAK-STAT3 signature 主要局限于 myeloid cells，进一步集中于 macrophages，并以 high JAK-STAT3 score 定义 STAT3-activated macrophages。Fig. 4E 比较 CCL2+ fibroblast/STAT3-activated macrophage 与对应阴性细胞间的 ligand-receptor pairs。Fig. 4F-G 展示两类 signature 在空间中的共定位和 spot-level correlation。Fig. 4H-I 展示 ACRG、TCGA 和四个 GEO 队列中 CF-high/SM-high 与差预后的关系（`P006.S0005-P006.S0020`；`s003:P003.S0010–P004.S0002`；`s004:P003.S0009–P003.S0011`）。
 
 在 fibroblast 可能调节的免疫功能中，作者聚焦 IL6-JAK-STAT3，因为它与胃癌 TME 中促癌炎症反应相关（`P011.S0003`）。NicheNet 用 fibroblasts 中的 ligands 解释 immune cells 中的 target/receptor genes，结果 CCL2 成为最强 master regulator，连接到 LTB、SOCS1、SOCS3、STAT3、TGFB1 等 IL6-JAK-STAT3 相关 target genes，并具有最高 ligand activity（`P011.S0004-P011.S0008`）。
@@ -271,8 +267,6 @@ CellphoneDB 分析显示，在 CCL2、SAA1、CCL19、CCL21 等 top ligands 中�
 临床层面，作者在 ACRG 和 TCGA 中发现大多数病例要么 CF-high/SM-high，要么 CF-low/SM-low，分别为 252/300（84%）和 338/386（87.6%），说明两个 signature scores 强相关（`P011.S0024-P011.S0026`）。主 Fig. 4 的生存分析只比较 CF-high/SM-high 与 CF-low/SM-low：ACRG p=0.02、TCGA p=0.05；四个 GEO 图标成 GSE13861、GSE26899、GSE26901、GSE28541，p 分别为 0.06、0.04、0.02、0.09（`P011.S0027-P011.S0029`；Fig. 4I）。Supplementary Fig. S10 则比较双高与其余全部患者，ACRG 126/174（p=0.02）、TCGA 169/217（p=0.08），四个 GEO 为 25/40（p=0.08）、36/57（p=0.03）、44/65（p=0.01）、16/24（p=0.02）（`s001:P018.S0001–P018.S0015`）。两套 comparator 不同，不能把显著性变化写成完全一致的重复。总体结果支持两类 signature 的相关和预后假说，但 bulk signature 仍不是直接空间检测（`P011.S0030`）。
 
 ##### CCL2+ CAFs recruit myeloid cells via STAT3-activated macrophages
-
-![Fig. 5 整页](../../assets/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage/page07.png)
 
 中文图注（基于原文图注）：Fig. 5A 显示 CAF-conditioned medium 增强 THP-1 单核细胞迁移，paired t-test，P < 0.05。Fig. 5B-C 显示 200 ng/mL anti-CCL2 neutralising antibody 和 CCL2 knockdown CAF-CM 均降低 THP-1 迁移，paired t-test，P < 0.05。Fig. 5D 的 JAK–STAT3 GSEA 方向为正，但 nominal P = 0.2569、FDR = 0.4803，未达到显著。Fig. 5E 显示 CAF 或 100 ng/mL recombinant CCL2 诱导 PMA-differentiated macrophages 的 STAT3 phosphorylation。Fig. 5F-G 显示 CAF-stimulated macrophages 抑制 PMA/ionomycin 激活的 Jurkat T cells 中 IFNG 表达，Kruskal-Wallis test 加 uncorrected Dunn's post hoc test（`P007.S0005-P007.S0018`）。
 

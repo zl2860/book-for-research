@@ -1,6 +1,6 @@
 # Benchmark of tools for in silico prediction of MHC class I and class II genotypes from NGS data
 
-<!-- wechat-style-reviewed: 2026-08-22 -->
+<!-- wechat-style-reviewed: 2026-08-28 -->
 
 做新抗原或 TCR–HLA 分析时，研究者常只有现成的 WES 或 RNA-seq，没有配套 PCR-HLA 分型。此时一个看似工程化的选择——用哪个 HLA caller——可能一路影响可呈递肽、新抗原负荷和 HLA 杂合性等下游结果。
 
@@ -96,7 +96,7 @@ HLA-HD、HLA*LA、Optitype、Polysolver 和 xHLA 这 5 个 WES 工具各自的�
 
 ## 技术附录
 
-以下内容保留原笔记的论文信息、主图说明、结果、方法参数、资源比较和证据边界，并补入本次建立的句子级解析质量与范围覆盖审计；它不是 526 句逐句双语翻译。
+以下内容保留原笔记的论文信息、主图说明、结果、方法参数、资源比较和证据边界，并补入本次建立的句子级解析质量与范围覆盖审计；它不是 526 句逐句双语翻译。读者正文已经展示的 3 张图不在附录重复嵌入；完整图注、图像路径和正文位置均保留。
 
 ### 本文目录
 
@@ -153,10 +153,10 @@ HLA-HD、HLA*LA、Optitype、Polysolver 和 xHLA 这 5 个 WES 工具各自的�
 
 | 原文图表 | 原文图题/核心信息 | 是否截取 | 图像文件 | 放置位置 |
 |---|---|---|---|---|
-| Fig. 1 | Computational resource consumption of the 13 selected tools：不同 HLA caller 的单样本运行时间和内存占用 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig1-computational-resources.png` | [Selection of 13 HLA genotyping tools with variable computational resource requirements](#selection-of-13-hla-genotyping-tools-with-variable-computational-resource-requirements) |
-| Fig. 2 | HLA allele prediction accuracies：1000 Genomes 金标准直接 benchmark 中 WES/RNA 的 MHC-I 和 MHC-II 准确率 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig2-prediction-accuracies.png` | [HLA*LA and HLA-HD are the best performing MHC class II genotyping tools on WES data](#hlala-and-hla-hd-are-the-best-performing-mhc-class-ii-genotyping-tools-on-wes-data) |
+| Fig. 1 | Computational resource consumption of the 13 selected tools：不同 HLA caller 的单样本运行时间和内存占用 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig1-computational-resources.png` | [05｜准确率和计算成本之间差多少？](#05｜准确率和计算成本之间差多少？) |
+| Fig. 2 | HLA allele prediction accuracies：1000 Genomes 金标准直接 benchmark 中 WES/RNA 的 MHC-I 和 MHC-II 准确率 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig2-prediction-accuracies.png` | [03｜只有 WES 时，MHC-I 和 MHC-II 分别怎么选？](#03｜只有-wes-时，mhc-i-和-mhc-ii-分别怎么选？) |
 | Fig. 3 | Correlations between observed and expected allele frequencies：TCGA 大队列中预测等位基因频率与群体参考频率的相关性 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig3-allele-frequency-correlation.png` | [Correlation and concordance analyses on large independent datasets confirm the benchmarking results](#correlation-and-concordance-analyses-on-large-independent-datasets-confirm-the-benchmarking-results) |
-| Fig. 4 | Accuracies of meta-prediction models with an increasing number of included tools：多工具 majority voting 共识模型 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig4-consensus-metaclassifier.png` | [A consensus metaclassifier improves HLA predictions for WES data](#a-consensus-metaclassifier-improves-hla-predictions-for-wes-data) |
+| Fig. 4 | Accuracies of meta-prediction models with an increasing number of included tools：多工具 majority voting 共识模型 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig4-consensus-metaclassifier.png` | [06｜为什么 4 工具投票只明显帮助 WES？](#06｜为什么-4-工具投票只明显帮助-wes？) |
 
 ### 生物学故事前情
 
@@ -211,8 +211,6 @@ HLA/MHC 的问题表面上是“分型工具选择”，背后实际是免疫肿
 
 #### Selection of 13 HLA genotyping tools with variable computational resource requirements
 
-![图1：13 个 HLA caller 的计算资源消耗](../../assets/immunology/2023-mhc-genotyping-benchmark/fig1-computational-resources.png)
-
 中文图注（基于原文图注）：Fig. 1A 比较每个工具分析单个测序文件所需时间，分别展示 WES 和 RNA-seq 输入；每个工具在 TCGA 的 10 个 WES 或 10 个 RNA-seq 文件上运行，系统限制为单 CPU core。Fig. 1B 比较同一批运行中的最大内存占用。纵轴为对数尺度。颜色表示不同 HLA caller。
 
 作者从文献中识别 22 个 HLA genotyping tools，最终纳入 13 个可在本文环境运行且免费学术使用的工具。所有 13 个工具都能预测 HLA-A、HLA-B、HLA-C；其中 9 个支持 MHC-II 位点，PHLAT 和 xHLA 对 MHC-II 支持不完整。数据类型方面，6 个工具需要 WES，3 个需要 RNA-seq，4 个同时支持 WES 和 RNA-seq。
@@ -222,8 +220,6 @@ HLA/MHC 的问题表面上是“分型工具选择”，背后实际是免疫肿
 RNA-seq 工具中，HLA-HD 最慢，中位约 15.0 小时；arcasHLA 作为 pseudoalignment-based tool，单样本约 38 秒。RNA-seq 内存消耗中 HLA-HD 最高，中位峰值约 103.1 GiB，Optitype 约 34.1 GiB。这个结果直接影响实用建议：小队列可以追求最高精度，大规模 TCGA 级项目必须考虑吞吐量。
 
 #### HLA*LA and HLA-HD are the best performing MHC class II genotyping tools on WES data
-
-![图2：1000 Genomes benchmark 中的 HLA allele prediction accuracy](../../assets/immunology/2023-mhc-genotyping-benchmark/fig2-prediction-accuracies.png)
 
 中文图注（基于原文图注）：Fig. 2 用雷达图展示 1000 Genomes 样本中各工具的 HLA allele prediction accuracy。上排为 WES，下排为 RNA-seq；左侧为 MHC-I，右侧为 MHC-II。不同颜色线条表示不同 HLA gene。Meta 表示 4-tool consensus metaclassifier。
 
@@ -256,8 +252,6 @@ NCI-60 RNA 独立验证中，arcasHLA 和 Optitype 的 MHC-I 准确率仍较高�
 第二是工具间一致性。此前表现差的工具，如 HLAminer、HLA-VBSeq、HLAforest，与其他工具的一致性也低；表现好的工具，如 Optitype、HLA*LA、arcasHLA、HLA-HD，彼此预测更一致。对 HLA-DPA1 和 HLA-DPB1 这两个缺少直接 gold standard 的 genes，高性能工具之间也表现出一致性，间接支持这些位点预测具有一定可信度。
 
 #### A consensus metaclassifier improves HLA predictions for WES data
-
-![图4：多工具共识模型随纳入工具数变化的准确率](../../assets/immunology/2023-mhc-genotyping-benchmark/fig4-consensus-metaclassifier.png)
 
 中文图注（基于原文图注）：Fig. 4 展示把不同工具逐步加入 majority voting consensus metaclassifier 后的预测准确率。上方折线表示不同 gene 的 accuracy，黑线表示 MHC-I 或 MHC-II 平均 accuracy。下方矩阵表示对应模型纳入了哪些工具；空心点表示该 gene 达到最高准确率所需的最小工具数。
 
