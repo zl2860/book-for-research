@@ -1,6 +1,6 @@
 # Designing synthetic regulatory elements using the generative AI framework DNA-Diffusion
 
-<!-- wechat-style-reviewed: 2026-08-13 -->
+<!-- wechat-style-reviewed: 2026-09-01 -->
 
 做基因调控实验时，真正难的不是找到一个“可能有增强子活性”的片段，而是设计一段足够短的 DNA：它要在目标细胞里有足够强的活性，同时尽量不在其他细胞里启动表达。对载荷空间有限的 AAV 等递送系统，这个矛盾尤其具体。
 
@@ -24,13 +24,15 @@ DNA-Diffusion 因此要同时回答三个问题：生成序列是否新颖、是
 
 每条输入以 DHS 峰顶为中心截取 200 bp。染色体 1 被整体留作测试集、染色体 2 作验证集，其余染色体用于训练，以减少相邻序列跨集合泄漏。图注给出的训练序列数分别为 GM12878 9,903 条、HepG2 9,833 条和 K562 9,769 条；模型训练后为每种细胞生成 100,000 条，共 300,000 条。
 
-实验验证分两层。第一层是 5,850 个元件组成的 STARR-seq 库，同一库分别进入三种细胞；第二层是在 MEC-1 细胞的 AXIN2 TSS 上游约 2.5 kb 位置进行内源置换。Results 称后一层测试 100 条序列，Methods 称 105 条，而按文中明示类别相加只有 92 条，具体构成需要缺失的 Supplementary Table 7e 才能核清。
+实验验证分两层。第一层是 5,850 个元件组成的 STARR-seq 库，同一库分别进入三种细胞；第二层是在 MEC-1 细胞的 AXIN2 TSS 上游约 2.5 kb 位置进行内源置换。
+
+后一层出现四处记录。Results 称测试 100 条；Fig. 6d 的六类扇区由 60 条 GM12878 定向生成序列、10 条 GM12878 阳性对照、K562/HepG2 定向序列各 10 条及阴性/打乱对照各 5 条组成，也闭合为 100。Methods 总述称 105 条，Methods 细项却把 K562/HepG2 各列 5 条并另含 reference/alternative allele，只能合到 92 条；具体构成需要缺失的 Supplementary Table 7e 才能核清。
 
 ## 03｜DNA-Diffusion 是怎样从噪声生成 200 bp 序列的
 
-模型把 DNA 表示为 `(batch, 1, 4, 200)` 张量，骨架是去噪 U-Net。训练时，模型接收加噪序列、扩散时间步和细胞类型标签，学习在不同噪声强度下恢复原始序列；生成时则从随机噪声出发，经过 50 个去噪步骤得到目标细胞类型的序列。
+模型先把 200 bp DNA 编码成数值矩阵，再由带细胞类型条件的去噪 U-Net 学习：给它加噪序列、扩散时间和细胞标签，它要恢复原始序列；生成时则从随机噪声出发，逐步写出目标细胞类型的序列。
 
-训练时随机遮蔽 10% 的细胞标签，使模型在采样阶段可以使用 classifier-free guidance（CFG）调节条件信号。默认 `CFG = 1` 是中等引导；提高 CFG 会把序列推向更强的细胞类型特征，但也可能降低 motif 多样性。
+模型还允许用 classifier-free guidance（CFG，无分类器引导）调节细胞类型信号。CFG 越高，序列越偏向目标细胞特征，但 motif 多样性可能下降；具体张量、标签遮蔽比例、采样步数和训练参数留在技术附录。
 
 这张图把后续证据链放在同一条线上：生成只是第一步，后面还有 motif、预测器、质粒报告和内源置换。
 
@@ -68,7 +70,9 @@ DNA-Diffusion 因此要同时回答三个问题：生成序列是否新颖、是
 
 ## 06｜5,850 个元件的 STARR-seq 是否支持计算排序
 
-STARR-seq 把 5,850 个候选和对照装入同一个质粒库，再分别转染 K562、HepG2 和 GM12878，以 `log2(mRNA/plasmid DNA)` 量化元件的转录活性。随机抽取的 DNA-Diffusion 序列大体复现天然 DHS 在对应细胞中更活跃的趋势；经过高信号或高 IS 预筛选的序列，则超过作者选取的强阳性对照。
+STARR-seq 把 5,850 个候选和对照装入同一个质粒库，再分别转染 K562、HepG2 和 GM12878，以 `log2(mRNA/plasmid DNA)` 量化元件的转录活性。“高信号且高特异”组每个目标细胞各有 100 条；Fig. 5 最终可分析的全部生成序列为 GM12878 1,234 条、HepG2 1,010 条和 K562 992 条。
+
+随机抽取的 DNA-Diffusion 序列大体复现天然 DHS 在对应细胞中更活跃的趋势；经过高信号或高 IS 预筛选的序列，则超过作者选取的强阳性对照。不过，主 PDF 没有报告这些预筛选组相对阳性对照的精确效应差或完整比较检验，因此这里只保留方向，不补写幅度。
 
 实验读数与 Enformer DNase I IS 的 Pearson 相关在 K562 和 HepG2 中均为 0.74，在 GM12878 中为 0.42。作者把较低的 GM12878 相关归因于该细胞转染效率较低，但这仍提示计算排序的可靠性依赖细胞背景。
 
@@ -94,9 +98,9 @@ Results 报告，多条 GM12878 定向序列的 AXIN2 激活超过天然保护�
 
 Results 提示两个互补原因。第一，模型学习的是天然 DHS 分布，因此默认生成序列保留较丰富的 motif 组合；第二，CFG 可以把条件概率质量推向更典型的细胞类型特征，让同一模型从“接近天然分布”逐渐转为“偏向高活性优化”。真正的高信号仍依赖 oracle 预筛选，随机生成序列并不会自动优于天然 DHS。
 
-在以 TNFSF18 位点的 Enformer DNase IS 和 `1 − Gini` motif 多样性为指标的比较中，标准 DNA-Diffusion（CFG1）为 IS 0.040、多样性 0.53；GAN 为 0.006、0.59，DeepMEL 为 0.041、0.58，天然序列为 0.030、0.58。CODA 的 IS 较高，为 0.168，但多样性只有 0.24；加入 motif penalty 后，其两轮 IS 降为 0.065 和 0.001。
+在以 TNFSF18 位点的 Enformer DNase IS 和 `1 − Gini` motif 多样性为指标的比较中，每个生成模型在每种细胞各产生 1,000 条序列，以下分数是三种细胞的平均中位数。标准 DNA-Diffusion（CFG1）为 IS 0.040、多样性 0.53；GAN 为 0.006、0.59，DeepMEL 为 0.041、0.58，天然序列为 0.030、0.58。CODA 的 IS 较高，为 0.168，但多样性只有 0.24；加入 motif penalty 后，其两轮 IS 降为 0.065 和 0.001。
 
-把 CFG 提到 7 后，DNA-Diffusion 的 IS 达 0.215、多样性降到 0.36。三轴雷达图的汇总面积由 CFG1 的 0.71 增至 CFG7 的 0.84。这里的“优于”仍由 Enformer 和自定义汇总指标定义，并未在同规模湿实验中逐模型比较。
+把 CFG 提到 7 后，DNA-Diffusion 的 IS 达 0.215、多样性降到 0.36。每个模型、每种细胞按距离理想点最近的规则取 top 100 后，三轴雷达图的汇总面积由 CFG1 的 0.71 增至 CFG7 的 0.84。这里的“优于”仍由 Enformer 和自定义汇总指标定义，并未在同规模湿实验中逐模型比较。
 
 ![Fig. 7：DNA-Diffusion 与 GAN、DeepMEL、CODA 的计算比较](../../assets/AI/2026-dna-diffusion-regulatory-elements/fig7-model-benchmark.png)
 
@@ -108,7 +112,7 @@ Results 提示两个互补原因。第一，模型学习的是天然 DHS 分布�
 
 第二，200 bp 元件为载荷受限的递送系统提供了候选设计空间。近期更现实的用途，是为特定细胞和特定位点建立候选库并缩小实验规模，而不是直接进入 AAV 或患者治疗；本文没有进行递送实验。
 
-第三，AXIN2 结果说明同一位置的内源验证可以推翻部分简单预测：CAGE 比 DNase I 更能排序有效候选，RUNX2、LEF1 等 motif 还出现在可及性高却无法激活 AXIN2 的序列中。换句话说，开放染色质只是必要线索，不足以代表有效的启动子—增强子通信。
+第三，AXIN2 结果说明同一位置的内源验证可以推翻部分简单预测：CAGE 比 DNase I 更能排序有效候选，RUNX2、LEF1 等 motif 还出现在可及性高却无法激活 AXIN2 的序列中。换句话说，开放染色质只能提供候选线索，不足以代表有效的 AXIN2 转录激活。
 
 ## 10｜这些结果仍需要冷静看待
 
@@ -118,7 +122,7 @@ STARR-seq 是质粒环境，唯一的内源验证又集中在 MEC-1 的 AXIN2 �
 
 候选筛选依赖 ChromBPNet、Enformer 和 MPRA predictor。训练数据偏差、不同测序深度和预测器对长程调控的盲区会进入排序；论文自己也展示了 Enformer 在 GATA1 位点不能正确反映一个 CRISPRi 验证增强子的失活效应。
 
-原文还有多处不能静默修复的冲突：BLAT 正文与 Fig. 2 比例不同；EXTRA-seq 库分别出现 100、105 和按类别相加 92 条；四次重复与“五个 DNA replicates”并存；PyTorch 2.0.0 与 reporting summary 的 torch 2.3.1 不一致；ChromBPNet 第三个数据集的 accession 在一处被重复写成 ENCSR000EMT。
+原文还有多处不能静默修复的冲突：BLAT 正文与 Fig. 2 比例不同；EXTRA-seq 库在 Results、Fig. 6d、Methods 总述和 Methods 细项中形成 100、图内闭合 100、105、细项闭合 92 四处记录；四次重复与“五个 DNA replicates”并存；PyTorch 2.0.0 与 reporting summary 的 torch 2.3.1 不一致；ChromBPNet 第三个数据集的 accession 在一处被重复写成 ENCSR000EMT。
 
 本地 PDF 没有 Supplementary Methods 1–8、Supplementary Tables 5e/7a–e 和 Supplementary Notes 9–10。模型层数、完整 STARR/EXTRA 湿实验流程、统计设计和基线模型训练不能只靠主 PDF 完整复现；以下技术附录把这些证据缺口与双栏解析噪声全部保留。
 
@@ -171,7 +175,7 @@ STARR-seq 是质粒环境，唯一的内源验证又集中在 MEC-1 的 AXIN2 �
 | Fig. 3 | A：在候选增强子位置替换 200 bp；B：ChromBPNet DNase；C：MPRA predictor；D：Enformer DNase；E：Enformer CAGE；F：GATA1 位点野生型与 HepG2 定向序列替换；G：两条序列的 motif。 | 生成序列每细胞 `n = 100,000`；训练 DHS 为 GM12878 9,903、HepG2 9,833、K562 9,769；箱线图为中位数、IQR 和 1.5×IQR。来源 `P005.S0020–P005.S0050` 与图像页 6。 | `fig3-in-silico-enhancer-replacement.png` | [05](#05｜计算预测能把强与只在目标细胞强分开吗) |
 | Fig. 4 | A：用目标细胞强度和相对非目标细胞特异性定义二维选择空间；B：HepG2 top 100 生成序列与训练 DHS 在三个 oracle 的 IS；C：高信号和高特异性集合中的 motif 比例；D：每序列 motif 命中数。 | 比较集合为每种细胞 top 100；主图没有独立湿实验终点。来源 `P007.S0001–P007.S0042`、`P008.S0001–P008.S0004` 及相关正文 `P008.S0035–P010.S0012`。 | `fig4-intensity-specificity.png` | [05](#05｜计算预测能把强与只在目标细胞强分开吗) |
 | Fig. 5 | A：同一 STARR-seq 库进入 K562、HepG2、GM12878，以 mRNA/DNA 衡量；B：八类序列的活性；C：Enformer DNase IS 与实验读数相关；D：按实验活性排序的 motif GSEA。 | 总库 5,850；图注称 “all generated” 可分析数为 GM12878 1,234、HepG2 1,010、K562 992；Pearson 为 0.74、0.74、0.42。来源 `P008.S0023–P008.S0031`、`P008.S0047–P008.S0054`、`P009.S0001–P009.S0042`、`P010.S0013–P010.S0039`。 | `fig5-starr-seq-validation.png` | [06](#06｜5850-个元件的-starr-seq-是否支持计算排序) |
-| Fig. 6 | A：AXIN2 野生型、保护性 indel 和合成序列的概念图；B：参考/indel 个体的 ATAC/H3K27ac/H3K4me3；C：MEC-1 EXTRA-seq；D：候选组成；E：AXIN2 logFC；F：候选的 DNase/CAGE 强度—特异性；G：预测与实验相关；H：REL/MX1/RUNX2/LEF1 motif GSEA。图注另描述 I：最高/最低序列 motif，但主图只见 A–H。 | Results 称 100 条，Methods 称 105 条，按类别明示计数 92 条；红线为天然保护性变异读数，不是临床阈值。来源 `P010.S0025–P010.S0029`、`P010.S0040–P011.S0044`、`P013.S0003–P013.S0018`。 | `fig6-axin2-endogenous-reactivation.png` | [07](#07｜这些序列进入内源基因组后还能工作吗) |
+| Fig. 6 | A：AXIN2 野生型、保护性 indel 和合成序列的概念图；B：参考/indel 个体的 ATAC/H3K27ac/H3K4me3；C：MEC-1 EXTRA-seq；D：候选组成；E：AXIN2 logFC；F：候选的 DNase/CAGE 强度—特异性；G：预测与实验相关；H：REL/MX1/RUNX2/LEF1 motif GSEA。图注另描述 I：最高/最低序列 motif，但主图只见 A–H。 | Results 称 100 条；Fig. 6d 以 60+10+10+10+5+5 闭合为 100；Methods 总述称 105 条，Methods 细项连同 ref/alt 只能合到 92 条。红线为天然保护性变异读数，不是临床阈值。来源 `P010.S0025–P010.S0029`、`P010.S0040–P011.S0044`、`P013.S0003–P013.S0018`。 | `fig6-axin2-endogenous-reactivation.png` | [07](#07｜这些序列进入内源基因组后还能工作吗) |
 | Fig. 7 | A：分布学习模型与直接优化模型及三项评价；B：TNFSF18 位点的 Enformer DNase IS；C：`1 − Gini` motif 多样性；D：特异性、信号、多样性雷达面积。 | 每模型每细胞生成 1,000 条；汇总 top 100；所有主比较是 in silico。来源 `P012.S0001–P012.S0039`、`P013.S0001–P013.S0003`、`P013.S0020–P013.S0045`。 | `fig7-model-benchmark.png` | [08](#08｜为什么扩散模型能在活性与多样性之间调节) |
 
 ### Results 证据覆盖审计
@@ -182,7 +186,7 @@ STARR-seq 是质粒环境，唯一的内源验证又集中在 MEC-1 的 AXIN2 �
 | `P005.S0020–P008.S0034` | GATA1/HNF4A/CD19 位点的 ChromBPNet、MPRA predictor、Enformer 预测；野生型比较和预测器局限。 | [05](#05｜计算预测能把强与只在目标细胞强分开吗) | 全部是 in silico；Enformer 对 GATA1 CRISPRi 增强子失活预测失败。 |
 | `P008.S0035–P010.S0012` | 定义 signal intensity、specificity 与 IS；实验开放染色质相关；top 100 候选和高信号/高特异 motif 差异。 | [05](#05｜计算预测能把强与只在目标细胞强分开吗)、[08](#08｜为什么扩散模型能在活性与多样性之间调节) | 归一化和 IS 精确公式在缺失 Supplementary Methods 5；相关性不代表因果。 |
 | `P010.S0013–P010.S0039` | 5,850 元件 STARR-seq 的设计、对照、活性结果、预测—实验相关与 motif GSEA。 | [06](#06｜5850-个元件的-starr-seq-是否支持计算排序) | episomal assay；主 PDF 缺 Supplementary Methods 6 和 Table 5e，无法完整审计丢失/QC。 |
-| `P010.S0040–P013.S0018` | AXIN2 保护性变异背景、MEC-1 EXTRA-seq、GM12878 候选激活、CAGE 排序与 motif 解释。 | [07](#07｜这些序列进入内源基因组后还能工作吗) | 单一细胞系/位点；100/105/92 计数冲突；没有疾病表型或生存实验。 |
+| `P010.S0040–P013.S0018` | AXIN2 保护性变异背景、MEC-1 EXTRA-seq、GM12878 候选激活、CAGE 排序与 motif 解释。 | [07](#07｜这些序列进入内源基因组后还能工作吗) | 单一细胞系/位点；Results/Fig. 6d 为 100/100、Methods 总述/细项为 105/92；没有疾病表型或生存实验。 |
 | `P013.S0019–P013.S0045` | 与 GAN、DeepMEL、CODA 比较；IS—多样性取舍；CFG1/CFG7 和雷达面积。 | [08](#08｜为什么扩散模型能在活性与多样性之间调节) | 依赖 Enformer、TNFSF18 和自定义面积；`P013.S0003`、`S0037–S0038` 有明显跨栏/跨节解析。 |
 
 审计结论：上述范围连续覆盖主 Results 区域的 531/531 个句子 ID；未覆盖 ID：无。自动标记的 Results 共 404 个，其中 400 个属于主 Results，4 个其实是 Methods 的 ChromBPNet 段；404/404 已逐项归类。
@@ -212,7 +216,7 @@ STARR-seq 是质粒环境，唯一的内源验证又集中在 MEC-1 的 AXIN2 �
 - STARR-seq 总库 5,850 个元件。按 Methods 的构成推断，每细胞包括 400 条无预筛选 CFG1 生成序列、400 条随机 DHS、100 条阳性、50 条阴性和 1,000 条覆盖预测强度/特异性的生成序列；`3 × 1,950 = 5,850`。这是由总数闭合得到的推断，Table 5e 缺失。
 - 阳性对照来自 K562 PINTS 1,365 条、HepG2 PINTS 112 条和 GM12878 HiDRA 12,946 条；每细胞最终取预测 top 100。阴性从 7,000 条 PINTS 非增强子出发，每细胞取三个 oracle 最低的 50 条。
 - reporting summary 称 gDNA/mRNA 来自 500 万个细胞、四个技术重复，使用 mini AllPrep DNA/RNA kit；未明确这些条件适用于 STARR、EXTRA 或两者。
-- AXIN2 候选放在 TSS 上游 2.5 kb；10,000 条 GM12878 候选中选 60 条。另有 GM12878 阳性 10、阴性 5、shuffle 5、K562 5、HepG2 5 及 reference/alternative allele；明示合计 92，与 100/105 均不闭合。
+- AXIN2 候选放在 TSS 上游 2.5 kb；10,000 条 GM12878 候选中选 60 条。Fig. 6d 另列 GM12878 阳性 10、K562 10、HepG2 10、阴性 5、shuffle 5，图内合计 100；Methods 细项则列 GM12878 阳性 10、阴性 5、shuffle 5、K562 5、HepG2 5 及 reference/alternative allele，合计 92。两者又与 Methods 总述的 105 条冲突。
 - 定制 hg38 模拟 loxP、随机 barcode、固定区、UTR、内源序列、200 bp 插入区、第二固定区和 lox2272。
 - 每个 barcode 计算 `log2(sum RNA/sum DNA)`；mapping 至少 3 reads；在总 RNA count 同一 decile 内，`ratio_diff > 5 × MAD` 的 barcode 被去除；DNA 为 0 时对应 RNA 置 0，最终用 `mpra` package 分析。
 - Methods 与 reporting summary 写四次重复，但 `P018.S0029` 又写“4 个 RNA replicates、5 个 DNA replicates”。
@@ -244,7 +248,7 @@ STARR-seq 是质粒环境，唯一的内源验证又集中在 MEC-1 的 AXIN2 �
 | `P016.S0015–P016.S0019` | GPU、batch、epoch、耗时、Adam 和线性噪声日程。 | 给出主训练资源与核心超参数。 | PyTorch 2.0.0 与 reporting 的 torch 2.3.1 冲突；seed/checkpoint 未报告。 |
 | `P016.S0020–P017.S0020` | BLAT、RepeatMasker、MOODS/JASPAR、ChromBPNet、MPRA predictor、Enformer、随机/启动子对照和归一化。 | 多个 oracle 分别评估新颖性、motif、可及性和表达潜能。 | 双栏把标题与句尾合并；ChromBPNet accession 重复；Supplementary Methods 3–5 缺失。 |
 | `P017.S0021–P017.S0040` | STARR-seq 库的随机生成、DHS、阳性、阴性和广谱候选选择。 | 用同一 pooled library 跨三细胞比较。 | 每类构成由总数推断；Supplementary Methods 6 与 Table 5e 缺失。 |
-| `P017.S0041–P018.S0035` | AXIN2 候选、定制基因组、表观轨迹、GSEA、12 nt barcode、RNA/DNA 定量和离群过滤。 | 在同一内源位置比较序列对 AXIN2 转录的影响。 | 100/105/92 与 4/5 replicates 冲突；Supplementary Methods 7、Table 7 缺失。 |
+| `P017.S0041–P018.S0035` | AXIN2 候选、定制基因组、表观轨迹、GSEA、12 nt barcode、RNA/DNA 定量和离群过滤。 | 在同一内源位置比较序列对 AXIN2 转录的影响。 | Results 100、Fig. 6d 图内闭合 100、Methods 总述 105、Methods 细项闭合 92 四处记录不一致，且 4/5 replicates 冲突；Supplementary Methods 7、Table 7 缺失。 |
 | `P018.S0036–P018.S0038` | CODA、DeepMEL、WGAN 在同一数据上的训练与比较。 | 让分布学习和直接优化模型使用共同数据。 | 全部训练细节在缺失 Supplementary Methods 8。 |
 | `P018.S0039–P019.S0008` | reporting summary、数据、代码、模型权重和 release。 | 界定可获取资源。 | Zenodo 三个记录号不一致；本次未越过 inbox PDF 获取外部文件。 |
 
@@ -269,11 +273,12 @@ STARR-seq 是质粒环境，唯一的内源验证又集中在 MEC-1 的 AXIN2 �
 **原文内部冲突与低置信解析：**
 
 - BLAT：Results 为 generated/test/random 对训练集 4.7%/14.5%/23.1%，Fig. 2A 汇总为 5.3%/18.3%/24.9%；图中 generated 分母为 400,000，与正文总生成量 300,000 不一致。
-- AXIN2 库：Results 100、Methods 105、明示类别含 ref/alt 合计 92；Table 7e 缺失。
+- AXIN2 库：Results 称 100（`P011.S0001–P011.S0002`）；Fig. 6d 的 60+10+10+10+5+5 也闭合为 100；Methods 总述称 105（`P017.S0042`）；Methods 细项连同 ref/alt 只能合到 92（`P017.S0043–P018.S0009`）。Table 7e 缺失，不能静默选定其中一套。
 - Fig. 6：完整图注描述 panel I，但主图和图内标签只见 A–H。
 - 重复数：四次重复与“5 个 DNA replicates”并存。
 - 软件：PyTorch 2.0.0 与 torch 2.3.1 并存；可能是训练和整理环境不同，原文未说明。
 - ChromBPNet：三个模型先列 ENCSR000EPC/ENCSR000EMT/ENCSR000ENP，读深段却把后两项都写成 ENCSR000EMT。
+- lox 位点拼写：主 Methods 为 `lox2272`（`P018.S0015`），reporting summary 两处为 `lox2722`（`P022.S0042`、`P022.S0044`）；本地 PDF 不能判定哪一处正确。
 - motif diversity：`P013.S0025` 的文字可读成“Gini = 1 表示高度多样”，Fig. 7C 和后文实际使用 `1 − Gini`；本文按图注解释并保留措辞冲突。
 - Zenodo：17420419、15182968、151829699 三个记录号并存。
 - `P013.S0003`、`P016.S0035–P016.S0036` 和 reporting summary 是明确的双栏/模板解析低置信区间。
