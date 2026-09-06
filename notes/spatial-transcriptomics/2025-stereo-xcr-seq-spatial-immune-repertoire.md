@@ -1,6 +1,6 @@
 # Single cell resolved spatial immune repertoire unveils spatial heterogeneity of lymphoid aggregates in human immune disorders
 
-<!-- wechat-style-reviewed: 2026-08-18 -->
+<!-- wechat-style-reviewed: 2026-09-06 -->
 
 一张肿瘤切片上，两群相邻的 T 细胞可能表达相似的活化基因，却来自完全不同的受体克隆。常规空间转录组能告诉我们细胞在哪里、表达了什么，却很难把完整 TCR/BCR 序列、细胞坐标和组织形态同时接起来。
 
@@ -14,7 +14,7 @@
 
 免疫受体的核心信息在 CDR3 和 V(D)J 区，而 Stereo-seq 的空间坐标保存在转录本另一端的 coordinate ID（CID）中。二者物理距离超过 `1,000 bp`，普通短读长很难在同一分子上同时读到“它是什么克隆”和“它来自哪里”。
 
-已有空间免疫组库方法还要在三个维度取舍：是否预设引物或探针、能否捕获 BCR、以及能否到单细胞尺度。作者比较的 Slide-TCR-seq、Slide-tags、Spatial VDJ 和 SPTCR-seq 中，只有 Spatial VDJ 与 Stereo-XCR-seq 能捕获 BCR；前者依赖探针杂交，其他方法多建立在更早的约 `55 μm` Visium 分辨率上。
+已有空间免疫组库方法还要在三个维度取舍：是否预设引物或探针、能否捕获 BCR、以及能否到单细胞尺度。Slide-TCR-seq/Slide-tags 基于 Slide-seq，并用多重 PCR 富集受体；Spatial VDJ/SPTCR-seq 则基于 Visium，并用恒定区探针杂交。作者比较的方法中只有 Spatial VDJ 与 Stereo-XCR-seq 能捕获 BCR；约 `55 μm` 的限制对应早期 Visium 实现，不能笼统套到 Slide-seq 方法上。
 
 因此，这篇论文真正要解决的不是“组织里有没有 T/B 细胞”，而是能否在同一张切片上回答：哪条受体序列属于哪个细胞、位于哪个组织结构、是否在局部扩增，以及它与转录状态是否一致。
 
@@ -36,9 +36,9 @@
 
 ## 04｜Stereo-XCR-seq 的性能提升有多大？
 
-每份样本组装出 `2,536–16,910` 个 CDR3 克隆，其中 `25.09%–66.58%` 同时得到长、短读长支持。长读长的坐标覆盖为 `62.35%–94.34%`，高于短读长的 `8.67%–48.47%`；两者因此更像互补，而不是相互替代。
+原文报告各样本检出的范围为：TCR `44–116` 个 V、`20–32` 个 D、`22–64` 个 J 基因，BCR `164–171` 个 V、`32` 个 D、`18` 个 J 基因；逐样本值位于本地缺失的补图。在此基础上组装出 `2,536–16,910` 个 CDR3 克隆，其中 `25.09%–66.58%` 同时得到长、短读长支持。长读长的坐标覆盖为 `62.35%–94.34%`，高于短读长的 `8.67%–48.47%`；两者因此更像互补，而不是相互替代。
 
-在直接富集实验中，sscirPCR 相对 probe hybridization 的富集效率提高 `3.164 倍`，但比较只有 probe hybridization `N=3`、sscirPCR `N=4` 个独立重复。其余跨平台结论主要来自不同方法的已发表结果，不是同一组织、同一深度、同一批次的完整头对头 benchmark。
+在直接富集实验中，sscirPCR 相对 probe hybridization 的富集效率提高 `3.164 倍`，但比较只有 probe hybridization `N=3`、sscirPCR `N=4` 个独立重复。作者还报告各 isotype 的 CDR3 类型和非淋巴器官淋巴细胞检出数高于既有工具，并称这是当时唯一同时提供单细胞分辨率与细胞形态的平台；这些结果位于本地缺失的补图，且主要是跨研究比较，不是同一组织、同一深度、同一批次的完整头对头 benchmark。
 
 最明显的代价是链配对率。所有样本的配对率为 `0.21%–15.80%`；B/浆细胞为 `6.20%–15.80%`，T 细胞仅 `0.21%–3.63%`。作者后续许多克隆分析因此改用单条 CDR3，而不是严格的成对 TCRα/β 或 IgH/IgK/L 定义。
 
@@ -50,17 +50,19 @@
 
 在 OVA-MC38 肿瘤中，作者识别了 `26,825` 个至少带 1 条 TCR 克隆读段的 T 细胞和 `2,536` 种 CDR3，并按转录状态分为迁移、耗竭、细胞毒、效应记忆、组织驻留和旁观者 6 类。几乎所有组织驻留 T 细胞位于邻近正常黏膜，超过 `60%` 的细胞毒 T 细胞位于淋巴聚集体，超过 `60%` 的旁观者 T 细胞位于肿瘤区。
 
-其中 `974/26,825` 个细胞获得成对 TCRα/β；最大成对克隆包含 `111` 个细胞。其 TCRα `CAATASSGSWQLIF`、TCRβ `CASSRDRLGTSQNTLYF` 已在既往研究中被报道识别 OVA 肽 SIINFEKL，因此它为坐标—克隆连接提供了合理的阳性锚点。
+其中 `974/26,825` 个细胞获得成对 TCRα/β；最大成对克隆包含 `111` 个细胞。其 TCRα `CAATASSGSWQLIF`、TCRβ `CASSRDRLGTSQNTLYF` 已在既往研究中被报道识别 OVA 肽 SIINFEKL。这说明预期抗原相关序列能在文库中被找回，属于序列层面的内部一致性；它没有提供独立空间真值，不能验证图像配准、细胞分割或该克隆的细胞归属。
 
-但本文没有重新完成肽-MHC 结合或功能激活实验。Results 另写“top expanded T cell clone”有 `87` 个细胞、`16%` 位于淋巴聚集体；Fig. 1j 则给 top paired clone `N=111`，其中淋巴聚集体占 `16.2%`（约 18 个细胞）。`87/111` 并不接近 `16%`，Results 也未交代 87 的分母，因此两组数字无法统一。
+但本文没有重新完成肽-MHC 结合或功能激活实验。Results 另称该“top expanded T cell clone”的细胞群（原文计为 `87` 个细胞）整体呈现 Tcf7、Il7r 等 stemness marker 和多种 granzyme 相关表达，并称其中 `16%` 位于淋巴聚集体；Fig. 1j 则给 top paired clone `N=111`，其中淋巴聚集体占 `16.2%`（约 18 个细胞）。`87/111` 并不接近 `16%`，Results 也未交代 87 的分母，因此两组数字无法统一，marker 也不能消除这一计数冲突。
 
 ## 06｜ccRCC 的微小淋巴聚集体只是细胞扎堆吗？
 
-在 1 份 ccRCC 肿瘤中，每个 bin50 中位数检测到 `1,862` 个基因和 `4,289` 个 UMI；全片获得 `1,831` 个 TCR CDR3、`7,317` 个 BCR CDR3。IGL 转录读数与 IgL 克隆读数在 bin50 层面相关，`r=0.76，P<0.0001`，说明富集后的克隆坐标与原空间转录信号大体一致。
+在 1 份 ccRCC 肿瘤中，每个 bin50 中位数检测到 `1,862` 个基因和 `4,289` 个 UMI；全片共检出 `35,110` 个基因，并获得 `1,831` 个 TCR CDR3、`7,317` 个 BCR CDR3。IGL/IGK 相关基因的 Moran 指数居前，IGL 转录读数与 IgL 克隆读数在 bin50 层面相关，`r=0.76，P<0.0001`。这说明富集前后 CID 的空间分布内部一致，但两类读数共享起始 cDNA 与坐标体系，并非独立空间定位验证。
+
+作者还按 IgL 克隆大小分为 hyperexpanded（≥20 个细胞）、medium（6–19）、small（2–5）和未扩增（1）；大克隆比小克隆更集中。这个梯度支持局部扩增的空间模式，却仍来自同一块肿瘤，阈值本身也不是外部验证过的生物学分界。
 
 作者用 KDTree 去噪和密度聚类识别出 `61` 个地理离散聚集体。其面积中位数为 `5,000 μm²`（IQR `2,500–8,125 μm²`），细胞数中位数为 `21`（IQR `13–42`）；`45/61` 个聚集体由单一克隆占据超过一半细胞，`18/61` 只含一种克隆。
 
-聚集体外仅 `0.95%` 的 B/浆细胞带突变 IgL；21 个聚集体中的对应比例中位数为 `6.67%`，范围 `1.38%–57.14%`。BCR Shannon 多样性也低于肿瘤区。这些结果支持“局部克隆富集”，却不能证明聚集体主动驱动了克隆扩增；61 个空间结构仍来自同一个患者肿瘤。
+聚集体外仅 `0.95%` 的 B/浆细胞带突变 IgL；21 个聚集体中的对应比例中位数为 `6.67%`，范围 `1.38%–57.14%`。BCR Shannon 多样性也低于肿瘤区。TCR 指数同样提示局部扩增，但 T 细胞比聚集的 B/浆细胞更弥散、Moran 指数更低、细胞间距更大；作者提出 CXCL9/10 趋化可能参与这一分布，却没有迁移实验。这些结果支持“局部克隆富集”，不能证明聚集体主动驱动了扩增；61 个空间结构仍来自同一个患者肿瘤。
 
 ![Fig. 2：ccRCC 中微小淋巴聚集体与局部 IgL 克隆](../../assets/spatial-transcriptomics/2025-stereo-xcr-seq-spatial-immune-repertoire/fig2-ccrcc-lymphoid-aggregates.png)
 
@@ -68,7 +70,7 @@
 
 ## 07｜同一肺癌里的五个 TLS 真的相同吗？
 
-在 1 份 NSCLC 肿瘤中，无监督聚类得到 10 种空间结构，并识别出 5 个地理分离的 TLS：4 个位于肿瘤边缘，1 个位于肿瘤中心。每个 TLS 中超过 `60%` 的克隆只在该结构出现，五个 TLS 全部共享的 CDR3 少于 `5%`。
+在 1 份 NSCLC 肿瘤中，无监督聚类得到 10 种空间结构，并识别出 5 个地理分离的 TLS：4 个位于肿瘤边缘，1 个位于肿瘤中心。按受体链汇总，IgH、IgK、IgL、TCRα 和 TCRβ 克隆中分别有 `71%`、`63%`、`79%`、`70%` 和 `61%` 只出现在单个 TLS，五个 TLS 全部共享的 CDR3 少于 `5%`；这些百分比不是逐个 TLS 的独立比例。
 
 作者把 `7,243` 个 IgH 克隆聚成 `256` 个家族。肿瘤内 TLS 的 germline 克隆比例为 `3.45%`，高于 4 个肿瘤周 TLS 的 `0.89%–1.92%`；突变克隆比例为 `1.38%`，也高于后者的 `0.22%–0.65%`。其中一个肿瘤内 TLS 家族含 1 个 germline 与 47 个 mutated clone。
 
@@ -76,7 +78,9 @@
 
 ## 08｜浆细胞聚集体与 TLS 承担的是同一种功能吗？
 
-不是同一幅空间图景。作者定义了 `234` 个 class-switch recombination（CSR）事件，涉及 `89` 个 IgH 克隆：67 个克隆同时出现 IgG/IgA，10 个出现 IgM/IgG，12 个出现 IgM/IgA。按空间区域面积归一化后，浆细胞聚集体的 CSR 频率高于 TLS 和其他组织区。
+不是同一幅空间图景。作者定义了 `234` 个 class-switch recombination（CSR）事件，涉及 `89` 个 IgH 克隆：67 个克隆同时出现 IgG/IgA，10 个出现 IgM/IgG，12 个出现 IgM/IgA。Fig. 3g 的面积归一化 CSR 计数在浆细胞聚集体为 `1.3`，高于 TLS 的 `0.6` 和其他区域的 `0.3–0.8`。
+
+这个比较还有一个重要分母边界：按 Methods 字面流程，作者先选取在肿瘤内 TLS 出现的全部 IgH CDR3，再检查同一 CDR3 是否检出多个 isotype；但 Results 和图注没有明确说明这一步预筛是否完整贯穿 Fig. 3g。因此不能把各区数值直接理解为全部 IgH 克隆的无偏普查，精确分母仍有歧义。
 
 更值得注意的是，IgG/IgA 共现克隆中 `78%` 仍被归为 germline，所有 IgM 与 IgG/A 共现也只出现在 germline clone。作者据此提出 CSR 可能先于亲和力成熟，而浆细胞聚集体可能更偏向决定抗体效应类型。
 
@@ -90,9 +94,11 @@
 
 作者比较同一名 Crohn 病患者的 2 份活检：一份来自被标注为“正常/轻度炎症”的区域，另一份来自炎症区域。共获得 `425` 个 T 细胞和 `11,474` 个 B/浆细胞；Fig. 4d 显示两组织共享 `309` 个克隆、对照活检特有 `50` 个、炎症活检特有 `116` 个。作者把共享克隆定义为 mucosal clone，把炎症活检特有克隆定义为 disease-related clone。
 
+无监督空间聚类在两块组织中分出固有层、纤毛上皮和 3 个淋巴聚集体；只有炎症组织的黏膜下区域出现 CXCL13、CR2、CCL19 标记的 TLS，中央与外周浆细胞聚集体也比对照活检更大、更明显。这些仍是同一患者内的空间描述，不能提供患者间复现。
+
 两块组织的 mucosal clone 丰度高度相关，`r=0.86，P<0.0001`。炎症组织中的 `159/159` 个 TLS-related clone 有 `153/159（96.2%）` 也能在对照活检中找到；与疾病区域更一致的信号反而是扩大浆细胞聚集体及其较高比例的 disease-related IgH/IgK/IgL 克隆。
 
-炎症组织中的 `117` 个 IgL 克隆被聚成 `18` 个家族。mucosal clone 的突变比例为 `24.3%`，disease-related clone 为 `83.0%`；在 39 个 disease-related mutated IgL 中，最小 Levenshtein distance 推断 `79.5%` 来自高扩增 mucosal germline clone，`17.9%` 无法追溯，另有 `2.6%` 被归为 immigrant ancestor。
+炎症组织中的 `117` 个 IgL 克隆被聚成 `18` 个家族，其中 `70` 个是 mucosal clone、`47` 个是 disease-related clone，合计 `61` 个 germline、`56` 个 mutated。mucosal clone 中 `17/70（24.3%）` 发生突变，disease-related clone 中为 `39/47（83.0%）`；对后 39 个克隆，最小 Levenshtein distance 推断 `79.5%` 来自高扩增 mucosal germline clone，`17.9%` 无法追溯，另有 `2.6%` 被归为 immigrant ancestor。
 
 ![Fig. 4：同一 Crohn 病患者两块活检中的克隆来源推断](../../assets/spatial-transcriptomics/2025-stereo-xcr-seq-spatial-immune-repertoire/fig4-ibd-clonal-origins.png)
 
@@ -100,7 +106,7 @@
 
 ## 10｜为什么这些空间克隆信号可能成立？
 
-方法层面有三重相互校验：长读长保留完整 V(D)J 与恒定区，短读长提供更高通量并筛掉缺少短读支持的 CDR3，原始空间转录组则提供独立的基因表达坐标。ccRCC 中 IGL 转录与 IgL 克隆读段的 `r=0.76`，以及 OVA-MC38 中已知 SIINFEKL 相关 TCR 的检出，都说明三条信息链没有完全脱节。
+方法层面有三路内部一致性：长读长保留完整 V(D)J 与恒定区，短读长提供更高通量并筛掉缺少短读支持的 CDR3，原始空间转录组提供对应的基因表达坐标。ccRCC 中 IGL 转录与 IgL 克隆读段的 `r=0.76`，以及 OVA-MC38 中已知 SIINFEKL 相关 TCR 的检出，都说明流程输出彼此相容；但前者共享起始 cDNA/CID，后者依赖既往序列知识，两者都不能独立验证手工配准、分割和细胞归属。
 
 生物学层面的结果也互相呼应：ccRCC 聚集体内克隆更集中，NSCLC 中不同 TLS 的克隆共享有限，浆细胞聚集体富集 CSR，Crohn 炎症区的 disease-related clone 更常发生突变。它们共同支持“淋巴聚集体并非单一结构，而是带有不同克隆活动的局部生态位”。
 
@@ -193,10 +199,10 @@
 - a：ccRCC 肿瘤 H&E，比例尺 500 μm。
 - b：bin50 空间转录组 UMI 丰度图；每点为一个 square bin，比例尺 500 μm。
 - c–d：在 500 nm bin1 分辨率下分别显示 IGL 转录本与 IgL 克隆；绿色点至少有 1 个相应转录或克隆读段。
-- e：以每个 bin50 的 IGL UMI 与 IgL 克隆读段做 Pearson 相关；正文报告 `r=0.76，P<0.0001`。空间 bin 并非完全独立观测。
+- e：以每个 bin50 的 IGL UMI 与 IgL 克隆读段做 Pearson 相关；Results 报告 `r=0.76，P<0.0001`，图内却显示 `p=0`，应视为显示/舍入差异，不能把精确 P 值写成零。两类读数共享 cDNA/CID，空间 bin 也并非完全独立观测。
 - f：61 个聚集体的面积和细胞数箱线图；中位数、IQR、极值与离群点按原图表示。
 - g：top 50 IgL 克隆的 cell-bin 图叠加 bin50 聚集体；FOV 和 donut 显示代表性聚集体中的克隆组成与大小。
-- h：各聚集体中突变浆细胞占比；黑线为聚集体外比例，fold change 用聚集体中位数对该期望值计算。
+- h：各聚集体中突变细胞占比；图题写 plasma cells，Results 写 B/plasma cells，分母口径存在差异。黑线为聚集体外比例，fold change 用聚集体中位数对该期望值计算。
 - i：各聚集体的 IgH、IgL、IgK、TCRα、TCRβ Shannon 指数；红线为聚集体外期望，原图说明使用 one-sample Wilcoxon test。
 
 #### Figure 3｜Stereo-XCR-seq reveals spatial dynamics of B cell clonal activities in NSCLC lymphoid aggregates
@@ -206,10 +212,10 @@
 - a：NSCLC 空间结构与 H&E；两个 FOV 分别展示浆细胞聚集体和 TLS，主图比例尺 500 μm、FOV 100 μm。
 - b：拟合的肿瘤周边界与邻近正常肺泡区。
 - c：4 个肿瘤周 TLS 与 1 个肿瘤内 TLS 的位置。
-- d：五个 TLS 之间的克隆共享；各链超过 60% 为单个 TLS 独有。
+- d：五个 TLS 之间的克隆共享；IgH、IgK、IgL、TCRα、TCRβ 中单个 TLS 独有比例依次为 `71%`、`63%`、`79%`、`70%`、`61%`，是按链汇总，不是逐 TLS 比例。
 - e：`7,243` 个 IgH 克隆、`256` 个家族的径向树。图注说内圈为 germline/mutated、外圈为 isotype，但图内图例显示相反；两者冲突，本文不擅自修正。
 - f：CSR 类型；A&G、IgM/IgA、IgM/IgG 都按同一 CDR3 在同一空间 cluster 中的 isotype 共现定义。
-- g：各空间 cluster 面积归一化 CSR 频率。
+- g：各空间 cluster 面积归一化 CSR 计数；浆细胞聚集体为 `1.3`，TLS 为 `0.6`，其他区域为 `0.3–0.8`。Methods 字面流程先按肿瘤内 TLS 检出预筛候选 IgH CDR3，但 Results/图注未说明该预筛是否贯穿本 panel，因此不能当作各区域全部 IgH 克隆的无偏比较。
 - h：各 CSR 类型中 germline 与 mutated clone 比例。
 - i：三个代表 IgH 克隆的空间共现模式：germline `CARQIITMSINWIDPW` 为 IgM/IgA；germline `CVRGGHGNSWYESDYW` 为 IgG/IgA；mutated `CARGSAQLTYYFDWW` 为 IgG/IgA。箭头为推测方向。
 
@@ -222,7 +228,7 @@
 - e：各空间 cluster 中 disease-related IgH、IgK、IgL 克隆比例。
 - f：炎症组织 `117` 个 IgL 克隆、`18` 个家族的径向树；末端为 clone type，内圈标家族，外圈标 germline/mutated。
 - g：CDR3 两两相似度、家族、mucosal/disease-related 分类及同一谱系树。
-- h：mucosal 与 disease-related IgL 中 germline/mutated 的数量和比例。
+- h：mucosal IgL 为 `17/70（24.3%）` mutated，disease-related IgL 为 `39/47（83.0%）`；总计 `61` 个 germline、`56` 个 mutated。
 - i：最近 Levenshtein distance 谱系归类规则。
 - j：39 个 disease-related mutated IgL 的推断来源：79.5% mucosal ancestor、2.6% immigrant ancestor、17.9% undefined、0% ambiguous。
 - k：disease-related IgL 在组织中的空间分布；颜色代表 CDR3，外框红/蓝代表 mutated/germline，FOV 展示同一推断家族的相邻细胞，比例尺 100 μm。
@@ -240,6 +246,18 @@ Results 的连续物理范围为 `P006.S0008-P015.S0009`，共 150 个 ID。下�
 | NSCLC clonal activities | `P011.S0015-P011.S0016`; `P012.S0005-P012.S0019`; `P013.S0005-P013.S0010` | 23 | [07｜TLS](#07｜同一肺癌里的五个-tls-真的相同吗？)、[08｜浆细胞聚集体](#08｜浆细胞聚集体与-tls-承担的是同一种功能吗？)；CSR 时序与图注冲突在正文/附录保留 |
 | IBD clonal origins | `P013.S0011-P013.S0016`; `P014.S0005-P014.S0016`; `P015.S0005-P015.S0008` | 22 | [09｜Crohn 克隆](#09｜crohn-病变克隆来自哪里？)；对照特有 50 个、39 个 mutated IgL 分母、检出概率与最近邻推断边界均已写明 |
 | **语义 Results 合计** |  | **113** | **113/113 均映射到上述正文落点；未逐句转述的 marker、算法解释和作者机制措辞保留于主图注、方法参数或下方冲突/边界清单** |
+
+#### 此前仅按区间映射、现补明的 Results 细节
+
+| 原文句子 ID | 忠实中文含义 | 解释与边界 |
+|---|---|---|
+| `P007.S0011` | 原文将各样本检出范围写为 TCR 的 44–116 个 V、20–32 个 D、22–64 个 J 基因，以及 BCR 的 164–171 个 V、32 个 D、18 个 J 基因。 | 原句混用 “on average” 与范围；逐样本值在缺失补图，不等于每个样本、每条链都完整。 |
+| `P008.S0008-P008.S0009` | 作者称各 isotype 的 CDR3 类型和非淋巴器官淋巴细胞检出数高于既有工具，并称 Stereo-XCR-seq 是当时唯一同时给出单细胞分辨率与细胞形态的平台。 | 证据位于本地缺失的 Supplementary Fig. 3，且属于跨研究比较，不按统一 benchmark 解读。 |
+| `P009.S0012` | Results 称 top expanded T cell clone 的细胞群（原文计为 87 个细胞）整体呈现 Tcf7、Il7r、Sell、Ccr7、Mki67 等 stemness marker，以及 Gzma/Gzmd/Gzmf/Gzmg/Gzmc/Gzmb 相关表达。 | 同句又写其中 16% 在聚集体，与 Fig. 1j 的 111/16.2% 不能统一；marker 不解决分母冲突。 |
+| `P009.S0017`、`P010.S0005-P010.S0010` | ccRCC 共检出 35,110 个基因；IGL/IGK 相关基因 Moran 指数居前；IgL 克隆按 ≥20、6–19、2–5、1 个细胞分层，大克隆比小克隆更集中。 | IGL/IgL 共享起始文库与 CID；克隆阈值为作者操作性定义，均不是独立空间真值。 |
+| `P011.S0011-P011.S0012` | TCR 指数提示局部扩增，但 T 细胞比 B/浆细胞更弥散、Moran 指数更低、细胞间距更大；作者提出 CXCL9/10 趋化解释。 | 空间分布为观察，趋化与迁移方向是未做扰动或追踪的机制推测。 |
+| `P013.S0014-P013.S0016`、`P014.S0005-P014.S0006` | 两份 Crohn 活检分出固有层、纤毛上皮和 3 个淋巴聚集体；CXCL13/CR2/CCL19 标记的 TLS 只见于炎症组织黏膜下，中央/外周浆细胞聚集体在炎症组织更大。 | 仅同一患者两块活检，不能据此估计 Crohn 人群中的结构频率。 |
+| `P014.S0013-P014.S0015` | 炎症组织 117 个 IgL 中，70 个 mucosal、47 个 disease-related，合计 61 个 germline、56 个 mutated；突变数为 17/70 对 39/47。 | “disease-related”仍只表示另一活检未检出；不能等同致病或新生克隆。 |
 
 ### Methods 与复现信息
 
@@ -267,9 +285,10 @@ Results 的连续物理范围为 `P006.S0008-P015.S0009`，共 150 个 ID。下�
 #### 长短读长处理与坐标映射
 
 - Stereo raw：Read1 中 CID 为 1–25 bp，原文字面写 `MID` 为 26–35 bp，而全文其他位置使用 UMI；Read2 为 cDNA。使用 DCScloud `spatial_RNA_visualization_v5`，未给 pipeline commit 或容器。
-- 长读长用 edlib 查找三个 split elements；原文给出的 LD 阈值分别为 ≤3、字面“minimum LD≤5”、字面“minimum LD≤3”，只保留 1-2-3 顺序。CID 长 20–30 bp、insert ≤10 kb；MiXCR 4.6.0 `--preset generic-ont`，CDR3 assembly 分开 V/J/C，`minimalQuality=5`。
+- 长读长用 edlib 查找 split element 1 `ATGGCGACCTTATCAG`、element 2 `GCCATGTCGTTCTGTGAGCCAAGGAGTT` 和 fixed element 3 `TTGTCTTCCTAAGAC`；原文给出的 LD 阈值分别为 ≤3、字面“minimum LD≤5”、字面“minimum LD≤3”，只保留 1-2-3 顺序。CID 长 20–30 bp、insert ≤10 kb；MiXCR 4.6.0 `--preset generic-ont`，CDR3 assembly 分开 V/J/C，`minimalQuality=5`。来源：`P023.S0015-P023.S0018`、`P024.S0005-P024.S0010`、`P024.S0012-P024.S0025`。
 - whitelist mapping 用 k=5 的 MinHash/LSH forest，ANN 先取 10,000 个近邻，再用 edlib 仅保留唯一、LD≤4 的 CID。CDR3 长度保留 5–30 aa；只有 1 条 read 支持的坐标丢弃，同坐标 UMI 以 LD≤2 聚类，只保留 dominant UMI cluster。
-- 短读长固定序列允许 LD≤1；其后 25 bp 为 CID、其前 10 bp 为 UMI。ST_BarcodeMap 参数为 `--mismatch 1 --umiStart 25`；MiXCR 4.6.0 使用 RNA-seq preset、允许 partial alignment、保存原始 reads，并以 `VTranscriptWithout5UTRWithP` 对齐，按 V/J 分开组装 CDR3。
+- 短读长在 read 2 中查找 fixed element 3 `TTGTCTTCCTAAGAC`，允许 LD≤1；其后 25 bp 为 CID、其前 10 bp 为 UMI。ST_BarcodeMap 参数为 `--mismatch 1 --umiStart 25`；MiXCR 4.6.0 使用 RNA-seq preset、允许 partial alignment、保存原始 reads，并以 `VTranscriptWithout5UTRWithP` 对齐，按 V/J 分开组装 CDR3。来源：`P025.S0005-P025.S0019`。
+- XCR metadata 保留 ReadID、V/D/J/C hits、cloneID、CDR3aa/nt、isotype/priisotype、functional 状态、CID、UMI、x/y、location、SR/LR readtype、`CDR3@isotype`，以及仅短读长使用的 amended C hits 与 amended `CDR3@isotype`。这些字段分别来自 VDJCA、坐标映射或人工添加；不能假定所有字段都由同一读段直接测得。来源：`P025.S0020-P025.S0021`、`P026.S0005-P026.S0007`。
 - 只保留同时具有坐标和 CDR3 的 reads。短读长缺少 C 区时，用相同 CID+UMI 的长读长补 isotype；仅由长读长支持的 CDR3 被全部丢弃。
 
 #### 分割、克隆、聚集体与谱系规则
@@ -277,7 +296,7 @@ Results 的连续物理范围为 `P006.S0008-P015.S0009`，共 150 个 ID。下�
 - bin1（500 nm）UMI 图由 OpenCV 生成，再在 Photoshop 中手工调整角度、缩放和镜头畸变以配准核染图。Cellpose V2 每个样本训练 10–20 张 crop，每张 10–30 个细胞；人工校正 mask；`chan=0`、secondary channel 0、learning rate 0.1、weight decay 0.0001、100 epochs。原文未给初始 model、留出验证、模型文件或分割性能。
 - 同一 cell 中同时检出 TCRα+β 或 IgH+IgK/L 才算配对。hypermutation 只用短读长，V 或 J 区至少 1 个 mutated locus 即判定 hypermutated；每个 CDR3 amino-acid sequence 定义为一个 clone。这个阈值很宽，不能自动等同严格 SHM 或亲和力成熟。
 - clone family 使用同 isotype CDR3 的 pairwise Levenshtein distance、SciPy squareform、Ward hierarchical clustering 和 threshold 20。原文字面写 `hierarchy.linage` 与 `cluster.hierarchy.fdluster`，疑似函数拼写错误，但本文不替作者改写；threshold 的单位和 criterion 未给。
-- CSR 定义为同一空间 cluster、同一 IgH CDR3 出现两个以上 isotype；这是共现规则，不给方向。
+- 按 Methods 字面流程，CSR 分析先选取在肿瘤内 TLS 出现的全部 IgH CDR3，再检查同一空间 cluster、同一 CDR3 是否出现两个以上 isotype，并分别统计各 cluster；这是经过候选预筛的共现规则，不给方向。Results 与 Fig. 3 图注没有明确说明该预筛是否完整贯穿 panel g，因此精确比较分母仍有歧义。来源：`P027.S0025-P027.S0026`、`P028.S0005-P028.S0006`。
 - ccRCC 聚集体：bin50 BCR UMI（IGH/IGK/IGL，手工排除 IGLON5 等），原文“top 85%”保留规则措辞含糊；KDTree `k=10`，取距离最小的 top 20%，DBSCAN `eps=100, min_samples=3`，eps 单位未说明。
 - NSCLC 边界：alveolar bin 用 `k=5`，原文又写按升序丢弃 “least 5%” 距离点，逻辑反常；随后 interp1d、Concaveman 和 Gaussian `sigma=10`。TLS 用 `k=150`，丢弃高于中位距离的点，DBSCAN `eps=300, min_samples=5`；在边界上称 peritumoral，否则 intratumoral，但无距离容差。
 - NSCLC deconvolution 使用 GSE148071、Scanpy 手工标 13 类、RCTD full mode，Stereo minimal UMI=0。原文字面版本为 `spacexr-2.0.018`，格式异常；补充 marker 图缺失。
@@ -318,7 +337,9 @@ Results 的连续物理范围为 `P006.S0008-P015.S0009`，共 150 个 ID。下�
 
 - `P009.S0016` 把 1,831 个 TCR 与 7,317 个 BCR CDR3 引向 Fig. 1b，但 Fig. 1b 实际是流程耗时图，属于原稿引图冲突。
 - `P009.S0012` 写 top expanded T cell clone 有 87 个细胞、16% 位于淋巴聚集体；Fig. 1j 则给 top paired clone `N=111`、其中淋巴聚集体占 16.2%（约 18 个细胞）。87、16% 和 111 无法共用同一分母，原稿也未说明两处是否为不同克隆。
+- Fig. 2e 图内将相关 P 值显示为 `p=0`，Results 写 `P<0.0001`；本文采用后者并保留显示/舍入冲突。Fig. 2h 图题写 mutated plasma cells，Results 则写 B/plasma cells，分母口径不能静默统一。
 - Fig. 3e 的图内图例与完整图注对内外圈含义相反；Results 将 `CARQIITMSINWIDPW` 写作 IgM→IgA/G，Fig. 3i 图注只写 IgM→IgA。
+- CSR Methods 字面流程先从肿瘤内 TLS 检出的 IgH CDR3 选候选，再逐空间 cluster 计数；Results 与 Fig. 3g 图注未明确说明这一预筛是否贯穿图中面积归一化比较，故其精确分母存在歧义。
 - IBD lineage 的 Methods 写 IgH，Results 与 Fig. 4 写 IgL；正文以 Results/Fig. 4 的 `117 IgL clones` 叙述，并保留冲突。
 - 原文字面还包括 `MID` vs UMI、`spacexr-2.0.018`、`hierarchy.linage`、`fdluster`、若干 “minimum LD≤” 和 NSCLC “least 5%” 过滤。它们可能是术语、版本、函数或排版错误，复现时必须核代码，不应静默改正。
 - Crohn 对照被同时描述为 “mildly inflamed normal”；disease-related 只表示另一块活检未检出。取样范围、深度和低配对率都可能制造表观特异性。
