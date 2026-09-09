@@ -1,6 +1,6 @@
 # Spatial dissection of tumour microenvironments in gastric cancers reveals the immunosuppressive crosstalk between CCL2+ fibroblasts and STAT3-activated macrophages
 
-<!-- wechat-style-reviewed: 2026-08-28 -->
+<!-- wechat-style-reviewed: 2026-09-09 -->
 
 同样是胃癌，有些肿瘤里免疫细胞能够进入恶性上皮周围；另一些肿瘤却被致密的成纤维细胞包围，巨噬细胞聚集，真正执行杀伤的 T 细胞很少。病理上可以看到这种差别，但很难回答：究竟是哪类细胞在组织这种“免疫冷”环境？
 
@@ -44,13 +44,13 @@
 
 作者把每个 spot 及其周围 18 个 spots 看作一个局部环境，再分析“某类细胞增多”与“邻近细胞功能程序改变”之间的关系。随着 fibroblast infiltration 增加，immune-cell IL6–JAK–STAT3、炎症反应和 immune checkpoint 程序同步增强。
 
-随后，NicheNet 从 fibroblast ligands 中寻找最能解释免疫细胞靶基因变化的分子，CCL2 排在首位。单细胞数据又把对象进一步缩小：CCL2 主要集中在一个 fibroblast cluster，而高 JAK–STAT3 score 主要集中在 macrophages。
+随后，NicheNet 从 fibroblast ligands 中寻找最能解释免疫细胞靶基因变化的分子，CCL2 排在首位，并在 8 条 immune-related pathways 中有 7 条被识别为 master regulator。这个“7/8”仍是基于表达与先验网络的计算推断。单细胞数据又把对象进一步缩小：CCL2 主要集中在一个 fibroblast cluster，而高 JAK–STAT3 score 主要集中在 macrophages。
 
 ![Fig. 4：CCL2+ fibroblast 与 STAT3-activated macrophage](../../assets/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage/page06.png)
 
 简明图注：Fig. 4 在 23,477 个肿瘤微环境单细胞及 9 例空间数据中，把候选收敛到 CCL2+ fibroblast 与 251 个 STAT3-activated macrophages（比较对象为其余 1,804 个 macrophages），并在 ACRG、TCGA 队列比较双高与双低病例；signature 共现和生存关联支持候选轴，但不能证明患者体内的 CCL2→STAT3 因果。
 
-作者最终定义了 251 个 STAT3-activated macrophages，并与其余 1,804 个 macrophages 比较。空间 signature、RNA-ISH 和 multiplex IHC 均支持 CCL2+ fibroblasts 与 pSTAT3+ macrophages 邻近出现。
+作者最终定义了 251 个 STAT3-activated macrophages，并与其余 1,804 个 macrophages 比较。空间 signature、RNA-ISH 和 multiplex IHC 总体支持 CCL2+ fibroblasts 与 pSTAT3+ macrophages 邻近出现，但并非每例都一一同步：GC9 以 CCL2+ fibroblasts 为主，GC4 则以 STAT3-activated macrophages 为主。
 
 在 ACRG 和 TCGA 中，两个 signature 同高或同低的病例分别为 252/300（84%）和 338/386（87.6%）。主图只比较同高与同低，双高组总体生存更差，log-rank P 分别为 0.02 和 0.05；四个 GEO 队列的 P 为 0.06、0.04、0.02、0.09。
 
@@ -62,7 +62,7 @@
 
 CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL2 中和抗体，或敲低 CAF 中的 CCL2，迁移均下降。CAF 共培养和 100 ng/mL recombinant CCL2 都能提高 macrophage STAT3 phosphorylation。转录组的 JAK–STAT3 GSEA 虽然方向为正，但并不显著（NES = 1.2348，nominal P = 0.2569，FDR = 0.4803）；真正补强这一步的是 pSTAT3 western blot，而不是 GSEA 本身。
 
-更关键的是下游 T 细胞读出。经过 CAF 刺激的 macrophages 会降低激活 Jurkat T cells 的 IFNG 表达；在人 PBMC 分化得到的 macrophages 和 cytotoxic T cells 中，作者也观察到相同方向的结果。
+更关键的是下游 T 细胞读出。主 Fig. 5 中，CAF-stimulated THP-1-derived macrophages 会降低激活 Jurkat T cells 的 IFNG 表达。Supplementary Fig. S11D 另以 PBMC-derived macrophages 展示 CAF 后 pSTAT3 增加的代表性 blot；S11E 则仍用 CAF-stimulated THP-1-derived macrophages，与原代人 CD8+ T cells 共培养，并以 CFSE 增殖而非 IFNG 为终点。S11D–E 均未报告供者数、biological replicate 数或统计检验，因此原代细胞证据只能作为方向性支持。
 
 ![Fig. 5：CCL2 招募髓系细胞并激活 macrophage STAT3](../../assets/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage/page07.png)
 
@@ -74,11 +74,17 @@ CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL
 
 这篇论文把“纤维化胃癌免疫较差”推进成了一条可以逐步检验的候选路径：CCL2+ fibroblast → myeloid recruitment → macrophage STAT3 activation → T-cell suppression。现有扰动把 CCL2 与迁移、CAF/CCL2 与 pSTAT3、CAF-stimulated macrophage 与 T-cell suppression 分别连接起来，但没有用同一个 rescue 实验闭合整条链。
 
-对临床研究而言，更现实的近期价值是定义候选分层变量。Fibrotic subtype、CCL2+ fibroblast 和 pSTAT3+ macrophage 可以在组织中检测，也可以形成外部队列 signature；但 158 例标志物子队列的 disease-free survival 比较并不显著（分别 P = 0.27 和 0.45），所以还不能据此给患者分组或选药。
+对临床研究而言，更现实的近期价值是定义候选分层变量。Fibrotic subtype、CCL2+ fibroblast 和 pSTAT3+ macrophage 可以在组织中检测，也可以形成外部队列 signature；但标志物子队列虽有 158 例完成染色，每张 disease-free survival 曲线实际只纳入 152 例，比较均不显著（分别 P = 0.27 和 0.45），所以还不能据此给患者分组或选药。
 
 它也为联合治疗提供了明确假说：与其把 CCL2/CCR2 或 STAT3 阻断当作所有胃癌的单药策略，更合理的试验对象可能是 fibrotic subtype，并与免疫检查点抑制剂联合。不过，这一步仍未在患者中得到验证。
 
-## 08｜这些结果仍需要冷静看待
+## 08｜对我们的研究有什么可借鉴
+
+最值得复用的是“空间发现—细胞对收敛—分子扰动—大队列验证”的证据路线。空间组学不应停在聚类图，而应继续回答：谁是 regulator，谁是 target，哪条 ligand–receptor 或 signaling axis 能被实验打断。
+
+如果迁移到胃癌癌前病变或免疫预防队列，可以同时记录 CAF 状态、髓系激活和 T-cell exclusion，而不是只使用一个 stromal score。候选轴进入转化研究前，至少需要一个分子扰动、一个免疫功能读出和一个独立组织队列。
+
+## 09｜这些结果仍需要冷静看待
 
 首先，空间发现队列只有单中心 9 例，而且 9 人均为男性。它适合建立机制假说，不能单独证明三类空间亚型在女性、其他中心或不同人群中稳定存在。
 
@@ -86,13 +92,7 @@ CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL
 
 第三，体外实验和小鼠模型支持 CCL2–STAT3 候选链条，但中和/敲低 CCL2 只验证了迁移，没有做 CCL2–STAT3 rescue；小鼠也没有进行轴上干预，且补充材料仍未报告每组动物数。人类胃癌原位环境中还有 IL6、CSF1、缺氧和肿瘤细胞因子等多种 macrophage STAT3 来源，论文没有证明阻断 CCL2、CCR2 或 STAT3 能改善免疫治疗结局。
 
-最后，675 例组织芯片的分组数和生存 P 值在正文、图注与补充表之间存在不一致；158 例标志物子队列只证明两类阳性细胞相关（P < 0.001），没有得到显著 DFS 差异。结论方向可以用于提出假说，但不能当作稳定预后标志。
-
-## 09｜对我们的研究有什么可借鉴
-
-最值得复用的是“空间发现—细胞对收敛—分子扰动—大队列验证”的证据路线。空间组学不应停在聚类图，而应继续回答：谁是 regulator，谁是 target，哪条 ligand–receptor 或 signaling axis 能被实验打断。
-
-如果迁移到胃癌癌前病变或免疫预防队列，可以同时记录 CAF 状态、髓系激活和 T-cell exclusion，而不是只使用一个 stromal score。候选轴进入转化研究前，至少需要一个分子扰动、一个免疫功能读出和一个独立组织队列。
+最后，675 例组织芯片的口径不能合并引用：正文和 Table S4 表头均为 228/126/321，Fig. 6 分类标签为 226/126/320，而 Kaplan–Meier 曲线起点为 320 个 fibrotic 加 354 个 non-fibrotic，共 674 例；正文/图内与图注的 log-rank P 又分别为 0.015 和 0.0023。Table S4 的 histologic subtype 三行分别相加只得到 225/127/320，这是表内分类单元格与表头未对齐，不是第三套亚型样本量。158 例标志物子队列中每张 DFS 曲线实际纳入 152 例；两类染色的线性关联虽为 P < 0.001，DFS 却均不显著。结论方向可以用于提出假说，但不能当作稳定预后标志。
 
 ---
 
@@ -111,14 +111,14 @@ CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL
 - 通讯作者: Tae-Min Kim, Hoon Hur
 - 研究领域: 胃癌、空间转录组、肿瘤微环境、CAF、巨噬细胞、免疫抑制、JAK-STAT3
 - 关键词: gastric cancer, Visium, spatial transcriptomics, tumour microenvironment, CCL2, fibroblast, CAF, STAT3-activated macrophage, JAK-STAT3, fibrotic subtype
-- 数据来源：本研究空间测序数据为 GEO `GSE251950`；TCGA、ACRG 与其余 GEO accession 见“可重复性资源和迁移注意点”，原文存在编号冲突。
+- 数据来源：本研究空间测序数据为 GEO `GSE251950`；该编号出现在 manifest 第 14 页原始抽取中，紧接 `P014.S0004`，但被误判成 heading 而没有句子 ID，需标记为 `EXTRACTION_CHECK`。TCGA、ACRG 与其余 GEO accession 见“可重复性资源和迁移注意点”，原文存在编号冲突。
 - 代码来源：论文及补充材料未报告独立代码仓库；仅报告 Seurat、SpaceRanger、NicheNet、CellPhoneDB、CIBERSORT/GSVA 等工具与部分版本/参数。
 - 本地 PDF: `pdfs/processed/ccl2-fibroblast-stat3-macrophage-gastric-cancer.pdf`
 - PDF 解析质量:
   - 使用 `scripts/build_pdf_llm_pack.py` 生成全文句子 ID。
   - 解析结果: 14 页，544 个句子；脚本标注 Results 39 句，Methods 163 句。
   - 重要纠偏: 由于 BMJ/Gut 排版把主文 Results 穿插在第 9-12 页并夹杂图注，脚本把大量真实 Results 句子误分到 `methods` 或 `supplementary`。本笔记按原文版面和小标题重新整理，纳入 `P002.S0017-P002.S0033`, `P009.S0001-P012.S0027` 等真实结果段。
-  - 低置信内容: 图注、页眉页脚和版权提示混入正文；`P010.S0014-P011.S0001` 跨页断句；`P011.S0043-P012.S0001` western blot 句子跨页断裂；`P012.S0020-P012.S0021` 临床病理句跨页断裂；Fig. 6 图注和正文中 TMA 分组数、log-rank p 值存在轻微不一致。
+  - 低置信内容: 图注、页眉页脚和版权提示混入正文；`P010.S0014-P011.S0001` 跨页断句；`P011.S0043-P012.S0001` western blot 句子跨页断裂；`P012.S0020-P012.S0021` 临床病理句跨页断裂；`P014.S0004` 后的 `GSE251950.` 被抽取器误判为 heading，编号本身没有句子 ID；Fig. 6 的分类数、Kaplan–Meier 起始人数和 log-rank p 值存在多套口径。
   - 补充材料纠偏（2026-08-05）：此前 BMJ 直链受 Cloudflare 403 拦截；本次通过 [PMC12013559](https://pmc.ncbi.nlm.nih.gov/articles/PMC12013559/) 与 [Europe PMC supplementary archive](https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12013559/supplementaryFiles) 获取全部 5 个文件。Supplementary Methods 为 10 页/216 个 ID；第 1–9 页 `s003:P001.S0001–P009.S0002` 共 153/153 个抽取 ID 已分类，其中包含实质方法、标题/断片和 1 个页码噪音。Supplementary Notes 为 5 页/63 个 ID，其中 8 则 notes `s004:P001.S0001–P004.S0003` 为 49/49。Supplementary Figures（27 页）、Tables（16 页）和 graphical abstract（PPTX）均已确认存在。
   - 补充材料解析边界：Supplementary Methods/Notes 的单栏段落整体可读，但抽取器会把相邻小标题和跨页句拼接；Supplementary Tables 的宽表与 425-gene signatures 在文本抽取中严重错列；Supplementary Figures 含大量坐标轴文本。本笔记只引用可与正文、图注或表题交叉核对的数字，不用错列单元格补写结果。
 - 图像截取说明: 主图按整页渲染保存，避免漏 panel；后续需要局部 panel 时可再裁剪。
@@ -147,7 +147,7 @@ CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL
 | Fig. S1–S4 | 其余病例的病理/去卷积空间图、GC1 细胞地图、各 niche 细胞丰度和 8 例 niche 分布。 | `s001:P001.S0001–P012.S0001`；S1–S2 占前 10 页，坐标轴和大图文本不能稳定逐格抽取。 |
 | Fig. S5–S7 | 各 subtype/niche 的 cell-type GSEA、免疫 marker 和 8 类 fibroblast→immune NicheNet 结果。 | `s001:P013.S0001–P015.S0004`；富集热图用于支持方向，不替代 panel-level FDR。 |
 | Fig. S8–S10 | 8 例 CF/SM 空间分布、9 例邻近组织原位验证和 6 个公共队列生存图。 | `s001:P016.S0001–P018.S0015`；S10 的 comparator 是双高对其余患者，与主 Fig. 4 不同。 |
-| Fig. S11–S12 | 人源 CCL2/迁移/pSTAT3/CD8 增殖，以及 MGF 建立、Ccl2 和小鼠肿瘤生长。 | `s001:P019.S0001–P020.S0009`；pSTAT3 与 CFSE 主要是定性/半定量 panel，动物每组数未报告。 |
+| Fig. S11–S12 | 人源 CCL2/迁移/pSTAT3/CD8 增殖，以及 MGF 建立、Ccl2 和小鼠肿瘤生长。 | `s001:P019.S0001–P020.S0009`；S11D 为 PBMC-derived macrophage pSTAT3，S11E 为 THP-1-derived macrophage 抑制原代 CD8+ T-cell CFSE 增殖；两 panel 未报告供者数、biological replicate 或统计检验，动物每组数也未报告。 |
 | Fig. S13–S18 | 36-variable 邻域、spot 数稳健性、CCL2+ CAF、macrophage states、158 例 TMA 和三种去卷积方法比较。 | `s001:P021.S0001–P027.S0003`；S17 的 DFS 与分组数字纳入冲突审计。 |
 | Tables S1–S4 | 9 例临床特征、测序 QC、两套 425-gene signatures、675 例 TMA 临床病理比较。 | `s002:P001.S0001–P016.S0016`；宽表抽取错列，只有可与表题、行列标题交叉核对的数字进入正文。 |
 | Graphical abstract | 研究设计与验证路径概览。 | `s005` PPTX；不是独立 Source Data，其中把 `GSE13861` 写成 `GSE13826`，只作为排版冲突保留。 |
@@ -256,13 +256,13 @@ Fig. 3B 中第一组信号是 proliferation。G2M checkpoint、MYC targets、E2F
 
 中文图注（基于原文图注）：Fig. 4A 用 NicheNet 分析 fibroblast-to-immune crosstalk，CCL2 在 fibroblast ligands 中具有最高 ligand activity，并连接到 target/receptor genes。Fig. 4B 图注写 716 个 scRNA-seq fibroblasts；主 Results、Supplementary Methods 和 Supplementary Note 7 均支持 726 个（143 个 CCL2+ 加 583 个 CCL2−），因此这里保留为原文内部冲突。Fig. 4C 比较 CCL2 与其他 ligand、iCAF score、myCAF score 及 IL6/ACTA2 markers 的关系。Fig. 4D 在 23,477 个 TME single cells 中显示 JAK-STAT3 signature 主要局限于 myeloid cells，进一步集中于 macrophages，并以 high JAK-STAT3 score 定义 STAT3-activated macrophages。Fig. 4E 比较 CCL2+ fibroblast/STAT3-activated macrophage 与对应阴性细胞间的 ligand-receptor pairs。Fig. 4F-G 展示两类 signature 在空间中的共定位和 spot-level correlation。Fig. 4H-I 展示 ACRG、TCGA 和四个 GEO 队列中 CF-high/SM-high 与差预后的关系（`P006.S0005-P006.S0020`；`s003:P003.S0010–P004.S0002`；`s004:P003.S0009–P003.S0011`）。
 
-在 fibroblast 可能调节的免疫功能中，作者聚焦 IL6-JAK-STAT3，因为它与胃癌 TME 中促癌炎症反应相关（`P011.S0003`）。NicheNet 用 fibroblasts 中的 ligands 解释 immune cells 中的 target/receptor genes，结果 CCL2 成为最强 master regulator，连接到 LTB、SOCS1、SOCS3、STAT3、TGFB1 等 IL6-JAK-STAT3 相关 target genes，并具有最高 ligand activity（`P011.S0004-P011.S0008`）。
+在 fibroblast 可能调节的免疫功能中，作者聚焦 IL6-JAK-STAT3，因为它与胃癌 TME 中促癌炎症反应相关（`P011.S0003`）。NicheNet 用 fibroblasts 中的 ligands 解释 immune cells 中的 target/receptor genes，结果 CCL2 成为最强 master regulator，连接到 LTB、SOCS1、SOCS3、STAT3、TGFB1 等 IL6-JAK-STAT3 相关 target genes，并具有最高 ligand activity；在 8 条 immune-related pathways 中，CCL2 有 7 条被识别为 master regulator（`P011.S0004-P011.S0008`）。这是依赖表达数据和先验网络的调控推断，不等于 7 条通路均已获得扰动实验验证。
 
 单细胞数据进一步收窄细胞对象。726 个 fibroblasts 中 CCL2 并非广泛表达，而是局限于一个 cluster（`P011.S0009`）。全 TME 23,477 个 single cells 中，高 JAK-STAT3 score 主要出现在 myeloid cells，尤其 macrophages；作者据此定义 251 个 STAT3-activated macrophages，并与其余 1,804 个 macrophages 区分（`P011.S0012-P011.S0013`）。
 
 CellphoneDB 分析显示，在 CCL2、SAA1、CCL19、CCL21 等 top ligands 中，CCL2+ fibroblasts 与 STAT3-activated macrophages 之间的 interacting ligand-receptor gene pairs 比 CCL2-negative 对照更多（`P011.S0014`）。作者随后用 CIBERSORT signature matrix functions 分别得到 425 个 CCL2+ fibroblast signature genes 和 425 个 STAT3-activated macrophage signature genes，用于空间和 bulk 队列打分（`P011.S0015-P011.S0016`）。
 
-空间层面，GC1 中 CCL2+ fibroblast signature 和 STAT3-activated macrophage signature 分布高度一致；跨 9 例所有 spots 的相关性热图也显示两者高度相关，并主要与 stromal cells 聚集（`P011.S0017-P011.S0020`）。作者还用 CCL2/COL1A1 dual RNA-ISH 和 pSTAT3/CD68 multiplex IHC 做了原位验证（`P011.S0021-P011.S0023`）。
+空间层面，GC1 中 CCL2+ fibroblast signature 和 STAT3-activated macrophage signature 分布高度一致；跨 9 例所有 spots 的相关性热图也显示两者高度相关，并主要与 stromal cells 聚集（`P011.S0017-P011.S0020`）。作者还用 CCL2/COL1A1 dual RNA-ISH 和 pSTAT3/CD68 multiplex IHC 做了原位验证。不过，原文同时报告 GC9 以 CCL2+ fibroblasts 为主、GC4 以 STAT3-activated macrophages 为主，说明总体 concordance 并不要求每例两类细胞等比例共现（`P011.S0021-P011.S0023`）。
 
 临床层面，作者在 ACRG 和 TCGA 中发现大多数病例要么 CF-high/SM-high，要么 CF-low/SM-low，分别为 252/300（84%）和 338/386（87.6%），说明两个 signature scores 强相关（`P011.S0024-P011.S0026`）。主 Fig. 4 的生存分析只比较 CF-high/SM-high 与 CF-low/SM-low：ACRG p=0.02、TCGA p=0.05；四个 GEO 图标成 GSE13861、GSE26899、GSE26901、GSE28541，p 分别为 0.06、0.04、0.02、0.09（`P011.S0027-P011.S0029`；Fig. 4I）。Supplementary Fig. S10 则比较双高与其余全部患者，ACRG 126/174（p=0.02）、TCGA 169/217（p=0.08），四个 GEO 为 25/40（p=0.08）、36/57（p=0.03）、44/65（p=0.01）、16/24（p=0.02）（`s001:P018.S0001–P018.S0015`）。两套 comparator 不同，不能把显著性变化写成完全一致的重复。总体结果支持两类 signature 的相关和预后假说，但 bulk signature 仍不是直接空间检测（`P011.S0030`）。
 
@@ -274,7 +274,7 @@ CellphoneDB 分析显示，在 CCL2、SAA1、CCL19、CCL21 等 top ligands 中�
 
 下一步是 macrophage STAT3。作者用 PMA 将 THP-1 分化为 macrophages，与 CAF 共培养后做转录分析；JAK–STAT3 GSEA 方向为正，但 ES = 0.7059、NES = 1.2348、nominal p = 0.2569、FDR = 0.4803、FWER = 0.987，并不显著。Western blot 则显示 CAF 共培养或 recombinant CCL2 处理后 macrophage STAT3 phosphorylation 增加（`P011.S0041-P012.S0001`；Fig. 5D–E）。这支持蛋白读出，但论文没有用 CCL2 neutralisation/knockdown rescue pSTAT3，因此不能把 CCL2→STAT3 写成已经闭环的单一因果路径。
 
-最后是 T 细胞功能。PMA/ionomycin 激活 Jurkat T cells 会提高 IFNG；但与 CAF-stimulated macrophages 共培养后，IFNG 显著下降（`P012.S0002-P012.S0004`）。作者还在从人 PBMC 分化得到的 macrophages 和 cytotoxic T cells 中复现实验，支持 CAF-induced STAT3 activation 和 T cell activation inhibition 不是只发生在 THP-1/Jurkat 模型里（`P012.S0005-P012.S0006`）。注意，抽取文本把 IFNG 在一处写成 INFG，这是 OCR/排版抽取噪音。
+最后是 T 细胞功能。PMA/ionomycin 激活 Jurkat T cells 会提高 IFNG；但与 CAF-stimulated THP-1-derived macrophages 共培养后，IFNG 显著下降（`P012.S0002-P012.S0004`）。主 Results 随后概括称，CAF-induced macrophage STAT3 activation 和 T-cell inhibition 已在 PBMC-derived macrophages/cytotoxic T cells 中复现（`P012.S0005-P012.S0006`）；Supplementary Fig. S11 的 panel 口径却更窄且分属两套实验：S11D 是 CAF 处理后 PBMC-derived macrophages 的代表性 pSTAT3 blot，S11E 是 CAF-stimulated THP-1-derived macrophages 抑制原代人 CD8+ T-cell CFSE proliferation（`s001:P019.S0013–P019.S0014`）。S11D–E 都未报告供者数、biological replicate 数、误差条或统计检验，因此不能把补图写成“PBMC-derived macrophages 抑制原代 CD8”或 IFNG 的完整原代复现。另需注意，主文把补图标为 S11E–F，但补充图注只列到 S11E；抽取文本把 IFNG 一处写成 INFG，均属原文/抽取口径问题。
 
 ##### CCL2+ fibroblast-mixed syngeneic mouse tumours recapitulate fibrotic GC
 
@@ -290,11 +290,11 @@ CellphoneDB 分析显示，在 CCL2、SAA1、CCL19、CCL21 等 top ligands 中�
 
 ##### Validation in a large GC cohort
 
-作者进一步用 675 例胃癌 TMA 做 histological validation。按 IHC 中 pancytokeratin、CD45RB、actin 哪一个最高，把病例分为 epithelial、immunogenic 和 fibrotic 三类。正文给出的分组数为 228、126、321 例；Fig. 6 图注写作 226、126、320 例，存在轻微不一致，应按原文记录为一个低置信点（`P012.S0017-P012.S0019`, `P008.S0015-P008.S0018`）。
+作者进一步用 675 例胃癌 TMA 做 histological validation。按 IHC 中 pancytokeratin、CD45RB、actin 哪一个最高，把病例分为 epithelial、immunogenic 和 fibrotic 三类。正文与 Supplementary Table S4 表头均给出 228、126、321 例；Fig. 6 分类标签/图注则为 226、126、320 例（`P012.S0017-P012.S0019`；`P008.S0015-P008.S0018`；`s002:P016.S0001–P016.S0016`）。Table S4 的 histologic subtype 三行按列相加为 225、127、320，无法与其自身表头对齐；这些是表内分类单元格的合计异常或缺失，不能误读为第三套 epithelial/immunogenic/fibrotic 样本量。
 
 临床病理关联上，epithelial subgroup 中 differentiated-type GC 更多，immunogenic subgroup 中 undifferentiated-type GC 占比更高；MSI-H 更常见于 epithelial subtype，EBV-positive 更常见于 immunogenic subtype，p 值分别为 <0.001 和 0.004（`P012.S0020-P012.S0022`）。
 
-生存分析显示 fibrotic subtype 预后差于 non-fibrotic subtypes。正文写 log-rank p=0.015，Fig. 6E 图注写 p=0.0023，这也是需要回看原图/统计表确认的点（`P012.S0023-P012.S0025`, `P008.S0019`）。此外，作者在 158 例 TMA 子集上用 CCL2/COL1A1 dual RNA-ISH 和 pSTAT3/CD68 multiplex IHC 进一步确认两类细胞共定位。阴性染色组的生存只呈更好趋势、未达统计学显著；两类阳性细胞计数则显著正相关。因此，这部分支持空间邻近和临床组织学可见性，不构成独立预后验证（`P012.S0026-P012.S0027`；`s004:P003.S0012–P004.S0003`）。
+生存分析显示 fibrotic subtype 预后差于 non-fibrotic subtypes。正文和 Fig. 6E 图内写 log-rank p=0.015，Fig. 6E 图注写 p=0.0023；该 Kaplan–Meier 图 time 0 的 number at risk 为 fibrotic 320、non-fibrotic 354，共 674 例，也与 675 例队列及 Fig. 6 分类标签的 672 例均不相同（`P012.S0023-P012.S0025`；`P008.S0015-P008.S0019`）。此外，作者在 158 例 TMA 染色子集上用 CCL2/COL1A1 dual RNA-ISH 和 pSTAT3/CD68 multiplex IHC 进一步确认两类细胞共定位；但 S17 两张 DFS 曲线在 time 0 均只纳入 152 例：CCL2/COL1A1 为 18+75+59，pSTAT3/CD68 为 28+59+65，缺少的 6 例原因未报告。DFS 比较分别为 p=0.27 和 p=0.45，均不显著；两类染色的正相关则使用 chi-square linear-by-linear association，p<0.001（`P012.S0026-P012.S0027`；`s001:P025.S0001–P026.S0008`；`s004:P003.S0012–P004.S0003`）。因此，这部分支持空间邻近和临床组织学可见性，不构成独立预后验证。
 
 #### 作者结论与证据强度
 
@@ -305,8 +305,8 @@ CellphoneDB 分析显示，在 CCL2、SAA1、CCL19、CCL21 等 top ligands 中�
 - 9 例 GC 空间转录组可按细胞组成分成 epithelial、immunogenic、fibrotic 三类，fibrotic GC 具有 fibroblast enrichment 和较少 T/plasma cell infiltration（`P002.S0021-P002.S0033`）。
 - 29,808 个 spots 可以组织成六类 niches，fibroblast-infiltrated niches 中 malignant cells 的 EMT、免疫 exhaustion/checkpoint、myeloid/B cell abundance 等信号增强（`P009.S0001-P009.S0031`）。
 - Functional crosstalk 框架把 fibroblast infiltration 与 immune-cell IL6-JAK-STAT3、inflammatory response、checkpoint upregulation 联系起来（`P009.S0036-P011.S0002`）。
-- NicheNet、scRNA-seq、CellphoneDB、spatial signature 和 RNA-ISH/IHC 均支持 CCL2+ fibroblasts 与 STAT3-activated macrophages 是一个空间相邻、功能相关的细胞对（`P011.S0003-P011.S0023`）。
-- CAF/CCL2 促进 THP-1 migration，CAF 或 recombinant CCL2 激活 macrophage pSTAT3，CAF-stimulated macrophages 抑制 T cell IFNG，这些体外结果支持机制链条（`P011.S0035-P012.S0006`）。
+- NicheNet、scRNA-seq、CellphoneDB、spatial signature 和 RNA-ISH/IHC 总体支持 CCL2+ fibroblasts 与 STAT3-activated macrophages 是一个空间相邻、功能相关的细胞对；GC9/GC4 的偏离说明这种 concordance 并非逐例一一对应（`P011.S0003-P011.S0023`）。
+- CAF/CCL2 促进 THP-1 migration，CAF 或 recombinant CCL2 激活 macrophage pSTAT3，CAF-stimulated THP-1-derived macrophages 抑制 Jurkat IFNG 和原代 CD8+ T-cell CFSE proliferation，这些分段体外结果支持机制链条（`P011.S0035-P012.S0006`；`s001:P019.S0013–P019.S0014`）。
 - 小鼠 YTN3+MGF 模型和 675 例 TMA 支持 fibrotic-like TME 中 macrophage accumulation、CD8/GrzB 降低和差预后（`P012.S0007-P012.S0027`）。
 
 合理但仍需谨慎的推断：
@@ -335,7 +335,7 @@ scRNA-seq 参考来自作者此前 5 例 GC 数据。主文明确提到 726 个 
 
 空间转录组流程的主文可见步骤包括：Visium 生成每个 spot 的表达数据；基于 scRNA-seq 参考对 11 类细胞做 deconvolution；将上皮细胞进一步拆成 malignant 和 normal epithelium，得到 12 类细胞丰度（`P002.S0020-P002.S0021`）。
 
-体外实验包括三组：第一组是 THP-1 transwell migration，用 CAF-conditioned medium、anti-CCL2 neutralising antibody、CCL2 knockdown CAF-CM 和 recombinant CCL2 测试迁移变化（`P007.S0006-P007.S0009`, `P011.S0037-P011.S0040`）。第二组是 THP-1-derived macrophage 与 CAF 共培养，检测 JAK-STAT3 transcriptional enrichment 和 pSTAT3 western blot（`P007.S0010-P007.S0012`, `P011.S0041-P012.S0001`）。第三组是 activated Jurkat T cells 或 PBMC-derived cytotoxic T cells，与 CAF-stimulated macrophages 共培养，读出 IFNG（`P007.S0013-P007.S0017`, `P012.S0002-P012.S0005`）。
+体外实验包括三组：第一组是 THP-1 transwell migration，用 CAF-conditioned medium、anti-CCL2 neutralising antibody、CCL2 knockdown CAF-CM 和 recombinant CCL2 测试迁移变化（`P007.S0006-P007.S0009`, `P011.S0037-P011.S0040`）。第二组是 THP-1-derived macrophage 与 CAF 共培养，检测 JAK-STAT3 transcriptional enrichment 和 pSTAT3 western blot；S11D 另在 PBMC-derived macrophages 中展示 CAF 后 pSTAT3 blot（`P007.S0010-P007.S0012`, `P011.S0041-P012.S0001`；`s001:P019.S0013`）。第三组包含两个不同 T-cell endpoint：主 Fig. 5 是 CAF-stimulated THP-1-derived macrophages 与 activated Jurkat T cells 共培养，读出 IFNG；S11E 是同类 macrophages 与原代人 CD8+ T cells 共培养，72 小时后以 CFSE 读出增殖（`P007.S0013-P007.S0017`, `P012.S0002-P012.S0005`；`s001:P019.S0014`；`s003:P007.S0003–P007.S0007`）。
 
 动物实验为 C57BL/6J 小鼠皮下同系肿瘤模型，YTN3 cells 单独或与 GFP+ MGF 混合注射，day 7、14、26 收获。IHC 标记 GFP、alpha-SMA、F4/80、CD8alpha、granzyme B，并用 QuPath 计数 ROI（`P008.S0006-P008.S0014`, `P012.S0007-P012.S0015`）。
 
@@ -346,6 +346,7 @@ scRNA-seq 参考来自作者此前 5 例 GC 数据。主文明确提到 726 个 
 - 去卷积与空间邻域：作者比较 Seurat、SPOTlight、cell2location 与病理区域的一致性，因 Seurat 表现较均衡而用于后续。每个中心 spot 与 6 个 N1、12 个 N2 spots 组成 19-spot 邻域；12 类细胞在 S/N1/N2 三层形成 36 个变量，再层次聚类为 6 个 niches。可视化使用 Seurat 4.03、R 4.3；低于对应 niche 5% 的细胞类型不进入 cell type-specific expression 推断（`s003:P002.S0002–P003.S0003`）。
 - 功能互作：五类细胞表达用 non-negative least squares 推断，Hallmark/GSVA `ssgsea` 计算功能分数，CIBERSORT LM22 推断 22 类免疫细胞。互作分析仍使用 19-spot 邻域和 50 个 Hallmark terms；增殖指数来自 157 个 genes，并按 malignant/endothelial infiltration 分成 5 bins，免疫分析使用 8 个 Hallmark immune sets（`s003:P002.S0015–P003.S0010`）。
 - 单细胞与预后：NicheNet 使用默认 ligand–receptor 和 ligand–target regulatory scores；参考数据包含 726 个 fibroblasts、2,055 个 macrophages，后者计算 IL6–JAK–STAT3 score。两类 425-gene signatures 由 CIBERSORT signature matrix functions 构建；公共队列以各 signature 中位数分成四组，再用 Kaplan–Meier/log-rank 比较 overall survival（`s003:P003.S0010–P004.S0009`）。
+- 关键未报告参数：论文没有给出把 726 个 fibroblasts 分成 143 个 CCL2+ 与 583 个 CCL2− 的 CCL2 positivity cutoff，也没有给出把 2,055 个 macrophages 分成 251 个 high JAK–STAT3 与 1,804 个其余细胞的阈值或选择算法（`P011.S0009-P011.S0013`；`s003:P003.S0010–P004.S0002`）。样本 subtype 和 29,808 spots 的层次聚类均未报告 distance、linkage 及选定三类/六类的准则；functional crosstalk 也未报告 correlation coefficient 类型或“substantial”阈值（`P002.S0021-P002.S0023`；`s003:P002.S0010–P003.S0007`）。S11D–E 未报告供者数和 biological replicate；动物方法未报告实验小鼠性别、每组 n、随机分配或盲法（`s001:P019.S0013–P019.S0014`；`s003:P008.S0016–P009.S0001`）。这些缺项会直接限制独立复现。
 - 细胞培养：THP-1 与 Jurkat 使用 RPMI-1640，CAF 使用 high-glucose DMEM，均含 10% FBS、1% penicillin/streptomycin；YTN3 另加 0.1% MITO+，铺于 0.5 mg/mL type-I collagen。THP-1 用 100 ng/mL PMA 处理 48 小时分化，Jurkat 用 50 ng/mL PMA 加 1 ng/mL ionomycin 激活 3 小时；原代 monocyte 用 50 ng/mL M-CSF 培养 7 天（`s003:P004.S0009–P005.S0004`）。
 - CCL2 迁移与扰动：80% confluent CAF 在 serum-free DMEM 中培养 24 小时，conditioned medium 以 2,000 rpm、4°C 离心 10 分钟。Transwell 孔径 8.0 μm，每孔 1 × 10^5 THP-1、下室 500 μL CAF-CM；recombinant CCL2 为 50/100/200 ng/mL，孵育 4 小时后固定，并在 100× 下人工计数 3 个视野。主图的中和条件为 200 ng/mL anti-CCL2（`s003:P005.S0005–P005.S0015`；`P007.S0006-P007.S0009`）。
 - 分子与免疫读出：CCL2 shRNA 的完整正反链、退火、酶切和连接条件保留在 `s003:P005.S0015–P006.S0014`；qRT-PCR 实验做 duplicate。Western blot 的 STAT3/pSTAT3 为 1:1,000、β-actin 为 1:5,000（`s003:P006.S0015–P007.S0002`）。原代 CD8+ T cells 用 5 μM CFSE 标记、CD3/CD28 beads 以 1:1 激活，72 小时后流式读取增殖（`s003:P007.S0003–P007.S0007`）。
@@ -359,19 +360,19 @@ Spatial niche 构建的输入是每个 spot 和邻近 spots 的细胞组成。29
 
 Cell type-specific expression 推断的对象是五类主要细胞：malignant cells、normal epithelium、fibroblasts、endothelial cells 和 aggregated immune cells。作者通过 lineage marker concordance 验证推断表达大体符合细胞谱系（`P009.S0017-P009.S0022`）。
 
-CCL2+ fibroblast 和 STAT3-activated macrophage 的 signature 构建基于 scRNA-seq：CCL2+ fibroblast 来自 CCL2 局部高表达 fibroblast cluster；STAT3-activated macrophage 定义为 JAK-STAT3 score 高的 251 个 macrophages。作者随后使用 CIBERSORT signature matrix functions 为两类细胞各构建 425 个 signature genes（`P011.S0009-P011.S0015`）。
+CCL2+ fibroblast 和 STAT3-activated macrophage 的 signature 构建基于 scRNA-seq：CCL2+ fibroblast 来自 CCL2 局部高表达 fibroblast cluster；STAT3-activated macrophage 定义为 JAK-STAT3 score 高的 251 个 macrophages。作者随后使用 CIBERSORT signature matrix functions 为两类细胞各构建 425 个 signature genes（`P011.S0009-P011.S0015`）。原文没有报告前两步的 positivity/high-score cutoff 或选择算法，因此 143/583 和 251/1,804 的分界无法仅凭 Methods 原样重建。
 
 #### 统计学分析方法
 
-层次聚类用于样本 subtype 和 spot niche 分类。输入是细胞丰度矩阵，输出是聚类标签；它能生成数据驱动的分组，但分组数和距离度量会影响结果，不能自动证明这些 subtype 是天然离散类别（`P002.S0021-P002.S0023`, `P009.S0001-P009.S0007`）。
+层次聚类用于样本 subtype 和 spot niche 分类。输入是细胞丰度矩阵，输出是聚类标签；但 Methods 没有报告 distance、linkage，也没有说明三类样本和六类 niche 的选类准则。分组数和距离度量会影响结果，不能自动证明这些 subtype 是天然离散类别（`P002.S0021-P002.S0023`, `P009.S0001-P009.S0007`；`s003:P002.S0010–P002.S0014`）。
 
 GSEA 用于评估不同 niches 或实验条件下的 functional programs。Fig. 2 中使用 Hallmark gene sets，FDR < 0.1 作为富集阈值；Fig. 5D 比较 CAF-stimulated 与 non-stimulated macrophages 的 JAK–STAT3 genes（`P004.S0014`, `P007.S0010`, `P009.S0022`, `P011.S0042`）。后者 NES = 1.2348，但 nominal p = 0.2569、FDR = 0.4803，不满足显著性标准，只能解释为方向性趋势；pSTAT3 western blot 是独立蛋白读出，不应反过来把 GSEA 写成显著。
 
-相关分析用于 functional crosstalk 和空间共定位。Functional crosstalk 中，regulator cell abundance 与 target cell functional scores 的相关性被解释为功能关系；Fig. 4G 中，CCL2+ fibroblast 和 STAT3-activated macrophage signature 与 12 类细胞丰度做 spot-level correlation（`P005.S0009-P005.S0011`, `P006.S0016-P006.S0017`, `P011.S0016-P011.S0019`）。相关性不能证明方向性，所以作者又加入 NicheNet、CellphoneDB 和实验扰动。
+相关分析用于 functional crosstalk 和空间共定位。Functional crosstalk 中，regulator cell abundance 与 target cell functional scores 的相关性被解释为功能关系；Fig. 4G 中，CCL2+ fibroblast 和 STAT3-activated macrophage signature 与 12 类细胞丰度做 spot-level correlation（`P005.S0009-P005.S0011`, `P006.S0016-P006.S0017`, `P011.S0016-P011.S0019`）。Methods 没有报告 correlation coefficient 类型，也没有定义转译成 functional relationship 的“substantial”阈值（`s003:P003.S0003–P003.S0007`）。相关性不能证明方向性，所以作者又加入 NicheNet、CellphoneDB 和实验扰动。
 
 生存分析使用 Kaplan-Meier 和 log-rank test。ACRG/TCGA 中比较 CF-high/SM-high 与 CF-low/SM-low 的 overall survival，p=0.02 和 p=0.05；四个 GEO 队列 p=0.06、0.04、0.02、0.09；TMA 中 fibrotic subtype 预后更差，正文 p=0.015（`P011.S0027-P011.S0029`, `P012.S0023-P012.S0024`）。这些是预后相关性，不是独立多变量因果证明。
 
-体外迁移实验使用 paired t-test，anti-CCL2 和 knockdown 比较也用 paired t-test；Jurkat IFNG 实验使用 Kruskal-Wallis test 加 uncorrected Dunn's post hoc test；小鼠肿瘤重量用 Mann-Whitney U test 和 t-test，IHC ROI 计数用 t-test（`P007.S0006-P007.S0017`, `P008.S0008-P008.S0014`）。补充材料补回了实验条件，却仍未报告动物每组数量，部分功能图也主要是代表性 blot/flow plot；因此显著性符号不能替代 biological replicate 数和效应量。
+体外迁移主图使用 paired t-test，anti-CCL2 和 knockdown 比较也用 paired t-test；S11C 的 recombinant CCL2 dose-response 使用 ANOVA 加 Dunn’s post-hoc test；Jurkat IFNG 使用 Kruskal-Wallis test 加 uncorrected Dunn's post hoc test（`P007.S0006-P007.S0017`；`s001:P019.S0011–P019.S0012`）。S11D 的 PBMC-derived macrophage pSTAT3 blot 与 S11E 的原代 CD8+ T-cell CFSE panel 均未报告供者数、biological replicate、误差条或统计检验（`s001:P019.S0013–P019.S0014`）。S17D 的染色关联使用 chi-square test 的 linear-by-linear association，p<0.001；两张 DFS 曲线用 log-rank，p=0.27 和 p=0.45，且各只有 152 例进入曲线（`s001:P025.S0001–P026.S0008`）。小鼠肿瘤重量用 Mann-Whitney U test 和 t-test，IHC ROI 计数用 t-test（`P008.S0008-P008.S0014`），但补充材料仍未报告动物每组数量。因此显著性符号不能替代 biological replicate 数和效应量。
 
 #### 统计模型、机器学习模型或计算框架
 
@@ -387,13 +388,13 @@ CIBERSORT signature matrix functions 用于构建两类细胞 signature，并把
 
 本文的验证策略是多层证据链，而不是单一大队列验证。
 
-空间发现先用 scRNA-seq 参考和 Visium spots 形成计算推断，再用 RNA-ISH 和 multiplex IHC 原位验证 CCL2/COL1A1 与 pSTAT3/CD68（`P011.S0021-P011.S0023`, `P012.S0026-P012.S0027`）。预后关联用 ACRG、TCGA 和四个 GEO 队列重复观察（`P011.S0024-P011.S0029`）。功能因果方向通过 CCL2 antibody、CCL2 knockdown、recombinant CCL2、pSTAT3 western blot 和 T cell IFNG 抑制实验补强（`P011.S0037-P012.S0005`）。组织生态层面用 syngeneic mouse model 和 675 例 TMA 验证 fibrotic GC 的免疫抑制特征（`P012.S0007-P012.S0027`）。
+空间发现先用 scRNA-seq 参考和 Visium spots 形成计算推断，再用 RNA-ISH 和 multiplex IHC 原位验证 CCL2/COL1A1 与 pSTAT3/CD68（`P011.S0021-P011.S0023`, `P012.S0026-P012.S0027`）。预后关联用 ACRG、TCGA 和四个 GEO 队列重复观察（`P011.S0024-P011.S0029`）。功能因果方向通过 CCL2 antibody、CCL2 knockdown、recombinant CCL2、pSTAT3 western blot、Jurkat IFNG 和原代 CD8+ T-cell CFSE proliferation 分段补强；PBMC-derived macrophage pSTAT3 与原代 CD8 assay 并非同一套 macrophage–T-cell 原代共培养验证（`P011.S0037-P012.S0005`；`s001:P019.S0013–P019.S0014`）。组织生态层面用 syngeneic mouse model 和 675 例 TMA 验证 fibrotic GC 的免疫抑制特征（`P012.S0007-P012.S0027`）。
 
 混杂控制仍有限。比如 fibrotic subtype 与 diffuse histology、stromal abundance、低 T cell infiltration、肿瘤阶段等可能共同变化；公开队列 signature 生存分析未在主文中显示充分多变量 Cox；TMA 分型使用 protein abundance 最高者分类，可能与传统病理类型、分期和治疗差异混杂。
 
 #### 可重复性资源和迁移注意点
 
-数据可用性声明显示，本研究空间测序数据上传至 GEO `GSE251950`（`P014.S0001-P014.S0004`）。公共队列 accession 有三套原文口径：主 Results 文字列为 `GSE13861`、`GSE16899`、`GSE16901`、`GSE18541`；Fig. 4I 与 Supplementary Methods 列为 ACRG `GSE62254`、`GSE13861`、`GSE26899`、`GSE26901`、`GSE28541`；数据可用性则写 `GSE62254`、`GSE13861`、`GSE268999`、`GSE26901`、`GSE28541`。其中 `GSE268999` 比 Supplementary Methods 多一个 9，另外三组中的 16899/26899、16901/26901、18541/28541 也不一致；复现时必须逐一在 GEO 核验，不能由本笔记擅自改正（`P011.S0024-P011.S0029`；`s003:P004.S0003–P004.S0009`；`P014.S0001-P014.S0004`）。
+数据可用性声明显示，本研究空间测序数据上传至 GEO `GSE251950`。需要保留一个 extraction boundary：`P014.S0004` 的句子停在“accession ID”，编号 `GSE251950.` 位于 manifest 第 14 页 block 4 line 7，却被误判为 heading 而没有句子 ID；因此应写作“`P014.S0004` 后原始行，`EXTRACTION_CHECK`”，不能声称编号本身由 `P014.S0004` 完整抽出。公共队列 accession 有三套原文口径：主 Results 文字列为 `GSE13861`、`GSE16899`、`GSE16901`、`GSE18541`；Fig. 4I 与 Supplementary Methods 列为 ACRG `GSE62254`、`GSE13861`、`GSE26899`、`GSE26901`、`GSE28541`；数据可用性则写 `GSE62254`、`GSE13861`、`GSE268999`、`GSE26901`、`GSE28541`。其中 `GSE268999` 比 Supplementary Methods 多一个 9，另外三组中的 16899/26899、16901/26901、18541/28541 也不一致；复现时必须逐一在 GEO 核验，不能由本笔记擅自改正（`P011.S0024-P011.S0029`；`s003:P004.S0003–P004.S0009`；`P014.S0001-P014.S0004`）。
 
 将这套方法迁移到自己的胃癌研究时，至少需要三类输入：空间转录组坐标和表达矩阵、匹配癌种/平台的 scRNA-seq reference、足够可靠的病理区域注释或组织结构标签。最容易出错的是把 Visium spot-level inferred states 当成单细胞真实状态，尤其在 macrophage activation、Treg exhaustion、CD8 dysfunction 这类细胞状态上。
 
@@ -401,7 +402,7 @@ CIBERSORT signature matrix functions 用于构建两类细胞 signature，并把
 
 本文把 fibrotic GC 的免疫冷环境重写为一个可检验的空间互作问题。CCL2 对 myeloid migration、CAF/CCL2 对 macrophage pSTAT3、CAF-stimulated macrophage 对 T-cell readouts 分别得到支持；但这些实验没有通过同一个 rescue 闭合，因此“CCL2 招募→STAT3 激活→T-cell 抑制”仍是一条候选路径，而不是连续因果事实。
 
-临床上，CCL2+ fibroblast/STAT3-activated macrophage bulk signature 与差预后相关，675 例 TMA 中 fibrotic subtype 也有不良生存；但 158 例原位标志物子队列的 DFS 比较不显著。这组结果最多支持把 stromal–myeloid state 预先写入分层验证方案，尚不足以形成伴随诊断。作者讨论中提到，既往 CCL2 单抗 carlumab 在终末期实体瘤单药效果不佳；在 fibrotic subtype GC 中与 ICI 联用仍只是待测试假说（`P013.S0014-P013.S0019`；`s004:P003.S0012–P004.S0003`）。
+临床上，CCL2+ fibroblast/STAT3-activated macrophage bulk signature 与差预后相关，675 例 TMA 中 fibrotic subtype 也有不良生存；但 158 例原位标志物子队列只有 152 例进入每张 DFS 曲线，比较均不显著。这组结果最多支持把 stromal–myeloid state 预先写入分层验证方案，尚不足以形成伴随诊断。作者讨论中提到，既往 CCL2 单抗 carlumab 在终末期实体瘤单药效果不佳；在 fibrotic subtype GC 中与 ICI 联用仍只是待测试假说（`P013.S0014-P013.S0019`；`s001:P025.S0001–P026.S0008`；`s004:P003.S0012–P004.S0003`）。
 
 转化边界是：目前还没有证明 CCL2/CCR2 或 STAT3 轴在胃癌患者中被阻断后能改变免疫治疗结局。现阶段更适合作为待验证的分层变量、机制假说和联合治疗设计依据，而不是立即作为临床靶点。
 
@@ -411,15 +412,15 @@ CIBERSORT signature matrix functions 用于构建两类细胞 signature，并把
 
 第二，Visium 的 spot 分辨率限制明显。作者自己在 discussion 中承认，deconvolution 技术限制使 cytotoxic T cells 等 T cell subpopulations 的 transcriptional dynamics 未被充分评估，需要更高分辨率空间平台（`P013.S0002-P013.S0004`）。
 
-第三，CCL2+ fibroblast 与 STAT3-activated macrophage 的因果链条虽然有体外和小鼠支持，但人类原位因果仍未闭环。特别是 macrophage STAT3 activation 可能也受 IL6、CSF1、hypoxia、necrosis、tumor-derived factors 等影响。
+第三，CCL2+ fibroblast 与 STAT3-activated macrophage 的因果链条虽然有体外和小鼠支持，但人类原位因果仍未闭环。GC9/GC4 的偏离说明两类细胞并非逐例等比例共现；S11D–E 又缺供者数、biological replicate 与统计检验，且分别测试 PBMC-derived macrophage pSTAT3 和 THP-1-derived macrophage 对原代 CD8 增殖的影响。特别是 macrophage STAT3 activation 可能也受 IL6、CSF1、hypoxia、necrosis、tumor-derived factors 等影响。
 
 第四，公开 bulk 队列中的 CF-high/SM-high 是 signature 推断，不是空间共定位。bulk signature 高也可能只是 fibrotic/diffuse/stromal-rich 肿瘤的伴随特征。
 
-第五，TMA 分型和生存结果存在文本、图内、图注与 Supplementary Table S4 的数字不一致；158 例标志物子队列的 DFS 也未达到显著。结论方向可以提出假说，但精确引用和预后用途都必须回到原始统计。
+第五，TMA 分型和生存结果存在文本、图内、图注与 Supplementary Table S4 的数字不一致；Table S4 表头并不是 225/127/320，后者只是 histologic subtype 行内合计。158 例标志物子队列只有 152 例进入每张 DFS 曲线，且均未达到显著。结论方向可以提出假说，但精确引用和预后用途都必须回到原始统计。
 
 ### 证据强度、原文冲突与不能外推的结论
 
-**直接数据支持：** 9 例 Visium 数据可按细胞组成得到三类 GC，并形成六类 spatial niches；fibroblast-rich 局部环境与髓系富集、checkpoint/exhaustion 程序相关；CCL2+ fibroblast 与 pSTAT3+ macrophage 的 signature 和原位信号相邻；CCL2 中和或敲低降低 THP-1 migration；CAF/CCL2 提高 macrophage pSTAT3；CAF-stimulated macrophage 抑制 T-cell readouts。
+**直接数据支持：** 9 例 Visium 数据可按细胞组成得到三类 GC，并形成六类 spatial niches；fibroblast-rich 局部环境与髓系富集、checkpoint/exhaustion 程序相关；CCL2+ fibroblast 与 pSTAT3+ macrophage 的 signature 和原位信号总体相邻，但 GC9/GC4 不是逐例一一对应；CCL2 中和或敲低降低 THP-1 migration；CAF/CCL2 提高 macrophage pSTAT3；CAF-stimulated THP-1-derived macrophage 分别降低 Jurkat IFNG 和原代 CD8+ T-cell CFSE proliferation。
 
 **合理但尚未闭环：** CCL2 是人类 fibrotic GC 中 macrophage STAT3 的主要上游；这条轴是差预后的独立原因；阻断 CCL2/CCR2 或 STAT3 会恢复 ICI 反应；bulk signature 或 TMA 染色可直接用于患者分层。关键缺口包括 CCL2–STAT3 rescue、轴上动物干预、独立多变量预后验证和临床治疗试验。
 
@@ -428,11 +429,12 @@ CIBERSORT signature matrix functions 用于构建两类细胞 signature，并把
 - Fibroblast 数：Fig. 4B 图内、Results、Supplementary Methods 和 Supplementary Note 7 均为 726（143 CCL2+、583 CCL2−），但 Fig. 4 caption 写 716；本笔记用 726 描述分析集，同时保留 caption 笔误（`P006.S0009`、`P011.S0009`；`s003:P003.S0010`；`s004:P003.S0010–P003.S0011`）。
 - GEO accession：主 Results 文字为 `GSE13861/GSE16899/GSE16901/GSE18541`；Fig. 4I 和 Supplementary Methods 为 `GSE13861/GSE26899/GSE26901/GSE28541`；数据可用性又把首个 `GSE26899` 写成 `GSE268999`，graphical abstract 还把 `GSE13861` 写成 `GSE13826`。图与方法互相支持后一组，但本笔记不静默改写原文文字（`P011.S0029`；`s003:P004.S0007`；`P014.S0003`；`s005`）。
 - 生存 comparator：主 Fig. 4 比较 CF-high/SM-high 与 CF-low/SM-low；Supplementary Fig. S10 比较双高与其余全部患者。TCGA 的 p 值由 0.05 变为 0.08，说明两图回答的不是同一统计问题。S10 的 TCGA 横轴标作 month，却延伸到约 3,500；它疑似使用 days，但原文没有澄清，不能静默换算（`P011.S0026–P011.S0029`；`s001:P018.S0001–P018.S0015`）。
-- 675 例 TMA：正文为 epithelial/immunogenic/fibrotic `228/126/321`，Fig. 6 caption 为 `226/126/320`；Supplementary Table S4 的 histologic subtype 行内合计又为 `225/127/320`。正文和 Fig. 6 图内的 log-rank p = 0.015，caption 写 p = 0.0023（`P012.S0017–P012.S0025`；`P008.S0015–P008.S0019`；`s002:P016.S0001–P016.S0016`）。
-- 158 例 TMA 子集：CCL2/COL1A1 分组为 19/77/62，pSTAT3/CD68 为 29/59/70；两者关联 P < 0.001，但各自 DFS 比较为 P = 0.27、0.45，均不显著（`s001:P025.S0001–P026.S0008`；`s004:P003.S0012–P004.S0003`）。
+- 675 例 TMA：正文与 Supplementary Table S4 表头均为 epithelial/immunogenic/fibrotic `228/126/321`；Fig. 6 分类标签/图注为 `226/126/320`。Table S4 的 histologic subtype 三行按列相加为 `225/127/320`，无法与表头对齐，但这不是另一套亚型分组数。Fig. 6 Kaplan–Meier 的 time 0 risk table 为 fibrotic 320、non-fibrotic 354，共 674；正文和图内 log-rank p=0.015，图注写 p=0.0023（`P012.S0017–P012.S0025`；`P008.S0015–P008.S0019`；`s002:P016.S0001–P016.S0016`）。
+- 158 例 TMA 染色子集：CCL2/COL1A1 分组为 19/77/62，pSTAT3/CD68 为 29/59/70；S17 两张 DFS 曲线 time 0 均只纳入 152 例，分别为 18/75/59 和 28/59/65，缺少 6 例的原因未报告。两者关联用 chi-square linear-by-linear association，p<0.001；各自 DFS 比较为 p=0.27、0.45，均不显著（`s001:P025.S0001–P026.S0008`；`s004:P003.S0012–P004.S0003`）。
+- 主文与 Supplementary Fig. S11：主 Results 把 PBMC-derived macrophage 与 cytotoxic T-cell 结果合并概括为原代复现（`P012.S0005-P012.S0006`），但补图 caption 显示 S11D 只测试 PBMC-derived macrophage pSTAT3，S11E 则用 CAF-stimulated THP-1-derived macrophage 抑制原代 CD8+ T-cell CFSE proliferation，且没有供者数、biological replicate 或统计检验（`s001:P019.S0013–P019.S0014`）。主文另引用不存在于补充图注的 S11F，不能据此补写额外实验。
 - Fig. 5D JAK–STAT3 GSEA 的 NES 为 1.2348，但 nominal p = 0.2569、FDR = 0.4803、FWER = 0.987；它是方向性结果，不是显著通路富集。补充材料也没有报告小鼠每组数量。
 
-**不能从本研究外推：** 不能把 spot-level correlation 当作单细胞直接接触；不能把 CAF-conditioned medium 的混合效应全部归因于 CCL2；不能把皮下 YTN3+MGF 模型当作胃原位治疗模型；不能把不显著的 158 例 DFS 或口径变化的 bulk 生存图写成成熟伴随诊断；也不能据此建议患者接受 CCL2/CCR2、STAT3 或 ICI 联合治疗。
+**不能从本研究外推：** 不能把 spot-level correlation 当作单细胞直接接触；不能把 CAF-conditioned medium 的混合效应全部归因于 CCL2；不能把 S11D–E 合并写成“PBMC-derived macrophage 抑制原代 CD8”的完整原代因果实验；不能把皮下 YTN3+MGF 模型当作胃原位治疗模型；不能把仅 152 例进入曲线且不显著的 DFS 或口径变化的 bulk 生存图写成成熟伴随诊断；也不能据此建议患者接受 CCL2/CCR2、STAT3 或 ICI 联合治疗。
 
 ### 深度研究洞察
 
@@ -490,4 +492,4 @@ CIBERSORT signature matrix functions 用于构建两类细胞 signature，并把
 - Supplementary Notes：5 页、63 个 ID；8 则 notes 的 `s004:P001.S0001–P004.S0003` 为 49/49，页 5 的 14 个 reference/错列续句单独标记。它们补回 subtype/niche 解释、约 20-spot 稳健性、CCL2+ CAF 边界和 158 例 TMA 结果。
 - Supplementary Figures：27 页、142/142 个抽取 ID 已检查并按 Fig. S1–S18 建立索引；Supplementary Tables：16 页、71/71 个抽取 ID 已检查并按 Table S1–S4 建立索引；graphical abstract PPTX 已检查。宽表、坐标轴与图片像素并不等于可靠句子，未把无法稳定对应行列的内容写成新事实。
 - 未覆盖 ID：Results 0、主/补充 Methods 0、Supplementary Notes 0。References、作者单位、版权/下载页眉和页码均已识别，但不逐句翻译为科学结论。
-- 低置信抽取：`P010.S0014–P011.S0001`、`P011.S0043–P012.S0001`、`P012.S0020–P012.S0021` 为主文跨页/跨栏断句；`s003:P001.S0004–P001.S0009`、`s003:P004.S0003–P004.S0009`、`s003:P005.S0005–P005.S0015`、`s003:P008.S0005–P008.S0016` 混合相邻小标题；Supplementary Tables S3 的 850 个 signature genes 不能靠行式文本抽取逐一重建。所有原文数值冲突已集中列于上一节。
+- 低置信抽取：`P010.S0014–P011.S0001`、`P011.S0043–P012.S0001`、`P012.S0020–P012.S0021` 为主文跨页/跨栏断句；`P014.S0004` 后的 `GSE251950.` 位于 manifest 第 14 页 block 4 line 7，被误判为 heading 而没有句子 ID（`EXTRACTION_CHECK`）；`s003:P001.S0004–P001.S0009`、`s003:P004.S0003–P004.S0009`、`s003:P005.S0005–P005.S0015`、`s003:P008.S0005–P008.S0016` 混合相邻小标题；Supplementary Tables S3 的 850 个 signature genes 不能靠行式文本抽取逐一重建。所有原文数值冲突已集中列于上一节。
