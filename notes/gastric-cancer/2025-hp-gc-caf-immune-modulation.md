@@ -1,6 +1,6 @@
 # Spatial and functional dissection of cancer-associated fibroblasts-mediated immune modulation in H. pylori-associated gastric cancer
 
-<!-- wechat-style-reviewed: 2026-08-29 -->
+<!-- wechat-style-reviewed: 2026-09-10 -->
 
 在 H. pylori 阳性胃癌切片里，癌细胞、成纤维细胞和免疫细胞常同时出现。真正难回答的不是“有没有炎症”，而是哪类基质状态与调节性 T 细胞聚集、细胞毒性 T 细胞参与减少相伴。
 
@@ -60,7 +60,7 @@ Tangram 将整合的单细胞参考投射回空间数据后也得到相同排序
 
 作者把空间 T 细胞拆成 CTL（细胞毒性 T 淋巴细胞）、Treg、Th1、Th2、Th17 和增殖型 T 细胞 6 类。THBS1+ CAF 相对 THBS1− CAF 的 Treg SAI 更高（`P < 0.05`），但正文和图注没有给出 Fig. 6F 的精确 `P` 值、绘图细胞数、贡献患者或视野（FOV）数，也没有说明患者级聚合方式；Methods 亦未公开 THBS1+ 的表达阈值。
 
-在 THBS1+ CAF 背景下，Treg 高聚集组总体生存更短（19 对 19 例，`P = 0.007`）。这项生存分层属于患者关联；配体—受体模型列出的 WNT5A–FZD6 和 WNT5B–FZD5 两组突出互作均为计算预测。
+THBS1+ CAF 背景下，Treg 高聚集组总体生存更短（高、低组各 19 例，`P = 0.007`）。原文没有交代这 38 例的 H. pylori 构成或从 71 例空间队列进入生存分析的筛选规则；该生存分层属于患者关联，配体—受体模型列出的 WNT5A–FZD6 和 WNT5B–FZD5 两组突出互作均为计算预测。
 
 图 6 把空间邻近、19 对 19 例生存分层和 WNT5–FZD 预测放在同一链条上，但没有一项是 CAF 特异性扰动。
 
@@ -68,7 +68,7 @@ Tangram 将整合的单细胞参考投射回空间数据后也得到相同排序
 
 ![Fig. 6：THBS1+ CAF 与 Treg 的空间关系](../../assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page14.png)
 
-简明图注：Fig. 6 比较 THBS1+ 与 THBS1− CAF 的通路、Treg 空间邻近、19 对 19 例生存分层和候选互作轴；细胞/邻域层 SAI 的绘图 n、患者/FOV 贡献与 THBS1+ 阈值未报告。它支持空间关联与计算推断，尚不能证明 WNT5–FZD 直接招募或稳定 Treg。
+简明图注：Fig. 6 比较 THBS1+ 与 THBS1− CAF 的通路、Treg 空间邻近、19 对 19 例生存分层和候选互作轴；原文未报告这 38 例的 H. pylori 构成或筛选规则，细胞/邻域层 SAI 的绘图 n、患者/FOV 贡献与 THBS1+ 阈值也未报告。它支持空间关联与计算推断，尚不能证明 WNT5–FZD 直接招募或稳定 Treg。
 
 ## 06｜ZFP36–FN1 这条链有多少直接证据？
 
@@ -112,11 +112,11 @@ THBS1 轴对应 Treg 富集的空间生态位，ZFP36–FN1 轴则与细胞毒 T
 
 第三，LACE-seq 使用 HGC-27 癌细胞而非原代 CAF；TCGA/ACRG 的生存关联及 TCGA 的免疫去卷积来自混合组织数据。相关性不能替代原位细胞特异性机制，THBS1/ZFP36 高表达也不能直接视为独立预后因素。
 
-第四，原文内部有三处不能静默消除的不一致：Results 写 THBS1/ZFP36 在 H. pylori 阳性组上调，Fig. 5B 图注却写阴性组；亚型结果写 THBS1 偏 matCAF、ZFP36 偏 proCAF，后文又把两者概括为 proCAF 程序；Methods 称生存按中位数分组，但 ACRG 的 ZFP36 高、低组实际为 24 对 276 例。
+第四，原文内部有五处不能静默消除的不一致：Results 写 THBS1/ZFP36 在 H. pylori 阳性组上调，Fig. 5B 图注却写阴性组；亚型结果写 THBS1 偏 matCAF、ZFP36 偏 proCAF，后文又把两者概括为 proCAF 程序；Methods 称生存按中位数分组，但 ACRG 的 ZFP36 高、低组实际为 24 对 276 例；补充 Fig. S1B 的纵轴写 `log₂(diffuse/intestinal)`，图注却把红色解释为 intestinal 更强、蓝色解释为 diffuse 更强，方向与比值符号相反；Methods `P006.S0016` 声称报告精确 P 值，但 Fig. 5E/F 与 Fig. 6F 只给 `P < 0.05`。对 S1B 只登记“轴标签—图注冲突”，不替作者裁决颜色含义。
 
 最后，SAI 是作者自定义、默认 `n_neighbors=30` 的距离惩罚指标，结果会受组织密度和参数影响；本地 PDF 中公式还有符号抽取噪音。原文也没有交代历史队列的 H. pylori 判定方式、THBS1+ CAF 的精确阈值，以及空间统计如何处理患者和视野内聚类。
 
-出版社在线补充文件共 7 页、包含 Fig. S1–S6，但本项目尚未为它建立句子 ID，也未把补充图纳入 Results/Methods 覆盖计数；当前也未见单列 Source Data 文件。补充图证据不能冒充已经完成本地审计的材料。
+出版社在线补充文件共 7 页、只含 Fig. S1–S6；本次已建立独立补充包并完成 38/38 个句子 ID 的范围审计。它补齐了通讯网络、marker、FN1 3′UTR motif、SCENIC 与 T 细胞分群的图注，但没有补充表或独立 Source Data，也没有给出 Fig. 6F 的患者/FOV 分母、THBS1+ 阈值或新的功能扰动结果；因此不能用补图消除上述证据边界。
 
 ---
 
@@ -170,7 +170,7 @@ THBS1 轴对应 Treg 富集的空间生态位，ZFP36–FN1 轴则与细胞毒 T
   - `P008.S0023` 与 `P009.S0002` 被 Fig. 2 图注 `P008.S0024-P008.S0029` 及页眉 `P009.S0001` 打断；覆盖审计保留全部 ID，正文按连续语义重接。
   - Manifest 将语义上属于 Discussion 末段的 `P017.S0022-P018.S0003` 标为 Results；这是章节分类错分，不把它当成新结果。
   - LLM pack: `tmp/hp-gc-caf-immune-modulation-llm-pack.md`
-- 在线补充材料状态：出版社提供一份 [7 页 Supplementary material 1](https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs12943-025-02490-9/MediaObjects/12943_2025_2490_MOESM1_ESM.pdf)，只含 Fig. S1–S6（`P018.S0025`）。本项目未保存或句子化该 PDF，补充图未进入下述覆盖计数；出版社页面当前也未见独立 Supplementary Table 或 Source Data 链接。
+- 在线补充材料状态：出版社提供一份 [7 页 Supplementary material 1](https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs12943-025-02490-9/MediaObjects/12943_2025_2490_MOESM1_ESM.pdf)，只含 Fig. S1–S6（主文索引 `P018.S0025`）。已用同一脚本生成 `tmp/hp-gc-caf-immune-modulation-supplementary-llm-pack.md` 与 manifest：7 页、38 个 ID（title 1、supplementary 37），已 38/38 审计；补充包 ID 在下文以 `SI:` 前缀与主文 ID 区分。出版社页面未见独立 Supplementary Table 或 Source Data 链接。
 - 图像截取说明: 主图以整页渲染方式保存，避免漏 panel；后续需要展示时可再按 panel 裁剪。
 - LLM 覆盖审计:
   - Results 覆盖：`P001.S0022-P002.S0004`, `P006.S0017-P013.S0058`，并结合 Fig. 1-7 图注。
@@ -190,7 +190,18 @@ THBS1 轴对应 Treg 富集的空间生态位，ZFP36–FN1 轴则与细胞毒 T
 | Fig. 5 | H. pylori 相关 CAF 扩增、THBS1/ZFP36 上调和预后关联 | 是 | `assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page12.png`; `page13.png` | [04｜为何锁定 THBS1 与 ZFP36](#reader-hp-caf-fig5) |
 | Fig. 6 | THBS1+ CAF–Treg 空间聚集、生存关联与 WNT5-FZD 预测互作 | 是 | `assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page14.png`; `page15.png` | [05｜为何指向 Treg 富集生态位](#reader-hp-caf-fig6) |
 | Fig. 7 | ZFP36–FN1 结合、bulk 相关与 FN1+ CAF–T 细胞通讯推断 | 是 | `assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page16.png`; `page17.png` | [06｜ZFP36–FN1 有多少直接证据](#reader-hp-caf-fig7) |
-| Fig. S1–S6 | 细胞通讯、marker、CAF 基因表达、FN1 3′UTR motif、SCENIC 与 T 细胞亚群 | 否；官网可得 | [Supplementary material 1](https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs12943-025-02490-9/MediaObjects/12943_2025_2490_MOESM1_ESM.pdf) | 未进入本地句子 ID 与覆盖审计 |
+| Fig. S1–S6 | 细胞通讯、marker、CAF 基因表达、FN1 3′UTR motif、SCENIC 与 T 细胞亚群 | 否；官网可得 | [Supplementary material 1](https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs12943-025-02490-9/MediaObjects/12943_2025_2490_MOESM1_ESM.pdf) | 已进入独立补充包；见下表 |
+
+### 补充图证据审计
+
+| 补充图 | 可见信息 | 补充包来源 ID | 证据边界 |
+|---|---|---|---|
+| Fig. S1 | 比较 intestinal/diffuse GC 主要细胞类型的推断通讯网络、`log2 fold change` 热图、T 细胞配体–受体气泡图和弦图 | `SI:P001.S0002–P003.S0001` | Fig. S1B 纵轴为 `log₂(diffuse/intestinal)`，但图注称红=intestinal 更强、蓝=diffuse 更强，方向冲突；正文依 Results 文字，不对热图颜色作唯一解释。图注也未补充患者数、置换次数或精确效应值 |
+| Fig. S2 | 整合 scRNA-seq 中 8 类主要细胞的代表 marker：CD3D、CD79A、CD68、KIT、EPCAM、PECAM1、COL1A1、MYH11 | `SI:P003.S0002–P003.S0004` | 用于注释一致性，不是独立组织验证 |
+| Fig. S3 | 比较 ZFP36、THBS1、THBS2 在 proCAF、iCAF、matCAF、myCAF 的平均表达与表达细胞比例；图内四舍五入细胞数依次约 5.0k、13.7k、9.0k、8.3k（合计 36.0k） | `SI:P004.S0001–P004.S0004` | 这些是细胞级图内计数，不是患者级独立 n；dot plot 仍未给精确组间效应 |
+| Fig. S4 | LACE-seq 在 FN1 3′UTR 定位含 AUUUA 的代表区域与基因组坐标 | `SI:P005.S0001–P005.S0005` | 支持结合候选，仍是同一 HGC-27 细胞系的文库，不是原代 CAF 中的降解实验 |
+| Fig. S5 | ZFP36 高表达 CAF 与 ATF3、JUN、FOS regulon 活性升高相伴；图内 target module 分别标为 10、19、44 genes | `SI:P006.S0001–P006.S0005` | 10/19/44 是 regulon 模块大小，不是样本数或效应量；SCENIC 是调控网络推断，不证明 ZFP36 激活这些转录因子 |
+| Fig. S6 | 整合 scRNA-seq 将 T 细胞分为 CTL、NK、γδ T、Th1、Treg、naive T 和 proliferative T 七类，并展示 marker | `SI:P007.S0001–P007.S0006` | 这是 scRNA-seq 的 7 类分群；不能与正文空间分析的 CTL/Treg/Th1/Th2/Th17/proliferative T 六类口径直接合并 |
 
 ### 生物学故事前情
 
@@ -290,7 +301,7 @@ CAF 不是一种均质细胞。作者沿用其既往 pan-cancer CAF 分类，把
 
 中文图注（基于原文图注）：Fig. 6A-B 区分 THBS1+ 与 THBS1- CAF，并用 violin plot 验证 THBS1 表达差异。Fig. 6C 展示 THBS1+ CAF 中 FOXP3/TGF-beta 和 CD4+ T cell upregulation 相关通路富集。Fig. 6D-E 注释空间数据中的 CTL、Treg、Th1、Th2、Th17 和 proliferative T cells。Fig. 6F 用 SAI 比较 THBS1+/- CAF 与 Treg 的空间关系。Fig. 6G 显示 THBS1+ CAF 背景下 Treg recruitment 高低与生存差异。Fig. 6H-I 展示 THBS1+ CAF、Treg 及 Treg gene activity 的空间重叠。Fig. 6J-L 展示 THBS1+ CAF 与 T cell subsets 的 ligand-receptor 推断，突出 WNT5A-FZD6 和 WNT5B-FZD5。
 
-原文结果梳理：作者把 CAF 按 THBS1 表达分层，识别出 THBS1+ 和 THBS1- CAF（`P011.S0055-P011.S0057`）。THBS1+ CAF 富集 Treg 相关通路，包括 FOXP3/TGF-beta signaling 和 CD4+ T-cell activation pathways（`P011.S0058-P011.S0059`）。随后作者在空间数据中注释 T 细胞六类亚群：CTL、Treg、Th1、Th2、Th17 和 proliferating T cells（`P011.S0060-P011.S0061`）。THBS1+ CAF 相对 THBS1- CAF 的 Treg SAI 更高（Fig. 6F, `P < 0.05`），但原文没有给出该细胞/邻域层分布的绘图 cell 数、贡献患者或 FOV 数、患者级聚合方式和具体检验；THBS1+ CAF 背景下 Treg recruitment 高、低组各 19 例，生存曲线 `P = 0.007`（Fig. 6G）。Treg gene activity 与 THBS1+ CAF 定位部分重叠（`P011.S0062-P013.S0022`）。
+原文结果梳理：作者把 CAF 按 THBS1 表达分层，识别出 THBS1+ 和 THBS1- CAF（`P011.S0055-P011.S0057`）。THBS1+ CAF 富集 Treg 相关通路，包括 FOXP3/TGF-beta signaling 和 CD4+ T-cell activation pathways（`P011.S0058-P011.S0059`）。随后作者在空间数据中注释 T 细胞六类亚群：CTL、Treg、Th1、Th2、Th17 和 proliferating T cells（`P011.S0060-P011.S0061`）。THBS1+ CAF 相对 THBS1- CAF 的 Treg SAI 更高（Fig. 6F, `P < 0.05`），但原文没有给出该细胞/邻域层分布的绘图 cell 数、贡献患者或 FOV 数、患者级聚合方式和具体检验；Fig. 6G 中 THBS1+ CAF 背景下 Treg recruitment 高、低组各 19 例，生存曲线 `P = 0.007`，但未报告这 38 例的 H. pylori 构成或筛选规则。Treg gene activity 与 THBS1+ CAF 定位部分重叠（`P011.S0062-P013.S0022`）。
 
 细胞通讯分析预测 THBS1+ CAF 与 Tregs 有偏好性 ligand-receptor 互作，其中 WNT5A-FZD6 和 WNT5B-FZD5 是突出轴（`P013.S0023-P013.S0025`）。作者据此提出 THBS1+ CAF 可能通过 WNT5-FZD signaling 参与局部免疫抑制；直接数据支持的是空间相关和预测互作，不是招募机制（`P013.S0026`）。
 
@@ -338,7 +349,7 @@ SCENIC regulon 分析提示 ZFP36+ CAF 富集 ATF3、JUN、FOS 等 stress/immune
 
 #### 实验流程和数据生成
 
-CosMx SMI 对 FFPE 切片进行空间转录组分析：切片贴附、HIER、proteinase K 消化、fiducial markers 空间对齐、固定、阻断、杂交、洗涤、上机成像（`P003.S0022-P003.S0033`）。杂交探针包含 980-plex 与定制 ISH probes；视野依据 H&E 参考切片选取，每个 FOV 为 0.51 × 0.51 mm，并以 0.8 μm 层间距采集 9 层 Z-stack（`P003.S0028`、`P003.S0031-P003.S0033`）。蛋白可视化使用 PanCK、CK8/18、CD45、membrane 和 nucleus 等荧光抗体通道（`P003.S0034-P003.S0036`）。细胞分割使用 Z-stack immunofluorescence，包括 DAPI 和 membrane signals，通过机器学习算法识别细胞边界，再将 RNA transcripts 映射到单细胞及亚细胞坐标（`P003.S0037-P004.S0006`）。
+CosMx SMI 对 FFPE 切片进行空间转录组分析：切片先在 60 °C 过夜贴附，以 Leica ER1 在 100 °C 做 15 min HIER，再用 ACD Protease Plus 中的 proteinase K 消化 30 min；fiducial markers 用 2×SSCT 稀释，随后 10% 中性缓冲福尔马林固定、100 mM NHS-acetate 室温阻断，探针短暂 95 °C 变性后在 37 °C 过夜杂交，并以 2×SSCT、37 °C 的 50% formamide/2×SSC 和室温 2×SSC 依次洗涤（`P003.S0022-P003.S0030`）。杂交探针包含 980-plex 与定制 ISH probes；视野依据 H&E 参考切片选取，每个 FOV 为 0.51 × 0.51 mm，并以 0.8 μm 层间距采集 9 层 Z-stack（`P003.S0028`、`P003.S0031-P003.S0033`）。蛋白可视化使用 PanCK、CK8/18、CD45、membrane 和 nucleus 等荧光抗体通道（`P003.S0034-P003.S0036`）。细胞分割使用 Z-stack immunofluorescence，包括 DAPI 和 membrane signals，通过机器学习算法识别细胞边界，再将 RNA transcripts 映射到单细胞及亚细胞坐标（`P003.S0037-P004.S0006`）。
 
 #### 数据预处理和特征构建
 
@@ -346,7 +357,7 @@ scRNA-seq 使用 Python 3.8、Scanpy 1.9.6，三个公开单细胞数据通过 `
 
 #### 空间邻域和 SAI
 
-Neighborhood enrichment 使用 CosMx 空间坐标和细胞类型注释，比较观察到的邻近频率和随机打乱 cell-type labels 后的 null distribution，输出 log observed/expected enrichment scores（`P004.S0016-P004.S0021`）。SAI 是作者自定义的 distance-penalized 指标，整合邻域中 center/target cell 数量、全局细胞数量和局部平均欧氏距离；它按每个 cell 的局部邻域计算并存入 `adata.obs`，默认 `n_neighbors=30`（`P004.S0022-P004.S0038`）。原文未说明 Fig. 6F 是否按患者聚合或如何处理同一患者、FOV 内的聚类，PDF 公式抽取也有明显符号噪音；复现时必须以原文公式或代码为准。
+Neighborhood enrichment 使用 CosMx 空间坐标和细胞类型注释，比较观察到的邻近频率和随机打乱 cell-type labels 后的 null distribution，输出 log observed/expected enrichment scores；Methods 只写“defined spatial radius”，没有给出半径数值（`P004.S0016-P004.S0021`）。SAI 是作者自定义的 distance-penalized 指标，整合邻域中 center/target cell 数量、全局细胞数量和局部平均欧氏距离；它按每个 cell 的局部邻域计算并存入 `adata.obs`，默认 `n_neighbors=30`（`P004.S0022-P004.S0038`）。原文未说明 Fig. 6F 是否按患者聚合或如何处理同一患者、FOV 内的聚类，PDF 公式抽取也有明显符号噪音；复现时必须以原文公式或代码为准。
 
 #### 轨迹、空间反卷积和细胞通讯
 
@@ -356,7 +367,7 @@ Treg 空间基因活性使用 MSigDB 的 `GSE7460_TREG_VS_TCONV_ACT_UP` 与 `GSE
 
 #### ZFP36 靶标和调控网络
 
-LACE-seq 通过 UV crosslinking 保留 RNA-protein interactions，再用 ZFP36-specific antibody 免疫沉淀，纯化 RNA fragments、建库测序；reads 用 Bowtie 2.5.4 比对 hg38，Piranha 1.2.1 calling peaks，GENCODE v42 注释 peak 并提取 FN1 transcript binding sites（`P005.S0026-P005.S0032`）。motif scanning 扫描 protein-coding genes 的 3'UTR AUUUA/ATTTA motifs，保留不少于 5 个 motif 的基因，再与 CAF 中 ZFP36 expression 负相关基因交集，FDR < 0.05 作为 high-confidence targets（`P005.S0033-P005.S0039`）。TF network 使用 pySCENIC 0.12.1、GRNBoost2 和 Cistrome motif 信息，以 TSS 上游 500 bp 至下游 100 bp 为候选结合区域，保留 adjusted `P < 0.01` 的 TF-gene 互作，再用 AUCell 计算 regulon activity（`P006.S0006-P006.S0011`）。
+LACE-seq 通过 UV crosslinking 保留 RNA-protein interactions，再用 ZFP36-specific antibody 免疫沉淀，纯化 RNA fragments、建库测序；reads 用 Bowtie 2.5.4 比对 hg38，Piranha 1.2.1 calling peaks，GENCODE v42 注释 peak 并提取 FN1 transcript binding sites（`P005.S0026-P005.S0032`）。Methods 未给 UV 剂量、抗体货号、input/IgG 对照，也没有定义 4 个文库之间的独立生物重复结构；因此不能只凭文库数判断重复层级。motif scanning 扫描 protein-coding genes 的 3'UTR AUUUA/ATTTA motifs，保留不少于 5 个 motif 的基因，再与 CAF 中 ZFP36 expression 负相关基因交集，FDR < 0.05 作为 high-confidence targets（`P005.S0033-P005.S0039`）。TF network 使用 pySCENIC 0.12.1、GRNBoost2 和 Cistrome motif 信息，以 TSS 上游 500 bp 至下游 100 bp 为候选结合区域，保留 adjusted `P < 0.01` 的 TF-gene 互作，再用 AUCell 计算 regulon activity（`P006.S0006-P006.S0011`）。
 
 ### 统计学分析方法
 
@@ -412,5 +423,6 @@ CIBERSORT-ABS 使用 TCGA STAD expression matrix，permutations = 1,000，估计
 | Fig. 7 相关结果 | `P013.S0027-P013.S0058`, `P017.S0003-P017.S0021` | 已覆盖 |
 | Discussion | `P015.S0018-P018.S0003` | 已用于证据强度、局限性和迁移思路 |
 | 数据与代码可用性 | `P018.S0035-P018.S0042` | 已列出公开数据 accession、Treg gene sets 与 SAI 代码 |
+| Supplementary material 1 | `SI:P001.S0001–P007.S0006` | Fig. S1–S6 的 38/38 个 ID 已审计；只含补图与图注，无补充表/Source Data |
 
-按 extraction manifest 标签逐 ID 闭合：Results `328/328`、Methods `130/130`，无遗漏。这里的“覆盖”表示来源范围已纳入模块审计，并非 458 句逐句双语翻译；`P017.S0022-P018.S0003` 的自动 Results 标签已按原文语义归入 Discussion。
+按 extraction manifest 标签逐 ID 闭合：主文 Results `328/328`、Methods `130/130`，补充文件 `38/38`，无遗漏。这里的“覆盖”表示来源范围已纳入模块审计，并非 458 句逐句双语翻译；`P017.S0022-P018.S0003` 的自动 Results 标签已按原文语义归入 Discussion。
