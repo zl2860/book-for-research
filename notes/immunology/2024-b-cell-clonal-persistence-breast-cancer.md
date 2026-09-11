@@ -1,6 +1,6 @@
 # Predictability of B cell clonal persistence and immunosurveillance in breast cancer
 
-<!-- wechat-style-reviewed: 2026-08-30 -->
+<!-- wechat-style-reviewed: 2026-09-11 -->
 
 当同一名转移性乳腺癌患者的肝、肺或淋巴结病灶同时被取样时，一个真正棘手的问题才会出现：同一种 B 细胞克隆若在多个病灶中都能找到，它只是被重复抽到，还是参与了跨部位、持续存在的免疫反应？
 
@@ -20,7 +20,7 @@ BCR 序列为这种追踪提供了谱系标记。同一克隆在抗原经历中�
 
 ## 02｜作者怎样同时观察空间和时间？
 
-空间队列来自 8 名治疗耐受的转移性乳腺癌患者，共取到 27 个转移灶，覆盖骨、脑或脑膜、乳腺、肝、肺或胸膜、淋巴结和心包。每个转移灶过滤后平均得到 9,332 条独特 BCR，范围为 701–80,409 条。
+空间队列来自 8 名治疗抵抗的转移性乳腺癌患者，共取到 27 个转移灶，覆盖骨、脑或脑膜、乳腺、肝、肺或胸膜、淋巴结和心包。每个转移灶过滤后平均得到 9,332 条独特 BCR，范围为 701–80,409 条。
 
 时间队列来自 10 名接受新辅助治疗的早期乳腺癌患者，共有 25 次肿瘤活检：治疗前 10 次、治疗 9 周时 10 次、治疗完成后 5 次。每个样本平均得到 8,132 条独特 BCR，范围为 762–15,493 条。
 
@@ -44,7 +44,7 @@ BCR 序列为这种追踪提供了谱系标记。同一克隆在抗原经历中�
 
 肿瘤基因组层面的分析主要集中在至少有 4 个转移灶数据的患者 308 和 315。病灶间共享的 BCR/TCR 序列数量与共享体细胞突变数量相关，`R²=0.22–0.78`，`P≤0.011`。
 
-在患者 308 和 315 的病灶两两比较中——分别为 36 对和 28 对——BCR 克隆共享还与共享的预测 MHC II 类新抗原相关，`R²=0.25–0.35`、`P<0.022`；与预测 MHC I 类新抗原则未见相关。这个结果与 B 细胞摄取抗原并通过 MHC II 呈递的生物学模型一致，但新抗原来自计算预测，相关性也不能证明这些 BCR 直接识别了相应抗原。
+Fig. 2 图注把患者 308 和 315 的病灶两两比较统一写为 36 对和 28 对，BCR 克隆共享与共享的预测 MHC II 类新抗原相关，`R²=0.25–0.35`、`P<0.022`；与预测 MHC I 类新抗原则未见相关。但 Supplementary Table 1 显示患者 308 的 9 个病灶中只有 7 个有 WES/sWGS，基因组分析如何仍得到 36 对没有说明。本文保留图注报告值，不自行推断缺失模态的处理。新抗原来自计算预测，相关性也不能证明这些 BCR 直接识别了相应抗原。
 
 <a id="reader-bcell-fig2"></a>
 
@@ -54,29 +54,29 @@ BCR 序列为这种追踪提供了谱系标记。同一克隆在抗原经历中�
 
 ## 05｜跨病灶或跨时间留下来的克隆有什么不同？
 
-早期队列共识别 94,495 个独特 BCR 克隆，转移性队列为 155,451 个。一个克隆能在越多治疗时间点或越多转移灶中被检测到，它在单个样本中的平均克隆大小通常也越大；两种趋势的有序回归均为 `P<2.2×10⁻¹⁶`。
+早期队列 10 人、25 个样本共识别 94,495 个独特 BCR 克隆；转移性队列的多灶子集 4 人、23 个病灶为 155,451 个。一个克隆能在越多治疗时间点或越多转移灶中被检测到，它在单个样本中的平均克隆大小通常也越大；两种趋势的有序回归均为 `P<2.2×10⁻¹⁶`。
 
 共享且扩增的 class B 克隆还表现出较低的 CDR3 随机生成概率、更多同种型转换，以及与体细胞高突变相关的抗原经验特征。高 SHM、高同种型转换的样本中，class B 比例也伴随更强的 B/T 细胞、三级淋巴结构、IFN-γ 和 T-cell-inflamed 转录特征。
 
-作者用一个筛选后含 5,800 条病毒或细菌抗体序列的参考库进行匹配，并允许 CDR3 最多 3 个氨基酸错配；四类克隆均未见显著富集。这只能削弱已被该库覆盖的非肿瘤抗原反应解释，不能排除库外病原或其他非肿瘤抗原反应，更不能把共享克隆直接等同于肿瘤特异性 BCR。
+作者用一个含 5,800 条表格记录的已知非肿瘤/感染相关抗体参考库进行匹配，并允许 CDR3 最多 3 个氨基酸错配；四类克隆均未见显著富集。官方工作簿去重后只有 4,929 个唯一重链氨基酸序列，且抗原并不全是病毒或细菌。这一阴性结果只能削弱该异质参考库已覆盖的解释，不能排除库外病原或其他非肿瘤抗原反应，更不能把共享克隆直接等同于肿瘤特异性 BCR。
 
 <a id="reader-bcell-fig3"></a>
 
 ![Fig. 3：共享和持久 BCR 克隆更扩增且更抗原经验化](../../assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig3-shared-persistent-clones.png)
 
-简明图注：Fig. 3 中，94,495 个早期队列克隆与 155,451 个转移队列克隆显示，共享或持久克隆更扩增，并带有更多抗原经验特征；这些特征不等于已验证的肿瘤抗原特异性。
+简明图注：Fig. 3 中，94,495 个早期队列克隆来自 10 人/25 个样本，155,451 个转移队列克隆来自多灶子集 4 人/23 个病灶；共享或持久克隆更扩增，但不等于已验证的肿瘤抗原特异性。
 
 ## 06｜只看网络位置，能否提前排出候选优先级？
 
 在扩增克隆内部，并不是每条 BCR 变体都跨病灶或跨时间出现。度中心性较高的序列更常在多个转移灶中检测到，也更常跨多个治疗时间点保留；两项关联的 P 值均小于 `2.2×10⁻¹⁶`。
 
-当作者用度中心性设置分类阈值时，`degree > 2` 识别共享或持久 BCR 的准确率超过 80%，而且对测序深度变化相对稳健。不过，Fig. 4f 的灵敏度明显低于特异度；外部小队列复现的是中心性—共享关联，没有报告同一阈值的分类性能。中心性与 SHM 水平相互独立，却仍与 BCR 频率相关（`P<2.2×10⁻¹⁶`）；因此它不是“突变越多越重要”的替代说法，也不能被解释成完全独立于克隆丰度。
+当作者用度中心性设置分类阈值时，`degree > 2` 识别共享或持久 BCR 的准确率超过 80%，而且对测序深度变化相对稳健。但[官方代码](https://github.com/sjslab/BCR-Immunosurveillance/blob/f3fbf33ac4dc916f68216e719ccc4ecf895c3bf5/R/07%20-%20Generate%20BCR%20clone%20networks.Rmd#L662-L673)会在每个阈值下只保留 `degree=1` 或高于阈值的节点，再于同一数据集计算混淆矩阵；中间 degree 被排除，也没有独立阈值验证。Fig. 4f 的灵敏度又明显低于特异度，外部小队列只复现中心性—共享关联。因此这项结果适合候选排序，不能当作已验证分类器。中心性与 SHM 水平相互独立，却仍与 BCR 频率相关（`P<2.2×10⁻¹⁶`）。
 
 <a id="reader-bcell-fig4"></a>
 
 ![Fig. 4：BCR degree centrality 预测免疫监视和时间持久性](../../assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig4-bcr-centrality.png)
 
-简明图注：Fig. 4 的高中心性序列更常跨病灶或跨时间出现；`degree > 2` 的超过 80% 准确率针对论文定义的共享/持久序列，不是患者结局或治疗反应预测。
+简明图注：Fig. 4 的高中心性序列更常跨病灶或跨时间出现；`degree > 2` 的超过 80% 准确率来自删去中间 degree 后的同数据集阈值汇总，不是独立验证，也不是患者结局或治疗反应预测。
 
 ## 07｜为什么中心性可能标记跨部位共享的克隆？
 
@@ -98,23 +98,24 @@ BCR 序列为这种追踪提供了谱系标记。同一克隆在抗原经历中�
 
 ## 09｜这些结果仍需要冷静看待
 
-首先，clone 数量很大，但独立患者数很小：空间队列只有 8 人，深入的肿瘤—免疫克隆结构分析主要来自患者 308 和 315；时间队列只有 10 人，治疗完成后的活检仅 5 次。大量 sequence-level 观测不能替代患者层面的外部验证。
+首先，clone 数量很大，但独立患者数很小：空间队列只有 8 人，155,451 个转移队列克隆实际来自 4 人/23 个病灶的多灶子集，深入的肿瘤—免疫克隆结构分析又主要来自患者 308 和 315；时间队列只有 10 人，治疗完成后的活检仅 5 次。两队列 18 名受试者均为女性，大量 sequence-level 观测不能替代患者层面的外部验证。
 
-其次，转移队列来自治疗耐受、生命末期的 warm autopsy 患者，不能直接外推到早期可治愈乳腺癌、免疫治疗敏感人群或其他肿瘤。病灶两两比较也并非完全独立，相关系数不应被解释成肿瘤突变或新抗原驱动 BCR 演化的因果效应。
+其次，转移队列来自治疗抵抗、生命末期的 warm autopsy 患者，不能直接外推到早期可治愈乳腺癌、免疫治疗敏感人群或其他肿瘤。病灶两两比较也并非完全独立，相关系数不应被解释成肿瘤突变或新抗原驱动 BCR 演化的因果效应。
 
 更关键的是，论文没有完成抗原特异性闭环。高中心性 BCR 尚未系统验证肿瘤抗原或新抗原结合，也没有功能杀伤、体内疗效或临床结局证据；MHC II 新抗原来自预测，三级淋巴结构来自转录签名而非组织学确认。
 
-最后，中心性依赖克隆组装、序列相似性、最小克隆规模和网络构建参数。作者做了下采样和外部数据检查，但不同测序平台、组织来源和分析流程仍需重新校准。本地主 PDF 的正文、Methods 和图注可解析，补充表格未嵌入主 PDF，未核实部分不能在改写中被补写或推断。
+最后，中心性依赖克隆组装、序列相似性、最小克隆规模和网络构建参数。作者做了下采样和外部数据检查，但不同测序平台、组织来源和分析流程仍需重新校准。官方补充工作簿与图像型 Reporting Summary 已另行复核；它们补上逐样本模态、技术重复与数据可用性边界，却不提供独立患者队列或抗原功能闭环。
 
 ---
 
 ## 技术附录
 
-以下保留原笔记的论文信息、完整图注、Results 顺序、方法参数、统计解释和证据边界，并在文末补入本次句子级 PDF 解析与覆盖审计。
+以下保留原笔记的论文信息、完整图注、Results 顺序、关键方法参数、统计解释和证据边界，并在文末补入本次句子级 PDF 与官方补充材料覆盖审计。
 
 ### 本文目录
 
 - [基本信息](#基本信息)
+- [官方补充材料复核](#官方补充材料复核)
 - [本论文主图](#本论文主图)
 - [生物学故事前情](#生物学故事前情)
 - [重要缩写表](#重要缩写表)
@@ -153,18 +154,28 @@ BCR 序列为这种追踪提供了谱系标记。同一克隆在抗原经历中�
 - 期刊：Nature Immunology 25, 916-924
 - 年份：2024
 - DOI：10.1038/s41590-024-01821-0
-- 第一作者：Stephen-John Sammut、Jacob D. Galson、Ralph Minter
+- 第一作者：Stephen-John Sammut；其后为 Jacob D. Galson、Ralph Minter
 - 通讯作者：Stephen-John Sammut、Carlos Caldas、Rachael J. M. Bashford-Rogers
 - 研究领域：肿瘤免疫、BCR repertoire、TCR repertoire、乳腺癌转移、免疫监视、克隆演化
 - 关键词：breast cancer、BCR、TCR、immunosurveillance、clonal persistence、somatic hypermutation、class-switch recombination、MHC class II neoantigen、tertiary lymphoid structure、degree centrality
-- 数据来源：EGA `EGAS00001002703`（肿瘤 DNA/RNA）、`EGAS00001006976` 与 `EGAS50000000241`（BCR-seq）。
+- 数据来源：定稿 Data availability 列出 EGA `EGAS00001002703`（肿瘤 DNA/RNA）、`EGAS00001006976` 与 `EGAS50000000241`（BCR-seq）；Reporting Summary 仍写旧号 `EGA00002343328`，两处不一致，实际申请应先核对 EGA 目录。
 - 代码与示例处理数据：`sjslab/BCR-Immunosurveillance`。
 - PDF 归档：`pdfs/processed/s41590-024-01821-0.pdf`
+- 官方在线材料：[Reporting Summary](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41590-024-01821-0/MediaObjects/41590_2024_1821_MOESM1_ESM.pdf)；[Supplementary Tables 1–3](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41590-024-01821-0/MediaObjects/41590_2024_1821_MOESM2_ESM.xlsx)。
 - PDF 解析质量：
   - 使用 `scripts/build_pdf_llm_pack.py` 建立句子级解析包 `tmp/b-cell-clonal-persistence-llm-pack.md`；本地 PDF 共 25 页、898 个句子 ID。
   - 自动分节只标出 14 个 Results ID，并把主文余下结果误标为 `methods` 或 `supplementary`。人工按论文语义校正后，Results 为 `P002.S0020-P007.S0034`（306 个 ID），Methods 为 `P010.S0002-P013.S0007`（201 个 ID）；两套范围在文末分别闭合。
   - Fig. 1 的图内内容位于 `P002.S0001-P002.S0007` 并与 `P002.S0020-P002.S0026` 的 Results 首段交错；Fig. 2 为 `P003.S0001-P003.S0045`、`P003.S0055-P003.S0086`，Fig. 3 为 `P005.S0001-P005.S0044`，Fig. 4 为 `P006.S0001-P006.S0022`。坐标、网络节点和图注被线性展平并插入正文，图内孤立标签不作独立证据。
-  - 正文、Methods、主图与扩展数据图注、数据和代码可用性可解析；补充表格内容未嵌入主 PDF，本文不补造其中未核实的逐样本明细。
+  - 898 个 ID 只闭合可解析文本。主 PDF 第 23–25 页的 Reporting Summary 为图像页、没有句子 ID；本次另按页审读，不把 `P012.S0064` 这句“详见 Reporting Summary”的交叉引用冒充其内容。
+  - 官方补充工作簿已逐表复核，但不纳入主文 Results/Methods 的 306/201 个 ID 计数；源矩阵与受控 EGA 数据未重算。
+
+### 官方补充材料复核
+
+- Supplementary Table 1 覆盖 8 人的 27 个转移灶：BCR-seq、TCR-seq 与 RNA-seq 均为 27/27，WES 和 sWGS 为 25/27；E308-11、E308-12 缺少后两种模态。Supplementary Table 2 确认早期队列为诊断 10、治疗中 10、手术时 5 个样本。
+- Supplementary Table 3 有 5,800 行、5,762 个唯一记录 ID，却只有 4,929 个唯一重链氨基酸序列；其中也包含寄生虫、过敏原或毒素等条目。因此正文称“5,800 条病毒或细菌序列”会同时混淆行数、去重序列数与抗原范围。
+- Reporting Summary 说明 18 名受试者均为女性，未预先估算样本量，未随机化或盲法；表单写“未排除数据”，同时注明仅在有剩余提取 RNA 的病例做 BCR-seq，仍存在材料可用性选择。
+- 技术重复包括 2 个转移灶各 2 个 BCR 文库、3 个转移灶各 3 个文库，报告为全部成功；这些重复用于技术一致性，不增加独立患者数。
+- Reporting Summary 的 BCR accession `EGA00002343328` 与定稿 Data availability 的 `EGAS00001006976`、`EGAS50000000241` 冲突。本文并列保留，不自行把一个版本改写成另一个。
 
 ### 本论文主图
 
@@ -210,13 +221,13 @@ BCR 序列为这种追踪提供了谱系标记。同一克隆在抗原经历中�
 
 #### 研究设计与数据结构
 
-中文图注（基于原文图注）：图 1 展示本文两个乳腺癌队列的采样、数据采集和分析设计。左侧为空间 profiling：8 名转移性乳腺癌患者在 warm autopsy 中共采集 27 个转移灶，部位包括骨、脑/脑膜、乳腺、肝、肺/胸膜、淋巴结和心包；作者对这些样本进行 BCR-seq、TCR-seq、WES 和 RNA-seq，用于分析 B/T 细胞免疫受体库、肿瘤基因组和免疫微环境之间的关系。中间示意 BCR 通过 VDJ 重排、SHM 和 CSR 形成多样化抗原受体，并用于追踪肿瘤免疫监视、免疫与肿瘤共演化以及跨癌灶克隆多样化。右侧为时间 profiling：10 名早期乳腺癌患者在新辅助治疗期间采集 25 个肿瘤活检样本，包括治疗前 10 个、治疗 9 周中期 10 个、治疗后 5 个；作者进行 BCR-seq 和 RNA-seq，用于识别治疗过程中的 B 细胞克隆持久性。图中还标出公共数据验证和向其他疾病泛化的分析方向；女性人体剪影来自 Wikimedia Commons 的 public-domain Human body diagrams。WES 指 whole-exome sequencing，SHM 指 somatic hypermutation，CSR 指 class-switch recombination（`P002.S0047-P002.S0050`）。
+中文图注（基于原文图注）：图 1 展示本文两个乳腺癌队列的采样、数据采集和分析设计。左侧为空间 profiling：8 名转移性乳腺癌患者在 warm autopsy 中共采集 27 个转移灶，部位包括骨、脑/脑膜、乳腺、肝、肺/胸膜、淋巴结和心包；补充表确认 BCR-seq、TCR-seq 与 RNA-seq 为 27/27，WES 和 sWGS 为 25/27，并非每个病灶都有全部模态。中间示意 BCR 通过 VDJ 重排、SHM 和 CSR 形成多样化抗原受体，并用于追踪肿瘤免疫监视、免疫与肿瘤共演化以及跨癌灶克隆多样化。右侧为时间 profiling：10 名早期乳腺癌患者在新辅助治疗期间采集 25 个肿瘤活检样本，包括治疗前 10 个、治疗 9 周中期 10 个、治疗后 5 个；作者进行 BCR-seq 和 RNA-seq，用于识别治疗过程中的 B 细胞克隆持久性。图中还标出公共数据验证和向其他疾病泛化的分析方向；女性人体剪影来自 Wikimedia Commons 的 public-domain Human body diagrams。WES 指 whole-exome sequencing，SHM 指 somatic hypermutation，CSR 指 class-switch recombination（`P002.S0047-P002.S0050`）。
 
-研究包含两个乳腺癌队列。转移性队列来自 VHIO warm autopsy program，共 8 名治疗耐受性转移性乳腺癌患者、27 个转移灶活检样本。每个患者可有不同器官部位采样，包括骨、脑/脑膜、乳腺、肝、肺/胸膜、淋巴结和心包等。作者对这些转移灶进行 BCR repertoire sequencing，并整合既往已报道的 WES、RNA-seq 和 TCR repertoire 数据。
+研究包含两个乳腺癌队列。转移性队列来自 VHIO warm autopsy program，共 8 名治疗抵抗的转移性乳腺癌患者、27 个转移灶活检样本。每个患者可有不同器官部位采样，包括骨、脑/脑膜、乳腺、肝、肺/胸膜、淋巴结和心包等。作者对这些转移灶进行 BCR repertoire sequencing，并整合既往已报道的 WES、RNA-seq 和 TCR repertoire 数据。
 
 早期乳腺癌队列来自 TransNEO study，共 10 名原发浸润性早期乳腺癌患者，在新辅助治疗过程中采集 25 个序贯肿瘤样本：治疗前 10 个，治疗 9 周中期 10 个，治疗完成后 5 个。这个队列用于分析治疗过程中 BCR 克隆是否时间性持久存在。
 
-数据模态包括 BCR heavy chain repertoire、TCR alpha/beta repertoire、肿瘤全外显子测序、RNA-seq 免疫微环境反卷积、MHC I/II neoantigen 预测以及外部公共数据验证。转移性队列 BCR 过滤后每个转移灶平均得到 9,332 条 unique BCR，范围 701-80,409。早期队列每个活检样本平均得到 8,132 条 unique BCR，范围 762-15,493。
+数据模态包括 BCR heavy chain repertoire、TCR alpha/beta repertoire、肿瘤全外显子测序、RNA-seq 免疫微环境反卷积、MHC I/II neoantigen 预测以及外部公共数据验证；各模态分母不同。转移性队列 BCR 过滤后每个转移灶平均得到 9,332 条 unique BCR，范围 701-80,409。早期队列每个活检样本平均得到 8,132 条 unique BCR，范围 762-15,493。
 
 #### 方法与分析框架
 
@@ -258,13 +269,13 @@ neoantigen 分析提供了更具体的免疫解释。图 2f 显示，BCR clonal 
 
 ##### Persistence and immunosurveillance of intra-tumoral B cells
 
-中文图注（基于原文图注）：图 3 比较免疫监视或治疗中持久存在的 BCR 克隆与 private clones 的大小、抗原经验和免疫微环境特征。a：小提琴图展示早期乳腺癌中 BCR clone 在不同治疗时间点出现数量与平均 clone size 的关系，以及转移性乳腺癌中 BCR clone 在不同转移灶出现数量与平均 clone size 的关系；早期队列包含 94,495 个 unique BCR clones，转移性队列包含 155,451 个 unique BCR clones。BCR 克隆被分为 private expanded class A、shared expanded class B、private unexpanded class C 和 shared unexpanded class D。b：箱线图展示早期乳腺癌治疗前、中期、治疗后样本，以及转移性乳腺癌肝、淋巴结、肺样本中各类 expanded BCR 的 UMI 百分比。c：展示早期和转移性乳腺癌各 BCR clone class 的 CDR3 Pgen 分布，并与健康 PBMC 中 antigen-experienced 和 antigen-inexperienced BCR 的 Pgen 分布比较。d：箱线图展示四类 BCR clone class 中 unswitched BCR，即 IgD/IgM，占样本 BCR 的百分比。e：箱线图展示早期和转移性乳腺癌样本中 highly mutated BCR 的百分比。f：箱线图展示早期和转移性乳腺癌样本中的 IGH isotype 使用百分比。g：按 SHM 和 CSR 高低分组，比较 class B clone 比例，以及从 bulk RNA-seq 反卷积得到的 B cell、T cell、TLS、IFN-gamma、T cell inflamed signature 分数。图中部分分析仅使用有多个肿瘤部位或时间点采样的患者，因为 A-D 类克隆定义需要多样本结构；e、f、g 右侧包含全部 18 名患者和 52 个样本。P 值来自 ordinal regression 或 Wilcoxon rank-sum tests；箱线图显示四分位范围、中位数和 1.5 倍四分位距内须线，点为单个数据点。
+中文图注（基于原文图注）：图 3 比较免疫监视或治疗中持久存在的 BCR 克隆与 private clones 的大小、抗原经验和免疫微环境特征。a：小提琴图展示早期乳腺癌中 BCR clone 在不同治疗时间点出现数量与平均 clone size 的关系，以及转移性乳腺癌中 BCR clone 在不同转移灶出现数量与平均 clone size 的关系；94,495 个 unique BCR clones 来自早期队列 10 人/25 个样本，155,451 个来自转移队列多灶子集 4 人/23 个病灶。BCR 克隆被分为 private expanded class A、shared expanded class B、private unexpanded class C 和 shared unexpanded class D。b：箱线图展示早期乳腺癌治疗前、中期、治疗后样本，以及转移性乳腺癌肝、淋巴结、肺样本中各类 expanded BCR 的 UMI 百分比。c：展示早期和转移性乳腺癌各 BCR clone class 的 CDR3 Pgen 分布，并与健康 PBMC 中 antigen-experienced 和 antigen-inexperienced BCR 的 Pgen 分布比较。d：箱线图展示四类 BCR clone class 中 unswitched BCR，即 IgD/IgM，占样本 BCR 的百分比。e：箱线图展示早期和转移性乳腺癌样本中 highly mutated BCR 的百分比。f：箱线图展示早期和转移性乳腺癌样本中的 IGH isotype 使用百分比。g：按 SHM 和 CSR 高低分组，比较 class B clone 比例，以及从 bulk RNA-seq 反卷积得到的 B cell、T cell、TLS、IFN-gamma、T cell inflamed signature 分数。图中部分分析仅使用有多个肿瘤部位或时间点采样的患者，因为 A-D 类克隆定义需要多样本结构；e、f、g 右侧包含全部 18 名患者和 52 个样本。P 值来自 ordinal regression 或 Wilcoxon rank-sum tests；箱线图显示四分位范围、中位数和 1.5 倍四分位距内须线，点为单个数据点。
 
 在早期乳腺癌队列中，多个治疗时间点都能检测到的 BCR 克隆被定义为 temporally persistent clones；在转移性队列中，多个转移灶都能检测到的克隆被定义为 immunosurveilling clones。图 3a 显示，能跨更多时间点或更多转移灶出现的 BCR clone，其每个样本内的 clone size 更大，且 ordinal regression P < 2.2 x 10^-16。这说明共享/持久克隆不是因为总体测序量更高而偶然被发现，而是与局部克隆扩增相关。
 
 按 A-D 四类克隆划分后，图 3b 显示 shared expanded clones，也就是 class B，在早期乳腺癌治疗过程中和转移性乳腺癌中都构成肿瘤浸润 BCR 序列的主要部分。转移性队列中，class B 在肝和肺/胸膜转移灶中的比例高于 private expanded class A；但在淋巴结转移灶中，class A 和 class B 比例差异不明显。这提示淋巴结中相当一部分活化 B 细胞可能是局部驻留或局部扩增，而非已经跨部位免疫监视。
 
-作者还用已知病毒或细菌抗体数据库检查这些克隆类别是否富集已知非肿瘤抗原反应。结果没有看到显著富集，说明这些 shared/expanded BCR 不太可能只是常见感染或疫苗相关克隆的再扩增。当然，这并不等于证明它们一定是肿瘤特异性，只能说明没有明显被已知病原抗体库解释。
+作者还用异质性的已知非肿瘤/感染相关抗体数据库检查这些克隆类别是否富集参考反应。结果没有看到显著富集，只说明 shared/expanded BCR 没有被这个有限参考库明显解释；它不能排除库外病原、疫苗或其他非肿瘤抗原，更不证明肿瘤特异性。
 
 ##### Antigen experience of migratory and persistent clones
 
@@ -272,7 +283,7 @@ neoantigen 分析提供了更具体的免疫解释。图 2f 显示，BCR clonal 
 
 随后作者从 SHM 和 CSR 两个角度分析抗原经验。图 3d 显示，class B 克隆有更高比例的 class-switched BCR，也就是 IgD/IgM unswitched BCR 比例更低。早期肿瘤浸润 B 细胞相较于转移灶浸润 B 细胞也有更低比例的 unswitched BCR。图 3e 显示，早期乳腺癌治疗过程中高度突变 BCR 比例增加，但转移性样本中该趋势相反，并且转移灶中低 SHM BCR 比例更高。AICDA 表达下降也支持转移灶中 SHM/CSR 活性较低。
 
-图 3f 显示 isotype 使用随疾病过程变化：IGHA1 随时间或疾病阶段增加，IGHG1 降低，且该趋势主要由 class B 克隆驱动。图 3g 显示，高 SHM 与高 CSR 的肿瘤样本中，class B 比例更高，并伴随更高 B cell、T cell、TLS、IFN-gamma 和 T cell inflamed signature。整体上，shared expanded BCR 克隆更接近抗原驱动的肿瘤免疫反应，而非 naive B cell 背景。
+图 3f 显示，早期队列内可比较新辅助治疗时间点的 isotype 变化；早期与转移队列之间则是不同患者的横断面差异，不能当成同一患者的疾病进展轨迹。IGHA1 增加、IGHG1 降低的变化主要由 class B 克隆驱动。图 3g 显示，高 SHM 与高 CSR 的肿瘤样本中，class B 比例更高，并伴随更高 B cell、T cell、TLS、IFN-gamma 和 T cell inflamed signature。整体上，shared expanded BCR 克隆更接近抗原经历后的反应，而非 naive B cell 背景。
 
 ##### BCR centrality reveals sites of clonal diversification
 
@@ -288,7 +299,7 @@ neoantigen 分析提供了更具体的免疫解释。图 2f 显示，BCR clonal 
 
 图 4e 显示，BCR degree centrality 与 BCR 被检测到的转移灶数量显著相关，P < 2.2 x 10^-16；也与其被检测到的治疗时间点数量显著相关，P < 2.2 x 10^-16。这个 centrality 不是简单由 SHM 最高解释，因为 BCR degree centrality 与 SHM level 独立。作者据此提出，高 centrality BCR 可能代表克隆响应中的 local optima，而不一定是突变最多的终末版本。
 
-预测层面，图 4f 显示用 degree centrality 作为阈值分类器可以识别 immunosurveilling 或 clonally persistent BCR。degree > 2 的阈值在识别免疫监视和持久 BCR 时准确率超过 80%，且对测序深度较稳健。作者还在两个独立乳腺癌数据集，以及 1 型糖尿病和多发性硬化等非肿瘤免疫疾病数据中观察到类似的 centrality-共享关系，说明该规律可能不是乳腺癌特有。
+预测层面，图 4f 显示用 degree centrality 设阈值后可区分 immunosurveilling 或 clonally persistent BCR。`degree>2` 的准确率超过 80%，且对测序深度较稳健；但官方代码只保留 `degree=1` 与高于阈值的节点，排除中间 degree 后在同一数据集计算，没有留出集或交叉验证。作者在两个乳腺癌数据集及 1 型糖尿病、多发性硬化数据中复现的是 centrality—共享方向，不是同一阈值性能。
 
 这个结果是全文最具转化潜力的一点：BCR network centrality 可以作为候选抗体序列优先级指标。但它仍是观察性和结构预测，尚未证明高 centrality BCR 对肿瘤抗原有功能性结合，也未证明其抗体形式具有治疗活性。
 
@@ -345,7 +356,7 @@ degree centrality 的核心假设是，BCR clone 内部的序列网络形状携�
 
 克隆扩增和共享的趋势分析使用 ordinal regression。输入是 BCR clone 出现在几个时间点或几个转移灶，以及对应 clone size；输出是共享/持久程度与克隆扩增之间是否存在有序趋势。这个模型适合“出现于 1、2、3 个部位/时间点”这类有序结局，比简单二分类更保留信息。
 
-BCR centrality 的预测部分使用阈值分类，并报告 sensitivity、specificity 和 accuracy。degree > 2 这类阈值回答的是“用网络中心性筛选 immunosurveilling 或 persistent BCR 的实用表现”。敏感度高意味着少漏掉候选共享/持久 BCR，特异度高意味着少选入非共享/非持久 BCR；准确率会受类别比例影响，因此不能单独作为最佳阈值依据。作者还用 downsampling 和外部数据验证降低测序深度和数据集特异性的影响。
+BCR centrality 的预测部分使用阈值分类，并报告 sensitivity、specificity 和 accuracy。官方代码在每个阈值下只保留 `degree=1` 或高于阈值的节点，再用 caret 于同一数据集计算 confusion matrix；中间 degree 被删除，也没有独立阈值验证。因而 `degree>2` 的准确率只回答这一删选规则下的候选区分表现，且仍受类别比例影响。downsampling 检查了测序深度稳健性，外部数据只验证关联方向，二者都不是阈值的外部性能验证。
 
 #### 可重复性和迁移注意点
 
@@ -354,12 +365,13 @@ BCR centrality 的预测部分使用阈值分类，并报告 sensitivity、speci
 #### 本次审阅补充的关键复现参数与原文异常
 
 - BCR 建库使用 15-nt UMI、6 个 FR1 引物和 7-nt sample barcode，目标扩增片段约 450 bp；每个样本不超过 500 ng 的纯化 BCR amplicon 用于连接 KAPA 双索引接头。paired reads 要求 overlap 至少 20 nt、最大错误率 0.2、Phred 至少 20；`usearch` identity 为 80%，UMI consensus 要有超过 2 条 reads，注释使用 IgBLAST 1.14/Immcantation 3.0（`P010.S0058-P011.S0007`）。
-- 病原抗体对照库只有 5,800 条序列，并允许 CDR3 最多 3 个氨基酸错配；“未见富集”只能削弱这一已知库的解释，不能排除所有病毒或细菌反应（`P011.S0008-P011.S0014`）。
+- 原文称参考库含 5,800 条序列并允许 CDR3 最多 3 个氨基酸错配；官方 Supplementary Table 3 实为 5,800 行、5,762 个唯一记录 ID、4,929 个唯一重链氨基酸序列，抗原范围也不止病毒/细菌。“未见富集”只能削弱这一已知库的解释（`P011.S0008-P011.S0014`）。
 - 患者 308 的 BCR/TCRalpha/TCRbeta 下采样阈值分别为 980/4,657/2,620，患者 315 为 1,524/3,199/2,535；均下采样 10,000 次。Fig. 2b、d、f 和迁移图使用共享序列或克隆数量的中位数，只有 Fig. 2e 的相似性矩阵使用 Jaccard coefficient 中位数；树比较使用 `ward.D2` 和 100 次单侧 permutation（`P011.S0018-P011.S0035`）。
 - expanded clone cutoff 由 MClust 5.4.9 的 Gaussian mixture model 给出，并要求 expanded clones 少于 total repertoire 的 10%。Pgen 使用 OLGA 1.2.4；对照中 antigen-experienced BCR 定义为发生 class switching 且 somatic mutations 超过 4 个，SHM 由 mixtools v2.0.0 分成 0–1、1–10、11–33 和大于 33 四档（`P011.S0036-P012.S0028`）。
 - clone-level 扩增/多样化分析按最低深度的 90% 做 1,000 次下采样，Gini、Shannon 与 mean clone size 分别使用 ineq v0.2-13、posterior v1.4.1 和自定义代码。Fig. 4b 的 per-site 比例只保留跨至少 2 个病灶、且至少 1 个病灶含至少 4 条 unique VDJ 的克隆，再以该克隆在各病灶的 VDJ 数除以其跨样本总 VDJ 数并取病灶均值（`P012.S0029-P012.S0039`）。centrality 网络先以 0.95 identity 筛 clone，保留至少 2 个肿瘤样本出现且至少 10 条 unique BCR 的 clone；多序列比对两端裁到至少 95% 序列在端点仍有对齐核苷酸，并要求裁剪后至少 80 nt。pairwise Hamming distance 与树优化使用 phangorn v2.7.1，minimum spanning tree 使用 ape v5.6，再由 igraph v1.2.10 转为无向图并计算 degree（`P012.S0040-P012.S0050`）。
-- 进入 centrality 分析的 clone 数为患者 308：204、315：733、323：85、330：23。分类比较阈值 `degree>1`、`>2`、`>10`，使用 caret 6.0-90 计算 sensitivity、specificity 和 accuracy（`P012.S0040-P012.S0063`）。
-- 原文有三处不能静默修正的异常：`P004.S0039` 字面写成 “other clonal groups (B, C and D)”；`P010.S0065` 字面为 “2–83 PCR cycles”；Fig. 4 图注 `P006.S0021` 将 box bounds 写成 “IQR divided by median”。这些表述与上下文或常规箱线图定义冲突，复现时必须回看原 PDF/代码，本文不代作者改写。
+- 进入 centrality 分析的 clone 数为患者 308：204、315：733、323：85、330：23。分类比较阈值 `degree>1`、`>2`、`>10`，使用 caret 6.0-90 计算 sensitivity、specificity 和 accuracy；官方代码在各阈值先删除中间 degree，再计算同数据集混淆矩阵（`P012.S0040-P012.S0063`；代码 commit `f3fbf33` 第 662–673 行）。
+- Reporting Summary 显示 BCR 测序取决于是否有剩余 RNA；技术重复为 2 个样本各 2 个文库、3 个样本各 3 个文库。它同时列出 HLA-HD 1.4、IgBlast 1.14、IMGT/HighV-QUEST 1.8.5、Immcantation docker 3.0.0、MRDARCY、TRUST4 1.0.11、R 4.1.2 与 Python 3.10.1 等版本；这些是报告性环境清单，不代表受控 EGA 数据已本地复算。
+- 原文/附件有七处不能静默修正的异常：`P004.S0039` 字面写成 “other clonal groups (B, C and D)”；`P010.S0065` 字面为 “2–83 PCR cycles”；Fig. 4 图注 `P006.S0021` 将 box bounds 写成 “IQR divided by median”；`P011.S0010` 把 5,800 行参考库称为 Supplementary Table 2，而官方工作簿实际为 Table 3；`P012.S0010-P012.S0011` 的整数 SHM 分档在 1 处重叠，代码使用半开区间；Reporting Summary 的 `EGA00002343328` 与定稿 Data availability 两个 BCR study accession 不同；Fig. 2 图注把患者 308 的 BCR/TCR 与基因组相关分析统一标为 36 个病灶对，但 Supplementary Table 1 显示其 9 灶只有 7 灶有 WES/sWGS，完整基因组配对至多 21 个，缺失模态如何处理未报告。复现时必须回看原文件/代码，本文不代作者统一。
 
 ### 生物学与临床意义
 
@@ -371,9 +383,9 @@ BCR centrality 的预测部分使用阈值分类，并报告 sensitivity、speci
 
 ### 局限性与危险假设
 
-第一，样本量和患者覆盖有限。虽然 clone-level 数量很大，但真正决定泛化性的患者数不多。尤其 warm autopsy 转移性样本代表治疗耐受、晚期、死亡前疾病状态，不能直接外推到早期可治愈乳腺癌或免疫治疗敏感人群。
+第一，样本量和患者覆盖有限。虽然 clone-level 数量很大，但真正决定泛化性的患者数不多。尤其 warm autopsy 转移性样本代表治疗抵抗、晚期、死亡前疾病状态，不能直接外推到早期可治愈乳腺癌或免疫治疗敏感人群；18 名受试者也均为女性。
 
-第二，抗原特异性仍未闭环。作者未观察到与 5,800 条已知病毒/细菌抗体序列的明显富集，但这不足以排除病原反应；研究也没有系统展示高 centrality BCR 的肿瘤抗原结合、neoantigen 结合或功能效应。因此不能把 high-centrality BCR 直接等同于 tumor-specific antibody。
+第二，抗原特异性仍未闭环。作者未观察到与 5,800 行异质参考抗体记录的明显富集，但去重后只有 4,929 个重链氨基酸序列，且覆盖范围有限；研究也没有系统展示高 centrality BCR 的肿瘤抗原结合、neoantigen 结合或功能效应。因此不能把 high-centrality BCR 直接等同于 tumor-specific antibody。
 
 第三，MHC II neoantigen 相关性是预测和关联。MHC II neoantigen 预测本身有误差，且 BCR/TCR 克隆结构与 MHC II neoantigen 的相关也可能受共同的肿瘤克隆结构、组织部位、免疫浸润程度或治疗历史影响。
 
@@ -415,7 +427,7 @@ MRDARCY、Immcantation、OLGA、TRUST4、MCPcounter、GSVA 和 graph centrality 
 
 ### 覆盖审计
 
-本次审阅逐一处理本地 PDF pack 的 898 个句子 ID，并按论文真实章节语义纠正自动分节。下表确认 Results、Methods 的连续来源范围均已进入相应结果或方法模块；它不是 898 句逐句双语翻译，图内孤立坐标也不冒充独立证据。
+本次审阅逐一处理本地 PDF pack 的 898 个可解析句子 ID，并按论文真实章节语义纠正自动分节。下表确认 Results、Methods 的连续文本范围均已进入相应结果或方法模块；它不是 898 句逐句双语翻译，也不覆盖第 23–25 页图像型 Reporting Summary。后者与官方工作簿已独立复核，且不计入下表。
 
 #### Results 证据覆盖
 
@@ -450,13 +462,13 @@ MRDARCY、Immcantation、OLGA、TRUST4、MCPcounter、GSVA 和 graph centrality 
 | isotype、SHM 与统计比较 | `P011.S0053-P012.S0028` | 30 |
 | clonal expansion/diversification | `P012.S0029-P012.S0039` | 11 |
 | network analysis、centrality 与外部验证 | `P012.S0040-P012.S0063` | 24 |
-| Reporting summary | `P012.S0064` | 1 |
+| Reporting Summary 交叉引用（非其内容） | `P012.S0064` | 1 |
 | DOI 页眉（非内容） | `P013.S0001` | 1 |
 | Data availability | `P013.S0002-P013.S0004` | 3 |
 | Code availability | `P013.S0005-P013.S0007` | 3 |
 | **Methods 合计** | `P010.S0002-P013.S0007` | **201** |
 
-上述范围为 `201/201`；扣除 `P013.S0001` 的 DOI 页眉后，内容型 Methods 为 `200/200`。
+上述范围为 `201/201` 个已解析 ID；扣除 `P013.S0001` 的 DOI 页眉后，内容型 Methods 为 `200/200`。这个 inventory 不等于图像型 Reporting Summary 或源数据的内容闭环。
 
 #### 自动标签闭合与解析边界
 
@@ -465,6 +477,7 @@ MRDARCY、Immcantation、OLGA、TRUST4、MCPcounter、GSVA 和 graph centrality 
 需要保留的 `EXTRACTION_CHECK` 包括：
 
 - 图内展平：Fig. 1 `P002.S0001-P002.S0007` 并与 `P002.S0020-P002.S0026` 交错；Fig. 2 `P003.S0001-P003.S0045`、`P003.S0055-P003.S0086`；Fig. 3 `P005.S0001-P005.S0044`；Fig. 4 `P006.S0001-P006.S0022`；
+- Fig. 2 图注的患者 308 `n=36` 病灶对与 Supplementary Table 1 的 WES/sWGS 7/9 灶无法闭合；本文保留报告值并标记分母冲突；
 - Results 主要换栏/跨页重排：`P002.S0020-P002.S0026`、`P002.S0046→P003.S0046`、`P004.S0066→P005.S0020-P005.S0021`、`P005.S0022→P005.S0045`、`P005.S0053→P006.S0012`、`P006.S0013-P006.S0023`、`P006.S0024→P007.S0001`；
 - Methods 标题或栏序打断：`P010.S0002-P010.S0006`、`P010.S0040-P010.S0047`、`P011.S0053→P012.S0001`、`P013.S0002-P013.S0006`；
-- 补充表格未嵌入主 PDF；原文字面异常 `(B,C,D)`、`2–83 PCR cycles` 和 Fig. 4 的 “IQR divided by median” 已在复现参数段原样记录，不静默修正。
+- 官方补充工作簿与图像型 Reporting Summary 已另行复核，但不纳入 898 个文本 ID；行数/唯一序列、逐样本模态、RNA 可用性选择、技术重复、accession 及原文字面异常均已在上文并列记录，不静默修正。
