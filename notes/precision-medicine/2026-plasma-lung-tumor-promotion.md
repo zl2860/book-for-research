@@ -1,6 +1,6 @@
 # Plasma signals of lung tumor promotion for molecular cancer prevention
 
-<!-- wechat-style-reviewed: 2026-09-02 -->
+<!-- wechat-style-reviewed: 2026-09-13 -->
 
 一位有长期吸烟史、年龄超过 50 岁的人，可能符合肺癌筛查条件，却未必会在近期发生肺癌。把这类人全部纳入药物预防试验，真正发生终点事件的人仍然太少；只按年龄和重度吸烟史筛选，又会漏掉轻度或从不吸烟者。
 
@@ -22,13 +22,13 @@ CANTOS 随机心血管预防试验的探索性分析曾提示，抗炎药 canaki
 
 发现阶段使用 UK Biobank 的 48,099 人，其中 375 人在随访中诊断肺癌。每人的基线血浆测量 2,923 种蛋白，采血到诊断的中位时间为 5.6 年；数据按 75:25 分为训练集和同一 UK Biobank 内的留出测试集。
 
-8 个外部蛋白组数据集按 Results 的汇总口径包括 2,198 例肺癌和 53,641 名非癌对照，其中 UKCTOCS 提供诊断前纵向样本。作者另外分析了 TRACERx 的术前术后样本、以从不吸烟者为主的 TALENT、4,651 名 CANTOS 生物标志物亚组参与者，以及人肺图谱和癌前病变转录组；这几部分回答的问题和样本口径并不相同。
+8 个外部蛋白组数据集按 Results 的汇总口径包括 2,198 例肺癌和 53,641 名非癌对照，其中 UKCTOCS 提供诊断前纵向样本。官方 Table S1 的八行若直接相加却是 2,600 例和 56,462 名，论文没有给出去重或分析集构造的算式；两套口径必须并列保留。作者另外分析了 TRACERx 的术前术后样本、以从不吸烟者为主的 TALENT、4,651 名 CANTOS 生物标志物亚组参与者，以及人肺图谱和癌前病变转录组；这几部分回答的问题和样本口径并不相同。
 
 机制部分并非只做相关性解释。作者在多种肺上皮谱系中启动 EGFR-L858R，结合 Trp53 缺失、颗粒物暴露、IL-1β 刺激或阻断、单细胞/单核 RNA 测序、肺切片活成像和小鼠纵向血浆蛋白组，追踪信号从何而来。
 
 ## 03｜14 种蛋白比现有风险模型多提供了什么
 
-模型最终保留 14 种蛋白，以及年龄、吸烟状态、包年数和既往 COPD。留出测试集有 12,025 人、75 例肺癌；图中报告的组合模型 AUC 为 0.865，LLPv3 为 0.806，LCRAT 为 0.774。
+模型最终保留 14 种蛋白——CXCL17、CDCP1、GDF15、PIGR、TNFSF13B、PLAUR、MMP12、CEACAM5、WFDC2、ALPP、PRSS8、LAMP3、SFTPD 和 SFTPA1——以及年龄、吸烟状态、包年数和既往 COPD。留出测试集有 12,025 人、75 例肺癌；组合模型 AUC 为 0.865（95% CI 0.824–0.902），优于 LLPv3 的 0.806（0.758–0.850；DeLong \(p=0.01\)）。其余比较模型依次为 LCRAT 0.774、PLCOm2012 0.766、Bach 0.758 和 LLPv2 0.677。
 
 蛋白单独模型与临床变量单独模型的区分能力相近（DeLong \(p=0.26\)），但把两类信息合并后，模型显著优于任一单独模型。蛋白的增量因此不是替代年龄和吸烟史，而是补上临床变量未捕获的生物学状态。
 
@@ -46,7 +46,7 @@ CANTOS 随机心血管预防试验的探索性分析曾提示，抗炎药 canaki
 
 如果信号主要由成熟肿瘤释放，它理应随分期升高，并在切除后下降。TRACERx 可用血浆蛋白组全队列纳入 482 人，签名没有随肿瘤分期升高；在至少 2 年未复发且有术后样本的子集中，切除肿瘤后也未显著下降，但论文没有报告这一配对子集的确切 n。
 
-但“不是肿瘤负荷”不等于“肺癌特异”。这组签名在 COPD、特发性肺纤维化和当前吸烟者中也升高；柴油交叉实验只支持 6 个可测成分中的 3 个响应，并没有验证完整签名。它更适合作为肺部炎症和肿瘤促进状态的风险读数，不能直接当作确诊肺癌的检测。
+但“不是肿瘤负荷”不等于“肺癌特异”。这组签名在 COPD、特发性肺纤维化和当前吸烟者中也升高；柴油交叉实验被作者概括为 6 个可测成分中 3 个升高，但按 Methods 预设的 fold-change 门槛只有 1 个同时达标，更没有验证完整签名。它更适合作为肺部炎症和肿瘤促进状态的风险读数，不能直接当作确诊肺癌的检测。
 
 ## 05｜不同起源的上皮细胞为什么会走向同一危险状态
 
@@ -68,9 +68,9 @@ IL-1β 是这条联系的候选中介。小鼠肺泡类器官中 12 个可测签
 
 ![Fig. 3：颗粒物、EGFR 突变克隆和 IL-1β 对签名的诱导](../../assets/precision-medicine/2026-plasma-lung-tumor-promotion/fig3-pm-signature-induction.png)
 
-更关键的是，颗粒物改变的不只是签名。相对 PBS，颗粒物在 EGFR 突变肺内（n=11–12/组）和同一小鼠来源的配对肺切片（n=8）中都增加 Cldn4+ KAC；对 34,459 个谱系标记细胞核的分析显示，颗粒物暴露的 EGFR 突变 KAC 与晚期肺腺癌转录程序重叠超过 30%（1,298 个基因），第 10 周的组织学分布也相较 PBS 从增生偏向侵袭性癌。它支持颗粒物把早期过渡状态推向恶性，而不只是造成短暂炎症。
+更关键的是，颗粒物改变的不只是签名。相对 PBS，颗粒物在 EGFR 突变肺内（n=11–12/组）和同一小鼠来源的配对肺切片（n=8）中都增加 Cldn4+ KAC；对 34,459 个谱系标记细胞核的分析显示，颗粒物暴露 KAC 的 1,298 个上调基因中，超过 30% 与晚期肺腺癌程序重叠。第 10 周的组织学比较分别使用 PBS n=9、5 μg 颗粒物 n=10、50 μg n=10，分布随剂量从增生偏向侵袭性癌。它支持颗粒物把早期过渡状态推向恶性，而不只是造成短暂炎症。
 
-小鼠血浆提供了时间维度。野生型小鼠的信号在颗粒物暴露 3 周后短暂升高，停止暴露 7 周后回到基线；EGFR-dox 小鼠则在第 3–10 周持续升高。人群中，当前吸烟者的签名高于既往或从不吸烟者；6 人交叉实验以 300 μg/m³ 柴油尾气或过滤空气暴露 2 小时，并在 24 小时后采血，6 个可测签名成分中 MMP12、PLAUR 和 TNFSF13B 升高。
+小鼠血浆提供了时间维度。野生型小鼠的信号在颗粒物暴露 3 周后短暂升高，停止暴露 7 周后回到基线；EGFR-dox 小鼠则在第 3–10 周持续升高。人群中，当前吸烟者的签名高于既往或从不吸烟者；6 人交叉实验以 300 μg/m³ 柴油尾气或过滤空气暴露 2 小时，并在 24 小时后采血。作者按 Table S8 的 nominal \(p\) 值标出 MMP12（FC 1.626，\(p=0.0286\)）、PLAUR（FC 1.422，\(p=0.0264\)）和 TNFSF13B（FC 1.316，\(p=0.0498\)）升高；但按 Methods 声明的 FC≥1.5 且 \(p\le0.05\)，只有 MMP12 达标。
 
 TALENT 蛋白组总队列包括 251 例未来病例与 501 名匹配对照，但 PM2.5 分层后的各组 n 没有单列。病例类型也有原文冲突：Methods 把 251 例都写作 incident invasive LUAD，Results 却称其中 62.1% 为 adenocarcinoma。对照中有 4/10 个可测蛋白与较高 PM2.5 相关；高 PM 的未来病例相对低 PM 对照有 7/10 个蛋白升高，10 蛋白总分也最高。病例内部高 PM 与低 PM 的总分差异为 \(p=0.014\)。这仍是按住址估算的一年暴露关联，不能当作个体剂量—反应实验。
 
@@ -116,11 +116,11 @@ CANTOS 生物标志物亚组共 4,651 人，只能测到 14 种蛋白中的 10 �
 
 第三，Olink 和 SomaScan 给出相对定量，不同数据集使用血浆或血清、不同平台和蛋白面板，不能直接共享一个绝对阈值。8 个数据集也不是 8 个完全独立的前瞻队列：LC3 与 EPIC 有人群重叠，EPIC-Norfolk 是 EPIC 子集；deCODE 还合并了 610 例 incident 和 232 例 prevalent 病例，与 Results 将总计 2,198 例统称为 incident 的口径存在张力。作者也没有在这些数据中完整验证最终 XGBoost 的校准和临床净获益。
 
-第四，颗粒物暴露由居住邮编和卫星年均值近似，不能代表工作场所、个体防护或终生暴露。柴油交叉实验只有 6 人，人胎肺类器官 qPCR 只有 2 次独立实验。
+第四，颗粒物暴露由居住邮编和卫星年均值近似，不能代表工作场所、个体防护或终生暴露。柴油交叉实验只有 6 人；Table S8 又使用双侧等方差非配对 t 检验，没有利用交叉设计的配对结构，也不同于 Methods 所称 Welch 检验。人胎肺类器官 qPCR 也只有 2 次独立实验。
 
 第五，小鼠结论依赖腺病毒 Cre、EGFR-L858R、部分模型中的 Trp53 缺失和基底细胞实验所需的 polidocanol 损伤。病毒和组织损伤本身可能制造炎症；Cldn4 单标记免疫荧光会低估 KAC 的异质性，KAC 是否是不同细胞起源走向恶变的必经状态也没有证明。KAC 只占突变细胞约 7.3%–9.8%，如此少的细胞如何对应系统血浆信号仍不清楚。
 
-最后，本地 PDF 的数据存储 DOI 存在内部不一致，纵向小鼠蛋白组的模型公式也有语义歧义；补充表和视频没有随本地 PDF 提供。这些问题不推翻主结果，但会影响独立复现和精确定标。
+最后，官方 Tables S1–S9 现已逐表补审，Data supplements 和 Videos S1–S11 仍未纳入本地证据包。表格又暴露出队列分母、柴油统计方案和单细胞 marker 附件映射等新冲突；数据存储 DOI 与纵向小鼠蛋白组公式的原有歧义也仍在。这些问题不推翻主结果，但会影响独立复现和精确定标。
 
 ---
 
@@ -131,6 +131,7 @@ CANTOS 生物标志物亚组共 4,651 人，只能测到 14 种蛋白中的 10 �
 - 期刊：Cell 189, 3903–3921
 - 年份：2026
 - DOI：10.1016/j.cell.2026.05.005
+- 官方页面：[ScienceDirect article and supplements](https://www.sciencedirect.com/science/article/pii/S0092867426005222)
 - 第一作者：Tej Pandya 等
 - 共同资深/通讯作者：William Hill、Clare E. Weeden、Charles Swanton
 - Lead contact：Charles Swanton
@@ -139,12 +140,14 @@ CANTOS 生物标志物亚组共 4,651 人，只能测到 14 种蛋白中的 10 �
 - 本地 PDF：`pdfs/processed/plasma-lung-tumor-promotion-cell-2026.pdf`
 - 全文证据包：`tmp/2026-plasma-lung-tumor-promotion-llm-pack.md`
 - 解析清单：`tmp/2026-plasma-lung-tumor-promotion-manifest.json`
+- 官方补充表：[S1](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc1.xlsx)、[S2](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc2.xlsx)、[S3](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc3.xlsx)、[S4](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc4.xlsx)、[S5](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc5.xlsx)、[S6](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc6.xlsx)、[S7](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc7.xlsx)、[S8](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc8.xlsx)、[S9](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc9.xlsx)
 
 ### PDF 解析质量与全文覆盖
 
 - 抽取引擎：PyMuPDF；PDF 共 46 页，抽取 1,690 个句子 ID。
 - 可读内容：主文、Fig. 1–4、STAR Methods、Key Resources、资源可用性、Fig. S1–S9 及其图注均可读取。
-- 本地缺失：正文引用的 Table S1–S9、Data supplements 和 Videos S1–S11 未随本地 PDF 提供，因此详细队列人口学、部分超参数和视频轨迹不能在本地核验。
+- 补充覆盖：官方 Tables S1–S9 已逐表审计；工作簿没有 `Pxxx.Sxxxx` 句子 ID，因此补表结论按 Table、worksheet 和字段引用，不与 PDF 的 1,690 个 ID 混计。
+- 仍缺材料：Data supplements 未纳入本地证据包；Videos S1–S11 的官方附件可访问，但本轮未做逐帧审计，因此迁移轨迹仍以 PDF 图注和代表性静态结果为边界。XGBoost 最终超参数、插补合并和随机 seed 也未由表格补齐。
 - 版面问题：双栏阅读顺序会把正文与图注拼接；图内标签、参考文献和 Key Resources 被错误分类；上下标、基因型和跨页句子有断裂。正文数字优先取可恢复的叙述句和完整图注，无法恢复的图内指数不静默补写。
 - 章节误判：解析器报告 `results=807`、`methods=296`。人工复位后，实质 Results 为 243 个 ID；真实实验/分析 Methods 为 290 个 ID。55 个 Results 被误标为 Methods，参考文献与 Key Resources 又被大量误标为 Results。
 
@@ -174,7 +177,7 @@ CANTOS 生物标志物亚组共 4,651 人，只能测到 14 种蛋白中的 10 �
 ### Fig. 1 完整 panel 注释
 
 - A：UKBB 机器学习流程。48,099 人的基线 Olink 2,923 蛋白与临床变量进入 75% 训练/25% 测试；递归特征消除和 XGBoost 得到 14 蛋白加年龄、吸烟状态、包年数和 COPD 的组合模型。来源：`P004.S0060–P004.S0062`、`P005.S0023–P005.S0026`。
-- B：8 个外部蛋白组数据集对 14 种蛋白做随机效应 meta-analysis，展示相对风险和 95% CI，Wald 检验。来源：`P004.S0063`、`P005.S0027–P006.S0003`。
+- B：8 个外部蛋白组数据集对 14 种蛋白做随机效应 meta-analysis，展示相对风险和 95% CI，Wald 检验。Results 汇总为 2,198 例/53,641 名非癌对照，Table S1 八行简单相加却为 2,600/56,462；论文未说明去重算式。来源：`P004.S0063`、`P005.S0027–P006.S0003`。
 - C：UKBB 留出集 12,025 人、75 例肺癌的 ROC，对比组合模型、LLPv3 和 LCRAT，DeLong 检验。图内 AUC 分别为 0.865、0.806、0.774。来源：`P004.S0014`、`P004.S0064`、`P006.S0004–P006.S0006`。
 - D：按诊断前 2 年窗口计算 AUC 和 95% CI；组合模型在诊断前 2–4 年相对 LLPv3 增益最大。来源：`P004.S0065`、`P006.S0007`。
 - E：UKCTOCS 中 98 例未来病例和 150 名对照每年测量 WFDC2、CXCL17、CEACAM5，平均每人 5 次；LOESS 显示诊断前变化，Wilcoxon 的 \(-\log_{10}p\) 截断于 4。来源：`P005.S0027–P005.S0028`、`P006.S0009–P006.S0010`。
@@ -243,14 +246,14 @@ CANTOS 生物标志物亚组共 4,651 人，只能测到 14 种蛋白中的 10 �
 #### 人群队列和数据结构
 
 - UKBB：总队列 502,401 人、37–73 岁、2006–2010 年招募；54,219 人有基线 Olink 2,923 蛋白，按预先癌症等规则排除后分析 48,099 人。375 人后续肺癌、47,724 人未发生；无 formal power calculation。来源：`P024.S0010–P024.S0014`、`P028.S0043`。
-- 8 个外部数据集为 EPIC、EPIC-Norfolk 两批、ARIC、CKB、LC3、UKCTOCS 和 deCODE。平台相对定量不允许直接跨队列比较；未做有充分效能的性别或 ancestry 分层。来源：`P024.S0015–P024.S0020`。
+- 8 个外部数据集为 EPIC、EPIC-Norfolk 两批、ARIC、CKB、LC3、UKCTOCS 和 deCODE。Results 汇总为 2,198 例/53,641 名非癌对照，Table S1 八行直接相加为 2,600/56,462；已知重叠不足以闭合差值，论文没有给出去重或分析集构造规则。平台相对定量不允许直接跨队列比较；未做有充分效能的性别或 ancestry 分层。来源：`P024.S0015–P024.S0020`。
 - TRACERx：N=482，术前和至少 2 年未复发者的术后随访样本；无 formal power。Olink NPX 用 GSVA R v3.23、默认参数、`kcdf="Gaussian"`。来源：`P024.S0021–P024.S0023`、`P030.S0016–P030.S0017`。
 - CANTOS：原试验 10,061 人，既往心肌梗死且 hsCRP≥2 mg/L，39 国，2011–2017 年，中位随访 3.7 年；生物标志物亚组使用 baseline SomaScan v3 的 4,785 蛋白，无 formal power。本文使用其中 4,651 人的 10/14 aptamer 平均 RFU，以队列中位数二分。Cox 调整 BMI、吸烟和年龄；NNT 为绝对风险差倒数。来源：`P024.S0024–P025.S0003`、`P030.S0030–P031.S0004`。
 - TALENT：台湾 17 个中心、2015–2019 年；入组胸片阴性。Methods 将 251 例称为 incident invasive LUAD，并与 501 名对照按年龄、性别、基线吸烟 1:2 匹配，81.3% 女性；但 Results 又称这 251 例中 62.1% 为 adenocarcinoma，病例类型存在内部不一致。设计效能为 \(\alpha=0.05\)、80% power 检出每 SD OR 约 1.25–1.30；4 个 Olink Target 96 panel 只覆盖 10/14 蛋白。QC 排除带 warning 的样本、样本中位 NPX 偏离总体中位数超过 ±5 SD，以及超过 50% 测量低于板特异 LOD 的蛋白。来源：`P006.S0023–P006.S0025`、`P025.S0004–P025.S0011`、`P030.S0011–P030.S0012`。
-- UKCTOCS：248 名女性，98 例未来肺癌、150 名对照，诊断前 5 年逐年血清；Olink Oncology II，蛋白标准化为均值 0、SD 1，以默认 span 的 LOESS 拟合纵向轨迹，再做年龄调整 Cox HR/SD。来源：`P029.S0010–P029.S0015`。
-- LC3：6 个前瞻队列，731 例、731 名按吸烟、年龄、性别和入组日期匹配的对照，conditional logistic OR/SD。deCODE：610 incident 与 232 prevalent cases、37,892 controls 合并做 SomaScan v4 logistic regression；距诊断时间只在 incident cases 中定义。来源：`P029.S0016–P029.S0022`。
-- EPIC 使用 SomaScan v4 并调整吸烟量/年数、BMI、教育，baseline hazard 按年龄、性别、中心分层。EPIC-Norfolk 是 EPIC 子集，两批分别为 291/749 和 698/1,010 例/对照，无 bridging sample。LC3 与 EPIC、EPIC-Norfolk 与 EPIC 存在人群重叠，不应仅因检测平台不同就视为完全独立。来源：`P029.S0023–P029.S0031`。
-- CKB 初始蛋白组子队列为 2,029 人、31 例，使用 4 个 Olink panel/2,941 蛋白；Methods 随后称从这 2,029 人中排除 13 名基线癌症史者和 3 名无 Olink 数据者，却没有重述最终分析人数。Cox 按性别和地区分层并调整年龄、末次进食、温度及平方项和教育。ARIC 使用 SomaScan 5k、log2 RFU 和多变量 Cox，协变量包括中心、性别、吸烟与包年数、BMI、腰臀比、糖尿病、身高、体力活动指标、饮酒、蛋白推断吸烟评分、PEER 因子和遗传主成分。来源：`P030.S0001–P030.S0010`。
+- UKCTOCS：纵向分析为 248 名女性、98 例未来肺癌和 150 名对照，诊断前 5 年逐年血清；Table S1 却列 100/150。Olink Oncology II 蛋白标准化为均值 0、SD 1，以默认 span 的 LOESS 拟合纵向轨迹，再做年龄调整 Cox HR/SD。来源：`P029.S0010–P029.S0015`。
+- LC3：Methods 为 6 个前瞻队列、731 例/731 名匹配对照，conditional logistic OR/SD；Table S1 的对应 `IARC` 行为 729/729。deCODE 用 610 incident 与 232 prevalent cases、37,892 controls 做 SomaScan v4 logistic regression；Table S1 的 incident 列为 610，但同一行病例吸烟分类合计 842，混用了两类病例分母。来源：`P029.S0016–P029.S0022`。
+- EPIC 使用 SomaScan v4 并调整吸烟量/年数、BMI、教育，baseline hazard 按年龄、性别、中心分层。EPIC-Norfolk 是 EPIC 子集；Methods 的 291/749 和 698/1,010 是两批 assay case/control 子队列，并非肺癌病例/非癌对照。Table S1 的肺癌分析口径实际为 67/1,045 和 103/1,548；两批无 bridging sample。LC3 与 EPIC、EPIC-Norfolk 与 EPIC 存在人群重叠，不应仅因检测平台不同就视为完全独立。来源：`P029.S0023–P029.S0031`。
+- CKB 初始蛋白组子队列为 2,029 人、31 例，使用 4 个 Olink panel/2,941 蛋白；Methods 随后称排除 13 名基线癌症史者和 3 名无 Olink 数据者，却没有重述最终分析人数。Table S1 为 30 例/2,007 名非癌参与者，但同一行病例吸烟分类仍合计 31，算术仍不闭合。Cox 按性别和地区分层并调整年龄、末次进食、温度及平方项和教育。ARIC 使用 SomaScan 5k、log2 RFU 和多变量 Cox，协变量包括中心、性别、吸烟与包年数、BMI、腰臀比、糖尿病、身高、体力活动指标、饮酒、蛋白推断吸烟评分、PEER 因子和遗传主成分。来源：`P030.S0001–P030.S0010`。
 
 #### 机器学习和统计验证
 
@@ -274,7 +277,7 @@ UKBB 按吸烟、性别、收入、教育、结局、年龄、BMI 和包年数�
 
 - snRNA/multiome 使用 10x Epi Multiome ATAC+GEX。T 条件为 CC10 3 周 n=10、basal/Krt5 10 周 n=10、SPC 3 周 PBS n=20/PM n=10；ET 条件为 basal 10/20 周各 n=10、CC10 3/10 周各 n=10、SPC 3/10 周 PBS/PM 各 n=10；EPT-SPC 25 周肿瘤 n=2，分别分析。同一 SPC-PBS 数据同时用于 Fig. 2 和 Fig. 4。CellRanger-ARC 2.0.1，自定义 mm10 GENCODE vM23/Ensembl 98+tdTomato+EGFR-L858R；R 4.3.2、Seurat 4.4、DoubletFinder 2.0.4。QC：\(200<nFeature<7500\)，线粒体/核糖体<20%，血红蛋白/血小板<10%；SCTransform v2，Bonferroni。来源：`P026.S0020–P026.S0035`。
 - scRNA 每组计划 10 只，用 TotalSeq hashtag；混样固定为 60% immune、19% tdTomato− epithelium、1% tdTomato+ epithelium、20% other。CellRanger 7.1，沿用相同 QC；一个 WT-PBS 小鼠因细胞组成异常在分析前排除。按 mouse hashtag 用 `AggregateExpression` pseudobulk 和 DESeq2。来源：`P027.S0001–P027.S0018`。
-- PCLS：2% agarose，300 μm 切片，LGK974 100 nM，活成像 72 h。PM 试验用 EGFR-dox 小鼠预先 doxycycline 5 天，6 mm core/400 μm 切片，tetracycline 2.5 μg/mL，PM 100 μg/mL，抗 IL-1β 或 IgG 100 μg/mL；LAMP3 ELISA 和 CLDN4 成像。来源：`P027.S0025–P028.S0003`。
+- PCLS：2% agarose，300 μm 切片，LGK974 100 nM，活成像 72 h。PM 试验用 EGFR-dox 小鼠预先 doxycycline 5 天，6 mm core/400 μm 切片，tetracycline 2.5 μg/mL，Methods 写 PM 100 μg/mL、抗 IL-1β 或 IgG 100 μg/mL；Fig. S7B 图注却写 PM 50 μg/mL，剂量不能静默统一。LAMP3 ELISA 和 CLDN4 成像。来源：`P027.S0025–P028.S0003`、`P042.S0004–P042.S0005`。
 - 补充图 S9 的体内阻断为 anti-IL-1β 200 μg 或 hamster IgG，与 PM 50 μg 同期给药，每周 3 次、连续 3 周；类器官形成率汇总自 3 次独立实验，IgG n=7、anti-IL-1β n=8。来源：`P046.S0006–P046.S0007`。
 - 人胎肺 AT2 类器官来自 17 和 20 周男性胎肺。qPCR 每次 4 孔（2 对照、2 个 IL-1β 100 ng/mL 48 h），2 次独立实验；5 ng RNA/反应、45 cycles、comparative Ct，two-way ANOVA+Sidak。来源：`P025.S0019–P025.S0024`、`P031.S0018–P031.S0025`。
 - 小鼠 bulk RNA：约 2 mm³ EPT 肿瘤，25 million PE100、polyA；Kallisto 0.45/GRCm38、DESeq2 1.38.3。人癌前 RNA：Cutadapt、STAR 2.5.2a two-pass ENCODE3/hg38+GENCODE v42、RSEM 1.3.3；保留 duplicate reads <80% 的文库，并排除表达蛋白编码基因不足 75% 的样本。来源：`P028.S0004–P028.S0022`。
@@ -282,7 +285,7 @@ UKBB 按吸烟、性别、收入、教育、结局、年龄、BMI 和包年数�
 
 #### 环境暴露与蛋白组
 
-- 人柴油交叉实验 n=6（4 男、2 女，40–66 岁），300 μg/m³ 柴油或过滤空气暴露 2 h、间隔 1 月、24 h 后采血；70 μL 血浆，SomaScan v1.3/1,307 蛋白。log2 RFU、Welch t，FC≥1.5 且 \(p\le0.05\)。来源：`P025.S0014–P025.S0016`、`P030.S0018–P030.S0023`。
+- 人柴油交叉实验 n=6（4 男、2 女，40–66 岁），300 μg/m³ 柴油或过滤空气暴露 2 h、间隔 1 月、24 h 后采血；70 μL 血浆，SomaScan v1.3/1,307 蛋白。Methods 声称 Welch t、FC≥1.5 且 \(p\le0.05\)；Table S8 实际公式为双侧等方差非配对 `T.TEST(DE,FA,2,2)`，既不是 Welch，也未利用 crossover 的配对结构。表内没有全局 Methods 所称的 BH 校正列。来源：`P025.S0014–P025.S0016`、`P030.S0018–P030.S0023`。
 - TALENT PM2.5 用入组前一年居住邮编连接 0.01° 卫星网格，并取 11 km 半径均值；模型调整年龄、BMI、肺癌家族史和性别。来源：`P030.S0011–P030.S0015`。
 - GTEx 分析覆盖 946 名供者、最多 54 个非病变组织位点；先算签名 GSVA，再用 Wilcoxon 比较肺与表达次高的非肺组织。HLCA 下采样 50,000 个细胞，采用 `ann_level_3`；将 FAM83D+ smooth muscle 重标为 fibromyocyte，以 normalized counts 和 `AddModuleScore` 计算签名。来源：`P030.S0024–P030.S0029`。
 - 小鼠血浆在基线及 3/10/15 周采样，SomaScan 11K v5 同批、两板均分；4 个盲法技术重复，CV 超过第 95 百分位的 539 个蛋白去除，PCA 排除 1 只小鼠。RFU 先 log 转换，再逐鼠计算第 3/10/15 周减 baseline 的 \(\Delta RFU\)；lme4 1.1-37、emmeans 1.11.1 比较 time 0 vs 3/10/15 周并做 BH 校正。来源：`P031.S0005–P031.S0017`。
@@ -312,9 +315,26 @@ UKBB 按吸烟、性别、收入、教育、结局、年龄、BMI 和包年数�
 | `P031.S0005–P031.S0031`（27） | 小鼠血浆、胎肺 qPCR、全局统计 | 纵向 mixed model 与实验统计 | 原文 mixed-model 响应名称存在歧义 |
 | **合计** | 真实 Methods 全部覆盖 | — | **290/290，无缺口** |
 
+这里的 290/290 表示主 PDF 来源 ID 已分类并映射，不表示补表、代码和分析参数均足以复现。官方工作簿的新增证据单独审计如下。
+
+### 官方 Tables S1–S9 审计
+
+| 补充表 | 实际范围 | 新增可核验信息 | 证据边界或冲突 |
+|---|---:|---|---|
+| S1 `S1_Details of validation cohort` | 8 个队列行 | 各队列病例、非癌人群、诊断间隔、年龄、吸烟和性别 | 行合计 2,600/56,462，不等 Results 的 2,198/53,641；UKCTOCS、LC3/IARC、CKB 和 deCODE 另有行内或 Methods 分母冲突，不能自行择一 |
+| S2 `S2_Benchmarking of models` | 5 个既有模型 | LLPv3、LCRAT、PLCOm2012、Bach、LLPv2 的 AUC 与 95% CI | 都来自同一 UKBB 留出集；不是独立外部验证 |
+| S3 `S3_HLCA_expression` | 210 个比较 | 14 个签名基因×15 类其他细胞；AT2 为 64 名供者，比较组为 4–62 名供者 | 统计单位是 donor，不是下采样的 50,000 个细胞；表内不提供原始表达矩阵 |
+| S4 `supptable_wtpbs_per_gene_cellty` | 144 个比较 | 12 个小鼠可检出基因×12 类对照细胞，均为 n=9 vs 9 的 mouse-level 摘要 | 只覆盖 WT-PBS 条件，不等于完整扰动数据 |
+| S5 `S5_Cell_numbers` | 5 类谱系靶向 | polidocanol 后 basal airway 标记细胞均值由 5 增至 307，范围由 2–7 扩至 13–1,343 | purity 脚注写 alveolar/airway，但 0.8、0.997 和 1.0 实际符合 airway/(airway+alveolar)，表内公式方向不一致 |
+| S6、S7、S9 marker 表 | 30,124/52,200/36,200 行；9/18/13 簇 | 分别给出 p、log2FC、表达比例、Bonferroni 值、cluster 和 gene | 不是 raw counts 或细胞数，且无 sample/mouse/condition 映射；PDF 把 S6 交叉引用到 Fig. 2、S9 引到 Fig. S8，但两表的簇标签与相应图恰好相反，官方附件—分析映射疑似倒置，本文不静默互换 |
+| S8 `S8_Filtered_air` | 6 个可测签名蛋白×6 人两种暴露 | 给出个体 log2 强度、FC 和缓存 \(p\) 值 | 只有 MMP12 同时满足 Methods 的 FC 与 \(p\) 门槛；公式为等方差非配对检验，不是 Methods 所称 Welch，也未按 crossover 配对 |
+
+Tables S1–S9 没有给出 TALENT 的四个 PM/病例分层 n，也没有解决 251 例的组织学口径冲突；S6/S7/S9 又缺原始 counts 和 mouse 映射，因此不能从 marker 表独立重建 PM 差异分析。
+
 ### 数据、代码和材料可用性
 
 - 论文称小鼠 sn/scRNA、bulk RNA、蛋白组、processed TRACERx 数据和原始代码公开于 Zenodo。
+- 官方 Tables S1–S9 的直链见“论文基本信息”；Videos S1–S11 的官方附件可访问，但本轮没有逐帧纳入证据审计，Data supplements 也仍未本地解析。
 - 正文 Resource availability 两次给出 `10.5281/zenodo.15800192`（`P014.S0028–P014.S0029`、`P014.S0044–P014.S0045`）；Key Resources deposited-data 行却给出 `10.5281/zenodo.19372114`（`P022.S0003–P022.S0006`）。这是 PDF 内部冲突，本笔记不替作者选择其一。
 - UKBB 为 application 82693；ARIC/BioLINCC、EPIC、EPIC-Norfolk 和 CKB 按各自程序申请，TALENT 需联系 P.C. Yang。CANTOS 个体数据不能公开，须经 Novartis 独立科学审查；UKCTOCS 的同意范围不允许公开入库，申请联系 Usha Menon；TRACERx 由数据访问委员会控制。来源：`P014.S0030–P014.S0043`。
 - 已有小鼠类器官 scRNA 为 GSE144468；人癌前病变 RNA 为 EGAD50000000637。来源：`P024.S0007–P024.S0008`、`P025.S0017–P025.S0018`。
@@ -338,11 +358,14 @@ UKBB 按吸烟、性别、收入、教育、结局、年龄、BMI 和包年数�
 **原文内部冲突或歧义**
 
 - Zenodo DOI：正文为 `10.5281/zenodo.15800192`，Key Resources 为 `10.5281/zenodo.19372114`。
-- 外部病例口径：Results 将 8 个数据集中的 2,198 例统称为 incident（`P005.S0027–P006.S0002`），Methods 却说明 deCODE 合并 610 例 incident 与 232 例 prevalent 病例（`P029.S0020–P029.S0022`）；LC3/EPIC 与 EPIC-Norfolk/EPIC 还存在人群重叠，不能按 8 个完全独立前瞻队列解释。
-- CKB 样本口径：Methods 先称蛋白组子队列为 2,029 人、31 例，随后又从 2,029 人中排除 13 名基线癌症史者和 3 名无 Olink 数据者，却没有给出最终分析人数（`P030.S0002–P030.S0004`）。
+- 外部病例口径：Results 将 8 个数据集汇总为 2,198 例 incident/53,641 名非癌对照（`P005.S0027–P006.S0002`），Table S1 八行却合计 2,600/56,462；Methods 又说明 deCODE 合并 610 例 incident 与 232 例 prevalent 病例（`P029.S0020–P029.S0022`）。LC3/EPIC 与 EPIC-Norfolk/EPIC 存在人群重叠，但论文没有给出能闭合差值的去重算式。
+- Table S1 的局部口径：UKCTOCS 为 100 例，而纵向分析为 98；`IARC` 行为 729/729，而 LC3 Methods 为 731/731；CKB 为 30/2,007，但病例吸烟栏合计 31，Methods 初始也是 31/2,029；deCODE 的 incident 列为 610，病例吸烟栏却合计 842，恰含 232 例 prevalent。上述差异均保留，不自行合并。
+- 柴油统计：Results 和 Table S8 高亮 MMP12、PLAUR、TNFSF13B 三种升高，但后二者 FC 只有 1.422 和 1.316，不满足 Methods 的 FC≥1.5；Table S8 又使用双侧等方差非配对 t 检验，不是 Methods 所称 Welch，也未利用 6 人 crossover 的配对结构。
+- 单细胞补表映射：PDF 把 Table S6 引向 Fig. 2、把 S9 引向 Fig. S8；S6 的 9 个 AT2–LUAD 簇却对应 Fig. S8，S9 的 13 个气道/谱系簇对应 Fig. 2。本文保留这个官方交叉引用疑点，不擅自交换附件编号。
+- Table S5 的 location purity 脚注写 alveolar/airway，数值却符合 airway/(airway+alveolar)；PCLS 的 PM 剂量在 Methods 为 100 μg/mL、Fig. S7B 图注为 50 μg/mL。
 - 小鼠纵向蛋白组先计算各时间点相对基线的 \(\Delta RFU\)，随后公式写为 `Baseline RFU ~ Time + (1 | Individual Mouse)`，并把响应解释为 baseline value（`P031.S0014–P031.S0015`）。公式的响应名称与前一步描述不一致，不能静默修正。
 - MICE 一处写训练/测试分别插补，另一处写训练集拟合后应用于测试集；结局和随访时间被列为插补预测变量。是否存在泄漏取决于代码实现。
-- TALENT Methods 把 251 例写作 incident invasive LUAD（`P025.S0007`），Results 却称同一病例集只有 62.1% 为 adenocarcinoma（`P006.S0024`）。本地缺少 Table S，无法判断是术语、纳入范围还是文本错误。
+- TALENT Methods 把 251 例写作 incident invasive LUAD（`P025.S0007`），Results 却称同一病例集只有 62.1% 为 adenocarcinoma（`P006.S0024`）。Tables S1–S9 没有解决这是术语、纳入范围还是文本错误。
 - PDF 未报告 QuPath、Fiji、AnalyzeDirect、APEX 和 Cutadapt 的版本，也未给单细胞预处理所称随机 seed 的具体数值；这些是现有方法文本之外的复现缺口，不能由本笔记补全。
 
 **不能从本研究外推的结论**
@@ -361,7 +384,7 @@ UKBB 按吸烟、性别、收入、教育、结局、年龄、BMI 和包年数�
 - [x] 关键结果包含样本、数字和比较对象；
 - [x] 图表紧跟对应 Results 叙事；
 - [x] 明确写出“这些结果仍需要冷静看待”；
-- [x] Results 243/243、Methods 290/290、全文 1690/1690 覆盖；
-- [x] 原文冲突、低置信解析和缺失补充材料已保留；
+- [x] Results 243/243、Methods 290/290、全文 1690/1690 的 PDF 来源 ID 已分类覆盖；
+- [x] 原文冲突、低置信解析、官方 Tables S1–S9 与仍缺材料的边界已保留；
 - [x] `SUMMARY.md`、分类 README、`STYLE_REVIEW_LOG.md` 已更新；
 - [x] HonKit 构建和内部链接已验证。
