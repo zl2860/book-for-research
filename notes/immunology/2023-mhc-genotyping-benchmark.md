@@ -1,6 +1,6 @@
 # Benchmark of tools for in silico prediction of MHC class I and class II genotypes from NGS data
 
-<!-- wechat-style-reviewed: 2026-09-09 -->
+<!-- wechat-style-reviewed: 2026-09-18 -->
 
 做新抗原或 TCR–HLA 分析时，研究者常只有现成的 WES 或 RNA-seq，没有配套 PCR-HLA 分型。此时一个看似工程化的选择——用哪个 HLA caller——可能一路影响可呈递肽、新抗原负荷和 HLA 杂合性等下游结果。
 
@@ -32,11 +32,13 @@ HLA 分型至少要拆成四个问题：WES 的 MHC-I、WES 的 MHC-II、RNA-seq
 
 MHC-II 的排名不同：HLA-HD 为 96.2%，HLA*LA 为 95.7%，且只有这两种工具在所有受测 MHC-II 位点都达到 90%。相比之下，HLAscan、HLA-VBSeq 和 HLAminer 的整体准确率分别约为 74.2%、60.2% 和 53.8%；其中 DQA1 金标准仅 68 例，不能把总体排名等同于所有位点都有同等精度。
 
-覆盖度也给出了实际门槛。作者随机抽取 100 个 WES 和 100 个 RNA 文件，按 100%、50%、10%、5%、1% reads 降采样，再经模型与线性插值估计：达到 90% accuracy 时，Optitype 的 WES MHC-I 约需 12.2× 平均 HLA read depth，HLA-HD 的 WES MHC-II 约需 17.4×。这不是外部验证阈值，更不是所有 panel 的固定门槛。
+先看 Fig. 2 的分层雷达图：同一工具在 WES/RNA、MHC-I/II 四个场景中的排序并不相同。
 
 ![Fig. 2：WES 与 RNA-seq 的 HLA 分型准确率](../../assets/immunology/2023-mhc-genotyping-benchmark/fig2-prediction-accuracies.png)
 
 简明图注：Fig. 2 比较各工具在 1000 Genomes/Geuvadis 金标准中的 allele-level accuracy；上排为 WES、下排为 RNA-seq，MHC-I 与 MHC-II 分开评估。完整位点和图注见技术附录。
+
+覆盖度也给出了实际门槛。作者随机抽取 100 个 WES 和 100 个 RNA 文件，按 100%、50%、10%、5%、1% reads 降采样，再经模型与线性插值估计：达到 90% accuracy 时，Optitype 的 WES MHC-I 约需 12.2× 平均 HLA read depth，HLA-HD 的 WES MHC-II 约需 17.4×。这不是外部验证阈值，更不是所有 panel 的固定门槛。
 
 ## 04｜RNA-seq 准确率更高，就一定更适合吗？
 
@@ -76,6 +78,12 @@ HLA-HD、HLA*LA、Optitype、Polysolver 和 xHLA 这 5 个 WES 工具各自的�
 
 这只是群体分布合理性的补充检查，并为 DPA1 及主 1000 Genomes benchmark 未覆盖的 DPB1 提供间接支持；它不能替代逐样本 PCR 比较，也不是完全信息独立的验证。相关性分析虽关闭了 arcasHLA 和 Polysolver 的 ethnicity-specific frequencies，但 arcasHLA 仍用全人群先验，Optitype 还排除 AFND 中不存在的稀有等位基因，因此与 AFND 的高相关可能带有候选集或先验层面的循环性。DPA1 又缺少目标美国族群参考频率，Caucasian American 参考以法国、瑞典和巴斯克人群近似，African American 无可用 DPA1 参考，不能保证稀有等位基因或特定祖源个体的调用正确。
 
+Fig. 3 需要与这条边界一起读：颜色更深只表示 TCGA 预测频率更接近 AFND 参考，并不代表逐样本分型正确；空白还受工具支持范围和实际运行子集限制。
+
+![Fig. 3：TCGA 中预测 allele frequency 与群体参考频率的相关性](../../assets/immunology/2023-mhc-genotyping-benchmark/fig3-allele-frequency-correlation.png)
+
+简明图注：Fig. 3 按 African American 与 Caucasian American 分层，比较 TCGA 预测等位基因频率与 AFND 参考频率的 Pearson `r`；颜色表示 `r`，点大小表示 P 值，缺失点表示相应工具不能评估该位点。该图只支持群体分布合理性。
+
 ## 08｜这篇 benchmark 真正改变了什么？
 
 它把工具选择从单一排行榜变成条件化决策：先按 WES/RNA、MHC-I/II 分层，再把覆盖、表达、样本量和计算资源纳入同一判断。
@@ -98,7 +106,7 @@ HLA-HD、HLA*LA、Optitype、Polysolver 和 xHLA 这 5 个 WES 工具各自的�
 
 ## 技术附录
 
-以下内容保留论文信息、主图说明、结果、方法参数、资源比较和证据边界，并把主 PDF 与 6 个官方补充文件分别纳入来源审计；它不是逐句双语翻译。读者正文已经展示的 3 张图不在附录重复嵌入；完整图注、图像路径和正文位置均保留。
+以下内容保留论文信息、主图说明、结果、方法参数、资源比较和证据边界，并把主 PDF 与 6 个官方补充文件分别纳入来源审计；它不是逐句双语翻译。读者正文已经展示的 4 张图不在附录重复嵌入；完整图注、图像路径和正文位置均保留。
 
 ### 本文目录
 
@@ -179,7 +187,7 @@ Figures S1-S14 的图题/图注范围依次为 `s004:P001.S0010-P001.S0013`、`P
 |---|---|---|---|---|
 | Fig. 1 | Computational resource consumption of the 13 selected tools：不同 HLA caller 的单样本运行时间和内存占用 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig1-computational-resources.png` | [05｜准确率和计算成本之间差多少？](#05｜准确率和计算成本之间差多少？) |
 | Fig. 2 | HLA allele prediction accuracies：1000 Genomes 金标准直接 benchmark 中 WES/RNA 的 MHC-I 和 MHC-II 准确率 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig2-prediction-accuracies.png` | [03｜只有 WES 时，MHC-I 和 MHC-II 分别怎么选？](#03｜只有-wes-时，mhc-i-和-mhc-ii-分别怎么选？) |
-| Fig. 3 | Correlations between observed and expected allele frequencies：TCGA 大队列中预测等位基因频率与群体参考频率的相关性 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig3-allele-frequency-correlation.png` | [Correlation and concordance analyses on large independent datasets confirm the benchmarking results](#correlation-and-concordance-analyses-on-large-independent-datasets-confirm-the-benchmarking-results) |
+| Fig. 3 | Correlations between observed and expected allele frequencies：TCGA 大队列中预测等位基因频率与群体参考频率的相关性 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig3-allele-frequency-correlation.png` | [07｜TCGA 大队列验证真正补上了什么？](#07｜tcga-大队列验证真正补上了什么？) |
 | Fig. 4 | Accuracies of meta-prediction models with an increasing number of included tools：多工具 majority voting 共识模型 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig4-consensus-metaclassifier.png` | [06｜为什么 4 工具投票只明显帮助 WES？](#06｜为什么-4-工具投票只明显帮助-wes？) |
 
 ### 生物学故事前情
@@ -264,8 +272,6 @@ MHC-II 中，HLA-HD、PHLAT 和 arcasHLA 表现最好，准确率分别为 99.4%
 NCI-60 RNA 独立验证中，arcasHLA 和 Optitype 的 MHC-I macro-average 仍较高，分别为 91.8% 和 90.0%；其 HLA-A/B/C PCR 可比分母只有 38/25/17 例（`s004:P006.S0005-P006.S0007`）。HLA-HD、PHLAT、seq2HLA 在细胞系 RNA 数据中下降较明显。作者没有在 NCI-60 RNA 上评估 MHC-II，因为 MHC-II 在细胞系中通常不表达。这是很重要的边界：RNA-seq 分型不是单纯“reads 越多越好”，还取决于目标位点是否表达。
 
 #### Correlation and concordance analyses on large independent datasets confirm the benchmarking results
-
-![图3：TCGA 中预测 allele frequency 与群体参考频率的相关性](../../assets/immunology/2023-mhc-genotyping-benchmark/fig3-allele-frequency-correlation.png)
 
 中文图注（基于原文图注）：Fig. 3 用气泡热图展示 observed allele frequencies 和 expected allele frequencies 的 Pearson correlation。列为 African American 和 Caucasian American 人群中的不同 HLA gene，行为工具和输入数据类型。颜色表示 Pearson r，圆点大小表示 P 值；缺失圆点表示该工具不能评估对应 gene。
 
