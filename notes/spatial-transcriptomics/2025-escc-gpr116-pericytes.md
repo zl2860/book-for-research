@@ -1,6 +1,6 @@
 # Single-cell multi-omic and spatial profiling of esophageal squamous cell carcinoma reveals the immunosuppressive role of GPR116+ pericytes in cancer metastasis
 
-<!-- wechat-style-reviewed: 2026-09-10 -->
+<!-- wechat-style-reviewed: 2026-09-19 -->
 
 食管鳞状细胞癌（ESCC）真正棘手的时刻，往往不是病理已经确认肿瘤，而是患者初诊时转移已经发生。论文引用的临床背景显示，超过一半患者初诊时已有转移，5 年总生存率约为 20%；只盯着肿瘤细胞本身，很难解释为什么有些原发灶更早形成转移能力。
 
@@ -69,6 +69,14 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 
 相关性之后还有多层验证：PRRX1 过表达使 GPR116+ 周细胞比例升高（n=10）；snATAC-seq 显示 GPR116、EGFL6 等位点在该亚群中更开放；ChIP 与报告基因实验（每组 n=3）支持 PRRX1 对 GPR116、EGFL6 启动子的调控；Prrx1 条件敲除小鼠的肿瘤中则未见可检测的 GPR116+ 周细胞。需要保留的边界是，ChIP 使用 HEK293T 细胞背景，“未见”也受检测限和模型范围约束。
 
+图 2 把候选交集、染色质可及性、转录调控和条件敲除放在同一条上游证据链中。
+
+<a id="reader-escc-fig2"></a>
+
+![Fig. 2：PRRX1 驱动 GPR116+ 周细胞分化](../../assets/spatial-transcriptomics/2025-escc-gpr116-pericytes/fig2-prrx1-differentiation.png)
+
+简明图注：图 2 从 33 个活化调控因子、282 个亚群差异基因和 66 个转移相关基因的交集锁定 PRRX1，再用流式、snATAC-seq、ChIP、报告基因与 Prrx1 条件敲除补强；这些实验支持 PRRX1 参与塑造该状态，但 HEK293T 中的启动子实验和小鼠模型不能单独证明人体肿瘤内的全部调控路径。
+
 下游链条从 EGFL6 开始。它是 GPR116+ 相对 GPR116− 周细胞中上调最强的基因；在 KYSE150、KYSE410 侵袭实验中，重组 EGFL6 呈剂量依赖性促进作用（各组 n=3），并伴随 EMT 改变。配体–受体分析随后提出 integrin β1；Supplementary Methods 说明免疫共沉淀是在 HEK293T 中双质粒共转染后的外源 co-IP，只支持二者可处于同一复合物，不能当作 ESCC 细胞内源结合或直接界面证据。ATN-161 或 BAY 11-7082 在两种细胞系的侵袭实验中削弱 EGFL6 的促进作用（每组 n=3）；免疫印迹同时显示 p-p65 及 EMT 读出随抑制而下降，把信号接到 NF-κB。原文正文与图注未给这些比较可直接转录的精确效应量，因此不从图形反推数值。
 
 图 5 的价值在于展示“候选—结合—通路—拯救—在体阻断”的顺序，而不是只画一条机制箭头。
@@ -89,15 +97,39 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 
 同一周细胞亚群还使 ESCC 细胞 PD-L1 上调，而 integrin β1 抑制剂可削弱该效应（每组 n=3）。这为后续联合 αPD-1 提供了机制理由：阻断 integrin β1 可能同时压低侵袭信号和一部分免疫抑制输出。但“机制理由”不等于患者中的免疫治疗增敏已经得到证实。
 
+图 6 把组织空间相关、T 细胞共培养、PBMC 杀伤和肿瘤 PD-L1 读出放在一起，正好显示证据从相关走向功能、又在哪里停住。
+
+<a id="reader-escc-fig6"></a>
+
+![Fig. 6：GPR116+ 周细胞的免疫抑制特性](../../assets/spatial-transcriptomics/2025-escc-gpr116-pericytes/fig6-immunosuppression.png)
+
+简明图注：图 6 的组织相关性实际来自 T21 与 T23 两个样本的 15 个 ROI，不能当作 15 位患者；共培养和条件培养基实验分别以每组 n=3–4 支持 Treg/PD-1+CD8+ 比例、CD8 效应读出和 PD-L1 方向变化，但没有完成谱系追踪或患者治疗验证。
+
 ## 07｜血清 EGFL6 现在能回答什么问题？
 
 第一个出口是血清 EGFL6。作者合并两个中心的 135 位 ESCC 患者，并以 60 位健康者作对照；研究内 ROC 中，EGFL6 区分 ESCC 与健康者的 AUC 为 0.983，区分作者标注的 M 与 NM 病例的 AUC 为 0.912。肺癌 M/NM 队列的 AUC 为 0.902，胃癌为 0.808；这些数字比较的是各研究队列内的分类表现，不是与现行筛查或影像流程的头对头临床比较。Fig. 4o 的生存曲线和补充表 4 的 ESCC 临床关联只有 54 例（N0 25、N1–N3 29）；只有这个临床子集能确认 M/NM 组数对应 N 分期，不能将该定义或 54 例生存分母外推给完整 135 例 ROC 队列。
+
+图 4 把 EGFL6 的细胞来源、功能实验和三种癌症的血清分类结果并列展示，读图时必须把研究内表现与临床验证分开。
+
+<a id="reader-escc-fig4"></a>
+
+![Fig. 4：EGFL6 的促转移作用及临床价值](../../assets/spatial-transcriptomics/2025-escc-gpr116-pericytes/fig4-egfl6-biomarker.png)
+
+简明图注：图 4 连接 GPR116+ 周细胞来源、Prrx1 敲除后的 EGFL6 变化、重组蛋白侵袭实验、组织队列和血清 ROC；AUC 0.983 来自 135 位 ESCC 患者与 60 位健康者的比较，AUC 0.912 来自 135 位患者内部的 M 与 NM 比较，二者均无独立测试、预设阈值或前瞻性筛查验证。
 
 因此，真正的价值是提出一个可在血液中检测、值得独立验证的候选标志物。当前材料没有独立训练/测试划分、预设阈值、校准、前瞻性筛查或决策曲线，不能把 AUC 写成已经可用于早诊；肺癌和胃癌结果也没有证明 EGFL6 来自同一周细胞亚群或遵循同一机制。
 
 ## 08｜integrin β1 阻断能否增强 αPD-1？
 
 第二个出口是 integrin β1 阻断。足垫模型中，对照组近端腘窝和髂淋巴结转移均为 6/6，远端肾门淋巴结为 4/6；volociximab 组近端只报告 1/6 的少量浸润，远端为 0/6。随后，ATN-161 与 αPD-1 在 AKR 皮下模型（每组 n=7）和 4NQO 自发 ESCC 模型（每组 n=4）中均表现为联合组优于任一单药。
+
+图 7 直接比较两个模型中的单药与联合组，也同时展示有限的安全性观察。
+
+<a id="reader-escc-fig7"></a>
+
+![Fig. 7：integrin β1 抑制剂增强 αPD-1 抗肿瘤作用](../../assets/spatial-transcriptomics/2025-escc-gpr116-pericytes/fig7-atn161-pd1-combination.png)
+
+简明图注：图 7 在 AKR 皮下模型每组 n=7、4NQO 自发 ESCC 模型每组 n=4 的条件下比较 isotype、ATN-161、αPD-1 与联合治疗；联合组优于单药支持临床前增益，但论文没有正式交互作用检验，也没有患者疗效数据。
 
 这里可以说“联合显示临床前增益”，不能直接说“协同”或“改善临床结局”：论文没有报告正式交互作用检验，也没有患者接受这一联合方案。体重、血液学和器官组织学未见明显异常，只能说明这些小样本、有限观察期的小鼠实验没有发现相应安全信号。
 
@@ -127,7 +159,7 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 
 ## 技术附录
 
-以下内容从原笔记的“基本信息”开始完整保留，用于核查论文事实、主图与 Extended Data、PDF 解析质量、来源句子 ID、Results/Methods 覆盖、完整方法参数、原文内部冲突、低置信抽取和缺失材料。上方读者正文只重组叙事，不替代下方任何证据记录；读者正文已经展示的 3 张图不在附录重复嵌入，完整 panel 图注、图像路径和实际位置均保留。
+以下内容从原笔记的“基本信息”开始完整保留，用于核查论文事实、主图与 Extended Data、PDF 解析质量、来源句子 ID、Results/Methods 覆盖、完整方法参数、原文内部冲突、低置信抽取和缺失材料。上方读者正文只重组叙事，不替代下方任何证据记录；读者正文已经展示的 7 张图不在附录重复嵌入，完整 panel 图注、图像路径和实际位置均保留。
 
 ### 读者正文来源索引
 
@@ -175,7 +207,7 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 
 #### 图像文件状态
 
-- 主文 Fig. 1–7 已按 panel 区域截取为 7 个 PNG 文件，置于 `assets/spatial-transcriptomics/2025-escc-gpr116-pericytes/`；Fig. 1、3、5 在读者正文展示，Fig. 2、4、6、7 在对应 Results 小节展示，每个文件各嵌入一次。
+- 主文 Fig. 1–7 已按 panel 区域截取为 7 个 PNG 文件，置于 `assets/spatial-transcriptomics/2025-escc-gpr116-pericytes/`；7 张图均在读者正文对应论证后展示，不在技术附录重复嵌入，每个文件各出现一次。
 - 图像页依次来自 PDF 第 2、4、5、7、8、10、12 页；图片只保留主图 panel 区域，中文图注依据相邻正式图注逐 panel 重组。（来源：`P003.S0002–P003.S0009`、`P003.S0021–P003.S0028`、`P006.S0002–P006.S0005`、`P006.S0035–P006.S0039`、`P009.S0002–P009.S0005`、`P009.S0036–P009.S0040`、`P011.S0044–P011.S0047`、`P011.S0074–P011.S0079`）
 
 #### 句子 ID 依据与覆盖口径
@@ -191,12 +223,12 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 | 原文图表 | 原文图题/核心信息 | 是否截取 | 实际图像文件 | 放置位置 |
 |---|---|---|---|---|
 | Fig. 1 | *Cellular dynamics reveal the role of GPR116+ pericytes in ESCC metastasis*：从 12 例患者的多组学设计、117,169 个 scRNA-seq 细胞和细胞通讯/空间邻近，推进到三个周细胞亚群、GPR116+ 周细胞的临床富集、组织验证、生存与多变量 Cox。（来源：`P003.S0002–P003.S0009`、`P003.S0024–P003.S0028`、`P003.S0029–P003.S0050`、`P006.S0005–P006.S0016`） | 是 | `fig1-cellular-landscape-gpr116-pericytes.png` | [03｜为什么锁定 GPR116+ 周细胞](#reader-escc-fig1) |
-| Fig. 2 | *PRRX1 drives the differentiation of GPR116+ pericytes*：SCENIC 与三重候选交集锁定 PRRX1，继而以表达、蛋白、过表达/敲低、snATAC、ChIP 和 Cspg4-CreERT;Prrx1 cKO 验证其调控作用；荧光素酶报告实验位于 Extended Data Fig. 3i，而非主图 Fig. 2。（来源：`P003.S0021–P003.S0023`、`P003.S0051–P003.S0055`、`P006.S0017–P006.S0064`、`P024.S0038–P024.S0041`） | 是 | `fig2-prrx1-differentiation.png` | [Results 3：PRRX1 驱动分化](#result-3-prrx1-differentiation) |
+| Fig. 2 | *PRRX1 drives the differentiation of GPR116+ pericytes*：SCENIC 与三重候选交集锁定 PRRX1，继而以表达、蛋白、过表达/敲低、snATAC、ChIP 和 Cspg4-CreERT;Prrx1 cKO 验证其调控作用；荧光素酶报告实验位于 Extended Data Fig. 3i，而非主图 Fig. 2。（来源：`P003.S0021–P003.S0023`、`P003.S0051–P003.S0055`、`P006.S0017–P006.S0064`、`P024.S0038–P024.S0041`） | 是 | `fig2-prrx1-differentiation.png` | [05｜PRRX1–EGFL6–integrin β1–NF-κB 这条证据链怎样建立？](#reader-escc-fig2) |
 | Fig. 3 | *GPR116+ pericytes contribute to ESCC metastasis*：CellChat、high-EMT 肿瘤细胞、侵袭前沿空间梯度、多重 IF、3D/2D 侵袭，以及尾静脉肺转移、足垫淋巴转移和 Prrx1 cKO 模型构成“定位—功能—在体干预”证据链。（来源：`P006.S0002–P006.S0005`、`P006.S0038–P006.S0039`、`P006.S0065–P007.S0007`、`P007.S0038–P007.S0042`、`P009.S0005–P009.S0027`） | 是 | `fig3-escc-metastasis.png` | [04｜它真的推动转移吗](#reader-escc-fig3) |
-| Fig. 4 | *The prometastatic role and clinical implications of EGFL6*：EGFL6 的周细胞来源、Prrx1 cKO 后组织/血清下降、重组蛋白促侵袭与 EMT、组织队列/生存、ESCC 血清 ROC，以及肺癌和胃癌转移预测。（来源：`P006.S0035–P006.S0038`、`P006.S0067–P006.S0069`、`P009.S0028–P009.S0065`） | 是 | `fig4-egfl6-biomarker.png` | [Results 5：EGFL6 诊断与预后](#result-5-egfl6-diagnosis-prognosis) |
+| Fig. 4 | *The prometastatic role and clinical implications of EGFL6*：EGFL6 的周细胞来源、Prrx1 cKO 后组织/血清下降、重组蛋白促侵袭与 EMT、组织队列/生存、ESCC 血清 ROC，以及肺癌和胃癌转移预测。（来源：`P006.S0035–P006.S0038`、`P006.S0067–P006.S0069`、`P009.S0028–P009.S0065`） | 是 | `fig4-egfl6-biomarker.png` | [07｜血清 EGFL6 现在能回答什么问题？](#reader-escc-fig4) |
 | Fig. 5 | *GPR116+ pericytes induce metastasis via the EGFL6–integrin β1–NF-κB axis*：配体–受体推断、HEK293T 外源 EGFL6–integrin β1 co-IP、ITGB1/EMT/NF-κB 状态、EGFL6 剂量反应、ATN-161 或 BAY 11-7082 拯救，以及 volociximab 抑制多级淋巴结转移。（来源：`P009.S0002–P009.S0005`、`P009.S0037–P009.S0040`、`P009.S0066–P011.S0029`；`SI:P011.S0009`） | 是 | `fig5-egfl6-integrin-nfkb.png` | [05｜机制证据链怎样建立](#reader-escc-fig5) |
-| Fig. 6 | *Immunosuppressive properties of GPR116+ pericytes*：组织空间相关、周细胞–T 细胞共培养、PD-1+CD8+ 与 FOXP3+CD4+ Treg 扩增、PBMC 杀伤和 CD8 效应分子下降，以及肿瘤 PD-L1 上调被 integrin β1 抑制剂逆转。（来源：`P009.S0036–P009.S0039`、`P009.S0069–P009.S0073`、`P011.S0030–P011.S0047`） | 是 | `fig6-immunosuppression.png` | [Results 7：免疫抑制](#result-7-immunosuppression) |
-| Fig. 7 | *Integrin β1 inhibitor enhances the antitumor effect of αPD-1*：在 AKR 皮下移植模型和 4NQO 自发 ESCC 模型中比较 isotype、ATN-161、αPD-1 与联合治疗，同时评估原发瘤、肺转移、体重、血液学和脏器组织学。（来源：`P011.S0044–P011.S0064`、`P011.S0074–P011.S0079`） | 是 | `fig7-atn161-pd1-combination.png` | [Results 8：ATN-161 联合 αPD-1](#result-8-atn161-pd1) |
+| Fig. 6 | *Immunosuppressive properties of GPR116+ pericytes*：组织空间相关、周细胞–T 细胞共培养、PD-1+CD8+ 与 FOXP3+CD4+ Treg 扩增、PBMC 杀伤和 CD8 效应分子下降，以及肿瘤 PD-L1 上调被 integrin β1 抑制剂逆转。（来源：`P009.S0036–P009.S0039`、`P009.S0069–P009.S0073`、`P011.S0030–P011.S0047`） | 是 | `fig6-immunosuppression.png` | [06｜为什么同一亚群还会压低抗肿瘤免疫？](#reader-escc-fig6) |
+| Fig. 7 | *Integrin β1 inhibitor enhances the antitumor effect of αPD-1*：在 AKR 皮下移植模型和 4NQO 自发 ESCC 模型中比较 isotype、ATN-161、αPD-1 与联合治疗，同时评估原发瘤、肺转移、体重、血液学和脏器组织学。（来源：`P011.S0044–P011.S0064`、`P011.S0074–P011.S0079`） | 是 | `fig7-atn161-pd1-combination.png` | [08｜integrin β1 阻断能否增强 αPD-1？](#reader-escc-fig7) |
 
 <a id="extended-data-status"></a>
 
@@ -493,8 +525,6 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 
 ##### 3. PRRX1 drives the differentiation of GPR116+ pericytes
 
-![Fig. 2：PRRX1 驱动 GPR116+ 周细胞分化](../../assets/spatial-transcriptomics/2025-escc-gpr116-pericytes/fig2-prrx1-differentiation.png)
-
 ###### 中文图注（基于原文图注）
 
 **图 2｜PRRX1 驱动 GPR116+ 周细胞分化**（图注来源：`P003.S0021–P003.S0023`、`P003.S0051–P003.S0055`；这些 ID 与图 1 图注/正文发生跨栏混排）
@@ -670,8 +700,6 @@ SCENIC、差异表达和转移组上调基因三重筛选共同指向 PRRX1、SO
 
 ##### 5. GPR116+ pericyte-derived EGFL6 aids ESCC diagnosis and prognosis
 
-![Fig. 4：EGFL6 的促转移作用及临床价值](../../assets/spatial-transcriptomics/2025-escc-gpr116-pericytes/fig4-egfl6-biomarker.png)
-
 ###### 中文图注（基于原文图注）
 
 **图 4｜EGFL6 的促转移作用与临床意义**（图注来源：`P006.S0035–P006.S0038`、`P006.S0067–P006.S0069`；与图 3 图注/正文混排）
@@ -809,8 +837,6 @@ EGFL6 是 GPR116+ 相对 GPR116− 周细胞中上调最强的基因，并主要
 
 ##### 7. GPR116+ pericytes exhibit immunosuppressive properties
 
-![Fig. 6：GPR116+ 周细胞的免疫抑制特性](../../assets/spatial-transcriptomics/2025-escc-gpr116-pericytes/fig6-immunosuppression.png)
-
 ###### 中文图注（基于原文图注）
 
 **图 6｜GPR116+ 周细胞的免疫抑制性质**（图注来源：`P009.S0035–P009.S0037`、`P009.S0069–P009.S0073`；与正文/图 5 图注混排）
@@ -861,8 +887,6 @@ EGFL6 是 GPR116+ 相对 GPR116− 周细胞中上调最强的基因，并主要
 <a id="result-8-atn161-pd1"></a>
 
 ##### 8. Integrin β1 inhibitor enhances the antitumor effect of αPD-1
-
-![Fig. 7：integrin β1 抑制剂增强 αPD-1 抗肿瘤作用](../../assets/spatial-transcriptomics/2025-escc-gpr116-pericytes/fig7-atn161-pd1-combination.png)
 
 ###### 中文图注（基于原文图注）
 
