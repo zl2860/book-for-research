@@ -1,6 +1,6 @@
 # Plasma signals of lung tumor promotion for molecular cancer prevention
 
-<!-- wechat-style-reviewed: 2026-09-13 -->
+<!-- wechat-style-reviewed: 2026-09-22 -->
 
 一位有长期吸烟史、年龄超过 50 岁的人，可能符合肺癌筛查条件，却未必会在近期发生肺癌。把这类人全部纳入药物预防试验，真正发生终点事件的人仍然太少；只按年龄和重度吸烟史筛选，又会漏掉轻度或从不吸烟者。
 
@@ -22,7 +22,7 @@ CANTOS 随机心血管预防试验的探索性分析曾提示，抗炎药 canaki
 
 发现阶段使用 UK Biobank 的 48,099 人，其中 375 人在随访中诊断肺癌。每人的基线血浆测量 2,923 种蛋白，采血到诊断的中位时间为 5.6 年；数据按 75:25 分为训练集和同一 UK Biobank 内的留出测试集。
 
-8 个外部蛋白组数据集按 Results 的汇总口径包括 2,198 例肺癌和 53,641 名非癌对照，其中 UKCTOCS 提供诊断前纵向样本。官方 Table S1 的八行若直接相加却是 2,600 例和 56,462 名，论文没有给出去重或分析集构造的算式；两套口径必须并列保留。作者另外分析了 TRACERx 的术前术后样本、以从不吸烟者为主的 TALENT、4,651 名 CANTOS 生物标志物亚组参与者，以及人肺图谱和癌前病变转录组；这几部分回答的问题和样本口径并不相同。
+8 个外部蛋白组数据集按 Results 的汇总口径包括 2,198 例肺癌和 53,641 名非癌对照，其中 UKCTOCS 提供诊断前纵向样本。官方 Table S1 的八行若直接相加却是 2,600 例和 56,462 名，论文没有给出去重或分析集构造的算式；两套口径必须并列保留。作者另外分析了 TRACERx 的术前术后样本、以从不吸烟者为主的 TALENT、4,651 名 CANTOS 生物标志物亚组参与者，以及人肺图谱和早期肺腺癌演化病变转录组；这几部分回答的问题和样本口径并不相同。
 
 机制部分并非只做相关性解释。作者在多种肺上皮谱系中启动 EGFR-L858R，结合 Trp53 缺失、颗粒物暴露、IL-1β 刺激或阻断、单细胞/单核 RNA 测序、肺切片活成像和小鼠纵向血浆蛋白组，追踪信号从何而来。
 
@@ -84,9 +84,11 @@ CANTOS 生物标志物亚组共 4,651 人，只能测到 14 种蛋白中的 10 �
 
 在高签名组，安慰剂与 canakinumab 的肺癌发生率分别为 3.88% 和 2.06%，OR 为 0.52（95% CI 0.31–0.86）；低签名组分别为 0.78% 和 0.72%，OR 为 0.91（95% CI 0.34–2.48）。由绝对风险差换算，NNT 在高签名组为 55（95% CI 30–343），低签名组为 1,516。
 
-![Fig. 4：CANTOS 风险分层、癌前病变和 KAC 阻断](../../assets/precision-medicine/2026-plasma-lung-tumor-promotion/fig4-cantos-prevention-stratification.png)
+![Fig. 4：CANTOS 风险分层、早期肺腺癌演化病变和 KAC 阻断](../../assets/precision-medicine/2026-plasma-lung-tumor-promotion/fig4-cantos-prevention-stratification.png)
 
-在人组织中，165 个癌前病变及其 165 个邻近正常样本把两条线接在一起：签名从正常到非典型腺瘤样增生（AAH）升高（\(p=1.19\times10^{-4}\)），从 AAH 到原位腺癌（AIS）继续升高（\(p=1.19\times10^{-2}\)），到微浸润腺癌（MIA）不再明显增加。签名与 KAC 转录特征的线性相关为 \(R^2=0.47\)、\(p=3.7\times10^{-57}\)。这是 bulk RNA 的共变关系，不能证明 KAC 制造了血浆信号或驱动病变进展。
+在人组织中，作者重分析了 165 份手术切除的早期肺腺癌演化病变及其 165 份邻近正常组织的 bulk RNA。病变包括非典型腺瘤样增生（AAH）25 份、原位腺癌（AIS）69 份和微浸润腺癌（MIA）71 份；队列中 92% 为从不吸烟者、69% 为女性，MIA 的非浸润区与浸润区分开分析。
+
+签名从正常到 AAH 升高（\(p=1.19\times10^{-4}\)），从 AAH 到 AIS 继续升高（\(p=1.19\times10^{-2}\)），在 MIA 的非浸润区与浸润区之间则保持稳定。签名与 KAC 转录特征的线性相关为 \(R^2=0.47\)、\(p=3.7\times10^{-57}\)。这是横断面手术标本的组织 bulk RNA 分类比较，不能证明同一病灶沿正常—AAH—AIS—MIA 纵向演进，也不能把组织 GSVA 当作血浆蛋白测量；它同样不能证明 KAC 制造了血浆信号或驱动病变进展。
 
 这是一个值得继续验证的富集信号，却不是已经证实的治疗预测标志物。高组 HR 为 0.53、低组为 0.92，但连续签名与治疗的交互检验 \(p=0.19\)，未达到常用显著性阈值。不能因为一个亚组显著、另一个亚组不显著，就断言两组治疗效应确有差异。
 
@@ -119,6 +121,8 @@ CANTOS 生物标志物亚组共 4,651 人，只能测到 14 种蛋白中的 10 �
 第四，颗粒物暴露由居住邮编和卫星年均值近似，不能代表工作场所、个体防护或终生暴露。柴油交叉实验只有 6 人；Table S8 又使用双侧等方差非配对 t 检验，没有利用交叉设计的配对结构，也不同于 Methods 所称 Welch 检验。人胎肺类器官 qPCR 也只有 2 次独立实验。
 
 第五，小鼠结论依赖腺病毒 Cre、EGFR-L858R、部分模型中的 Trp53 缺失和基底细胞实验所需的 polidocanol 损伤。病毒和组织损伤本身可能制造炎症；Cldn4 单标记免疫荧光会低估 KAC 的异质性，KAC 是否是不同细胞起源走向恶变的必经状态也没有证明。KAC 只占突变细胞约 7.3%–9.8%，如此少的细胞如何对应系统血浆信号仍不清楚。
+
+第六，人组织结果来自 165 份手术切除病变的横断面 bulk RNA，其中已经包括 MIA 的浸润区，而且 92% 的研究对象从不吸烟、69% 为女性。它不能建立同一病灶的纵向演进轨迹，也不能直接外推到更广泛人群或等同于循环血浆蛋白信号。
 
 最后，官方 Tables S1–S9 现已逐表补审，Data supplements 和 Videos S1–S11 仍未纳入本地证据包。表格又暴露出队列分母、柴油统计方案和单细胞 marker 附件映射等新冲突；数据存储 DOI 与纵向小鼠蛋白组公式的原有歧义也仍在。这些问题不推翻主结果，但会影响独立复现和精确定标。
 
@@ -172,7 +176,7 @@ CANTOS 生物标志物亚组共 4,651 人，只能测到 14 种蛋白中的 10 �
 | Fig. 1 | UKBB 48,099 人；8 个外部数据集；UKCTOCS、GTEx、HLCA、TALENT | 14 蛋白+临床变量预测未来肺癌，信号富集于肺上皮和髓系/基质细胞 | `assets/precision-medicine/2026-plasma-lung-tumor-promotion/fig1-plasma-risk-signature.png` | [03｜14 种蛋白比现有风险模型多提供了什么](#03｜14-种蛋白比现有风险模型多提供了什么) |
 | Fig. 2 | 基底、神经内分泌、club、AT2 谱系；EPT 生存 n=9/7/12/13；37,627 nuclei | 不同起源细胞进入肺泡并汇聚于 KAC，签名在突变细胞内反而下降 | `assets/precision-medicine/2026-plasma-lung-tumor-promotion/fig2-lineage-kac-convergence.png` | [05｜不同起源的上皮细胞为什么会走向同一危险状态](#05｜不同起源的上皮细胞为什么会走向同一危险状态) |
 | Fig. 3 | T/ET × PBS/PM；42,463 野生型肺细胞；小鼠纵向血浆；TALENT | PM、EGFR 克隆和 IL-1β 诱导周围细胞及血浆签名 | `assets/precision-medicine/2026-plasma-lung-tumor-promotion/fig3-pm-signature-induction.png` | [06｜颗粒物和 IL-1β 怎样把血浆信号与癌变连起来](#06｜颗粒物和-il-1β-怎样把血浆信号与癌变连起来) |
-| Fig. 4 | CANTOS 4,651 人；165 个癌前病变及 165 个邻近正常；KAC 干预 | 高签名亚组的探索性 canakinumab 获益及 KAC/IL-1β 干预证据 | `assets/precision-medicine/2026-plasma-lung-tumor-promotion/fig4-cantos-prevention-stratification.png` | [07｜它真的能筛出更适合抗 IL-1β 预防的人吗](#07｜它真的能筛出更适合抗-il-1β-预防的人吗) |
+| Fig. 4 | CANTOS 4,651 人；165 份手术切除病变（AAH 25、AIS 69、MIA 71）及 165 份邻近正常；KAC 干预 | 高签名亚组的探索性 canakinumab 获益及 KAC/IL-1β 干预证据 | `assets/precision-medicine/2026-plasma-lung-tumor-promotion/fig4-cantos-prevention-stratification.png` | [07｜它真的能筛出更适合抗 IL-1β 预防的人吗](#07｜它真的能筛出更适合抗-il-1β-预防的人吗) |
 
 ### Fig. 1 完整 panel 注释
 
@@ -212,7 +216,7 @@ CANTOS 生物标志物亚组共 4,651 人，只能测到 14 种蛋白中的 10 �
 
 - A：CANTOS 亚组按基线签名高低的累计肺癌发生率，最多 60 个月，Wald \(p=0.002\)。B：安慰剂组从基线到 3/12 月的高低分类变化，红线为发生肺癌者。来源：`P011.S0004–P011.S0007`、`P012.S0019–P012.S0022`。
 - C：基线签名×治疗组的肺癌风险，卡方检验。D：按签名组计算 NNT，Wald 检验。E：按签名和治疗分层的累计发生率，log-rank；只在高签名组显著。来源：`P011.S0008–P011.S0010`、`P013.S0002–P013.S0006`。
-- F：165 个癌前病变及 165 个邻近正常组织的 bulk RNA GSVA；AAH 25、AIS 69、MIA 71，Dunn 检验。来源：`P011.S0011–P011.S0013`、`P013.S0008–P013.S0010`。
+- F：165 份手术切除病变及 165 份邻近正常组织的 bulk RNA GSVA；AAH 25、AIS 69、MIA 71，研究对象 92% 为从不吸烟者、69% 为女性，MIA 的非浸润区与浸润区分开分析，Dunn 检验。来源：`P011.S0011–P011.S0013`、`P013.S0008–P013.S0010`。
 - G：14 蛋白与 KAC signature 的线性回归和 95% CI，较大点表示条件均值；\(R^2=0.47\)。来源：`P012.S0026–P012.S0027`、`P013.S0011`。
 - H：EGFR-dox 小鼠 PM/PBS 3 周后的 CLDN4+EGFR-L858R+ 细胞，n=11–12/组，Mann–Whitney。I：8 只小鼠配对 PCLS 接受 PBS/PM，paired Wilcoxon。来源：`P012.S0028–P012.S0030`、`P013.S0016`。
 - J：不同上皮状态上调基因与晚期 LUAD 的重叠，Fisher 检验。来源：`P012.S0031`、`P013.S0021`。
@@ -237,7 +241,7 @@ CANTOS 生物标志物亚组共 4,651 人，只能测到 14 种蛋白中的 10 �
 | `P012.S0001–P012.S0015`（15） | 小鼠持续签名、吸烟、柴油和 TALENT PM | 06 | `STAR Methods` 触发误分类；4/10 蛋白名已按跨句恢复 |
 | `P012.S0016–P012.S0025`（10） | CANTOS 亚组、风险关联与时间稳定性 | 07 | 只覆盖 10/14 蛋白，事后分析 |
 | `P012.S0026–P012.S0038`（13） | Fig. 4G–M 图注 | 07 | 被误标为 Methods，仍属于 Results |
-| `P013.S0001–P013.S0012`（12） | canakinumab 亚组效应、NNT、癌前病变和 KAC 相关 | 07 | 治疗交互 \(p=0.19\) |
+| `P013.S0001–P013.S0012`（12） | canakinumab 亚组效应、NNT、早期肺腺癌演化病变和 KAC 相关 | 07 | 治疗交互 \(p=0.19\)；手术标本横断面 bulk RNA 不能证明纵向进展或等同于血浆测量 |
 | `P013.S0013–P013.S0026`（14） | PM 推动 KAC、34,459 细胞 snRNA、抗 IL-1β 阻断 | 06–07 | 小鼠机制不能替代人体预防验证 |
 | **合计** | 真实 Results 全部覆盖 | — | **243/243，无缺口** |
 
@@ -280,7 +284,7 @@ UKBB 按吸烟、性别、收入、教育、结局、年龄、BMI 和包年数�
 - PCLS：2% agarose，300 μm 切片，LGK974 100 nM，活成像 72 h。PM 试验用 EGFR-dox 小鼠预先 doxycycline 5 天，6 mm core/400 μm 切片，tetracycline 2.5 μg/mL，Methods 写 PM 100 μg/mL、抗 IL-1β 或 IgG 100 μg/mL；Fig. S7B 图注却写 PM 50 μg/mL，剂量不能静默统一。LAMP3 ELISA 和 CLDN4 成像。来源：`P027.S0025–P028.S0003`、`P042.S0004–P042.S0005`。
 - 补充图 S9 的体内阻断为 anti-IL-1β 200 μg 或 hamster IgG，与 PM 50 μg 同期给药，每周 3 次、连续 3 周；类器官形成率汇总自 3 次独立实验，IgG n=7、anti-IL-1β n=8。来源：`P046.S0006–P046.S0007`。
 - 人胎肺 AT2 类器官来自 17 和 20 周男性胎肺。qPCR 每次 4 孔（2 对照、2 个 IL-1β 100 ng/mL 48 h），2 次独立实验；5 ng RNA/反应、45 cycles、comparative Ct，two-way ANOVA+Sidak。来源：`P025.S0019–P025.S0024`、`P031.S0018–P031.S0025`。
-- 小鼠 bulk RNA：约 2 mm³ EPT 肿瘤，25 million PE100、polyA；Kallisto 0.45/GRCm38、DESeq2 1.38.3。人癌前 RNA：Cutadapt、STAR 2.5.2a two-pass ENCODE3/hg38+GENCODE v42、RSEM 1.3.3；保留 duplicate reads <80% 的文库，并排除表达蛋白编码基因不足 75% 的样本。来源：`P028.S0004–P028.S0022`。
+- 小鼠 bulk RNA：约 2 mm³ EPT 肿瘤，25 million PE100、polyA；Kallisto 0.45/GRCm38、DESeq2 1.38.3。人早期肺腺癌演化病变 bulk RNA：165 份手术切除病变（AAH 25、AIS 69、MIA 71；92% 从不吸烟者、69% 女性）及 165 份邻近正常组织，MIA 的非浸润区与浸润区分开分析；Cutadapt、STAR 2.5.2a two-pass ENCODE3/hg38+GENCODE v42、RSEM 1.3.3；保留 duplicate reads <80% 的文库，并排除表达蛋白编码基因不足 75% 的样本。来源：`P013.S0008–P013.S0009`、`P028.S0004–P028.S0022`。
 - 对既有小鼠肺类器官数据 GSE144468 的复分析使用 DoubletFinder 2.0.4、SCTransform v2、Seurat integration 和 `FindMarkers`；小鼠品系、年龄等实验细节仍需回查原始数据论文。来源：`P024.S0007–P024.S0009`、`P027.S0020–P027.S0024`。
 
 #### 环境暴露与蛋白组
@@ -306,7 +310,7 @@ UKBB 按吸烟、性别、收入、教育、结局、年龄、BMI 和包年数�
 |---|---|---|---|
 | `P023.S0035–P024.S0009`（21） | 小鼠模型、饲养、基因型、肺类器官及既有类器官数据 | 定义 T/ET/EPT/EGFR-dox 和 3D organoid | 多个引用号/页眉为抽取碎片 |
 | `P024.S0010–P025.S0012`（31） | UKBB、8 个外部队列、TRACERx、CANTOS、TALENT | 人群来源、纳排、样本量、伦理和检测平台 | 多队列无 formal power；相对定量不可直接跨平台 |
-| `P025.S0013–P026.S0012`（38） | 柴油、癌前 RNA、人胎类器官、动物处理、microCT、组织学 | 暴露与动物实验输入—输出 | `P025.S0038` 跨页接 `P026.S0001` |
+| `P025.S0013–P026.S0012`（38） | 柴油、早期肺腺癌演化病变 RNA、人胎类器官、动物处理、microCT、组织学 | 暴露与动物实验输入—输出 | `P025.S0038` 跨页接 `P026.S0001` |
 | `P026.S0013–P027.S0024`（47） | 流式、snRNA/multiome、scRNA 及既有类器官 scRNA | 细胞制备、QC、聚类和差异表达 | 多组 pooled mice，限制生物学重复；seed 未给具体值 |
 | `P027.S0025–P028.S0022`（38） | PCLS、Wnt/PM/抗 IL-1β、ELISA、mouse/human bulk RNA | 活成像和转录组处理 | `P027.S0040` 跨页；Cutadapt/Fiji 版本未给 |
 | `P028.S0023–P029.S0006`（28） | UKBB ML 开发与留出验证 | 分层、MICE、RFE、Optuna、XGBoost、下采样、bagging | 结局参与插补、最终超参数与 15 套插补合并方式需代码核查 |
@@ -337,7 +341,7 @@ Tables S1–S9 没有给出 TALENT 的四个 PM/病例分层 n，也没有解决
 - 官方 Tables S1–S9 的直链见“论文基本信息”；Videos S1–S11 的官方附件可访问，但本轮没有逐帧纳入证据审计，Data supplements 也仍未本地解析。
 - 正文 Resource availability 两次给出 `10.5281/zenodo.15800192`（`P014.S0028–P014.S0029`、`P014.S0044–P014.S0045`）；Key Resources deposited-data 行却给出 `10.5281/zenodo.19372114`（`P022.S0003–P022.S0006`）。这是 PDF 内部冲突，本笔记不替作者选择其一。
 - UKBB 为 application 82693；ARIC/BioLINCC、EPIC、EPIC-Norfolk 和 CKB 按各自程序申请，TALENT 需联系 P.C. Yang。CANTOS 个体数据不能公开，须经 Novartis 独立科学审查；UKCTOCS 的同意范围不允许公开入库，申请联系 Usha Menon；TRACERx 由数据访问委员会控制。来源：`P014.S0030–P014.S0043`。
-- 已有小鼠类器官 scRNA 为 GSE144468；人癌前病变 RNA 为 EGAD50000000637。来源：`P024.S0007–P024.S0008`、`P025.S0017–P025.S0018`。
+- 已有小鼠类器官 scRNA 为 GSE144468；人早期肺腺癌演化病变 bulk RNA 为 EGAD50000000637。来源：`P024.S0007–P024.S0008`、`P025.S0017–P025.S0018`。
 - 论文称未产生新的独特试剂，其他复分析信息可向 Charles Swanton 索取。来源：`P014.S0025–P014.S0027`、`P014.S0046`。
 - Additional Resources 登记号：CANTOS `NCT01327846`、TALENT `NCT02611570`、TRACERx `NCT01888601`、COPA `NCT02236039`。来源：`P031.S0032–P031.S0033`。
 
