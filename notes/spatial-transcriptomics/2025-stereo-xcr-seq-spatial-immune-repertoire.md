@@ -1,6 +1,6 @@
 # Single cell resolved spatial immune repertoire unveils spatial heterogeneity of lymphoid aggregates in human immune disorders
 
-<!-- wechat-style-reviewed: 2026-09-16 -->
+<!-- wechat-style-reviewed: 2026-09-23 -->
 
 一张肿瘤切片上，两群相邻的 T 细胞可能表达相似的活化基因，却来自完全不同的受体克隆。常规空间转录组能告诉我们细胞在哪里、表达了什么，却很难把完整 TCR/BCR 序列、细胞坐标和组织形态同时接起来。
 
@@ -8,7 +8,7 @@
 
 作者因此开发 Stereo-XCR-seq：先把 Stereo-seq cDNA 环化，再从恒定区富集 TCR/BCR，最后用长读长补全 V(D)J 与恒定区、用短读长提高通量和校正可靠性。研究展示了 1 张 OVA-MC38 小鼠肿瘤切片（独立小鼠与肿瘤数量未报告），并分析 1 份透明细胞肾癌、1 份非小细胞肺癌，以及同一名 Crohn 病患者的 2 份配对黏膜活检。
 
-论文给出的答案是：这套方法可以把克隆身份放回亚细胞尺度的空间转录组，在单个肿瘤内分辨出克隆组成不同的微小淋巴聚集体、TLS 和浆细胞聚集体。但它目前仍是一项小样本预印本；多数人体结论分别来自单个肿瘤或单名患者，低配对率、缺失补充材料和缺少抗原特异性实验都限制了外推。
+论文给出的答案是：这套方法可以把克隆身份放回亚细胞尺度的空间转录组，在单个肿瘤内分辨出克隆组成不同的微小淋巴聚集体、TLS 和浆细胞聚集体。就本文审读的 2025 年 bioRxiv v1 证据包而言，它仍是一项小样本预印本；多数人体结论分别来自单个肿瘤或单名患者，低配对率、缺失补充材料和缺少抗原特异性实验都限制了外推。
 
 ## 01｜为什么现有空间转录组看不清免疫克隆？
 
@@ -136,7 +136,7 @@
 
 第三，论文没有直接测定大多数克隆的抗原特异性，也没有扰动聚集体、追踪细胞迁移或纵向观察 CSR。所谓 hypermutation 只要求 V 或 J 区至少 1 个突变位点；所谓 lineage tracing 是最近 Levenshtein distance 推断；所谓 disease-related 是配对活检未检出，均比这些名称在直觉上更弱。
 
-最后，这是一篇 2025 年 bioRxiv 预印本，尚未同行评审。本地主 PDF 没有 Supplementary Table 1 和 Supplementary Figs. 1–11，因而无法核对引物/oligo 序列、多个 QC、配对和 marker 结果；原文还存在引图、IgH/IgL 链型和图注环层定义等冲突。具体位置和复现边界见技术附录。
+最后，本文审读的是 2025 年 bioRxiv v1，该版本本身尚未同行评审。2026 年 8 月 3 日，同团队另行发表了以 11 例肺腺癌为主队列的 Nature Communications 后续研究；它引用这篇 v1 并复用部分数据，但题名、作者组、方法流程和核心结论均已实质扩展，因此不能用新研究静默改写这里的 v1 数字。就 v1 而言，本地主 PDF 没有 Supplementary Table 1 和 Supplementary Figs. 1–11，因而无法核对引物/oligo 序列、多个 QC、配对和 marker 结果；原文还存在引图、IgH/IgL 链型和图注环层定义等冲突。具体位置和复现边界见技术附录。
 
 ---
 
@@ -144,15 +144,16 @@
 
 ### 论文基本信息
 
-- 文章类型：bioRxiv 预印本，2025 年 1 月 19 日发布；未同行评审。
+- 文章类型：本文审读版本为 bioRxiv v1，2025 年 1 月 19 日发布；该版本未同行评审。
 - DOI：10.1101/2025.01.16.630222。
+- 相关后续研究（不与本稿证据混用）：同团队于 2026 年 8 月 3 日在 Nature Communications 发表 [Uncovering ectopic GC-like niches for tumor reactive lymphocyte priming in lung adenocarcinoma using Stereo-XCR-seq](https://www.nature.com/articles/s41467-026-75405-x)（DOI：10.1038/s41467-026-75405-x）。该文将本预印本列为参考文献 104，复用 `HRA009729` 并加入新数据，主队列、分析流程和核心结论已实质扩展；它是相关后续研究，不是可以倒灌回 v1 的同题附件。
 - 作者：Xiaojuan Zhan、Yi Liu、Yanying Guo、Wenwen Zhou、Yixin Yan、Hui Zeng、Xuan Dong、Xiaoyu Chen、Rong Ma、Zhong Liu、Fan Zhu、Xubin Zheng、Xinxing Li、Jinwen Yin、Francis Ka-ming Chan、Chuanyu Liu、Longqi Liu、Xun Xu、Yong Hou、Haoran Tao、Yuliang Dong、Tao Zeng、Young Li、Jingying Zhou、Zexian Zeng、Yu Feng。
 - 共同通讯作者：Young Li、Jingying Zhou、Zexian Zeng、Yu Feng。
 - 研究领域：空间转录组、TCR/BCR repertoire、肿瘤免疫、TLS、浆细胞聚集体、炎症性肠病。
 - 原始 FASTQ：GSA-Human BioProject `HRA009729`。
 - 处理后矩阵、表达矩阵与 barcode whitelist：STOmicsDB/CNGBdb `STT0000123`；该编号在 PDF 第 30 页原始行中可见，但被解析器误识别为 heading，没有独立 sentence ID。
 - 外部 scRNA-seq：GEO `GSE148071`。
-- 代码声明：原文只给出 GitHub 用户页 `https://github.com/fengyu9481`，没有固定具体仓库、版本或 commit。
+- 代码声明：v1 原文只给出 GitHub 用户页 `https://github.com/fengyu9481`，没有固定具体仓库、版本或 commit；2026 年后续研究公开的代码库与 Zenodo 归档不倒推为 v1 的可复现资源。
 - 本地 PDF：`pdfs/processed/stereo-xcr-seq-spatial-immune-repertoire-biorxiv-2025.pdf`。
 - 利益冲突：Stereo-XCR-seq 的流程和应用涉及 pending patents；BGI Research Shenzhen/Hangzhou 员工持有 BGI 股票，其余作者声明无竞争性利益。
 
