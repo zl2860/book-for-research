@@ -1,6 +1,6 @@
 # Plasma signals of lung tumor promotion for molecular cancer prevention
 
-<!-- wechat-style-reviewed: 2026-09-22 -->
+<!-- wechat-style-reviewed: 2026-09-24 -->
 
 一位有长期吸烟史、年龄超过 50 岁的人，可能符合肺癌筛查条件，却未必会在近期发生肺癌。把这类人全部纳入药物预防试验，真正发生终点事件的人仍然太少；只按年龄和重度吸烟史筛选，又会漏掉轻度或从不吸烟者。
 
@@ -124,7 +124,7 @@ CANTOS 生物标志物亚组共 4,651 人，只能测到 14 种蛋白中的 10 �
 
 第六，人组织结果来自 165 份手术切除病变的横断面 bulk RNA，其中已经包括 MIA 的浸润区，而且 92% 的研究对象从不吸烟、69% 为女性。它不能建立同一病灶的纵向演进轨迹，也不能直接外推到更广泛人群或等同于循环血浆蛋白信号。
 
-最后，官方 Tables S1–S9 现已逐表补审，Data supplements 和 Videos S1–S11 仍未纳入本地证据包。表格又暴露出队列分母、柴油统计方案和单细胞 marker 附件映射等新冲突；数据存储 DOI 与纵向小鼠蛋白组公式的原有歧义也仍在。这些问题不推翻主结果，但会影响独立复现和精确定标。
+最后，官方 Tables S1–S9 现已逐表补审，Data supplements、Zenodo 当前 12.0 GB 归档和 Videos S1–S11 仍未纳入本地证据包。表格又暴露出队列分母、柴油统计方案和单细胞 marker 附件映射等冲突；Zenodo 的概念 DOI 与旧 record DOI 关系现已核清，但纵向小鼠蛋白组公式的歧义仍在。这些问题不推翻主结果，却会影响独立复现和精确定标。
 
 ---
 
@@ -144,6 +144,7 @@ CANTOS 生物标志物亚组共 4,651 人，只能测到 14 种蛋白中的 10 �
 - 本地 PDF：`pdfs/processed/plasma-lung-tumor-promotion-cell-2026.pdf`
 - 全文证据包：`tmp/2026-plasma-lung-tumor-promotion-llm-pack.md`
 - 解析清单：`tmp/2026-plasma-lung-tumor-promotion-manifest.json`
+- 数据与代码归档：论文正文给出的 Zenodo concept DOI [10.5281/zenodo.15800192](https://doi.org/10.5281/zenodo.15800192) 当前指向 [record 20666667](https://zenodo.org/records/20666667)（2026-06-12）；该 record 含 `2606_upload.tar.gz`，大小 12,001,203,918 bytes，MD5 `a6c8cf43ca8abaeee6031c847a8b1009`。本地尚未解析该归档。
 - 官方补充表：[S1](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc1.xlsx)、[S2](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc2.xlsx)、[S3](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc3.xlsx)、[S4](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc4.xlsx)、[S5](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc5.xlsx)、[S6](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc6.xlsx)、[S7](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc7.xlsx)、[S8](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc8.xlsx)、[S9](https://ars.els-cdn.com/content/image/1-s2.0-S0092867426005222-mmc9.xlsx)
 
 ### PDF 解析质量与全文覆盖
@@ -151,7 +152,7 @@ CANTOS 生物标志物亚组共 4,651 人，只能测到 14 种蛋白中的 10 �
 - 抽取引擎：PyMuPDF；PDF 共 46 页，抽取 1,690 个句子 ID。
 - 可读内容：主文、Fig. 1–4、STAR Methods、Key Resources、资源可用性、Fig. S1–S9 及其图注均可读取。
 - 补充覆盖：官方 Tables S1–S9 已逐表审计；工作簿没有 `Pxxx.Sxxxx` 句子 ID，因此补表结论按 Table、worksheet 和字段引用，不与 PDF 的 1,690 个 ID 混计。
-- 仍缺材料：Data supplements 未纳入本地证据包；Videos S1–S11 的官方附件可访问，但本轮未做逐帧审计，因此迁移轨迹仍以 PDF 图注和代表性静态结果为边界。XGBoost 最终超参数、插补合并和随机 seed 也未由表格补齐。
+- 仍缺材料：Data supplements 与 Zenodo 当前 12,001,203,918-byte 归档未纳入本地证据包；Videos S1–S11 的官方附件可访问，但本轮未做逐帧审计，因此迁移轨迹仍以 PDF 图注和代表性静态结果为边界。XGBoost 最终超参数、插补合并和随机 seed 也未由表格补齐。
 - 版面问题：双栏阅读顺序会把正文与图注拼接；图内标签、参考文献和 Key Resources 被错误分类；上下标、基因型和跨页句子有断裂。正文数字优先取可恢复的叙述句和完整图注，无法恢复的图内指数不静默补写。
 - 章节误判：解析器报告 `results=807`、`methods=296`。人工复位后，实质 Results 为 243 个 ID；真实实验/分析 Methods 为 290 个 ID。55 个 Results 被误标为 Methods，参考文献与 Key Resources 又被大量误标为 Results。
 
@@ -339,7 +340,7 @@ Tables S1–S9 没有给出 TALENT 的四个 PM/病例分层 n，也没有解决
 
 - 论文称小鼠 sn/scRNA、bulk RNA、蛋白组、processed TRACERx 数据和原始代码公开于 Zenodo。
 - 官方 Tables S1–S9 的直链见“论文基本信息”；Videos S1–S11 的官方附件可访问，但本轮没有逐帧纳入证据审计，Data supplements 也仍未本地解析。
-- 正文 Resource availability 两次给出 `10.5281/zenodo.15800192`（`P014.S0028–P014.S0029`、`P014.S0044–P014.S0045`）；Key Resources deposited-data 行却给出 `10.5281/zenodo.19372114`（`P022.S0003–P022.S0006`）。这是 PDF 内部冲突，本笔记不替作者选择其一。
+- 正文 Resource availability 两次给出 `10.5281/zenodo.15800192`（`P014.S0028–P014.S0029`、`P014.S0044–P014.S0045`），Key Resources deposited-data 行给出 `10.5281/zenodo.19372114`（`P022.S0003–P022.S0006`）。截至 2026-09-24，Zenodo API 显示前者是 concept DOI，后者是同一五-record 版本链中的旧 record，并非第二个独立仓库；concept DOI 当前解析到 `10.5281/zenodo.20666667`。复现应锁定 `20666667` 及其文件校验信息，而不是把两个论文内 DOI 当作互相冲突的数据源。
 - UKBB 为 application 82693；ARIC/BioLINCC、EPIC、EPIC-Norfolk 和 CKB 按各自程序申请，TALENT 需联系 P.C. Yang。CANTOS 个体数据不能公开，须经 Novartis 独立科学审查；UKCTOCS 的同意范围不允许公开入库，申请联系 Usha Menon；TRACERx 由数据访问委员会控制。来源：`P014.S0030–P014.S0043`。
 - 已有小鼠类器官 scRNA 为 GSE144468；人早期肺腺癌演化病变 bulk RNA 为 EGAD50000000637。来源：`P024.S0007–P024.S0008`、`P025.S0017–P025.S0018`。
 - 论文称未产生新的独特试剂，其他复分析信息可向 Charles Swanton 索取。来源：`P014.S0025–P014.S0027`、`P014.S0046`。
@@ -359,9 +360,9 @@ Tables S1–S9 没有给出 TALENT 的四个 PM/病例分层 n，也没有解决
 - 高签名可作为 canakinumab 人体肺癌预防的治疗预测标志物。
 - KAC 是不同人类肺腺癌驱动和细胞起源共有、必需的预防瓶颈。
 
-**原文内部冲突或歧义**
+**原文内部冲突、已核清的版本边界或歧义**
 
-- Zenodo DOI：正文为 `10.5281/zenodo.15800192`，Key Resources 为 `10.5281/zenodo.19372114`。
+- Zenodo DOI：正文的 `10.5281/zenodo.15800192` 是 concept DOI，Key Resources 的 `10.5281/zenodo.19372114` 是同一版本链的旧 record；这仍是发表 PDF 中的引用口径差异，但不是两个仓库冲突。2026-09-24 查新时，concept DOI 指向 2026-06-12 的 `10.5281/zenodo.20666667`，其唯一文件为 12,001,203,918-byte `2606_upload.tar.gz`（MD5 `a6c8cf43ca8abaeee6031c847a8b1009`）；该归档尚未进入本地证据审计。
 - 外部病例口径：Results 将 8 个数据集汇总为 2,198 例 incident/53,641 名非癌对照（`P005.S0027–P006.S0002`），Table S1 八行却合计 2,600/56,462；Methods 又说明 deCODE 合并 610 例 incident 与 232 例 prevalent 病例（`P029.S0020–P029.S0022`）。LC3/EPIC 与 EPIC-Norfolk/EPIC 存在人群重叠，但论文没有给出能闭合差值的去重算式。
 - Table S1 的局部口径：UKCTOCS 为 100 例，而纵向分析为 98；`IARC` 行为 729/729，而 LC3 Methods 为 731/731；CKB 为 30/2,007，但病例吸烟栏合计 31，Methods 初始也是 31/2,029；deCODE 的 incident 列为 610，病例吸烟栏却合计 842，恰含 232 例 prevalent。上述差异均保留，不自行合并。
 - 柴油统计：Results 和 Table S8 高亮 MMP12、PLAUR、TNFSF13B 三种升高，但后二者 FC 只有 1.422 和 1.316，不满足 Methods 的 FC≥1.5；Table S8 又使用双侧等方差非配对 t 检验，不是 Methods 所称 Welch，也未利用 6 人 crossover 的配对结构。
