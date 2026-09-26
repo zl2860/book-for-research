@@ -1,6 +1,6 @@
 # Spatial dissection of tumour microenvironments in gastric cancers reveals the immunosuppressive crosstalk between CCL2+ fibroblasts and STAT3-activated macrophages
 
-<!-- wechat-style-reviewed: 2026-09-24 -->
+<!-- wechat-style-reviewed: 2026-09-26 -->
 
 同样是胃癌，有些肿瘤里免疫细胞能够进入恶性上皮周围；另一些肿瘤却被致密的成纤维细胞包围，巨噬细胞聚集，真正执行杀伤的 T 细胞很少。病理上可以看到这种差别，但很难回答：究竟是哪类细胞在组织这种“免疫冷”环境？
 
@@ -70,7 +70,7 @@ CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL
 
 简明图注：Fig. 5 比较 CAF-conditioned medium 与对照，并用 200 ng/mL CCL2 中和抗体或 CCL2 knockdown 检验 THP-1 迁移；CAF 或 100 ng/mL recombinant CCL2 提高 macrophage pSTAT3，CAF-stimulated macrophages 则降低激活 Jurkat T cells 的 IFNG。JAK–STAT3 GSEA 未显著，主图也没有完整报告各 panel 的独立 biological n 或统计单位；加之实验没有用 CCL2 rescue 闭合 pSTAT3，因此证据支持分段、方向性的功能链，而非一条已完整证明的唯一机制。
 
-小鼠模型提供了组织层面的补充证据。YTN3 胃癌细胞与 mouse gastric fibroblasts 混合接种后，第 14 天肿瘤更大，macrophages 增多，而肿瘤中心的 CD8+ T cells 和 granzyme B 阳性细胞减少。
+小鼠模型提供了组织层面的补充证据。作者以 YTN3 胃癌细胞单独接种为对照，另将 YTN3 与 GFP+ mouse gastric fibroblasts（MGF）混合接种；相对 YTN3-only，混合组第 14 天肿瘤重量更高（Fig. 6B 标为 `**P < 0.001`），F4/80+ macrophages 方向性增多，第 14 天肿瘤中心的 CD8+ T cells 和 granzyme B 阳性细胞减少（Fig. 6D 仅后两项基于 ROI 计数的中心/边缘比例标为 `P < 0.05`）。原文没有报告每组小鼠数、可转录的精确效应量或精确 P 值，也没有在轴上做干预，因此这仍是组织层面的方向性补充证据。
 
 ## 07｜这项研究真正改变了哪一步
 

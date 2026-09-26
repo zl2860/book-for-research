@@ -1,6 +1,6 @@
 # Spatial and functional dissection of cancer-associated fibroblasts-mediated immune modulation in H. pylori-associated gastric cancer
 
-<!-- wechat-style-reviewed: 2026-09-10 -->
+<!-- wechat-style-reviewed: 2026-09-26 -->
 
 在 H. pylori 阳性胃癌切片里，癌细胞、成纤维细胞和免疫细胞常同时出现。真正难回答的不是“有没有炎症”，而是哪类基质状态与调节性 T 细胞聚集、细胞毒性 T 细胞参与减少相伴。
 
@@ -30,6 +30,8 @@
 
 作者沿用既有 pan-cancer 分类，把 CAF 分成 proCAF、iCAF、matCAF 和 myCAF。空间邻域和 SAI（空间聚集指数）给出一致排序：iCAF 与癌细胞的聚集最强，其次是 myCAF 和 matCAF，proCAF 最弱。
 
+但 Fig. 3E 只用没有数值刻度的连线宽度表示 SAI，节点大小另表示 cell rate。原文与图注没有报告该 SAI 比较的可转录精确值、具体患者/视野/细胞分母、误差或统计检验，因此这里能确认的是方向，不能量化亚型间差距。
+
 Tangram 将整合的单细胞参考投射回空间数据后也得到相同排序；这是跨模态计算一致性，不是 58 例患者的配对空间复现。肠型（intestinal-type）癌细胞更紧密成团，弥漫型（diffuse-type）则与 CAF、免疫细胞混杂得更明显。
 
 图 3 的重点不是四种标签本身，而是它们与癌细胞的相对位置如何随病理结构改变。
@@ -38,7 +40,7 @@ Tangram 将整合的单细胞参考投射回空间数据后也得到相同排序
 
 ![Fig. 3：四类 CAF 的空间分布与邻近关系](../../assets/gastric-cancer/2025-hp-gc-caf-immune-modulation/page09.png)
 
-简明图注：Fig. 3 在 71 例空间队列中比较 proCAF、iCAF、matCAF、myCAF 与癌细胞的邻近和 SAI；完整 panel、公式低置信处和来源句子 ID 见技术附录。
+简明图注：Fig. 3 在 71 例空间队列中比较 proCAF、iCAF、matCAF、myCAF 与癌细胞的邻近和 SAI；四类的 SAI 比较只支持相对排序，没有可转录的精确 SAI、该比较的贡献分母、误差或检验。完整 panel、公式低置信处和来源句子 ID 见技术附录。
 
 ## 04｜THBS1 和 ZFP36 为什么会成为两条候选轴？
 
