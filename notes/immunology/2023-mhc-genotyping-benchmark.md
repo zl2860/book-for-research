@@ -1,6 +1,6 @@
 # Benchmark of tools for in silico prediction of MHC class I and class II genotypes from NGS data
 
-<!-- wechat-style-reviewed: 2026-09-18 -->
+<!-- wechat-style-reviewed: 2026-09-30 -->
 
 做新抗原或 TCR–HLA 分析时，研究者常只有现成的 WES 或 RNA-seq，没有配套 PCR-HLA 分型。此时一个看似工程化的选择——用哪个 HLA caller——可能一路影响可呈递肽、新抗原负荷和 HLA 杂合性等下游结果。
 
@@ -44,7 +44,7 @@ MHC-II 的排名不同：HLA-HD 为 96.2%，HLA*LA 为 95.7%，且只有这两�
 
 在高覆盖 Geuvadis RNA-seq benchmark 中，MHC-I 的 arcasHLA 和 Optitype 分别达到 99.4% 和 99.2%，HLA-HD 为 98.0%；MHC-II 则由 HLA-HD、PHLAT 和 arcasHLA 领先，分别为 99.4%、98.9% 和 98.1%，而 seq2HLA 的 MHC-II 为 87.8%。这些 class-level 数值是逐位点 allele-level accuracy 的算术平均；各位点最多 373 例，DQA1 只有 53 例。
 
-但 NCI-60 提醒了表达依赖：在其 RNA 数据中，arcasHLA 和 Optitype 的 MHC-I 准确率降至 91.8% 和 90.0%；这两个汇总值来自 HLA-A/B/C 分别只有 38/25/17 个 PCR 可比细胞系，而不是 58 例在三个位点都完整。作者没有评估 MHC-II RNA，因为这些位点在细胞系中通常不表达。
+但 NCI-60 提醒了表达依赖：在其 RNA 数据中，arcasHLA、Optitype、HLA-HD、PHLAT 和 seq2HLA 的 MHC-I 汇总准确率分别降至 91.8%、90.0%、86.6%、83.3% 和 82.3%；这五个汇总值来自 HLA-A/B/C 分别只有 38/25/17 个 PCR 可比细胞系，而不是 58 例在三个位点都完整。作者没有评估 MHC-II RNA，因为这些位点在细胞系中通常不表达。
 
 所以，RNA-seq 的高准确率部分来自 HLA reads 较多。低表达 MHC-II、肿瘤纯度变化或免疫浸润差异都可能改变可调用性；“没有读到”不能解释为胚系等位基因不存在。
 
@@ -72,9 +72,9 @@ WES 的 HLA-DQB1 最能说明收益：最佳单工具 HLA*LA 为 93.2%，共识�
 
 ## 07｜TCGA 大队列验证真正补上了什么？
 
-1000 Genomes 可能曾参与部分工具开发，而且其主 benchmark 没有 HLA-DPA1、DPB1 的 PCR 金标准；NCI-60 后来只为 DPB1 补了 52 个 WES 可比细胞系，DPA1 仍无直接 benchmark。作者因此在 TCGA 中比较预测等位基因频率与同族群 PCR 参考频率，并计算工具间一致性；频率分析实际分层为 Caucasian American 7,935 例和 African American 938 例。
+1000 Genomes 可能曾参与部分工具开发，而且其主 benchmark 没有 HLA-DPA1、DPB1 的 PCR 金标准；NCI-60 后来只为 DPB1 补了 52 个 WES 可比细胞系，DPA1 仍无直接 benchmark。作者因此在 TCGA 中比较预测等位基因频率与同族群 PCR 参考频率，并计算工具间一致性；Caucasian American 7,935 例和 African American 938 例是总体祖源分层规模，不是每个工具、位点都共享的有效分母。
 
-HLA-HD、HLA*LA、Optitype、Polysolver 和 xHLA 这 5 个 WES 工具各自的最低 Pearson `r` 为 0.968–0.978；表现差的 HLAminer、HLA-VBSeq、HLAforest 与其他工具的一致性也较低。TCGA RNA 中，Optitype 只运行 2,226 例、HLAforest 2,900 例，HLA-HD 未运行 TCGA RNA，因此不能把 RNA 频率结果外推给所有工具。
+HLA-HD、HLA*LA、Optitype、Polysolver 和 xHLA 这 5 个 WES 工具各自的最低 Pearson `r` 为 0.968–0.978；表现差的 HLAminer、HLA-VBSeq、HLAforest 与其他工具的一致性也较低。TCGA RNA 中，Optitype 只运行 2,226 例、HLAforest 2,900 例，HLA-HD 未运行 TCGA RNA，因此不能把 RNA 频率结果外推给所有工具。更关键的是，作者论文期代码会先删除任一等位基因未调用的 sample–gene 记录，再在各工具、数据类型、位点和祖源的成功调用内归一化频率；所以 Pearson `r` 不惩罚 failed calls，也不能评价可调用性。
 
 这只是群体分布合理性的补充检查，并为 DPA1 及主 1000 Genomes benchmark 未覆盖的 DPB1 提供间接支持；它不能替代逐样本 PCR 比较，也不是完全信息独立的验证。相关性分析虽关闭了 arcasHLA 和 Polysolver 的 ethnicity-specific frequencies，但 arcasHLA 仍用全人群先验，Optitype 还排除 AFND 中不存在的稀有等位基因，因此与 AFND 的高相关可能带有候选集或先验层面的循环性。DPA1 又缺少目标美国族群参考频率，Caucasian American 参考以法国、瑞典和巴斯克人群近似，African American 无可用 DPA1 参考，不能保证稀有等位基因或特定祖源个体的调用正确。
 
@@ -98,7 +98,7 @@ Fig. 3 需要与这条边界一起读：颜色更深只表示 TCGA 预测频率�
 
 第三，PCR 金标准本身也有歧义；三套 1000 Genomes PCR calls 存在不一致，作者在冲突时优先采用 Gourraud 等人的结果。DQA1 金标准样本只有 WES 68 例、RNA 53 例；NCI-60 各位点也只有 16–52 个可比细胞系，逐位点不确定性高于“58 例独立验证”或总体准确率看起来的程度。
 
-第四，4 工具组合在同一 1000 Genomes 数据上选模和评分，可能存在乐观偏差；TCGA 只补充群体频率相关，不是外部个体级 PCR 验证，而且部分 caller 的先验或候选集与群体频率数据库并非信息独立。
+第四，4 工具组合在同一 1000 Genomes 数据上选模和评分，可能存在乐观偏差；TCGA 只补充群体频率相关，不是外部个体级 PCR 验证，而且部分 caller 的先验或候选集与群体频率数据库并非信息独立。其频率代码还排除了 failed calls，因此高相关不能说明工具在全体祖源分层中都有同样的可调用率。
 
 最后，跨研究排名并不稳定：Supplementary Table S3 中，xHLA 在本文 1000 Genomes WES 的 MHC-I/II 为 91.4%/92.0%，在 Chen 等人的 in-house 数据却为 47.2%/56.7%。两套数据和流程不同，不能视作本文内部复现冲突，但足以说明排行榜不能直接迁移。G-group、second-field 和 allele-level accuracy 也低于部分临床或精细功能研究所需的分辨率。
 
@@ -153,7 +153,7 @@ Fig. 3 需要与这条边界一起读：颜色更深只表示 TCGA 预测频率�
 - 研究领域：HLA typing、MHC-I/MHC-II、免疫基因组学、肿瘤免疫、NGS 工具 benchmark
 - 关键词：HLA genotyping、MHC class I、MHC class II、WES、RNA-seq、Optitype、HLA-HD、arcasHLA、benchmark
 - 数据来源：1000 Genomes、Geuvadis/E-GEUV-1、NCI-60（SRA `SRP150855`、`SRP133178`）、TCGA/GDC、Allele Frequency Net Database
-- 代码来源：`https://github.com/CCGGlab/mhc_genotyping`
+- 代码来源：`https://github.com/CCGGlab/mhc_genotyping`；本轮分母审计固定到作者 2022 年的论文期初始提交 [`2865175`](https://github.com/CCGGlab/mhc_genotyping/commit/2865175319fdc3e971e70240e1c95d8fe1ca2253)
 - 本地 PDF：`pdfs/processed/mhc-genotyping-benchmark-bmc-genomics-2023.pdf`
 - PDF 解析质量：
   - 使用 `scripts/build_pdf_llm_pack.py` 建立句子级解析包 `tmp/mhc-genotyping-benchmark-llm-pack.md`；本地 PDF 共 14 页、526 个句子 ID。
@@ -194,7 +194,7 @@ Figures S1-S14 的图题/图注范围依次为 `s004:P001.S0010-P001.S0013`、`P
 
 HLA/MHC 的问题表面上是“分型工具选择”，背后实际是免疫肿瘤学研究能否正确解释抗原呈递差异。MHC-I 由 HLA-A、HLA-B、HLA-C 编码，主要把内源性抗原和肿瘤新抗原呈递给 CD8+ T 细胞；MHC-II 由 HLA-DP、DQ、DR 等位点编码，更多参与 CD4+ T 细胞介导的抗肿瘤免疫、抗原递呈细胞反应，以及部分肿瘤细胞自身 MHC-II 表达相关机制。
 
-因此，研究肿瘤免疫选择、新抗原可呈递性、免疫检查点治疗疗效差异、TCR-HLA 限制关系时，HLA genotype 不是普通协变量，而是决定“哪些抗原有机会被免疫系统看见”的上游遗传条件。PCR 分型是金标准，但 TCGA、1000 Genomes、公开肿瘤队列等大规模 NGS 数据通常没有配套 PCR-HLA 分型。研究者只能从 WES、WGS 或 RNA-seq 中体外推断 HLA。
+因此，研究肿瘤免疫选择、新抗原可呈递性、免疫检查点治疗疗效差异、TCR-HLA 限制关系时，HLA genotype 不是普通协变量，而是决定“哪些抗原有机会被免疫系统看见”的上游遗传条件。PCR 分型是金标准，但 TCGA、1000 Genomes、公开肿瘤队列等大规模 NGS 数据通常没有配套 PCR-HLA 分型。研究者只能从 WES、WGS 或 RNA-seq 中计算推断 HLA。
 
 问题在于，HLA 区域高度多态、存在同源序列和复杂参考序列偏倚，不同软件对 reads mapping、allele database、候选 allele scoring、群体先验和失败调用的处理完全不同。一个看似很小的工具选择，可能会影响后续的 neoantigen burden、HLA heterozygosity、HLA loss、TCR specificity、ICB response biomarker 等分析。
 
@@ -269,7 +269,7 @@ RNA-seq benchmark 使用 Geuvadis/1000 Genomes RNA-seq 数据，平均 HLA read 
 
 MHC-II 中，HLA-HD、PHLAT 和 arcasHLA 表现最好，准确率分别为 99.4%、98.9% 和 98.1%。seq2HLA 的 MHC-I 表现不错，但 MHC-II accuracy 下降到 87.8%。整体上，RNA-based tools 比 DNA-based tools 更少受 coverage 差异影响，但这部分很可能受 RNA-seq 中 HLA reads 绝对覆盖度更高影响。
 
-NCI-60 RNA 独立验证中，arcasHLA 和 Optitype 的 MHC-I macro-average 仍较高，分别为 91.8% 和 90.0%；其 HLA-A/B/C PCR 可比分母只有 38/25/17 例（`s004:P006.S0005-P006.S0007`）。HLA-HD、PHLAT、seq2HLA 在细胞系 RNA 数据中下降较明显。作者没有在 NCI-60 RNA 上评估 MHC-II，因为 MHC-II 在细胞系中通常不表达。这是很重要的边界：RNA-seq 分型不是单纯“reads 越多越好”，还取决于目标位点是否表达。
+NCI-60 RNA 独立验证中，arcasHLA、Optitype、HLA-HD、PHLAT 和 seq2HLA 的 MHC-I macro-average 分别为 91.8%、90.0%、86.6%、83.3% 和 82.3%；其 HLA-A/B/C PCR 可比分母只有 38/25/17 例（`P005.S0036-P005.S0038`；`s004:P006.S0005-P006.S0007`）。作者没有在 NCI-60 RNA 上评估 MHC-II，因为 MHC-II 在细胞系中通常不表达。这是很重要的边界：RNA-seq 分型不是单纯“reads 越多越好”，还取决于目标位点是否表达。
 
 #### Correlation and concordance analyses on large independent datasets confirm the benchmarking results
 
@@ -277,7 +277,7 @@ NCI-60 RNA 独立验证中，arcasHLA 和 Optitype 的 MHC-I macro-average 仍�
 
 直接 benchmark 可能偏向 1000 Genomes，因为许多工具开发时使用过这些数据；同时 1000 Genomes 的 HLA-DPA1 和 DPB1 缺少 PCR gold standard。为降低对单一金标准的依赖，作者在 TCGA 大队列中做了两个间接检查；NCI-60 已为 DPB1 另补 52 例直接对照，DPA1 则始终没有直接 benchmark。
 
-第一是群体 allele frequency correlation。表现较好的 WES 工具包括 HLA-HD、HLA*LA、Optitype、Polysolver 和 xHLA，最小 Pearson r 均在约 0.968-0.978 范围。RNA 工具中，Optitype、arcasHLA、PHLAT 相关性较好。HLA-VBSeq、HLAminer 和 HLAforest 相关性明显较差。
+第一是群体 allele frequency correlation。表现较好的 WES 工具包括 HLA-HD、HLA*LA、Optitype、Polysolver 和 xHLA，最小 Pearson r 均在约 0.968-0.978 范围。RNA 工具中，Optitype、arcasHLA、PHLAT 相关性较好。HLA-VBSeq、HLAminer 和 HLAforest 相关性明显较差。这些相关系数以各工具、数据类型、位点和祖源的成功调用为条件；7,935/938 只是总体祖源分层规模，不能当作每个相关系数的共同分母。
 
 第二是工具间一致性。此前表现差的工具，如 HLAminer、HLA-VBSeq、HLAforest，与其他工具的一致性也低；表现好的工具，如 Optitype、HLA*LA、arcasHLA、HLA-HD，彼此预测更一致。对 DPA1 和主 1000 Genomes benchmark 未覆盖的 DPB1，高性能工具之间也表现出一致性，但这只是间接支持，且 DPB1 已有较小的 NCI-60 直接对照。
 
@@ -304,6 +304,8 @@ RNA-seq 中，单个最佳工具本身已接近或超过 99%，共识模型只�
 #### 工具筛选、输入类型和可调用位点
 
 作者在 2020 年 10-12 月从文献中整理 HLA genotyping tools。纳入标准包括：免费学术使用，支持 WES 和/或 RNA-seq，不要求 HLA region enrichment，能作为 Linux command-line tool 在 Ubuntu 20.04 运行。若工具作者提供了更新 IPD-IMGT/HLA 数据库的说明，则更新到 3.43；HLA-HD、HLAminer 和 Kourami 属于这一类。
+
+补充 Table S1（`s001:Table S1`）还反向记录了 9 个未纳入工具：ALPHLARD(-NT)、OncoHLA 和 PolyPheMe 不满足免费学术使用；SNP2HLA 不满足本文规定的 WGS/WES/RNA-seq FASTQ/BAM 输入条件；ATHLATES、HLAProfiler、HLAreporter 和 SOAP-HLA 未能在 Ubuntu 20.04 运行；HLAssign 同时不满足输入条件，且其最新版是 Windows GUI。这里记录的是本文筛选边界，不代表这些工具在其他环境中必然不可用。
 
 主文 Table 1 与补充 Table S2/Note 给出的实际版本和核心算法如下。这里保留的是论文明确报告的信息；`xHLA 0.0.0` 看起来异常，但原表即如此，不能擅自替换成推测版本。
 
@@ -355,6 +357,8 @@ Gold standard 来自既往 PCR-based HLA typing 数据。1000 Genomes 样本的 
 
 群体频率验证的逻辑是：即使没有每个 TCGA 样本的 PCR-HLA gold standard，如果一个工具在大规模数据中可靠，它预测出的 population-level allele frequency 应该接近同族群 PCR-based reference frequency。作者从 AFND 的 18 项研究构建 African American 和 Caucasian American reference frequencies，要求 PCR、健康人群、gold label、样本量大于 50 且至少二字段，并按样本量加权；具体 gene-population 组合见 `s006` 的 47 个数据行。DPA1 没有相应美国族群频率，Caucasian American 以法国、瑞典和巴斯克人群近似，African American 无可用参考（`P011.S0026-P011.S0035`）。
 
+这里存在一处必须保留的 paper–code 分母冲突。Methods `P011.S0037-P011.S0039` 写的是每个 allele 的调用次数除以“总样本数”；但作者论文期初始提交的 [`plot_freq_correlation_tcga.R` 第 72–73 行](https://github.com/CCGGlab/mhc_genotyping/blob/2865175319fdc3e971e70240e1c95d8fe1ca2253/scripts/plot_freq_correlation_tcga.R#L72-L73) 先用 `drop_na` 删除任一 allele 未调用的 sample–gene 记录，[第 150–161 行](https://github.com/CCGGlab/mhc_genotyping/blob/2865175319fdc3e971e70240e1c95d8fe1ca2253/scripts/plot_freq_correlation_tcga.R#L150-L161) 再只在成功调用内按 tool、data type、race 和 gene 归一化。有效分母因此随工具、位点、祖源和实际运行子集变化；复现时应同时固定代码提交并输出每个分层的成功调用数，不能用 7,935/938 代替。
+
 该方法回答的是工具是否产生群体层面合理分布，不是个体层面的 correctness，也不是完全独立于 caller 设计的信息源。作者只明确为相关性分析关闭 arcasHLA 与 Polysolver 的 ethnicity-specific frequencies（`P009.S0017-P009.S0019`）；`s002:Table S2` 显示 arcasHLA 仍使用全人群 prior，HLA-HD/PHLAT 可用 prior 破除歧义，Optitype 更直接排除 AFND 中不存在的 rare alleles。因而 AFND 相关性会受 ancestry 标签、先验和候选 allele 集影响，稀有 allele 评价还存在潜在循环性。原文举例是 arcasHLA 在 African American 中高估 HLA-DRB1*14:02。
 
 工具间 concordance 则计算同一 sample/gene 上两个工具是否给出相同 allele pair。表现好的工具之间一致性高，表现差的工具与所有工具一致性低，这为没有直接 gold standard 的 DPA1、以及主 1000 Genomes benchmark 未覆盖的 DPB1 提供间接证据；NCI-60 已另有 52 例 DPB1 PCR 对照。
@@ -385,7 +389,7 @@ Gold standard 来自既往 PCR-based HLA typing 数据。1000 Genomes 样本的 
 
 第三，RNA-seq 的高准确率依赖表达。MHC-II 在不同组织、肿瘤、细胞系和免疫浸润状态下表达差异很大；低表达并不意味着 germline allele 不存在，只是 RNA 数据可能没有足够 reads 支持调用。
 
-第四，TCGA 间接验证只能证明群体分布合理和工具间一致，不等于个体分型准确。群体频率相关性高的工具仍可能在稀有 allele、特定 ancestry 或低覆盖样本中出错。
+第四，TCGA 间接验证只能证明成功调用中的群体分布合理和工具间一致，不等于个体分型准确；代码排除 failed calls 后才计算频率，相关性本身也不评价可调用率。群体频率相关性高的工具仍可能在稀有 allele、特定 ancestry 或低覆盖样本中出错。
 
 第五，TCGA–AFND 也不是完全信息独立：多个 caller 使用 population prior，Optitype 的候选集还排除 AFND 未收录的 rare alleles。关闭两种工具的 ethnicity-specific prior 不能消除所有数据库依赖，相关性高不能证明 rare allele calling 可靠。
 
@@ -430,7 +434,8 @@ Gold standard 来自既往 PCR-based HLA typing 数据。1000 Genomes 样本的 
 - **DPB1 的 gold-standard 叙述需按 cohort 解读**：主 Results `P005.S0010` 可解释为 1000 Genomes 主 benchmark 不含 DPA1/DPB1；但 `P005.S0040`、`P007.S0007` 又笼统称两者都无 gold standard，与 Fig. S6 的 52 例 NCI-60 DPB1 PCR 对照不一致。可确定的是 DPA1 始终缺直接对照，DPB1 仅缺 1000 Genomes 对照。
 - **引文编号不一致**：Methods 把三项 1000 Genomes 来源写作 `[26–28]`，冲突优先项又写 Gourraud `[63]`，并把 NCI-60 Adams 标为 `[29]`；参考文献表实际是 Gourraud ref. 63、NCI-60 Adams ref. 64。保留原编号异常，以作者和题名定位，不推断替换。
 - **跨 benchmark 的 xHLA 差异不是同集复现冲突**：Table S3 的 Chen in-house WES 为 MHC-I 47.2%、MHC-II 56.7%，本文 1000 Genomes 为 91.4%/92.0%（`s005:S01.R0012`；主文 `P009.S0024` 亦称 xHLA 为既往趋势的例外）。数据、流程和 benchmark 不同，因此只用于限制外推。
-- **TCGA–AFND 存在算法依赖**：ethnicity-specific prior 的关闭仅明确覆盖 arcasHLA/Polysolver；其他 tie-breaking prior、全人群 prior 和 Optitype 的 AFND candidate filter 仍在。Pearson correlation 是 plausibility check，不是独立个体准确率。
+- **TCGA–AFND 的文字与代码分母不一致**：Methods `P011.S0037-P011.S0039` 写 allele count 除以总样本数；论文期初始提交却先删除未完成双 allele 调用的 sample–gene 记录，再在各 tool–data type–gene–race 的成功调用内归一化。7,935/938 只是总体祖源分层，不是统一有效分母；Pearson correlation 不惩罚 failed calls。
+- **TCGA–AFND 还存在算法依赖**：ethnicity-specific prior 的关闭仅明确覆盖 arcasHLA/Polysolver；其他 tie-breaking prior、全人群 prior 和 Optitype 的 AFND candidate filter 仍在。Pearson correlation 是 plausibility check，不是独立个体准确率。
 - **资源数字低估完整流程**：xHLA、Polysolver、HLA-VBSeq 的额外 realignment 未计入时间/内存；HLA-HD 有 1 次内存失败，原文未说明其进入中位数的方式（`P011.S0014-P011.S0020`）。
 
 ### 覆盖审计
@@ -444,14 +449,14 @@ Gold standard 来自既往 PCR-based HLA typing 数据。1000 Genomes 样本的 
 | Results：工具筛选与资源结果 | `P002.S0027-P005.S0006` | 已覆盖工具数、支持范围、时间、内存和 Fig. 1 |
 | Results：1000 Genomes WES 与 NCI-60 | `P005.S0007-P005.S0027` | 已覆盖逐位点样本数、accuracy、失败调用、覆盖敏感性和独立细胞系 |
 | Results：Geuvadis RNA 与 NCI-60 | `P005.S0028-P005.S0038` | 已覆盖逐位点样本数、accuracy、深度和表达边界 |
-| Results：TCGA 频率与工具一致性 | `P005.S0039-P007.S0007` | 已覆盖人群分层、相关系数、祖源偏差和 DPA1/DPB1 间接证据 |
+| Results：TCGA 频率与工具一致性 | `P005.S0039-P007.S0007` | 已覆盖人群分层、成功调用条件分母、相关系数、祖源偏差和 DPA1/DPB1 间接证据 |
 | Results：多数投票与 4-tool 组合 | `P007.S0008-P009.S0004` | 已覆盖错误互补、组合准确率、同集选模和 TCGA 频率验证 |
 | **主 PDF Results 合计** | `P002.S0027-P009.S0004` | **145/145 个语义 Results ID 已分配到模块** |
 | Methods：工具筛选与数据库更新 | `P010.S0003-P010.S0006` | 已覆盖 |
 | Methods：1000 Genomes、Geuvadis、NCI-60、TCGA 数据构建 | `P010.S0007-P010.S0021` | 已覆盖数据范围、下载失败和重型工具子集 |
 | Methods：覆盖度、降采样和阈值估计 | `P010.S0022-P010.S0031` | 已覆盖 Mosdepth、检验、模型与降采样比例 |
 | Methods：PCR 金标准、工具运行和标准化 | `P010.S0032-P011.S0013` | 已覆盖冲突处理、G-group、输入转换、参数和 realignment |
-| Methods：资源、accuracy、AFND、concordance 与 consensus | `P011.S0014-P012.S0014` | 已覆盖失败运行、指标、参考人群、投票、硬件和 R 版本 |
+| Methods：资源、accuracy、AFND、concordance 与 consensus | `P011.S0014-P012.S0014` | 已覆盖失败运行、指标、参考人群、paper–code 分母冲突、投票、硬件和 R 版本 |
 | **主 PDF Methods 合计** | `P010.S0003-P012.S0014` | **92/92 个语义 Methods ID 已分配到模块** |
 
 #### 官方补充材料覆盖
