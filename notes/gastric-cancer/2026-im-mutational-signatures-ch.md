@@ -1,6 +1,6 @@
 # Mutational Signatures and Clonal Hematopoiesis in Intestinal Metaplasia across Countries with Varying Stomach Cancer Incidence
 
-<!-- wechat-style-reviewed: 2026-09-08 -->
+<!-- wechat-style-reviewed: 2026-10-09 -->
 
 发现胃肠化生以后，临床上最难回答的问题往往不是“它是不是癌前病变”，而是“这个人究竟有多大概率会继续进展”。
 
@@ -60,11 +60,11 @@
 
 20 个经 VAF 富集选择的 IM WGS 样本中，作者识别到 SBS1、SBS5/40、SBS17 和 SBS18；“正常胃中不典型”来自 79 例已发表外部正常胃数据，胃癌比较来自 122 例 ICGC 数据，并非直接在这 20 个 matched normal 上重做 signature。映射到 1,095 个胃窦 IM 后，287 个样本（26.2%）可检测到 SBS17，而选择性 WGS 集合为 60%，两者不能当作直接患病率复现。
 
-SBS17 在最晚复制区域富集 14.5 倍，而且与吸烟相关，却没有随年龄显著增加。类器官中的 OXPHOS、氧耗和 8-oxo-dG 结果把它与氧化损伤联系起来，但这些实验仍不能证明 OXPHOS 直接制造了 SBS17。
+按复制时序四分位分层后，SBS17 的突变频率从最早复制四分位（T1）到最晚复制四分位（T4）增加 14.5 倍；SBS18、SBS1 和 SBS5/40 的相应倍数仅为 5.0、2.0 和 3.0。SBS17 还与吸烟相关，却没有随年龄显著增加。类器官中的 OXPHOS、氧耗和 8-oxo-dG 结果把它与氧化损伤联系起来，但这些实验仍不能证明 OXPHOS 直接制造了 SBS17。
 
 ![Fig. 4：SBS17、复制时序与氧化损伤](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig4-page10.png)
 
-简明图注：Fig. 4 先在 20 对 IM–normal WGS 中识别突变签名，再映射到 1,095 个胃窦 IM，其中 287 个检出 SBS17；它在最晚复制区富集 14.5 倍，并与 IM 类器官的 OXPHOS/氧化损伤读出同向。后者仍是关联证据，不能证明 OXPHOS 直接产生 SBS17。
+简明图注：Fig. 4 先在 20 对 IM–normal WGS 中识别突变签名，再映射到 1,095 个胃窦 IM，其中 287 个检出 SBS17；SBS17 在最晚复制四分位（T4）相对最早复制四分位（T1）增加 14.5 倍，并与 IM 类器官的 OXPHOS/氧化损伤读出同向。后者仍是关联证据，不能证明 OXPHOS 直接产生 SBS17。
 
 甲基化数据给出了另一层背景。在独立的韩国跨阶段队列中，14 人、38 份正常胃、异型增生和早期胃癌样本的 CIN/MSI 相关病灶出现广泛低甲基化：受检 CpG 中 6,741,487 个（35.7%）低甲基化，而 326,646 个（1.7%）高甲基化。IM 中的 SBS17 mutations 与该队列后续病变的低甲基化区域重叠，原文将其 specificity 报为 75.7%；这是跨队列、跨阶段的区域重叠，既没有 IM methylome，也不能证明时间顺序。
 
@@ -86,15 +86,15 @@ CH 原本主要被视为血液系统老化现象。这篇论文更进一步，�
 
 合并各突变类型后，PIGR mutations 整体与 high CH 相关（OR = 2.3，P = 0.031），信号主要来自 truncating mutations（OR = 2.8，P = 0.017），而 missense/in-frame mutations 不显著（OR = 1.7，P = 0.43）。PIGR mutation status 与 PIGR expression 也不相关（P = 0.43）；这些未调整的 Fisher tests 没有控制年龄、总突变负荷或多重检验，因此没有直接证明功能丧失，更没有证明 CH 先造成 PIGR 突变。
 
-数据方向与这个模型一致。scRNA-seq 比较 3 个 CH-high 与 10 个 CH-low IM，总 immune cells 的 P = 0.049；bulk RNA-seq 比较 20 个 high CH 与 94 个 non/low CH IM，IgA+ plasma cells 和 mature T cells 的 P 分别为 0.0069 和 0.0034。平衡下采样 1,000 次中，99.4% 保持同方向（比例检验 P = 0.006）。IgA+ plasma-cell abundance 与 bacterial reads 相关（r = 0.43，P = 1.1 × 10^-5），与 human reads 则不相关（r = 0.056，P = 0.59）。
+数据方向与这个模型一致。scRNA-seq 比较 3 个 CH-high 与 10 个 CH-low IM，总 immune cells 的 P = 0.049；bulk RNA-seq 比较 20 个 high CH 与 94 个 non/low CH IM，IgA+ plasma cells 和 mature T cells 的 P 分别为 0.0069 和 0.0034。为处理组大小不平衡，作者将 20 个 high-CH 样本与每次随机抽取的 20 个 low-CH 样本比较 1,000 次；仅 IgA+ plasma-cell abundance 报告了这项稳健性分析，99.4% 的迭代仍是 high CH 更高（比例检验 P = 0.006），原文未为 mature T cells 报告同类下采样结果。IgA+ plasma-cell abundance 与 bacterial reads 相关（r = 0.43，P = 1.1 × 10^-5），与 human reads 则不相关（r = 0.056，P = 0.59）。
 
-补表中的菌属差异仍属探索性：high CH 组相对 low CH 组的 Streptococcus、Neisseria、Fusobacterium 和 Gemella 中位丰度分别为 4.1、15.6、9.7 和 6.1 倍（P = 0.0082、0.012、0.0079、0.0011），未见多重比较校正说明。PIGR truncation 与 Streptococcus 丰度相关（单侧 Wilcoxon P = 0.034），与 Helicobacter 则不相关（P = 0.80），这项阴性对照让结论更具体，也仍不足以闭合因果链。
+菌属分析另从上述 114 份 bulk RNA-seq 中排除 10 份 bacterial reads <0.02% 的样本（最终 n = 104），原文未报告排除后 high/low CH 的各自分母。补表中的菌属差异仍属探索性：high CH 组相对 low CH 组的 Streptococcus、Neisseria、Fusobacterium 和 Gemella 中位丰度分别为 4.1、15.6、9.7 和 6.1 倍（P = 0.0082、0.012、0.0079、0.0011），未见多重比较校正说明。PIGR truncation 与 Streptococcus 丰度相关（单侧 Wilcoxon P = 0.034），与 Helicobacter 则不相关（P = 0.80），这项阴性对照让结论更具体，也仍不足以闭合因果链。
 
 FISH 和 Stereo-seq 使用的不是 IM，而是胃癌组织。正文没有报告 FISH 的病例分母；Stereo-seq 才是 4 例，其中 2 例检出 Streptococcus 空间簇：1 例与 CXCL8 高表达区域重叠，另 1 例与肠型上皮和 IgA plasma-cell signatures 重叠。预选 oral-microbiome reads 较高的 15 例胃癌切片中，4 例见局灶 Gram-positive cocci。这些结果只能为机制模型提供探索性支持。
 
 ![Fig. 6：CH、PIGR、IgA 与口腔菌的关联模型](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig6-page14.png)
 
-简明图注：Fig. 6 的单细胞比较为 3 个 CH-high 对 10 个 CH-low IM，bulk 比较为 20 个 high CH 对 94 个 non/low CH IM；FISH 的病例分母未报告，Stereo-seq 来自 4 例胃癌，只有 2 例检出 Streptococcus 空间簇。这些结果支持横断面关联和机制线索，不能证明 CH 先造成黏膜屏障与微生物改变。
+简明图注：Fig. 6 的单细胞比较为 3 个 CH-high 对 10 个 CH-low IM，bulk 免疫细胞比较为 20 个 high CH 对 94 个 non/low CH IM，菌属分析排除 10 份低 bacterial-read 样本后为 n = 104；FISH 的病例分母未报告，Stereo-seq 来自 4 例胃癌，只有 2 例检出 Streptococcus 空间簇。这些结果支持横断面关联和机制线索，不能证明 CH 先造成黏膜屏障与微生物改变。
 
 但需要强调：共现、免疫组成和空间重叠构成的是一条机制线索，不是完整因果链。论文尚未证明 CH 先导致 PIGR 改变，再导致口腔菌定植并最终推动胃癌。
 
@@ -181,9 +181,9 @@ KRAS/MAPK-altered IM 和 pyrvinium 类器官结果也提供了干预线索，但
 | Fig. 1 | A：六个国家/地区的样本、胃癌年龄标化率及测序/组织学 Hp 阳性率；B：Hp-positive 样本系统发育；C：日本/韩国 clade 与新加坡 clade 的 CagA E106D、R109K、N228H；D：变异在 cagA 上的位置；E：CagA–ASPP2 结构模型；F：两类 CagA 与野生型/不结合 ASPP2 的 reciprocal co-IP。 | 全图队列 1,680 份组织（1,582 IM、98 normal）；高丰度 Hp 比较为韩国 24/106、日本 2/33、新加坡近期 3/218；co-IP 四次独立重复。来源 `P003.S0030–P005.S0018`、图注 `P004.S0018–P004.S0034`。 | `fig1-page4.png` | [01](#01｜只看幽门螺杆菌，为什么还不够) |
 | Fig. 2 | A：1,095 个胃窦 IM 的 36-gene oncoprint 与 EGN forest plot；B：SOX9、ARID1A 等在不同人群的 lollipop/frequency；C：国际队列和 TransGCEP1000 中 ARID1A truncation 与 EGN。 | Chinese-ancestry `n = 909`（新加坡 836、香港 52、美国 13、台湾 8）对 Japanese/Korean `n = 142`；ARID1A 合并 OR 6.2、P = 1.5 × 10^-3。来源 `P005.S0019–P006.S0030`。 | `fig2-page6.png` | [04](#04｜哪些上皮-driver-真正关联早期胃肿瘤) |
 | Fig. 3 | A：KRAS、BRAF、MAP2K1 gain-of-function 与 MAP2K4、MAP3K1、NF1 loss-of-function；B：KRAS/MAPK-mutant bulk RNA GSEA；C：scRNA epithelial type、cell cycle 与 KRAS–ERK score；D：CDX2；E：胃/肠谱系表达；F：severe 对 mild IM organoid；G：pyrvinium 活力。 | Bulk 为 10 个 mutant 对 94 个无可检出改变；down-sampling 1,000 次；organoid 为 6 IM 对 4 normal，Fig. 3G 为 1 μmol/L、72 h、每组 4 个 biological replicates，linear mixed-effects P < 0.0005。来源 `P007.S0001–P009.S0007`、图注 `P008.S0002–P008.S0008` 与 `P009.S0037–P009.S0046`。 | `fig3-page8.png` | [05](#05｜kras–mapk-改变能否提供干预线索) |
-| Fig. 4 | A：20 对 IM–normal WGS 的四类 SBS；B：79 个正常胃、20 个 IM、122 个胃癌；C：各 signature VAF；D：复制时序；E：6 IM 对 4 normal organoid 的 OXPHOS；F：OCR；G：8-oxo-dG；H：年龄和吸烟。 | SBS17 在最晚复制区 14.5×；OCR 的 basal/maximal P = 0.035/0.015；8-oxo-dG 每个 organoid 六次 technical replicates，按个体内 mean ± 1.5 SD 去异常；targeted 映射为 287/1,095。来源 `P009.S0008–P011.S0019`、图注 `P010.S0047–P010.S0057` 与 `P011.S0043–P011.S0052`。 | `fig4-page10.png` | [06](#06｜sbs17-为什么不像普通的年龄累积噪音) |
+| Fig. 4 | A：20 对 IM–normal WGS 的四类 SBS；B：79 个正常胃、20 个 IM、122 个胃癌；C：各 signature VAF；D：复制时序；E：6 IM 对 4 normal organoid 的 OXPHOS；F：OCR；G：8-oxo-dG；H：年龄和吸烟。 | SBS17 在最晚复制四分位（T4）相对最早复制四分位（T1）增加 14.5×；OCR 的 basal/maximal P = 0.035/0.015；8-oxo-dG 每个 organoid 六次 technical replicates，按个体内 mean ± 1.5 SD 去异常；targeted 映射为 287/1,095。来源 `P009.S0008–P011.S0019`、图注 `P010.S0047–P010.S0057` 与 `P011.S0043–P011.S0052`。 | `fig4-page10.png` | [06](#06｜sbs17-为什么不像普通的年龄累积噪音) |
 | Fig. 5 | A：1,067 名受试者的 CH oncoprint；B：DNMT3A、TET2、ASXL1、PPM1D 与 MSKCC 对照；C：CH 与年龄/IM mutation count；D：CH gene 与吸烟；E：dysplasia/EGN logistic regression。 | 风险模型 `n = 765`（43 dysplasia、26 EGN）；GCEP1000 `n = 312`（20 dysplasia、9 EGN）。Fig. 5C 用 234 个 CHIP-positive 与 861 个 CHIP-negative IM samples，与 1,067 名受试者口径不同。来源 `P012.S0013–P015.S0002`、图注 `P013.S0031–P013.S0037`。 | `fig5-page13.png` | [07](#07｜血液里的克隆能增加多少风险分层信息) |
-| Fig. 6 | A：high CH 关联的 IM drivers；B：PIGR mutation type；C：PIGR 与 CH genes；D：作者提出的屏障—微生物—炎症模型；E：scRNA immune composition；F：bulk deconvolution 与 bacterial/human reads；G：菌属差异；H：Streptococcus/S. anginosus FISH；I：Streptococcus 与 CXCL8 空间重叠。 | scRNA 为 3 high 对 10 low CH；bulk 为 20 对 94，另做 1,000 次平衡下采样；114 份 bulk 中排除 10 份 bacterial reads <0.02% 的样本后，微生物分析 `n = 104`，主文未报排除后的 high/low 分组数；FISH 分母未报告，Stereo-seq 4 例中 2 例检出空间簇。来源 `P015.S0003–P016.S0015`。 | `fig6-page14.png` | [08](#08｜血液里的克隆为什么会连接到胃黏膜) |
+| Fig. 6 | A：high CH 关联的 IM drivers；B：PIGR mutation type；C：PIGR 与 CH genes；D：作者提出的屏障—微生物—炎症模型；E：scRNA immune composition；F：bulk deconvolution 与 bacterial/human reads；G：菌属差异；H：Streptococcus/S. anginosus FISH；I：Streptococcus 与 CXCL8 空间重叠。 | scRNA 为 3 high 对 10 low CH；bulk 为 20 对 94，仅 IgA+ plasma-cell abundance 另做 1,000 次平衡下采样；114 份 bulk 中排除 10 份 bacterial reads <0.02% 的样本后，微生物分析 `n = 104`，主文未报排除后的 high/low 分组数；FISH 分母未报告，Stereo-seq 4 例中 2 例检出空间簇。来源 `P015.S0003–P016.S0015`。 | `fig6-page14.png` | [08](#08｜血液里的克隆为什么会连接到胃黏膜) |
 | Fig. 7 | 在 Correa cascade 上整合 Hp 菌株、上皮 driver/SBS、CH、免疫和微生物，并标出风险分层、pyrvinium 与抗菌等转化设想。 | 概念总结图，不是新增实验；蓝框中的干预均未在患者中验证。来源 `P017.S0001–P017.S0033`。 | `fig7-page17.png` | [09](#09｜这项研究真正改变了哪一步) |
 
 ### 生物学故事前情
@@ -285,7 +285,7 @@ KRAS/MAPK 通路改变存在于一部分 IM 中。作者观察到 KRASG12D、BRA
 
 20 个经突变 VAF 富集选择的 IM WGS 样本中识别 4 类主导 signature：SBS1、SBS5/40、SBS17、SBS18。正常胃的比较来自已发表的 79 例外部数据，胃癌比较来自 122 例 ICGC 数据，并非直接在这 20 个 matched normal 上重做 signature；SBS17 在 IM 和胃癌中出现、在外部正常胃中不典型。SBS17 mutations 的 VAF 低于其他 SBS mutations，支持其更多代表晚期或 subclonal events；选择性入组与约 60× 深度也限制人群代表性和小克隆检出率。
 
-SBS17 的基因组分布有鲜明特征。按 replication timing 四分位分层后，SBS1、SBS5/40、SBS18 在 late-replicating regions 仅中等升高，而 SBS17 在最晚复制区域富集 14.5 倍。作者将其与 OXPHOS、氧化损伤、8-oxo-dG 和 nucleotide pool damage 联系起来。IM organoids 的 OXPHOS pathway、basal/maximal OCR 和 8-oxo-dG 水平均高于正常 organoids；DCA 增强 OXPHOS 后可提高 ROS 和 DNA damage，但作者明确承认这还不能证明 OXPHOS 直接造成 SBS17。
+SBS17 的基因组分布有鲜明特征。按 replication timing 四分位分层后，SBS17 的突变频率从 T1 到 T4 增加 14.5 倍，SBS18、SBS1 和 SBS5/40 的相应倍数只有 5.0、2.0 和 3.0。作者将其与 OXPHOS、氧化损伤、8-oxo-dG 和 nucleotide pool damage 联系起来。IM organoids 的 OXPHOS pathway、basal/maximal OCR 和 8-oxo-dG 水平均高于正常 organoids；DCA 增强 OXPHOS 后可提高 ROS 和 DNA damage，但作者明确承认这还不能证明 OXPHOS 直接造成 SBS17。
 
 映射到 1,095 个 antrum IM 靶向数据后，SBS5/40 和 SBS1 几乎普遍存在，SBS18 和 SBS17 分别在约 28.9% 和 26.2% 样本中可检测；WGS 选择集中 SBS17 为 60%，两者不能直接当患病率复现。高风险国家 IM 的所有 signature mutation rate 均更高，其中 SBS17 enrichment 更明显。SBS1、SBS5/40、SBS18 与年龄相关，SBS17 不随年龄显著相关，但与吸烟显著相关。它可视为突变过程或暴露候选；本文没有做 SBS17–EGN 关联，不能称为进展风险 biomarker。
 
@@ -323,9 +323,9 @@ CH carriers 年龄更大，IM somatic mutation rate 更高。ASXL1 mutation 在�
 
 作者进一步问 CH 如何影响 IM 进展。合并各突变类型后，PIGR mutations 整体与 high CH 相关（OR = 2.3，P = 0.031），特别是 truncating mutations（OR = 2.8，P = 0.017）；missense/in-frame 不显著（OR = 1.7，P = 0.43），PIGR expression 也不随 mutation status 改变（P = 0.43）。PIGR truncation 还与 TET2 CH mutation 共现（OR = 2.9，P = 0.044）。这些是未调整的 Fisher tests，没有控制年龄、总突变负荷或多重检验，提示屏障线索而非已证实的功能丧失。
 
-微生物结果支持“屏障-口腔菌-炎症”的模型。PIGR truncation 与 Streptococcus abundance 升高有关（P = 0.034），与 Helicobacter 不相关（P = 0.80）。scRNA-seq 中 high CH IM 的 total immune cells 增多（3 对 10，P = 0.049）；bulk RNA-seq 在 20 对 94 中复现 IgA+ plasma cells（P = 0.0069）和 mature T cells（P = 0.0034）的升高。IgA+ plasma cell abundance 与 bacterial reads 相关（r = 0.43，P = 1.1 × 10^-5），与 human reads 不相关（r = 0.056，P = 0.59）。
+微生物结果支持“屏障-口腔菌-炎症”的模型。PIGR truncation 与 Streptococcus abundance 升高有关（P = 0.034），与 Helicobacter 不相关（P = 0.80）。scRNA-seq 中 high CH IM 的 total immune cells 增多（3 对 10，P = 0.049）；bulk RNA-seq 在 20 对 94 中复现 IgA+ plasma cells（P = 0.0069）和 mature T cells（P = 0.0034）的升高。平衡下采样只针对 IgA+ plasma-cell abundance：20 个 high-CH 样本每次与 20 个随机 low-CH 样本比较，1,000 次中有 99.4% 仍为 high CH 更高（P = 0.006），原文未为 mature T cells 报告同类结果。IgA+ plasma cell abundance 与 bacterial reads 相关（r = 0.43，P = 1.1 × 10^-5），与 human reads 不相关（r = 0.056，P = 0.59）。
 
-CH-high IM 中多个口腔来源菌属升高，包括 Streptococcus、Neisseria、Gemella、Actinomyces、Haemophilus、Porphyromonas、Fusobacterium；补表给出倍数但未说明多重校正。美国配对唾液为 32 份，新加坡为 173 份、来自 154 人；胃与唾液富集菌中 13/20 genera 重合，其中 9/13 显著。FISH 在胃癌组织中的病例分母未报告；Stereo-seq 只做 4 例胃癌，2 例检出 Streptococcus 空间簇。预选 oral-microbiome reads 较高的 15 例胃癌切片中，4 例见局灶 Gram-positive cocci。由于对象不是 IM、样本少且有预选，这部分更适合作为机制假说支持。
+CH-high IM 中多个口腔来源菌属升高，包括 Streptococcus、Neisseria、Gemella、Actinomyces、Haemophilus、Porphyromonas、Fusobacterium；补表给出倍数但未说明多重校正。Fig. 6G 的菌属分析从 114 份 bulk RNA-seq 中排除 10 份 bacterial reads <0.02% 的样本，最终 n = 104；原文未报排除后的 high/low CH 分组数。美国配对唾液为 32 份，新加坡为 173 份、来自 154 人；胃与唾液富集菌中 13/20 genera 重合，其中 9/13 显著。FISH 在胃癌组织中的病例分母未报告；Stereo-seq 只做 4 例胃癌，2 例检出 Streptococcus 空间簇。预选 oral-microbiome reads 较高的 15 例胃癌切片中，4 例见局灶 Gram-positive cocci。由于对象不是 IM、样本少且有预选，这部分更适合作为机制假说支持。
 
 #### 作者结论与证据强度
 
@@ -343,7 +343,7 @@ CH-high IM 中多个口腔来源菌属升高，包括 Streptococcus、Neisseria�
 | `P003.S0030–P005.S0018`（62/62） | Hp 检出、历史感染、地区系统发育、CagA 三个位点、AlphaFold 接触与 co-IP。 | 01 | Hp 丰度受根除年代和 IM 后生态改变影响；CagA–ASPP2 对地区风险的贡献仍是机制推断。 |
 | `P005.S0019–P006.S0030`（52/52） | IntOGen 47 genes/2,100 drivers、独立 48 IM 验证、地区频率、ARID1A–EGN 与深度下采样。 | 03、04 | Panel 限定候选空间；ARID1A 是关联，不是经过外部纵向验证的预测标志。 |
 | `P007.S0001–P009.S0007`（58/58） | KRAS/MAPK mutations、10 对 94 bulk GSEA、1,000 次下采样、scRNA cell states、6 对 4 organoids 与药物实验。 | 05 | Pyrvinium 不是单一路径特异抑制剂；药理和类器官结果不能替代遗传扰动或人体预防试验。 |
-| `P009.S0008–P011.S0019`（115/115） | 20 对 WGS 的四类 SBS、克隆结构、14.5× late-replication、OXPHOS/OCR/8-oxo-dG/DCA、1,095 个 panel 映射及年龄/吸烟。 | 06 | 60× WGS 对小亚克隆灵敏度有限；SBS17、OXPHOS、吸烟和氧化损伤仍是关联链。 |
+| `P009.S0008–P011.S0019`（115/115） | 20 对 WGS 的四类 SBS、克隆结构、SBS17 的 T4 对 T1 14.5×、OXPHOS/OCR/8-oxo-dG/DCA、1,095 个 panel 映射及年龄/吸烟。 | 06 | 60× WGS 对小亚克隆灵敏度有限；SBS17、OXPHOS、吸烟和氧化损伤仍是关联链。 |
 | `P011.S0020–P012.S0005`（38/38） | 14 人/38 份 EM-seq、CIN/MSI 分组、CpG/region 低甲基化以及 SBS17 与晚复制低甲基化区域重叠。 | 06 | 没有纵向顺序或扰动，不能确定甲基化与 SBS17 的因果方向。 |
 | `P012.S0006–P015.S0002`（120/120） | Germline variants；CH calling 结果、年龄/吸烟、765 人临床模型、26 个 EGN 与 GCEP1000 风险分析；Fig. 5 图页。 | 07 | Germline 事件稀少；总体和长期子集 EGN 仅 26/9 例，AUC 没有独立外部验证。 |
 | `P015.S0003–P016.S0015`（61/61） | High CH–PIGR、3 对 10 scRNA、20 对 94 bulk、口腔菌/唾液、Gram/IHC、FISH 与 4 例胃癌 Stereo-seq。 | 08 | 多数证据横断面；FISH/Stereo-seq 来自胃癌而非 IM，空间样本极少。 |
