@@ -1,6 +1,6 @@
 # Disease diagnostics using machine learning of B cell and T cell receptor sequences
 
-<!-- wechat-style-reviewed: 2026-09-12 -->
+<!-- wechat-style-reviewed: 2026-10-10 -->
 
 面对急性 COVID-19、慢性 HIV、系统性红斑狼疮、1 型糖尿病和流感疫苗接种后的反应，这项研究要检验的是：它们是否会在外周血 BCR/TCR 中留下可彼此区分的模式。真正困难的不只是发现“免疫系统变了”，而是判断这种变化更像哪一种状态。
 
@@ -52,7 +52,9 @@ BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合
 
 ## 05｜换实验室或测序方式后，还能直接使用吗？
 
-外部 BCR 队列只有 7 例 COVID-19 和 6 名健康供者：排序 AUROC 为 1.0，但直接六分类准确率只有 69%；用一小部分外部样本调阈值后，剩余样本达到 100%。外部 TCR 队列为 17 例 COVID-19 和 39 名健康供者，AUROC 为 0.99、未调阈准确率为 68%，调阈后为 90%；去掉表现较弱的 CDR3 聚类模型后，未调阈准确率为 89%、AUROC 为 0.97。
+外部 BCR 队列只有 7 例 COVID-19 和 6 名健康供者：全体 13 人的排序 AUROC 为 1.0，但直接六分类准确率只有 69%；用一小部分外部样本调阈值后，剩余样本达到 100%，主文没有报告校准集与剩余评估集各自的精确分母。
+
+外部 TCR 队列为 17 例 COVID-19 和 39 名健康供者：全体 56 人的 AUROC 为 0.99、未调阈准确率为 68%；排除校准样本后，评估集实际为 12 例 COVID-19 和 28 名健康供者，错分 1+3 人，即 36/40、准确率 90%。去掉表现较弱的 CDR3 聚类模型后，未调阈准确率为 89%、AUROC 为 0.97。
 
 在 Adaptive Biotechnologies 的 genomic DNA TCR 数据中，作者不是直接套用原模型，而是用 1,365 份样本重新训练，区分另一组六种状态，得到 AUROC 0.97、准确率 88%，并处理超过 1.5 亿条序列。
 
@@ -100,7 +102,7 @@ BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合
 
 第一，这是六个预先定义类别的闭集分类，其中还包含流感疫苗接种后状态。真实患者可能有合并症、近期感染、疫苗接种、免疫抑制治疗或训练集中没有的新疾病，模型目前不会可靠处理开放集或多标签问题。
 
-第二，AUROC 0.986 不等于临床阳性预测值，也不等于 98.6% 的患者会被正确诊断。外部队列在调阈前只有 68%–69% accuracy，校准样本又很少；患病率与鉴别诊断构成改变后，阈值必须重新确定。
+第二，AUROC 0.986 不等于临床阳性预测值，也不等于 98.6% 的患者会被正确诊断。外部队列在调阈前只有 68%–69% accuracy；TCR 调阈后的 90% 只来自排除校准样本后的 40 人，BCR 调阈后 100% 的评估分母主文没有报告。患病率与鉴别诊断构成改变后，阈值必须重新确定，并用与校准集隔离的足量样本验证。
 
 第三，研究只测 IgH 与 TRB，没有抗体轻链或 TCR alpha 链配对；模型 3 又用患者标签弱监督单条序列。BCR binder 只有中等排序能力，TCR binder 验证更弱，不能把患者级预测解释为已识别出全部疾病特异性受体。
 
@@ -249,9 +251,9 @@ BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合
 
 ##### Limited impact of batch effects on classification
 
-作者随后检验模型是否只是学到了实验批次或数据来源差异。首先，他们用所有内部数据训练 global model，再在外部 COVID-19 与健康 BCR/TCR 队列上测试。外部 BCR 队列中，模型区分 COVID-19 与健康的 AUROC 达到 1.0，但若直接按最高预测概率分配六类标签，准确率只有 69%；经过基于少量外部样本的阈值调校后，剩余外部样本准确率达到 100%。这说明模型排序信号强，但类别阈值受外部数据疾病构成影响。
+作者随后检验模型是否只是学到了实验批次或数据来源差异。首先，他们用所有内部数据训练 global model，再在外部 COVID-19 与健康 BCR/TCR 队列上测试。外部 BCR 队列全体为 7 例 COVID-19 和 6 名健康供者，模型区分两者的 AUROC 达到 1.0，但若直接按最高预测概率分配六类标签，准确率只有 69%；经过基于少量外部样本的阈值调校后，剩余外部样本准确率达到 100%，而主文没有报告校准集和剩余评估集的精确分母。这说明模型排序信号强，但类别阈值受外部数据疾病构成影响。
 
-外部 TCR 队列中，模型 AUROC 为 0.99，直接最高概率分类准确率为 68%，阈值调校后提升到 90%。原文指出，调校前部分 COVID-19 样本被误分为狼疮，主要与模型 2 的 TCR CDR3 聚类表现不佳有关；禁用模型 2 后，未调校准确率达到 89%，AUROC 为 0.97。
+外部 TCR 队列全体为 17 例 COVID-19 和 39 名健康供者，模型 AUROC 为 0.99，直接最高概率分类准确率为 68%。阈值调校时另行留出若干样本；排除这些校准样本后的评估集为 12 例 COVID-19 和 28 名健康供者，其中 1 例病例和 3 名健康供者错分，因此 36/40、准确率 90%。原文指出，调校前部分 COVID-19 样本被误分为狼疮，主要与模型 2 的 TCR CDR3 聚类表现不佳有关；禁用模型 2 后，未调校准确率达到 89%，AUROC 为 0.97。
 
 作者还在 Adaptive Biotechnologies genomic DNA TCR 数据上重新训练 Mal-ID，用 1365 个样本区分 common variable immunodeficiency、COVID-19、HIV、类风湿关节炎、1 型糖尿病和健康对照。该数据来自不同实验室，批次效应风险更高，但模型仍达到 0.97 AUROC 和 88% 准确率，并能扩展到超过 1.5 亿条序列。这支持 Mal-ID 框架可以迁移到其他测序技术，但前提是需要重新训练和适配。
 
@@ -376,7 +378,7 @@ SHAP 用于解释模型 3 的 patient-level 特征贡献。输入是不同 IGHV/
 - 患者级聚合比较 mean、median、去除最低 10% 的 trimmed mean，以及 10%/20% entropy cutoff；第二阶段 one-versus-rest 子模型只读取对应疾病概率，保留 top 50% V-gene categories，BCR 在各 isotype 内按 category 频率重权，并在 train-2 拟合。最终 BCR 为 random-forest sequence model 加 random-forest mean aggregation，TCR 为 one-versus-rest ridge 加 random-forest mean 与 20% entropy cutoff；概率未校准，因此基础模型 3 不报告 accuracy。TreeSHAP 在各 one-versus-rest random forest 上计算，对 train-2 阳性样本取均值并缩放至 0–1；Louvain `resolution=1.0`（`P012.S0040-P013.S0019`）。
 - ensemble 将 validation 上六个基础模型的概率拼接，以 ridge logistic regression 拟合 metamodel，同时传递模型 2 的 abstention，再在 held-out test 评价；组件消融通过特征子集重新拟合 metamodel，而不是直接删除输出（`P013.S0031-P013.S0037`）。
 - 人级隔离有必要：任意两个人平均共享 IgH/TRB 序列仅 0.0003%/0.166%，但任意 train/validation/test 两组仍平均共享 0.05%/5.3%；同一人的所有样本始终在同一分区（`P010.S0053`、`P011.S0013-P011.S0019`）。
-- 外部 cDNA 队列只纳入症状后至少 2 周的 acute COVID-19，并尽量使用同版 IgBLAST/reference；Britanova 数据无 raw reads 时沿用其 gene calls，并核对 TRBV6-2/6-3 与 TRBV12-3/12-4。作者留出少量外部样本，以最大化 MCC 的类别概率重权做校准；权重 `1/5` 表示该类别需高 5 倍置信度才胜出，而且只改变 label-based metrics（`P013.S0044-P014.S0009`）。Adaptive gDNA TCR 数据也用同版 IgBLAST 重处理后再训练（`P014.S0010-P014.S0011`）。
+- 外部 cDNA 队列只纳入症状后至少 2 周的 acute COVID-19，并尽量使用同版 IgBLAST/reference；Britanova 数据无 raw reads 时沿用其 gene calls，并核对 TRBV6-2/6-3 与 TRBV12-3/12-4。作者留出少量外部样本，以最大化 MCC 的类别概率重权做校准；权重 `1/5` 表示该类别需高 5 倍置信度才胜出，而且只改变 label-based metrics。TCR 校准后评估集为 12 例 COVID-19+28 名健康供者，36/40 分类正确；BCR 校准集与剩余评估集的精确分母主文未报告（`P005.S0047-P005.S0056`、`P013.S0044-P014.S0009`）。Adaptive gDNA TCR 数据也用同版 IgBLAST 重处理后再训练（`P014.S0010-P014.S0011`）。
 - 年龄、性别或祖源预测任务只使用健康对照，年龄分别离散为 deciles、`<50/≥50` 和 `<18/≥18`，并排除唯一超过 80 岁者；疾病混杂分析则使用疾病预测数据中人口学信息完整的个体子集，对 ensemble 的每个特征逐列做线性回归并以 residual 替换，同时另做 demographic dummy-only 以及 demographic、sequence 与 interaction 联合模型（`P014.S0012-P014.S0028`）。
 - binder 评价使用 2023-06-13 版本 CoV-AbDab，以 `igblastp` 按氨基酸突变估计 SHM，只保留人类患者/疫苗者，保留 weak binder、排除 variant-selective 序列，并按相同 IGHV、IGHJ、CDR-H3 长度及至少 95% identity 做 single-linkage 与 consensus；流感对照排除 H5N1/H7N9（`P014.S0036-P014.S0041`）。外部 BCR binder 没有 isotype，因此用 IgG sequence model 评分，健康 comparator 是 global-fold validation 中未参与训练的 IgG 序列。TCR 使用 MIRA v002.1，只留 productive、acute COVID-19 且训练集存在的 TRBV，并按 TRBV+TRBJ+CDR3b 完全一致去重（`P014.S0042-P014.S0043` → `P014.S0029`）。统计使用 global-fold 模型 2/3 和单侧 1,000 次 donor-grouped permutation，以 AUPRC 相对 baseline prevalence 的 fold change 为统计量；P 值是置换统计量超过观察值的比例（`P014.S0030-P014.S0035`）。
 - 完整计算环境为 Python 3.9.17、NumPy 1.24.3、pandas 1.5.3、SciPy 1.11.1、scikit-learn 1.2.2、python-glmnet 2.2.1、PyTorch 2.0.1、bio-transformers 0.1.17、Matplotlib 3.7.1 和 seaborn 0.12.2（`P011.S0038`）。

@@ -1,6 +1,6 @@
 # Predictability of B cell clonal persistence and immunosurveillance in breast cancer
 
-<!-- wechat-style-reviewed: 2026-09-11 -->
+<!-- wechat-style-reviewed: 2026-10-10 -->
 
 当同一名转移性乳腺癌患者的肝、肺或淋巴结病灶同时被取样时，一个真正棘手的问题才会出现：同一种 B 细胞克隆若在多个病灶中都能找到，它只是被重复抽到，还是参与了跨部位、持续存在的免疫反应？
 
@@ -56,7 +56,7 @@ Fig. 2 图注把患者 308 和 315 的病灶两两比较统一写为 36 对和 2
 
 早期队列 10 人、25 个样本共识别 94,495 个独特 BCR 克隆；转移性队列的多灶子集 4 人、23 个病灶为 155,451 个。一个克隆能在越多治疗时间点或越多转移灶中被检测到，它在单个样本中的平均克隆大小通常也越大；两种趋势的有序回归均为 `P<2.2×10⁻¹⁶`。
 
-共享且扩增的 class B 克隆还表现出较低的 CDR3 随机生成概率、更多同种型转换，以及与体细胞高突变相关的抗原经验特征。高 SHM、高同种型转换的样本中，class B 比例也伴随更强的 B/T 细胞、三级淋巴结构、IFN-γ 和 T-cell-inflamed 转录特征。
+共享且扩增的 class B 克隆还表现出较低的 CDR3 随机生成概率、更多同种型转换，以及与体细胞高突变相关的抗原经验特征。不过，Fig. 3c 的健康 PBMC 参照只来自 1 名已发表的健康参与者；Fig. 3g 也没有报告高 SHM+高同种型转换组与低+低组各自的样本数，不能把两队列合计 18 人/52 个样本当成实际比较分母。高 SHM、高同种型转换的样本中，class B 比例伴随更强的 B/T 细胞、三级淋巴结构、IFN-γ 和 T-cell-inflamed 转录特征，但这些关系仍是样本层面的横断面关联。
 
 作者用一个含 5,800 条表格记录的已知非肿瘤/感染相关抗体参考库进行匹配，并允许 CDR3 最多 3 个氨基酸错配；四类克隆均未见显著富集。官方工作簿去重后只有 4,929 个唯一重链氨基酸序列，且抗原并不全是病毒或细菌。这一阴性结果只能削弱该异质参考库已覆盖的解释，不能排除库外病原或其他非肿瘤抗原反应，更不能把共享克隆直接等同于肿瘤特异性 BCR。
 
@@ -80,7 +80,9 @@ Fig. 2 图注把患者 308 和 315 的病灶两两比较统一写为 36 对和 2
 
 ## 07｜为什么中心性可能标记跨部位共享的克隆？
 
-作者提出的解释与克隆多样化位置有关。在有多部位采样的 4 名患者中，5 个淋巴结转移灶相较 22 个其他病灶具有更低的 clonal unevenness，也就是更高的克隆多样性；mean clone size、Shannon 和 Gini 三类指标均为 `P<0.05`、effect size `>1.33`。淋巴结中每个病灶来自免疫监视克隆的比例也更高，Fig. 4b 为 `P=0.030`。
+作者提出的解释与克隆多样化位置有关。论文报告淋巴结转移灶相较其他病灶具有更低的 clonal unevenness，也就是更高的克隆多样性；mean clone size、Shannon 和 Gini 三类指标均为 `P<0.05`、effect size `>1.33`，Fig. 4b 的免疫监视克隆 per-site proportion 比较为 `P=0.030`。
+
+但这组比较的分析集在原文内部无法闭合。Fig. 4a/b 图注同时写“来自 4 名多灶患者”和淋巴结 `n=5` 对其他病灶 `n=22`；Supplementary Table 1 中这 4 人实际合计 23 个病灶，即 5 个淋巴结灶与 18 个其他灶，而 `5+22=27` 恰好对应全部 8 名患者的全队列。因此本文保留原文方向与 P 值，但不再把 `5 对 22` 写成一个分母清楚的 4 人比较。
 
 `degree=1` 的比较则只来自患者 315：3 个淋巴结对 5 个其他病灶，淋巴结中的比例更高（`P=0.00078`）。
 
@@ -269,7 +271,7 @@ neoantigen 分析提供了更具体的免疫解释。图 2f 显示，BCR clonal 
 
 ##### Persistence and immunosurveillance of intra-tumoral B cells
 
-中文图注（基于原文图注）：图 3 比较免疫监视或治疗中持久存在的 BCR 克隆与 private clones 的大小、抗原经验和免疫微环境特征。a：小提琴图展示早期乳腺癌中 BCR clone 在不同治疗时间点出现数量与平均 clone size 的关系，以及转移性乳腺癌中 BCR clone 在不同转移灶出现数量与平均 clone size 的关系；94,495 个 unique BCR clones 来自早期队列 10 人/25 个样本，155,451 个来自转移队列多灶子集 4 人/23 个病灶。BCR 克隆被分为 private expanded class A、shared expanded class B、private unexpanded class C 和 shared unexpanded class D。b：箱线图展示早期乳腺癌治疗前、中期、治疗后样本，以及转移性乳腺癌肝、淋巴结、肺样本中各类 expanded BCR 的 UMI 百分比。c：展示早期和转移性乳腺癌各 BCR clone class 的 CDR3 Pgen 分布，并与健康 PBMC 中 antigen-experienced 和 antigen-inexperienced BCR 的 Pgen 分布比较。d：箱线图展示四类 BCR clone class 中 unswitched BCR，即 IgD/IgM，占样本 BCR 的百分比。e：箱线图展示早期和转移性乳腺癌样本中 highly mutated BCR 的百分比。f：箱线图展示早期和转移性乳腺癌样本中的 IGH isotype 使用百分比。g：按 SHM 和 CSR 高低分组，比较 class B clone 比例，以及从 bulk RNA-seq 反卷积得到的 B cell、T cell、TLS、IFN-gamma、T cell inflamed signature 分数。图中部分分析仅使用有多个肿瘤部位或时间点采样的患者，因为 A-D 类克隆定义需要多样本结构；e、f、g 右侧包含全部 18 名患者和 52 个样本。P 值来自 ordinal regression 或 Wilcoxon rank-sum tests；箱线图显示四分位范围、中位数和 1.5 倍四分位距内须线，点为单个数据点。
+中文图注（基于原文图注）：图 3 比较免疫监视或治疗中持久存在的 BCR 克隆与 private clones 的大小、抗原经验和免疫微环境特征。a：小提琴图展示早期乳腺癌中 BCR clone 在不同治疗时间点出现数量与平均 clone size 的关系，以及转移性乳腺癌中 BCR clone 在不同转移灶出现数量与平均 clone size 的关系；94,495 个 unique BCR clones 来自早期队列 10 人/25 个样本，155,451 个来自转移队列多灶子集 4 人/23 个病灶。BCR 克隆被分为 private expanded class A、shared expanded class B、private unexpanded class C 和 shared unexpanded class D。b：箱线图展示早期乳腺癌治疗前、中期、治疗后样本，以及转移性乳腺癌肝、淋巴结、肺样本中各类 expanded BCR 的 UMI 百分比。c：展示早期和转移性乳腺癌各 BCR clone class 的 CDR3 Pgen 分布，并与 1 名已发表健康参与者 PBMC 中 antigen-experienced 和 antigen-inexperienced BCR 的 Pgen 分布比较。d：箱线图展示四类 BCR clone class 中 unswitched BCR，即 IgD/IgM，占样本 BCR 的百分比。e：箱线图展示早期和转移性乳腺癌样本中 highly mutated BCR 的百分比。f：箱线图展示早期和转移性乳腺癌样本中的 IGH isotype 使用百分比。g：按 SHM 和 CSR 高低分组，比较 class B clone 比例，以及从 bulk RNA-seq 反卷积得到的 B cell、T cell、TLS、IFN-gamma、T cell inflamed signature 分数。图中部分分析仅使用有多个肿瘤部位或时间点采样的患者，因为 A-D 类克隆定义需要多样本结构；e、f、g 右侧的起始池覆盖全部 18 名患者和 52 个样本，但 g 的高+高与低+低实际组别分母未报告。P 值来自 ordinal regression 或 Wilcoxon rank-sum tests；箱线图显示四分位范围、中位数和 1.5 倍四分位距内须线，点为单个数据点。
 
 在早期乳腺癌队列中，多个治疗时间点都能检测到的 BCR 克隆被定义为 temporally persistent clones；在转移性队列中，多个转移灶都能检测到的克隆被定义为 immunosurveilling clones。图 3a 显示，能跨更多时间点或更多转移灶出现的 BCR clone，其每个样本内的 clone size 更大，且 ordinal regression P < 2.2 x 10^-16。这说明共享/持久克隆不是因为总体测序量更高而偶然被发现，而是与局部克隆扩增相关。
 
@@ -279,11 +281,11 @@ neoantigen 分析提供了更具体的免疫解释。图 2f 显示，BCR clonal 
 
 ##### Antigen experience of migratory and persistent clones
 
-作者用 OLGA 计算 BCR CDR3 probability of generation，估计某条 CDR3 由 VDJ 重排随机生成的概率。图 3c 显示，private unexpanded class C 的 Pgen 最高，接近健康外周血 naive 或 antigen-inexperienced B cells；而 class B 等共享或扩增类别 Pgen 更低，更像抗原经验化、个体特异选择后的 BCR。class B 的 Pgen 最低，支持 expanded immunosurveilling/persistent clones 经过选择，而不是随机背景。
+作者用 OLGA 计算 BCR CDR3 probability of generation，估计某条 CDR3 由 VDJ 重排随机生成的概率。图 3c 显示，private unexpanded class C 的 Pgen 最高，接近健康外周血 naive 或 antigen-inexperienced B cells；而 class B 等共享或扩增类别 Pgen 更低，更像抗原经验化、个体特异选择后的 BCR。class B 的 Pgen 最低，支持 expanded immunosurveilling/persistent clones 经过选择，而不是随机背景；但健康 PBMC 参照仅来自 1 名已发表参与者，不能当作人群层面的健康基线。
 
 随后作者从 SHM 和 CSR 两个角度分析抗原经验。图 3d 显示，class B 克隆有更高比例的 class-switched BCR，也就是 IgD/IgM unswitched BCR 比例更低。早期肿瘤浸润 B 细胞相较于转移灶浸润 B 细胞也有更低比例的 unswitched BCR。图 3e 显示，早期乳腺癌治疗过程中高度突变 BCR 比例增加，但转移性样本中该趋势相反，并且转移灶中低 SHM BCR 比例更高。AICDA 表达下降也支持转移灶中 SHM/CSR 活性较低。
 
-图 3f 显示，早期队列内可比较新辅助治疗时间点的 isotype 变化；早期与转移队列之间则是不同患者的横断面差异，不能当成同一患者的疾病进展轨迹。IGHA1 增加、IGHG1 降低的变化主要由 class B 克隆驱动。图 3g 显示，高 SHM 与高 CSR 的肿瘤样本中，class B 比例更高，并伴随更高 B cell、T cell、TLS、IFN-gamma 和 T cell inflamed signature。整体上，shared expanded BCR 克隆更接近抗原经历后的反应，而非 naive B cell 背景。
+图 3f 显示，早期队列内可比较新辅助治疗时间点的 isotype 变化；早期与转移队列之间则是不同患者的横断面差异，不能当成同一患者的疾病进展轨迹。IGHA1 增加、IGHG1 降低的变化主要由 class B 克隆驱动。图 3g 显示，高 SHM 与高 CSR 的肿瘤样本中，class B 比例更高，并伴随更高 B cell、T cell、TLS、IFN-gamma 和 T cell inflamed signature；原文未报告高+高与低+低两组各自的样本数。整体上，shared expanded BCR 克隆更接近抗原经历后的反应，而非 naive B cell 背景。
 
 ##### BCR centrality reveals sites of clonal diversification
 
@@ -293,7 +295,7 @@ neoantigen 分析提供了更具体的免疫解释。图 2f 显示，BCR clonal 
 
 ##### High BCR centrality of immunosurveilling and persistent BCRs
 
-中文图注（基于原文图注）：图 4 展示 BCR degree centrality 如何描述克隆结构并预测 B 细胞免疫监视和持久性。a：箱线图比较淋巴结与其他转移部位的 mean BCR clone size，淋巴结 n = 5，其他部位 n = 22，图面 `P=0.00072`；数据来自有多个转移灶采样的 4 名患者。b：箱线图比较淋巴结与其他转移部位中 immunosurveilling clones 的 per-site proportion，淋巴结 n = 5，其他部位 n = 22，`P=0.030`。c：左侧示意 degree centrality 在 BCR clone 网络中的定义；中间比较患者 315 中淋巴结和其他转移灶里 degree centrality = 1、即无后续 progeny 的 BCR 百分比，淋巴结 n = 3、其他部位 n = 5，`P=0.00078`；右侧展示患者 315 不同转移灶中的 BCR degree centrality 分布。d：展示患者 315 中 3 个 expanded immunosurveillance clones 的 BCR VDJ network，这些克隆跨多个转移灶共享，网络基于 BCR sequence alignment 的 maximum parsimony trees。e：箱线图展示 BCR degree centrality 与该 BCR 被检测到的转移灶数量、治疗时间点数量之间的关系；P 值来自双侧 ANOVA。f：profile plots 展示用不同 degree centrality 阈值识别 immunosurveilling BCR 时 sensitivity、specificity 和 accuracy 的变化，分别在全部样本、早期乳腺癌样本和转移性乳腺癌样本中评估。a-c 使用 Wilcoxon rank-sum tests；点为单个数据点。原文对 a-c、e 的图注字面写为“箱体边界等于四分位距除以中位数”，须线延伸至箱体外 1.5 倍四分位距；前半句与常规箱线图定义冲突，本文保留异常而不代为改正（`P006.S0002-P006.S0022`；a 的精确 P 值只在图面中，句子级解析未保留）。
+中文图注（基于原文图注）：图 4 展示 BCR degree centrality 如何描述克隆结构并预测 B 细胞免疫监视和持久性。a：箱线图比较淋巴结与其他转移部位的 mean BCR clone size，图注报告淋巴结 n = 5、其他部位 n = 22，图面 `P=0.00072`。b：箱线图比较淋巴结与其他转移部位中 immunosurveilling clones 的 per-site proportion，同样报告 n = 5 对 n = 22，`P=0.030`。图注又称 a/b 只使用 308、315、323、330 四名多灶患者，但 Supplementary Table 1 中这四人只有 5 个淋巴结灶和 18 个其他灶；5+22 则等于全部 8 人的 27 个病灶，分析集无法闭合。c：左侧示意 degree centrality 在 BCR clone 网络中的定义；中间比较患者 315 中淋巴结和其他转移灶里 degree centrality = 1、即无后续 progeny 的 BCR 百分比，淋巴结 n = 3、其他部位 n = 5，`P=0.00078`；右侧展示患者 315 不同转移灶中的 BCR degree centrality 分布。d：展示患者 315 中 3 个 expanded immunosurveillance clones 的 BCR VDJ network，这些克隆跨多个转移灶共享，网络基于 BCR sequence alignment 的 maximum parsimony trees。e：箱线图展示 BCR degree centrality 与该 BCR 被检测到的转移灶数量、治疗时间点数量之间的关系；P 值来自双侧 ANOVA。f：profile plots 展示用不同 degree centrality 阈值识别 immunosurveilling BCR 时 sensitivity、specificity 和 accuracy 的变化，分别在全部样本、早期乳腺癌样本和转移性乳腺癌样本中评估。a-c 使用 Wilcoxon rank-sum tests；点为单个数据点。原文对 a-c、e 的图注字面写为“箱体边界等于四分位距除以中位数”，须线延伸至箱体外 1.5 倍四分位距；前半句与常规箱线图定义冲突，本文保留异常而不代为改正（`P006.S0002-P006.S0022`；a 的精确 P 值只在图面中，句子级解析未保留）。
 
 作者最后问：在一个 expanded shared clone 内，是所有 BCR 变体都能跨部位或跨时间被检测到，还是只有其中一部分变体反复出现。通过对 expanded clones 构建最大简约树和非环状网络，图 4d 显示高 centrality BCR 更常出现在多个转移灶或多个治疗时间点，而 degree = 1 的 BCR 多为单部位出现；这描述的是检测分布，不是细胞迁移的直接证据。
 
@@ -307,7 +309,7 @@ neoantigen 分析提供了更具体的免疫解释。图 2f 显示，BCR clonal 
 
 - 两个队列合计 18 名患者、52 份肿瘤样本。Fig. 2 中患者 308 和 315 的病灶两两比较分别为 36 对和 28 对；这些 pairwise observations 共享同一患者和病灶，不能当作完全独立样本（`P003.S0086-P003.S0090`、`P005.S0041`）。
 - Fig. 3 的四类 clone 数分别为 class A 10,507、class B 6,358、class C 217,093、class D 15,988，总计 249,946；class B 在“BCR 序列/UMI 丰度”层面占比较高，不代表它是 clone 数量上的多数（`P004.S0029-P004.S0034`、`P005.S0017-P005.S0018`）。
-- Fig. 3 的转移灶分部位比较实际为肝、淋巴结、肺各 `n=5`；Fig. 4a/b 的淋巴结 `n=5` 对其他病灶 `n=22` 来自 4 名患者，而 Fig. 4c 的 `degree=1` 比较只来自患者 315 的 3 个淋巴结和 5 个其他病灶（`P005.S0019`、`P006.S0008-P006.S0011`）。
+- Fig. 3 的转移灶分部位比较实际为肝、淋巴结、肺各 `n=5`。Fig. 4a/b 图注报告淋巴结 `n=5` 对其他病灶 `n=22`，又称来自 4 名多灶患者；Supplementary Table 1 中这四人实际为 5 对 18，5 对 22 则对应全部 8 人/27 灶，故分析集分母冲突。Fig. 4c 的 `degree=1` 比较只来自患者 315 的 3 个淋巴结和 5 个其他病灶（`P005.S0019`、`P006.S0008-P006.S0011`、`P006.S0020`）。
 - 外部一致性检查远小于主文“泛化”一词可能造成的印象：HMF 有 16 人但仅 HMFN_0320 可做同人跨灶比较，RAP 也只有患者 828433；1 型糖尿病和多发性硬化分别为 8 人和 3 人（`P012.S0053-P012.S0058`、`P022.S0006-P022.S0007`）。
 
 #### 作者结论与证据强度
@@ -367,11 +369,11 @@ BCR centrality 的预测部分使用阈值分类，并报告 sensitivity、speci
 - BCR 建库使用 15-nt UMI、6 个 FR1 引物和 7-nt sample barcode，目标扩增片段约 450 bp；每个样本不超过 500 ng 的纯化 BCR amplicon 用于连接 KAPA 双索引接头。paired reads 要求 overlap 至少 20 nt、最大错误率 0.2、Phred 至少 20；`usearch` identity 为 80%，UMI consensus 要有超过 2 条 reads，注释使用 IgBLAST 1.14/Immcantation 3.0（`P010.S0058-P011.S0007`）。
 - 原文称参考库含 5,800 条序列并允许 CDR3 最多 3 个氨基酸错配；官方 Supplementary Table 3 实为 5,800 行、5,762 个唯一记录 ID、4,929 个唯一重链氨基酸序列，抗原范围也不止病毒/细菌。“未见富集”只能削弱这一已知库的解释（`P011.S0008-P011.S0014`）。
 - 患者 308 的 BCR/TCRalpha/TCRbeta 下采样阈值分别为 980/4,657/2,620，患者 315 为 1,524/3,199/2,535；均下采样 10,000 次。Fig. 2b、d、f 和迁移图使用共享序列或克隆数量的中位数，只有 Fig. 2e 的相似性矩阵使用 Jaccard coefficient 中位数；树比较使用 `ward.D2` 和 100 次单侧 permutation（`P011.S0018-P011.S0035`）。
-- expanded clone cutoff 由 MClust 5.4.9 的 Gaussian mixture model 给出，并要求 expanded clones 少于 total repertoire 的 10%。Pgen 使用 OLGA 1.2.4；对照中 antigen-experienced BCR 定义为发生 class switching 且 somatic mutations 超过 4 个，SHM 由 mixtools v2.0.0 分成 0–1、1–10、11–33 和大于 33 四档（`P011.S0036-P012.S0028`）。
+- expanded clone cutoff 先由 MClust 5.4.9 对全部早期和转移样本的 log(% UMI) 拟合 Gaussian mixture model，再被设定为让每个样本都出现 A–D 四类克隆且 expanded clones 少于 total repertoire 的 10%；同一 clone 只要在任一样本（转移病灶或治疗时间点）高于阈值，即使其他样本低于阈值，也整体归为 expanded。因此 A–D 比例受带结果约束的阈值与 any-sample 规则影响，不是纯模型输出。Pgen 使用 OLGA 1.2.4，健康 PBMC 参照仅来自 1 名已发表参与者；对照中 antigen-experienced BCR 定义为发生 class switching 且 somatic mutations 超过 4 个。SHM 由 mixtools v2.0.0 分成 0–1、1–10、11–33 和大于 33 四档；Fig. 3g 的高+高与低+低实际组别分母未报告（`P011.S0036-P012.S0028`）。
 - clone-level 扩增/多样化分析按最低深度的 90% 做 1,000 次下采样，Gini、Shannon 与 mean clone size 分别使用 ineq v0.2-13、posterior v1.4.1 和自定义代码。Fig. 4b 的 per-site 比例只保留跨至少 2 个病灶、且至少 1 个病灶含至少 4 条 unique VDJ 的克隆，再以该克隆在各病灶的 VDJ 数除以其跨样本总 VDJ 数并取病灶均值（`P012.S0029-P012.S0039`）。centrality 网络先以 0.95 identity 筛 clone，保留至少 2 个肿瘤样本出现且至少 10 条 unique BCR 的 clone；多序列比对两端裁到至少 95% 序列在端点仍有对齐核苷酸，并要求裁剪后至少 80 nt。pairwise Hamming distance 与树优化使用 phangorn v2.7.1，minimum spanning tree 使用 ape v5.6，再由 igraph v1.2.10 转为无向图并计算 degree（`P012.S0040-P012.S0050`）。
 - 进入 centrality 分析的 clone 数为患者 308：204、315：733、323：85、330：23。分类比较阈值 `degree>1`、`>2`、`>10`，使用 caret 6.0-90 计算 sensitivity、specificity 和 accuracy；官方代码在各阈值先删除中间 degree，再计算同数据集混淆矩阵（`P012.S0040-P012.S0063`；代码 commit `f3fbf33` 第 662–673 行）。
 - Reporting Summary 显示 BCR 测序取决于是否有剩余 RNA；技术重复为 2 个样本各 2 个文库、3 个样本各 3 个文库。它同时列出 HLA-HD 1.4、IgBlast 1.14、IMGT/HighV-QUEST 1.8.5、Immcantation docker 3.0.0、MRDARCY、TRUST4 1.0.11、R 4.1.2 与 Python 3.10.1 等版本；这些是报告性环境清单，不代表受控 EGA 数据已本地复算。
-- 原文/附件有七处不能静默修正的异常：`P004.S0039` 字面写成 “other clonal groups (B, C and D)”；`P010.S0065` 字面为 “2–83 PCR cycles”；Fig. 4 图注 `P006.S0021` 将 box bounds 写成 “IQR divided by median”；`P011.S0010` 把 5,800 行参考库称为 Supplementary Table 2，而官方工作簿实际为 Table 3；`P012.S0010-P012.S0011` 的整数 SHM 分档在 1 处重叠，代码使用半开区间；Reporting Summary 的 `EGA00002343328` 与定稿 Data availability 两个 BCR study accession 不同；Fig. 2 图注把患者 308 的 BCR/TCR 与基因组相关分析统一标为 36 个病灶对，但 Supplementary Table 1 显示其 9 灶只有 7 灶有 WES/sWGS，完整基因组配对至多 21 个，缺失模态如何处理未报告。复现时必须回看原文件/代码，本文不代作者统一。
+- 原文/附件有八处不能静默修正的异常：`P004.S0039` 字面写成 “other clonal groups (B, C and D)”；`P010.S0065` 字面为 “2–83 PCR cycles”；Fig. 4 图注 `P006.S0021` 将 box bounds 写成 “IQR divided by median”；`P011.S0010` 把 5,800 行参考库称为 Supplementary Table 2，而官方工作簿实际为 Table 3；`P012.S0010-P012.S0011` 的整数 SHM 分档在 1 处重叠，代码使用半开区间；Reporting Summary 的 `EGA00002343328` 与定稿 Data availability 两个 BCR study accession 不同；Fig. 2 图注把患者 308 的 BCR/TCR 与基因组相关分析统一标为 36 个病灶对，但 Supplementary Table 1 显示其 9 灶只有 7 灶有 WES/sWGS，完整基因组配对至多 21 个，缺失模态如何处理未报告；Fig. 4a/b 图注把 4 名多灶患者与 5 个淋巴结+22 个其他病灶并列，而补表中四人只有 5+18 个病灶，5+22 对应全队列 8 人/27 灶。复现时必须回看原文件/代码，本文不代作者统一。
 
 ### 生物学与临床意义
 
@@ -478,6 +480,7 @@ MRDARCY、Immcantation、OLGA、TRUST4、MCPcounter、GSVA 和 graph centrality 
 
 - 图内展平：Fig. 1 `P002.S0001-P002.S0007` 并与 `P002.S0020-P002.S0026` 交错；Fig. 2 `P003.S0001-P003.S0045`、`P003.S0055-P003.S0086`；Fig. 3 `P005.S0001-P005.S0044`；Fig. 4 `P006.S0001-P006.S0022`；
 - Fig. 2 图注的患者 308 `n=36` 病灶对与 Supplementary Table 1 的 WES/sWGS 7/9 灶无法闭合；本文保留报告值并标记分母冲突；
+- Fig. 4a/b 图注的 4 名多灶患者与 `n=5` 淋巴结、`n=22` 其他病灶无法闭合；Supplementary Table 1 中四人只有 5+18 个病灶，而 5+22 等于全队列 27 灶；
 - Results 主要换栏/跨页重排：`P002.S0020-P002.S0026`、`P002.S0046→P003.S0046`、`P004.S0066→P005.S0020-P005.S0021`、`P005.S0022→P005.S0045`、`P005.S0053→P006.S0012`、`P006.S0013-P006.S0023`、`P006.S0024→P007.S0001`；
 - Methods 标题或栏序打断：`P010.S0002-P010.S0006`、`P010.S0040-P010.S0047`、`P011.S0053→P012.S0001`、`P013.S0002-P013.S0006`；
 - 官方补充工作簿与图像型 Reporting Summary 已另行复核，但不纳入 898 个文本 ID；行数/唯一序列、逐样本模态、RNA 可用性选择、技术重复、accession 及原文字面异常均已在上文并列记录，不静默修正。
