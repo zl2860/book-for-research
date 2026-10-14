@@ -1,6 +1,6 @@
 # Spatial omics at the forefront: emerging technologies, analytical innovations, and clinical applications
 
-<!-- wechat-style-reviewed: 2026-09-16 -->
+<!-- wechat-style-reviewed: 2026-10-14 -->
 
 一块肿瘤组织被消化成单细胞以后，研究者可以知道里面有哪些肿瘤细胞、T 细胞和成纤维细胞，却很难再回答一个病理学上极具体的问题：T 细胞真的进入了肿瘤核心，还是被挡在基质边界之外？
 
@@ -32,7 +32,7 @@
 
 测序型平台更接近全转录组发现，却要在捕获效率、区域大小和单细胞边界之间取舍。组织阵列捕获（tissue-on-array）路线的名义尺度从约 55 μm 发展到约 500 nm，Visium HD 使用 2 μm bin；但 2 μm bin 通常只覆盖细胞的一部分，“亚细胞 bin”不能自动等同于准确分割出的单细胞。
 
-其他模态有不同的取舍。多数商业空间蛋白组约覆盖 20–60 个蛋白，少数可以超过 100 种；基质辅助激光解吸电离质谱成像（MALDI-IMS）常见分辨率约 10–50 μm，二次离子质谱（SIMS）可以进入亚微米尺度，却通常牺牲分子覆盖。空间 CITE-seq（同切片 RNA—蛋白联合测量）约为 10–25 μm；相关 Stereo-CITE 方案可把全转录组与超过 100 个蛋白连接起来，但配准、组织消耗和批次也随之增加。
+其他模态有不同的取舍。多数商业空间蛋白组约覆盖 20–60 个蛋白，少数可以超过 100 种；基质辅助激光解吸电离质谱成像（MALDI-IMS）常见分辨率约 10–50 μm，二次离子质谱（SIMS）可以进入亚微米尺度，却通常牺牲分子覆盖。空间 CITE-seq（同切片 RNA—蛋白联合测量）约为 10–25 μm；相关 Stereo-CITE 方案可在同一切片连接全转录组与超过 100 个蛋白，适合样本有限的场景，但仍需处理通道配准、信号串扰、模态尺度不匹配和联合质控。
 
 ![Fig. 1：空间组学平台的技术全景](../../assets/spatial-transcriptomics/2026-spatial-omics-review/fig1-overview-spatial-omics-technologies.png)
 
@@ -72,7 +72,7 @@ Box 2 分别定义了细胞、邻域、生态位、群落、区域、分区梯�
 
 ## 06｜怎样从临床问题反推样本和平台？
 
-作者提出的顺序是：先写清临床问题和结局（endpoint），再决定患者、时间点、部位、保存方式、平台和验证策略。癌前病变需要阶段性或纵向采样；转移研究需要原发灶、不同转移灶、正常组织和血液配对；微小残留病灶（MRD）与治疗反应则需要治疗前、治疗中、治疗后及复发前窗口。
+作者提出的顺序是：先写清临床问题和结局（endpoint），再决定患者、时间点、部位、保存方式、平台和验证策略。癌前病变可做阶段性或纵向采样；转移研究可横断面比较原发灶与不同转移灶，并按问题配对正常组织或血液；疗效研究可比较基线与治疗中，或治疗前后、原发与复发样本。微小残留病灶（MRD）是一线治疗后仍存在、却低于常规影像和血清标志物检出限的残留肿瘤；卵巢癌二次探查腹腔镜在临床完全缓解期取样只是一个实例，其他癌种可采用情境特异的影像引导活检，Fig. 5 还展示了用治疗中样本预测 MRD 状态。不同目的不能合并成固定的“治疗前—中—后—复发前”时间轴。
 
 样本保存直接限制可用技术。新鲜冷冻（fresh-frozen）更适合全转录组、代谢组和发现阶段多组学；FFPE 更容易获得大规模回顾队列、长期结局和病理配准，却通常依赖探针型或靶向检测。缺血时间、固定方式、切片厚度、区域选择和配对血液都应在研究方案中预先规定。
 
@@ -163,7 +163,7 @@ Box 2 分别定义了细胞、邻域、生态位、群落、区域、分区梯�
 - 数据与代码：原文没有作者原创数据集或代码可用性声明。
 - PDF 解析质量：
   - 使用 `scripts/build_pdf_llm_pack.py --engine pymupdf` 建立句子级解析包；共 26 页、1,598 个句子 ID。
-  - `P001` 的摘要/作者/正文、`P008-P010` 的正文/Fig. 2/Box 1、`P017` 的 heading 存在双栏错序或吞句。
+  - `P001` 的摘要/作者/正文、`P008-P010` 的正文/Fig. 2/Box 1、`P013-P014` 的临床转化正文/Fig. 4/Box 2、`P017` 的 heading 存在双栏插入错序或吞句。
   - Table 1 完整位于 PDF 第 4 页（印刷页 27）；线性抽取因表格和双栏布局导致列值错序，本文以该页原表截图核对，不逐项重排未确认的规格。
   - 参考文献及页眉页脚区域共有 1,053 个 ID：前 40 个被正确标为 References，后 1,013 个被错分为 Methods；文末按综述真实结构完成语义校正审计。
 - 图像截取说明：已截取主文 Fig. 1-5 和 Table 1 单页原表，图像位于 `assets/spatial-transcriptomics/2026-spatial-omics-review/`。旧文件名带 `p2` 的截图片实际是 PDF 下一页正文，不属于 Table 1，本次不再嵌入或作为表格证据。
@@ -234,11 +234,11 @@ Box 2 分别定义了细胞、邻域、生态位、群落、区域、分区梯�
 
 中文图注（基于原文图注）：Fig. 1 总结空间组学技术类型。A：空间转录组分为 in situ imaging-based 和 spatial barcoding sequencing-based。成像型方法又包括 cyclic combinatorial decoding 和 cyclic in situ sequencing，区别在于通过荧光编码还是碱基读取识别目标；测序型方法包括 barcode-to-cell delivery 后进行单细胞/单核测序，以及 tissue-on-array 的空间条形码捕获和 NGS。B：空间蛋白组包括多重荧光抗体成像和金属标记抗体质谱成像等。C：空间代谢组通过激光、离子束、电喷雾或质谱成像测量组织中的小分子、脂质和代谢物。D：空间多组学可同时或连续测量 DNA/RNA/蛋白/组织形态等信号。E：3D/4D profiling 通过连续切片、组织透明化或时间轴数据重建空间结构。
 
-作者首先梳理平台层的变化。空间转录组不再只是早期低分辨率 capture array，而是形成了高分辨率 imaging-based 和 sequencing-based 两大路线。成像型方法的优势是单细胞或亚细胞分辨率、形态保留和 FFPE 兼容性较强；限制是 panel 需要预设，通量和循环次数有成本。测序型方法的优势是更接近全转录组或高通量发现；限制是分辨率、捕获效率和单细胞边界解析依赖平台。
+作者首先梳理平台层的变化。空间转录组不再只是早期低分辨率 capture array，而是形成了高分辨率 imaging-based 和 sequencing-based 两大路线。成像型方法的优势是单细胞或亚细胞分辨率和形态保留；限制是 panel 需要预设，通量和循环次数有成本。测序型方法的优势是更接近全转录组或高通量发现；限制是分辨率、捕获效率和单细胞边界解析依赖平台。FFPE 兼容性不能作为两类路线的固定优劣，须按具体平台和工作流判断。
 
 中文图注（基于原文表格）：Table 1 比较六种商业高分辨率空间转录组平台，类别只有 cyclic decoding、cyclic in situ sequencing 和 spatially barcoded capture 三类，不含 barcode-to-cell。原表列为 Platform、Category、Resolution、RNA/Protein coverage、Tissue compatibility、Throughput/capture area 和 Run cost。它不是性能排名，也不是穷举；规格、通量和成本来自 2025 年时点的厂商或站点估计。不同研究问题仍需在分辨率、捕获面积、全转录组能力、组织兼容性、成本和多组学扩展之间取舍。
 
-空间蛋白组和代谢组补充了 RNA 与功能状态并非完全等价的问题。蛋白组能直接读出受体、配体和免疫检查点等蛋白信号；代谢组能读出局部营养、脂质、药物分布和代谢微环境。空间多组学进一步把 DNA/RNA/蛋白/形态或 TCR/BCR 信息连接起来，但也带来配准、批次、模态尺度和组织消耗的困难。
+空间蛋白组和代谢组补充了 RNA 与功能状态并非完全等价的问题。蛋白组能直接读出受体、配体和免疫检查点等蛋白信号；代谢组能读出局部营养、脂质、药物分布和代谢微环境。空间多组学进一步把 DNA/RNA/蛋白/形态或 TCR/BCR 信息连接起来。同切片方案保留空间上下文并适合有限样本，但仍需处理通道配准、信号串扰、模态尺度不匹配和联合质控；连续切片整合则另受切片偏移、平台偏倚与非重叠生物学影响。
 
 ##### Analytical breakthroughs in tumor spatial profiling
 
@@ -252,7 +252,7 @@ Box 2 分别定义了细胞、邻域、生态位、群落、区域、分区梯�
 
 ##### Unraveling tumor microenvironment complexity
 
-中文图注（基于原文图注）：Fig. 3 示意肿瘤微环境中九类重要空间 niche 的细胞组成和组织方式。图中强调 TLS、肿瘤-基质边界、免疫抑制区、血管/缺氧相关 niche、神经接口、微生物相关区域等结构如何通过空间组织影响肿瘤生物学和临床结局。
+中文图注（基于原文图注）：Fig. 3 示意肿瘤微环境中九类重要空间 niche 的细胞组成和组织方式，依次为 TLS、血管周围 niche、干样 CD8⁺ T 细胞 niche、CAF 相关 niche、肿瘤侵袭前沿、免疫排斥 niche、缺氧 niche、神经—免疫界面和微生物定植 niche。它们是跨研究的概念分类，不是同一队列中的九组比较。
 
 作者把空间组学对 TME 的贡献概括为：它不仅识别细胞类型，还识别细胞如何组织成功能结构。TLS 是最典型例子，它不是“有 B 细胞和 T 细胞”这么简单，而是局部抗原呈递、B 细胞成熟、T cell help 和抗肿瘤免疫被组织起来的结构。不同癌种中 TLS 的位置、成熟状态和免疫细胞组成与预后和免疫治疗反应相关，具体方向仍依赖癌种和队列。
 
@@ -266,7 +266,7 @@ Fig. 4 是全篇概念核心。作者提出 spatial archetypes across scales，�
 
 中文图注（基于原文图注）：Fig. 5 展示空间组学临床转化路线。A：空间 profiling 可用于早期肿瘤发生、转移、MRD 和治疗反应等临床场景。B：临床转化设计包括纵向采样、横断面多部位采样、样本类型和保存方式选择。C：空间数据可揭示肿瘤演化、MRD 预测、细胞组织和 niche、细胞互作与信号 hub。D：从发现到部署包括药物靶点空间分布、肿瘤克隆演化和治疗反应、TME 调控、细胞治疗追踪、target discovery、biomarker 转化、癌前到浸润癌分子时钟，以及 AI 驱动临床决策。
 
-作者强调临床空间组学必须从 clinical question 和 endpoint 开始，而不是先做最炫的平台。不同问题需要不同设计：癌前病变需要纵向和阶段性采样；转移研究需要 primary tumor、不同 metastasis、正常组织和血液配对；MRD 需要治疗前后和复发前窗口；治疗反应研究需要 responder/non-responder 和治疗前/中/后样本。
+作者强调临床空间组学必须从 clinical question 和 endpoint 开始，而不是先做最炫的平台。不同问题可以采用不同设计：癌前病变可做阶段性或纵向采样；转移研究可横断面比较 primary tumor 与不同 metastasis，并按问题加入正常组织、血液或血浆；治疗反应可比较 baseline/on-treatment、pre/post-treatment 或 primary/recurrent 样本。MRD 指一线治疗后低于常规影像和血清标志物检出限的残留肿瘤；卵巢癌完全缓解期的二次探查腹腔镜、其他癌种的情境特异影像引导活检，以及用治疗中样本预测 MRD 状态是不同设计，不存在适用于所有场景的固定时间轴。
 
 样本保存方式直接决定平台选择。Fresh-frozen 更适合 discovery-level whole-transcriptome、metabolome 和 neoantigen 研究；FFPE 是临床回顾队列的主力，更适合 probe-based spatial transcriptomics 和高质量 histology。作者特别提醒 ischemia time、固定方式、切片厚度、paired blood/plasma、FFPE/fresh-frozen 配对等 pre-analytical variables 必须 protocolized。
 
@@ -339,7 +339,7 @@ Fig. 4 是全篇概念核心。作者提出 spatial archetypes across scales，�
 
 #### 临床转化研究设计
 
-作者强调临床空间组学要从临床问题反推设计。如果目标是癌前病变进展预测，就需要 normal、precancer、invasive cancer 的阶段性样本和纵向随访；如果目标是转移机制，就需要 primary、multiple metastases、normal tissue 和血液/ctDNA 配对；如果目标是治疗反应，就需要治疗前、中、后样本，以及 responder/non-responder 的预设比较。
+作者强调临床空间组学要从临床问题反推设计。如果目标是癌前病变进展预测，可组合 normal、precancer、invasive cancer 的阶段性样本，并在能回答进展问题时加入纵向随访；如果目标是转移机制，可横断面比较 primary 与 multiple metastases，并按问题加入 normal tissue、血液或 ctDNA；如果目标是治疗反应，可设置 baseline/on-treatment、pre/post-treatment 或 primary/recurrent 的配对，并预设 responder/non-responder 比较。MRD 研究则要区分残留病灶的定义、卵巢癌完全缓解期 SLL 取样实例、其他癌种的影像引导活检，以及治疗中样本对后续 MRD 状态的预测；组织获取路径和时间点都需按癌种与问题设定。
 
 样本物流是临床空间组学成败的前提。需要预先规定 ischemia time、固定方法、切片厚度、染色流程、区域选择、病理标注和 paired biospecimen。分析上，应在 protocol 中预设 primary spatial endpoint，而不是事后在海量空间特征中寻找最显著结果。TLS density、immune-excluded phenotype、target-positive tumor fraction、MRD niche score 或 spatial interaction signature 是编者根据综述主题整理的通用示例，并非原文逐项列出的终点。
 
@@ -409,8 +409,8 @@ Fig. 4 是全篇概念核心。作者提出 spatial archetypes across scales，�
 |---|---|---:|---|
 | 前置、引言、技术平台及 Fig. 1/Table 1 | `P001.S0001-P006.S0008` | 174 | 已覆盖技术分类、平台规格与分辨率—覆盖取舍；前置信息和表格展平另标低置信 |
 | 计算分析与 Fig. 2/Box 1 | `P006.S0009-P010.S0004` | 127 | 已覆盖分割、去卷积、空间单位、互作、多模态和 foundation model 边界 |
-| TME niche 与 Fig. 3–4/Box 2 | `P010.S0005-P013.S0013` | 104 | 已覆盖 9 类 niche、空间层级及被引研究边界 |
-| 临床转化与 Fig. 5 | `P013.S0014-P017.S0025` | 107 | 已覆盖研究设计、癌前/转移/MRD/治疗反应和部署路线 |
+| TME niche 与 Fig. 3–4/Box 2 | `P010.S0005-P013.S0013`；`P013.S0017`；`P014.S0001-P014.S0010` | 115 | 已覆盖 9 类 niche、空间层级及被引研究边界；范围不连续源于双栏插入错序 |
+| 临床转化与 Fig. 5 | `P013.S0014-P013.S0016`；`P014.S0011-P017.S0025` | 96 | 已覆盖研究设计、癌前/转移/MRD/治疗反应和部署路线；范围不连续源于双栏插入错序 |
 | 结论与未来方向 | `P017.S0026-P018.S0012` | 24 | 已覆盖标准化、通量、AI 与前瞻方向 |
 | 致谢、贡献、利益声明 | `P018.S0013-P018.S0021` | 9 | 已分类 |
 | 参考文献及页眉页脚 | `P018.S0022-P026.S0016` | 1,053 | 已识别为非 Methods，不冒充正文证据 |
@@ -418,7 +418,7 @@ Fig. 4 是全篇概念核心。作者提出 spatial archetypes across scales，�
 
 #### 主图、表格与定量锚点
 
-- Fig. 1 图注 A 部分来源为 `P002.S0004-P002.S0006`，B-E 续注为 `P003.S0042-P003.S0045`；Fig. 2 为 `P007.S0003-P007.S0007`；Fig. 3 为 `P010.S0017`；Fig. 4 为 `P013.S0017`；Fig. 5 为 `P015.S0003-P015.S0009`。完整 panel 解释和图像均在本文保留。
+- Fig. 1 图注 A 部分来源为 `P002.S0004-P002.S0006`，B-E 续注为 `P003.S0042-P003.S0045`；Fig. 2 为 `P007.S0003-P007.S0007`；Fig. 3 为 `P010.S0017`；Fig. 4 为 `P013.S0017`，Box 2 九个术语为 `P014.S0001-P014.S0010`；Fig. 5 为 `P015.S0003-P015.S0009`。完整 panel 解释和图像均在本文保留。
 - Table 1 完整位于 PDF 第 4 页（印刷页 27），表体解析为 `P004.S0001-P004.S0035`，表注为 `P004.S0044-P004.S0046`；线性抽取因表格和双栏布局导致列值错序，本文只以该页原表截图核对，不根据错列文本补造规格。旧文件名带 `p2` 的截图片实际是 PDF 下一页正文，不属于 Table 1。
 - 约 5,000/6,000/18,000 个基因的平台规格来源于 `P003.S0016`；in situ sequencing 约 100 bases、seqFISH+ 超过 10,000 基因和 ExSeq 约 4 倍分辨率来自 `P003.S0026-P003.S0030`；55 μm 至约 500 nm 及 2 μm bin 的尺度来自 `P003.S0041-P004.S0016`。
 - 多数商业空间蛋白组约 20–60 proteins、少数超过 100-plex 的概括来自 `P004.S0020-P004.S0042`；MALDI-IMS 约 10–50 μm 与 SIMS 亚微米取舍来自 `P005.S0007-P005.S0010`；同切片多模态约 10–25 μm、全转录组加超过 100 个蛋白来自 `P005.S0016-P005.S0019`。这些数字是平台能力介绍，不是临床性能验证。
@@ -426,7 +426,7 @@ Fig. 4 是全篇概念核心。作者提出 spatial archetypes across scales，�
 
 #### 解析质量与证据边界
 
-- `P001` 的摘要、作者信息与正文因双栏顺序交叉；`P008-P010` 的正文、Fig. 2 和 Box 1 交错；`P017.S0007-P017.S0009` 有 heading 吞句，均不能只按线性文本顺序解释。
+- `P001` 的摘要、作者信息与正文因双栏顺序交叉；`P008-P010` 的正文、Fig. 2 和 Box 1 交错；`P013.S0014-P014.S0010` 把临床转化正文、Fig. 4 与 Box 2 交错插入；`P017.S0007-P017.S0009` 有 heading 吞句，均不能只按线性文本顺序解释。
 - 多个 niche 标题被并入句首，包括 `P010.S0014`、`P011.S0014/P011.S0026/P011.S0032`、`P012.S0003/P012.S0010/P012.S0015/P012.S0023/P012.S0028`；本文保留其概念结构，不把标题残片计为独立结果。
 - 原文没有系统综述检索式、纳排流程、偏倚评价或 meta-analysis，也没有补充材料、作者原创数据集或代码可用性声明。文中独立方法学和统计框架是编辑者对领域方法的解释，不冒充作者实际执行的 Methods。
 - 未发现明确的原文内部数字冲突。CosMx 68-plex 与 WTX 后续最多 64 targets、Xenium `<500 genes + 27-marker` 与 5K/自定义 panel 属于不同产品或工作流；2026 年卷期与 `© 2025 The Authors` 也不是事实冲突。
