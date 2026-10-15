@@ -1,18 +1,18 @@
 # Spatial and functional dissection of cancer-associated fibroblasts-mediated immune modulation in H. pylori-associated gastric cancer
 
-<!-- wechat-style-reviewed: 2026-09-26 -->
+<!-- wechat-style-reviewed: 2026-10-15 -->
 
 在 H. pylori 阳性胃癌切片里，癌细胞、成纤维细胞和免疫细胞常同时出现。真正难回答的不是“有没有炎症”，而是哪类基质状态与调节性 T 细胞聚集、细胞毒性 T 细胞参与减少相伴。
 
 单细胞测序可以拆分细胞状态，却会丢掉原有位置；空间转录组保留位置，但仅凭共定位仍不能证明谁在调控谁。若只比较细胞比例，很容易把感染状态、Lauren 病理分型（肠型/弥漫型）和组织结构混为一谈。
 
-这项研究分析了 71 例 FFPE（福尔马林固定石蜡包埋）胃癌的空间转录组，并整合中国、美国和新加坡 58 例胃癌、250,310 个单细胞。TCGA、ACRG 两个公共胃癌队列提供混合组织（bulk）表达关联，4 个来自同一 HGC-27 细胞系的 LACE-seq 文库提供 RNA–蛋白结合证据；LACE-seq 是定位 RNA 结合蛋白靶位点的测序方法，这些证据层级不能相互替代。
+这项研究分析了 71 例 FFPE（福尔马林固定石蜡包埋）胃癌的靶向空间转录组，并整合中国、美国和新加坡 58 例胃癌、250,310 个单细胞。TCGA、ACRG 两个公共胃癌队列提供混合组织（bulk）表达关联，4 个来自同一 HGC-27 细胞系的 LACE-seq 文库提供 RNA–蛋白结合证据；LACE-seq 是定位 RNA 结合蛋白靶位点的测序方法，这些证据层级不能相互替代。
 
 作者给出的答案是两条互补但证据强度不同的 CAF（癌相关成纤维细胞）轴：THBS1+ CAF 与 Treg（调节性 T 细胞）空间邻近，并指向 WNT5–FZD 信号；ZFP36 则与 FN1 负相关，并有 RNA 结合证据支持其结合 FN1 3′UTR。两条轴共同提出了 H. pylori 相关胃癌的基质免疫抑制模型，但尚未完成 CAF 特异性扰动验证。
 
 ## 01｜H. pylori 阳性与阴性肿瘤，最先出现了什么差别？
 
-作者先在 71 例空间队列中比较 H. pylori 阳性与阴性胃癌。与阴性肿瘤相比，阳性肿瘤中的 CAF 丰度更高，THBS1 和 ZFP36 也是最突出的上调基因之一；单细胞数据将两者的主要表达来源定位到成纤维细胞。
+作者先在 71 例空间队列中比较 H. pylori 阳性与阴性胃癌。与阴性肿瘤相比，阳性肿瘤中的 CAF 丰度更高；在该 CosMx 靶向探针面板覆盖的基因中，THBS1 和 ZFP36 也是最突出的上调基因之一。单细胞数据将两者的主要表达来源定位到成纤维细胞。
 
 但原文没有给出 71 例中阳性与阴性各有多少人，也没有报告 Fig. 5A 中 CAF 丰度差的效应量和精确 `P` 值；THBS1、ZFP36 的空间队列与 ACRG 组间图只标为 `P < 0.05`。因此，这部分可以判断变化方向，不能判断感染分层的差异有多大。
 
@@ -20,7 +20,7 @@
 
 ## 02｜这项研究到底做了多大规模？
 
-空间发现队列来自香港 Prince of Wales Hospital，包含 1999–2006 年诊断的 71 例 FFPE 胃癌，使用 CosMx SMI 同时定位主要细胞、CAF 亚型和 T 细胞亚群。
+空间发现队列来自香港 Prince of Wales Hospital，包含 1999–2006 年诊断的 71 例 FFPE 胃癌，使用 CosMx SMI 的 980-plex 加定制 ISH 探针定位主要细胞、CAF 亚型和 T 细胞亚群。这是靶向面板，不是无偏全转录组；因此“差异最突出”只适用于面板覆盖范围。
 
 单细胞层面整合了中国 10 例、美国 22 例和新加坡 26 例胃癌，共 58 例、250,310 个细胞。外部关联来自 TCGA STAD 与 ACRG；ZFP36 靶标则在 HGC-27 胃癌细胞的 4 个 LACE-seq 文库中评估。
 
@@ -74,7 +74,7 @@ THBS1+ CAF 背景下，Treg 高聚集组总体生存更短（高、低组各 19 
 
 ## 06｜ZFP36–FN1 这条链有多少直接证据？
 
-作者先筛出在 CAF 中与 ZFP36 呈 `Pearson R < -0.2`、且 3′UTR 至少含 5 个 ATTTA motifs 的基因，得到 735 个候选。FN1 是其中负相关最强且排名稳定的靶点之一。
+作者把在 CAF 中与 ZFP36 呈 `Pearson R < -0.2` 的基因，与 3′UTR 至少含 5 个 ATTTA motifs 的基因相交；Fig. 7B 的 Venn 图显示负相关条件独有 1,340 个、motif 条件独有 6,875 个，交集为 735 个候选。FN1 是其中负相关最强且排名稳定的靶点之一。
 
 随后，原文所称的 4 个“独立样本”均来自同一 HGC-27 胃癌细胞系的 LACE-seq 文库，显示 ZFP36 可结合 FN1 3′UTR。这一步提供了 RNA—蛋白结合证据，但不是跨生物来源复现，也没有证明结合后在患者 CAF 中必然导致 FN1 降低。
 
@@ -116,7 +116,7 @@ THBS1 轴对应 Treg 富集的空间生态位，ZFP36–FN1 轴则与细胞毒 T
 
 第四，原文内部有五处不能静默消除的不一致：Results 写 THBS1/ZFP36 在 H. pylori 阳性组上调，Fig. 5B 图注却写阴性组；亚型结果写 THBS1 偏 matCAF、ZFP36 偏 proCAF，后文又把两者概括为 proCAF 程序；Methods 称生存按中位数分组，但 ACRG 的 ZFP36 高、低组实际为 24 对 276 例；补充 Fig. S1B 的纵轴写 `log₂(diffuse/intestinal)`，图注却把红色解释为 intestinal 更强、蓝色解释为 diffuse 更强，方向与比值符号相反；Methods `P006.S0016` 声称报告精确 P 值，但 Fig. 5E/F 与 Fig. 6F 只给 `P < 0.05`。对 S1B 只登记“轴标签—图注冲突”，不替作者裁决颜色含义。
 
-最后，SAI 是作者自定义、默认 `n_neighbors=30` 的距离惩罚指标，结果会受组织密度和参数影响；本地 PDF 中公式还有符号抽取噪音。原文也没有交代历史队列的 H. pylori 判定方式、THBS1+ CAF 的精确阈值，以及空间统计如何处理患者和视野内聚类。
+最后，SAI 是作者自定义、本研究报告设 `n_neighbors=30` 的距离惩罚指标，结果会受组织密度和参数影响；本地 PDF 中公式还有符号抽取噪音。作者公开代码的论文同期末次实现（commit [`8cc7029`](https://github.com/AI-Lab-Pathology/SAI/tree/8cc7029dbe0108091aa44eb534cbb3fc42792c1b)）实际请求 `t+1` 个近邻，并在显式传入原坐标查询后没有删除查询细胞：31 个返回索引构成局部邻域，再据此筛选 center/target 细胞，公式归一化分母仍为 `t=30`。论文、README 和函数说明均未交代是否有意纳入自身，也不能确认发表图一定由该 commit 生成；Fig. 3、4、6 的 SAI 因而需要在“原公开实现”与“排除自身后固定 30 个近邻”之间做敏感性复算。原文还没有交代历史队列的 H. pylori 判定方式、THBS1+ CAF 的精确阈值，以及空间统计如何处理患者和视野内聚类。
 
 出版社在线补充文件共 7 页、只含 Fig. S1–S6；本次已建立独立补充包并完成 38/38 个句子 ID 的范围审计。它补齐了通讯网络、marker、FN1 3′UTR motif、SCENIC 与 T 细胞分群的图注，但没有补充表或独立 Source Data，也没有给出 Fig. 6F 的患者/FOV 分母、THBS1+ 阈值或新的功能扰动结果；因此不能用补图消除上述证据边界。
 
@@ -163,13 +163,14 @@ THBS1 轴对应 Treg 富集的空间生态位，ZFP36–FN1 轴则与细胞毒 T
 - 研究领域: 胃癌、H. pylori、癌相关成纤维细胞、空间转录组、单细胞转录组、肿瘤免疫微环境
 - 关键词: CAF, gastric cancer, spatial transcriptomics, H. pylori, Lauren classification, Treg, CTL, THBS1, ZFP36, FN1
 - 本地 PDF: `pdfs/processed/hp-gc-caf-immune-modulation-molecular-cancer-2025.pdf`
-- 数据来源: 空间数据 GEO `GSE308624`；LACE-seq GEO `GSE309051`；Singapore scRNA-seq `GSE183904`；ACRG `GSE62254`；另使用 USA cohort、TCGA 与 MSigDB 的 `GSE7460`/`GSE25087` Treg gene sets（`P018.S0035-P018.S0041`）。
-- 代码来源: SAI 实现与分析脚本 `https://github.com/AI-Lab-Pathology/SAI`（`P018.S0042`）。
+- 数据来源: 空间数据 GEO `GSE308624`；LACE-seq GEO `GSE309051`；Singapore scRNA-seq `GSE183904`；ACRG `GSE62254`；另使用 USA cohort、TCGA 与 MSigDB 的 `GSE7460`/`GSE25087` Treg gene sets（`P018.S0035-P018.S0041`）。整合中的 China cohort 含 10 例、92,439 个细胞（`P003.S0014`；`P010.S0003`），但 Data availability 未列 accession 或直接下载地址，Methods 只给招募机构和参考文献，因此该部分不能仅凭本文数据声明独立取得。
+- 代码来源: 作者公开的 [SAI 实现与分析脚本](https://github.com/AI-Lab-Pathology/SAI)（`P018.S0042`）。截至 2026-10-15，该仓库没有 tag 或 release，依赖清单未钉版本；本文复现审计固定在论文发表前最后一个公开实现 [commit `8cc7029`](https://github.com/AI-Lab-Pathology/SAI/tree/8cc7029dbe0108091aa44eb534cbb3fc42792c1b)，但论文未指定生成主图所用的 commit。
 - PDF 解析质量:
   - 使用 `scripts/build_pdf_llm_pack.py` 先抽取全文，再基于句子 ID 写作。
   - 解析结果：20 页，740 个句子；Results 328 句，Methods 130 句。
   - 主体正文、图注、Methods 和统计分析均可解析；图内文字、公式和页面跨栏处存在少量错序或断词，SAI 公式处尤其需要回看 PDF。
   - `P008.S0023` 与 `P009.S0002` 被 Fig. 2 图注 `P008.S0024-P008.S0029` 及页眉 `P009.S0001` 打断；覆盖审计保留全部 ID，正文按连续语义重接。
+  - `P011.S0063` 被整页 Fig. 5 和图注截断，至 `P013.S0017` 才续完；`P013.S0016` 又把 Fig. 5I 图注与 Fig. 6G Results 文本粘接。`P011.S0063-P013.S0019` 因而按图文语义重接，不能当作自然连续句。
   - Manifest 将语义上属于 Discussion 末段的 `P017.S0022-P018.S0003` 标为 Results；这是章节分类错分，不把它当成新结果。
   - LLM pack: `tmp/hp-gc-caf-immune-modulation-llm-pack.md`
 - 在线补充材料状态：出版社提供一份 [7 页 Supplementary material 1](https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs12943-025-02490-9/MediaObjects/12943_2025_2490_MOESM1_ESM.pdf)，只含 Fig. S1–S6（主文索引 `P018.S0025`）。已用同一脚本生成 `tmp/hp-gc-caf-immune-modulation-supplementary-llm-pack.md` 与 manifest：7 页、38 个 ID（title 1、supplementary 37），已 38/38 审计；补充包 ID 在下文以 `SI:` 前缀与主文 ID 区分。出版社页面未见独立 Supplementary Table 或 Source Data 链接。
@@ -315,7 +316,7 @@ CAF 不是一种均质细胞。作者沿用其既往 pan-cancer CAF 分类，把
 
 中文图注（基于原文图注）：Fig. 7A 图示作者提出的 ZFP36–mRNA degradation 模型。Fig. 7B 将 ZFP36 负相关基因和 ATTTA motif 数量结合，筛选候选靶点。Fig. 7C 展示 ZFP36 target genes 的 GO 富集。Fig. 7D-E 展示 ZFP36 与 FN1、FAP、INHBA、COL10A1、STC1 等免疫调控相关基因的空间表达和相关性。Fig. 7F 展示原文所称四个独立样本中的 binding sites，但 Methods 说明它们均来自 HGC-27 细胞系。Fig. 7G 展示 ZFP36-associated targets 的 pathway enrichment。Fig. 7H 用 CIBERSORT-ABS 分析 CAF genes 与 immune cell types 的相关性。Fig. 7I-J 展示 FN1+/- CAF 与 T cell subsets 的 ligand-receptor 互作和空间通讯网络。
 
-原文结果梳理：作者在 THBS1-Treg 轴之外寻找另一个 CAF 免疫调控程序，聚焦 ZFP36 这个已知可通过 AU-rich elements 促进 mRNA degradation 的 RNA-binding protein（`P013.S0027-P013.S0029`）。筛选逻辑是：在 CAF 中与 ZFP36 呈 `Pearson R < -0.2`、3′UTR 含不少于 5 个 ATTTA motifs 且通过 `FDR < 0.05` 的基因，共得到 735 个候选靶点（`P013.S0030-P013.S0031`, `P005.S0033-P005.S0039`）。这些靶点富集免疫相关通路（`P013.S0032-P013.S0033`）。在候选基因中，FN1 与 ZFP36 负相关最强且稳定排名靠前（`P013.S0034-P013.S0037`）。原文称四个独立 LACE-seq 样本显示 ZFP36 结合 FN1 3′UTR，但 Methods 只报告同一 HGC-27 细胞系；这支持结合和候选靶向，未证明患者 CAF 中的 FN1 降解（`P003.S0017-P003.S0021`, `P013.S0038-P013.S0041`）。
+原文结果梳理：作者在 THBS1-Treg 轴之外寻找另一个 CAF 免疫调控程序，聚焦 ZFP36 这个已知可通过 AU-rich elements 促进 mRNA degradation 的 RNA-binding protein（`P013.S0027-P013.S0029`）。筛选逻辑是：把在 CAF 中与 ZFP36 呈 `Pearson R < -0.2` 的基因，与 3′UTR 含不少于 5 个 ATTTA motifs 的基因相交；Fig. 7B 的 Venn 图显示负相关条件独有 1,340 个、motif 条件独有 6,875 个，交集为 735 个候选靶点（`P013.S0030-P013.S0031`）。Methods 另称对交集做 Benjamini–Hochberg 校正并以 `FDR < 0.05` 定义 high-confidence targets，却未另报校正后数量，因此不能默认 735 就是 FDR 后分母（`P005.S0033-P005.S0039`）。这些靶点富集免疫相关通路（`P013.S0032-P013.S0033`）。在候选基因中，FN1 与 ZFP36 负相关最强且稳定排名靠前（`P013.S0034-P013.S0037`）。原文称四个独立 LACE-seq 样本显示 ZFP36 结合 FN1 3′UTR，但 Methods 只报告同一 HGC-27 细胞系；这支持结合和候选靶向，未证明患者 CAF 中的 FN1 降解（`P003.S0017-P003.S0021`, `P013.S0038-P013.S0041`）。
 
 SCENIC regulon 分析提示 ZFP36+ CAF 富集 ATF3、JUN、FOS 等 stress/immune signaling 相关转录程序（`P013.S0042-P013.S0046`）。ZFP36-associated targets 的 pathway enrichment 指向 T cell activation 和 costimulatory signaling（`P013.S0047-P013.S0048`）。CIBERSORT-ABS 显示 TCGA STAD bulk 中 FN1 表达与多种 T cell subsets 的推定比例正相关，尤其 activated CD8+ T cells 和 gamma-delta T cells（`P013.S0049-P013.S0051`）；Fig. 7H 只用色阶与星号表示相关和显著性，没有逐项报告精确 `r`、`P` 或 TCGA 有效样本数。Ligand-receptor modeling 预测 FN1+ CAF 比 FN1- CAF 更广泛地与 T cells 互作，包括 alpha5beta1-FN1、CD86-CTLA4、TNFSF4-TNFRSF4 等；Fig. 7I-J 同样没有报告参与样本数或量化效应（`P013.S0052-P013.S0057`）。
 
@@ -347,7 +348,7 @@ SCENIC regulon 分析提示 ZFP36+ CAF 富集 ATF3、JUN、FOS 等 stress/immune
 
 #### 研究对象、样本和数据结构
 
-空间转录组使用 71 例 FFPE 胃癌组织，来自香港 Prince of Wales Hospital 1999-2006 年诊断患者（`P003.S0009-P003.S0013`）。单细胞数据来自 China 10 例、USA 22 例、Singapore 26 例，后两者包含公开数据来源和 GEO GSE183904（`P003.S0014-P003.S0017`）。HGC-27 胃癌细胞系用于 LACE-seq，而不是用于 CAF 功能实验（`P003.S0017-P003.S0021`）。
+空间转录组使用 71 例 FFPE 胃癌组织，来自香港 Prince of Wales Hospital 1999-2006 年诊断患者（`P003.S0009-P003.S0013`）。单细胞数据来自 China 10 例、USA 22 例、Singapore 26 例，后两者包含公开数据来源和 GEO GSE183904（`P003.S0014-P003.S0017`）。China cohort 贡献 92,439 个细胞（`P010.S0003`），但 Data availability 没有列出 accession 或直接下载地址；Methods 只给招募机构和参考文献，因此 250,310 个整合细胞中这一部分存在数据取得缺口。HGC-27 胃癌细胞系用于 LACE-seq，而不是用于 CAF 功能实验（`P003.S0017-P003.S0021`）。
 
 #### 实验流程和数据生成
 
@@ -359,7 +360,11 @@ scRNA-seq 使用 Python 3.8、Scanpy 1.9.6，三个公开单细胞数据通过 `
 
 #### 空间邻域和 SAI
 
-Neighborhood enrichment 使用 CosMx 空间坐标和细胞类型注释，比较观察到的邻近频率和随机打乱 cell-type labels 后的 null distribution，输出 log observed/expected enrichment scores；Methods 只写“defined spatial radius”，没有给出半径数值（`P004.S0016-P004.S0021`）。SAI 是作者自定义的 distance-penalized 指标，整合邻域中 center/target cell 数量、全局细胞数量和局部平均欧氏距离；它按每个 cell 的局部邻域计算并存入 `adata.obs`，默认 `n_neighbors=30`（`P004.S0022-P004.S0038`）。原文未说明 Fig. 6F 是否按患者聚合或如何处理同一患者、FOV 内的聚类，PDF 公式抽取也有明显符号噪音；复现时必须以原文公式或代码为准。
+Neighborhood enrichment 使用 CosMx 空间坐标和细胞类型注释，比较观察到的邻近频率和随机打乱 cell-type labels 后的 null distribution，输出 log observed/expected enrichment scores；Methods 只写“defined spatial radius”，没有给出半径数值（`P004.S0016-P004.S0021`）。SAI 是作者自定义的 distance-penalized 指标，整合邻域中 center/target cell 数量、全局细胞数量和局部平均欧氏距离；它按每个 cell 的局部邻域计算并存入 `adata.obs`，论文报告本研究设 `n_neighbors=30`（`P004.S0022-P004.S0038`）。
+
+代码审计补出一个 paper–code 口径边界：固定在 commit [`8cc7029`](https://github.com/AI-Lab-Pathology/SAI/blob/8cc7029dbe0108091aa44eb534cbb3fc42792c1b/SAI/calc.py) 的 `saiscore()` 先用 `NearestNeighbors(n_neighbors=t+1)` 拟合坐标，再以 `kneighbors(coords)` 显式查询同一坐标；代码没有删除查询细胞，31 个返回索引构成局部邻域，再据此筛选 center/target 细胞并计算距离，而公式中的 `T/t` 和局部比例仍以 `t=30` 归一化。按 scikit-learn 的接口语义，只有查询参数 `X=None` 时才会把训练点自身排除；这里显式传入 `coords`，查询细胞会在结果中。异型 center–target 比较会把焦点 center 纳入局部计数；同型比较的距离矩阵还会包含零对角 self-pairs。论文、README 和函数 docstring 没有定义这一选择，论文也未钉 commit，因此不能断言发表图必然按该文件生成；稳健复现至少应并列报告公开实现与“去除自身、恰好 30 个近邻”的结果。
+
+原文未说明 Fig. 6F 是否按患者聚合或如何处理同一患者、FOV 内的聚类，PDF 公式抽取也有明显符号噪音；复现时必须同时核对原文公式、锁定代码版本并报告邻域口径。
 
 #### 轨迹、空间反卷积和细胞通讯
 
@@ -377,7 +382,7 @@ LACE-seq 通过 UV crosslinking 保留 RNA-protein interactions，再用 ZFP36-s
 
 空间邻域富集用 permutation-based null model：输入为空间坐标和细胞类型标签，零假设是标签随机分布下没有特定细胞类型邻近偏好，输出 observed/expected enrichment scores（`P004.S0016-P004.S0020`）。SAI 则进一步纳入距离惩罚，用于量化 center-target cell 局部聚集；它是作者自定义指标，解释时要注意参数依赖和组织密度差异。
 
-生存分析使用 lifelines 0.27.8 的 Kaplan–Meier 方法和 log-rank test，在 TCGA/ACRG 中按 THBS1、ZFP36 表达或 SAI score 的中位数分组（`P005.S0009-P005.S0012`）。这能说明预后相关性，不能证明 THBS1/ZFP36 是独立预后因素或治疗靶点；若要临床 biomarker 级别证据，需要多变量 Cox、分层验证和批次/临床混杂控制。
+生存分析使用 lifelines 0.27.8 的 Kaplan–Meier 方法和 log-rank test（`P005.S0009-P005.S0012`），但实际有两套数据源：TCGA/ACRG 按 THBS1 或 ZFP36 表达分组；Fig. 6G 则在有空间坐标的队列子集中，按 THBS1+ CAF 邻近 Treg 的 recruitment/SAI 高低分成 19 对 19 例。原文没有报告这 38/71 例的筛选规则或 H. pylori 构成，不能把空间 SAI 生存曲线归到 TCGA/ACRG。这些结果能说明预后相关性，不能证明 THBS1/ZFP36 是独立预后因素或治疗靶点；若要临床 biomarker 级别证据，需要多变量 Cox、分层验证和批次/临床混杂控制。
 
 CIBERSORT-ABS 使用 TCGA STAD expression matrix，permutations = 1,000，估计免疫细胞组成，并用 Pearson correlation 检验 CAF-associated genes 与免疫细胞 fractions 的关系（`P006.S0003-P006.S0005`）。这适合大队列免疫浸润趋势验证，但 deconvolution 依赖 signature matrix，且 bulk expression 无法提供真实空间邻近。
 
@@ -391,7 +396,7 @@ CIBERSORT-ABS 使用 TCGA STAD expression matrix，permutations = 1,000，估计
 
 ### 局限性与危险假设
 
-第一，核心机制多数来自空间共定位、ligand-receptor inference、相关分析和外部队列验证，缺少 CAF-specific perturbation。第二，H. pylori 状态可能和 Lauren 分型、组织区域、炎症程度、肿瘤阶段、取样位置共同相关，空间差异不一定由 H. pylori 单独驱动。第三，LACE-seq 使用 HGC-27 细胞验证 ZFP36-FN1 binding，不是 CAF 原位环境下的直接验证。第四，SAI 是自定义空间指标，公式和参数会影响结论，且 PDF 公式抽取有噪音。第五，THBS1/ZFP36 预后关联未见充分多变量模型，不能直接作为独立 prognostic biomarker。
+第一，核心机制多数来自空间共定位、ligand-receptor inference、相关分析和外部队列验证，缺少 CAF-specific perturbation。第二，H. pylori 状态可能和 Lauren 分型、组织区域、炎症程度、肿瘤阶段、取样位置共同相关，空间差异不一定由 H. pylori 单独驱动。第三，LACE-seq 使用 HGC-27 细胞验证 ZFP36-FN1 binding，不是 CAF 原位环境下的直接验证。第四，SAI 是自定义空间指标，公式和参数会影响结论，且 PDF 公式抽取有噪音；论文同期公开实现还存在“31 个索引参与局部计算、`t=30` 用于归一化”的未定义 self-inclusion 口径，主图需做去除自身后的敏感性复算。第五，THBS1/ZFP36 预后关联未见充分多变量模型，不能直接作为独立 prognostic biomarker。
 
 ### 深度研究洞察
 
@@ -420,8 +425,8 @@ CIBERSORT-ABS 使用 TCGA STAD expression matrix，permutations = 1,000，估计
 | Fig. 2 图注与跨页错序补充 | `P008.S0024-P009.S0002` | 已覆盖；`P009.S0001` 为页眉，`P008.S0023/P009.S0002` 按语义重接 |
 | Fig. 3 相关结果 | `P006.S0044-P008.S0023` | 已覆盖 |
 | Fig. 4 相关结果 | `P009.S0003-P011.S0032` | 已覆盖 |
-| Fig. 5 相关结果 | `P011.S0033-P011.S0054`, `P013.S0003-P013.S0016` | 已覆盖 |
-| Fig. 6 相关结果 | `P011.S0055-P013.S0026`, `P014.S0001-P015.S0017` | 已覆盖；包含跨页图题与页眉 |
+| Fig. 5 相关结果 | `P011.S0033-P011.S0054`, `P013.S0003-P013.S0016` | 已覆盖；`P013.S0016` 含跨图粘接，按图注语义拆分 |
+| Fig. 6 相关结果 | `P011.S0055-P013.S0026`, `P014.S0001-P015.S0017` | 已覆盖；`P011.S0063-P013.S0019` 含整页图阻断及跨图粘接，按图文语义重接 |
 | Fig. 7 相关结果 | `P013.S0027-P013.S0058`, `P017.S0003-P017.S0021` | 已覆盖 |
 | Discussion | `P015.S0018-P018.S0003` | 已用于证据强度、局限性和迁移思路 |
 | 数据与代码可用性 | `P018.S0035-P018.S0042` | 已列出公开数据 accession、Treg gene sets 与 SAI 代码 |

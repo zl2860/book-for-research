@@ -1,6 +1,6 @@
 # Spatial dissection of tumour microenvironments in gastric cancers reveals the immunosuppressive crosstalk between CCL2+ fibroblasts and STAT3-activated macrophages
 
-<!-- wechat-style-reviewed: 2026-09-26 -->
+<!-- wechat-style-reviewed: 2026-10-15 -->
 
 同样是胃癌，有些肿瘤里免疫细胞能够进入恶性上皮周围；另一些肿瘤却被致密的成纤维细胞包围，巨噬细胞聚集，真正执行杀伤的 T 细胞很少。病理上可以看到这种差别，但很难回答：究竟是哪类细胞在组织这种“免疫冷”环境？
 
@@ -20,15 +20,15 @@
 
 ## 02｜这项研究到底做了多大规模
 
-发现队列并不大：单中心 9 例手术切除的原发胃癌，而且 9 人均为男性；每张切片包含 1,882–4,274 个 spots，合计 29,808 个。作者用既往胃癌单细胞数据进行去卷积，估计每个 spot 中 12 类细胞的组成。
+发现队列并不大：单中心 9 例手术切除的原发胃癌，而且 9 人均为男性；每张切片包含 1,882–4,274 个 spots，合计 29,808 个。作者用既往 5 例胃癌的单细胞数据进行去卷积，估计每个 spot 中 12 类细胞的组成；原文没有说明这 5 例与当前 9 例是否配对，因此不能把两批数据按同一配对队列理解。
 
-机制收敛阶段使用了 23,477 个肿瘤微环境单细胞，其中包括 726 个 fibroblasts。验证则分成四层：ACRG、TCGA 和四个 GEO 队列；CAF、THP-1、Jurkat 与人 PBMC 功能实验；小鼠同系移植模型；以及 675 例胃癌组织芯片。
+机制收敛阶段复用了上述 5 例参考中的 23,477 个肿瘤微环境单细胞，其中包括 726 个 fibroblasts。验证则分成四层：ACRG、TCGA 和四个 GEO 队列；CAF、THP-1、Jurkat 与人 PBMC 功能实验；小鼠同系移植模型；以及 675 例胃癌组织芯片。
 
 这套设计的价值不在于某一个队列特别大，而在于同一条假说依次经过空间定位、单细胞状态、外部预后、分子扰动和组织验证。
 
 ## 03｜胃癌能被拆成哪三种空间生态
 
-作者先按细胞组成把 9 例胃癌分为 epithelial、immunogenic 和 fibrotic 三类。Fibrotic GC 以 fibroblast 浸润为主，T cells 和 plasma cells 相对更少；它不是传统 Lauren 分型的简单替代，而是一种空间细胞组成分型。
+作者先按细胞组成把 9 例胃癌分为 epithelial、immunogenic 和 fibrotic 三类，每类只有 3 例；其中 fibrotic 组是 GC4、GC6 和 GC9。Fibrotic GC 以 fibroblast 浸润为主，T cells 和 plasma cells 相对更少；它不是传统 Lauren 分型的简单替代，而是一种空间细胞组成分型。
 
 ![Fig. 1：三类胃癌空间生态](../../assets/gastric-cancer/2025-ccl2-fibroblast-stat3-macrophage/page03.png)
 
@@ -88,13 +88,13 @@ CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL
 
 ## 09｜这些结果仍需要冷静看待
 
-首先，空间发现队列只有单中心 9 例，而且 9 人均为男性。它适合建立机制假说，不能单独证明三类空间亚型在女性、其他中心或不同人群中稳定存在。
+首先，空间发现队列只有单中心 9 例，而且 9 人均为男性；三类空间亚型各自只有 3 例，fibrotic 组也仅有 GC4、GC6、GC9。去卷积和细胞状态分析依赖既往 5 例胃癌单细胞参考，原文没有说明其与当前 9 例配对。它适合建立机制假说，不能单独证明三类空间亚型在女性、其他中心或不同人群中稳定存在。
 
 其次，Visium 一个 spot 包含多个细胞。去卷积可以估计细胞组成，却不足以精确解析 CD8 T-cell exhaustion 或 Treg 的全部状态。公开队列中的双 signature 也只是 bulk 推断，不等于两类细胞在组织中直接相邻。
 
 第三，体外实验和小鼠模型支持 CCL2–STAT3 候选链条，但中和/敲低 CCL2 只验证了迁移，没有做 CCL2–STAT3 rescue；主 Fig. 5 的迁移、RNA-seq/GSEA、pSTAT3 blot 与 IFNG readout 均未完整报告独立 biological n 或统计单位，小鼠也没有进行轴上干预且未报告每组动物数。人类胃癌原位环境中还有 IL6、CSF1、缺氧和肿瘤细胞因子等多种 macrophage STAT3 来源，论文没有证明阻断 CCL2、CCR2 或 STAT3 能改善免疫治疗结局。
 
-最后，675 例组织芯片的口径不能合并引用：正文和 Table S4 表头均为 228/126/321，Fig. 6 分类标签为 226/126/320，而 Kaplan–Meier 曲线起点为 320 个 fibrotic 加 354 个 non-fibrotic，共 674 例；正文/图内与图注的 log-rank P 又分别为 0.015 和 0.0023。Table S4 的 histologic subtype 三行分别相加只得到 225/127/320，这是表内分类单元格与表头未对齐，不是第三套亚型样本量。158 例标志物子队列中每张 DFS 曲线实际纳入 152 例；两类染色的线性关联虽为 P < 0.001，DFS 却均不显著。结论方向可以用于提出假说，但不能当作稳定预后标志。
+最后，675 例组织芯片全部来自 stage II/III 胃切标本，每例仅取肿瘤中心和侵袭前沿各一个 2 mm core；生存结果只见 Kaplan–Meier/log-rank，未报告调整后 Cox、HR 或置信区间。因此两个 cores 不能保证充分覆盖整块肿瘤异质性，结果不能直接外推到 stage I/IV，也不能证明该分型具有独立预后价值。队列数字本身也不能合并引用：正文和 Table S4 表头均为 228/126/321，Fig. 6 分类标签为 226/126/320，而 Kaplan–Meier 曲线起点为 320 个 fibrotic 加 354 个 non-fibrotic，共 674 例；正文/图内与图注的 log-rank P 又分别为 0.015 和 0.0023。Table S4 的 histologic subtype 三行分别相加只得到 225/127/320，这是表内分类单元格与表头未对齐，不是第三套亚型样本量。158 例标志物子队列中每张 DFS 曲线实际纳入 152 例；两类染色的线性关联虽为 P < 0.001，DFS 却均不显著。结论方向可以用于提出假说，但不能当作稳定预后标志。
 
 ---
 
@@ -200,7 +200,7 @@ CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL
 
 主数据是 9 例手术切除原发胃癌的 Visium 空间转录组。每个组织切片获得 1,882-4,274 个 spots，中位数 3,491；总计 29,808 个 spots 用于后续 niche 聚类（`P002.S0017-P002.S0019`, `P004.S0006`, `P009.S0002`）。
 
-细胞注释使用作者既往 5 例胃癌 scRNA-seq 资源做 spot-level deconvolution。原始 11 类细胞中，上皮细胞被进一步拆成 malignant epithelium 和 normal epithelium，因此每个 spot 最终估计 12 类细胞丰度（`P002.S0020-P002.S0021`）。单细胞层面的补充验证还使用了 23,477 个 TME cells，其中包括 726 个 fibroblasts，用于定位 CCL2+ fibroblast 和 JAK-STAT3 high macrophage（`P006.S0009-P006.S0013`, `P011.S0009-P011.S0013`）。
+细胞注释使用作者既往 5 例胃癌 scRNA-seq 资源做 spot-level deconvolution；原文未说明这 5 例与当前 9 例 Visium 患者配对。原始 11 类细胞中，上皮细胞被进一步拆成 malignant epithelium 和 normal epithelium，因此每个 spot 最终估计 12 类细胞丰度（`P002.S0020-P002.S0021`）。单细胞层面的补充验证还使用了这套参考中的 23,477 个 TME cells，其中包括 726 个 fibroblasts，用于定位 CCL2+ fibroblast 和 JAK-STAT3 high macrophage（`P006.S0009-P006.S0013`, `P011.S0009-P011.S0013`）。
 
 验证数据包括四层。第一，公共 bulk-level RNA-seq/microarray 队列，包括 ACRG、TCGA 和四个 GEO 队列；但主 Results、Supplementary Methods 与数据可用性列出的 GEO 编号彼此不一致，不能静默合并，详见“原文冲突”（`P011.S0024-P011.S0029`；`s003:P004.S0003–P004.S0009`；`P014.S0001-P014.S0004`）。第二，体外 CAF/THP-1/Jurkat/PBMC 实验验证 CCL2 促进迁移、STAT3 磷酸化和 T 细胞 IFNG 抑制（`P011.S0035-P012.S0005`）。第三，YTN3 小鼠胃癌细胞与 GFP+ mouse gastric fibroblast 混合接种的同系肿瘤模型（`P012.S0007-P012.S0016`）。第四，675 例胃癌 TMA 用 H&E/IHC 和部分 RNA-ISH/multiplex IHC 验证 fibrotic subtype、预后和 CCL2+ fibroblast/pSTAT3+ macrophage 共定位（`P012.S0017-P012.S0027`）。
 
