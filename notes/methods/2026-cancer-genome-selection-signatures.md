@@ -1,6 +1,6 @@
 # Characterizing selection signatures in coding and noncoding regions of 14,886 cancer genomes
 
-<!-- wechat-style-reviewed: 2026-10-12 -->
+<!-- wechat-style-reviewed: 2026-10-20 -->
 
 做肿瘤全基因组分析时，一个很实际的难题是：编码区之外出现了大量体细胞突变，但研究者很难判断哪些改变真正帮助了肿瘤克隆扩张，哪些只是随细胞分裂积累的乘客。
 
@@ -156,7 +156,7 @@ TERT 最典型。作者称启动子在 15 个癌种受正选择、编码区在 5
 
 ### 论文基本信息
 
-- 期刊：Journal of Genetics and Genomics；出版社 DOI 页面目前仍标作 Accepted Manuscript，ScienceDirect 记录仍为 Journal Pre-proof（在线日期分别显示 2026-06-22 与 2026-06-17），本地可审计论文文件也是 Journal Pre-proof
+- 期刊：Journal of Genetics and Genomics；[ScienceDirect](https://www.sciencedirect.com/science/article/pii/S1673852726002146) 当前仍显示 `In Press, Journal Pre-proof`（Available online 2026-06-17），PubMed 仍为 `aheadofprint`，且尚无卷、期、页码；[Crossref](https://api.crossref.org/works/10.1016%2Fj.jgg.2026.06.008) 却已登记 `published-print: 2026-06`，并将 Elsevier XML/plain-text 链接标为 `content-version=vor`。官方元数据口径不同步，本地可审计的 73 页论文文件仍是 Journal Pre-proof
 - 年份：2026；修订日期 2026-06-12，接收日期 2026-06-14
 - DOI：10.1016/j.jgg.2026.06.008
 - PubMed：PMID 42309349
@@ -180,7 +180,7 @@ TERT 最典型。作者称启动子在 15 个癌种受正选择、编码区在 5
 - 图表：Fig. 1–5 图像完整；原文完整图注位于 `P036.S0001–P037.S0014`。图内文字抽取在 `P038–P042` 低置信，本文依据图像与图注人工核对。
 - 补充材料：本地 PDF 内含 Supplementary Fig. S1–S30 及图注，但未嵌入 Supplementary Tables S1–S11。此次另从出版社附件逐表审计 S1–S11；它们补齐候选和队列汇总，却仍没有样本级 ID、测序深度或完整 QC/过滤明细。
 - 明确抽取错误：`P002.S0010` 把摘要原图中的 “30” 识别为 “20”；已用 PDF 页面图像核对为 30。参考文献页的双栏顺序也明显错乱，但不影响正文证据范围。
-- 版本边界：该 PDF 是接受后、正式排版前的 Journal Pre-proof。2026-10-12 查新确认出版社 DOI 页仍标作 Accepted Manuscript，ScienceDirect 与 PubMed 仍是 Journal Pre-proof/ahead of print，且未列卷期页码、排版版 PDF 或勘误关系。在排版版 PDF 逐页纳入本地证据包并对照前，本文仍只据此 pre-proof 的句子 ID、图和补充附件陈述，不能假定未来排版版与它逐字一致，也不能把潜在改动倒灌进来。
+- 版本边界：本地可审计的 73 页 PDF 仍是 Journal Pre-proof（SHA-256 见上），因此本文现有 `Pxxx.Sxxxx` 只指向这份 pre-proof。2026-10-20 查新时，Crossref 已将 Elsevier 全文链接登记为 `content-version=vor`，并记录 `published-print: 2026-06`；ScienceDirect 也可展示完整 Results/Methods 正文。与此同时，ScienceDirect 横幅仍显示 `In Press, Journal Pre-proof`，PubMed 仍标为 `aheadofprint`，且官方元数据尚无卷、期、页码。本文已用当前 ScienceDirect HTML 对关键数字、Methods 参数和内部冲突作哨兵核对，但在最终版本固化并重新抽取前，不把 pre-proof 句子 ID 当作正式排版页码或逐字等同关系。
 
 ### 官方 Supplementary Tables S1–S11 审计（不计入主文 ID）
 
@@ -201,7 +201,7 @@ TERT 最典型。作者称启动子在 15 个癌种受正选择、编码区在 5
 | S10 | 12 条 TERT 非编码变异 | C228T 为 799 次、C250T 为 243 次，合计 1,042 条热点记录；表无患者 ID，无法与正文 1,041 名唯一患者直接对账。 |
 | S11 | 41 条队列/癌种汇总记录 | 100kGP 为 12,303 donors、281,491,030 个突变；PCAWG 为 2,583 donors、45,304,280 个突变。它补齐癌种级样本量，但不含样本 ID、深度、逐样本 QC 或变异过滤。 |
 
-补表使“表不存在”这一旧边界失效，却没有消除高置信 175、非编码独有 48/50、FoxO 20/27、内含子/基因间 120/48、Ig 20/19、TERT 1,041/1,042 等对象或分母冲突；以下正文与 Methods ID 审计仍按本地 pre-proof 原文保留。出版社 DOI/Accepted Manuscript 页已存在，但尚无可纳入本地审计的排版版 PDF，不能以页面存在本身消解这些冲突。
+补表使“表不存在”这一旧边界失效，却没有消除高置信 175、非编码独有 48/50、FoxO 20/27、内含子/基因间 120/48、Ig 20/19、TERT 1,041/1,042 等对象或分母冲突；以下正文与 Methods ID 审计仍按本地 pre-proof 原文保留。Crossref 的 `vor` 标签与 ScienceDirect 的 Pre-proof 横幅不同步，且当前 ScienceDirect HTML 仍保留上述冲突；不能以元数据标签或页面存在本身消解它们。
 
 ### 主图与完整图注
 
@@ -328,7 +328,7 @@ Discussion 不计入上面的 225 个 Results ID，也不计入后面的 148 个
 
 **原文与官方附件中的冲突：**
 
-- 非编码独有基因数：详细 Results 为 18 个已知驱动 + 30 个新候选，即 48/175 = 27.4%；Discussion 同时写 20 + 30 = 50、50/175 和 27.4%，但 50/175 实为 28.6%；引言摘要只写 30/175。出版社页面截至 2026-10-12 仍为 Accepted Manuscript；须取得并逐页审计未来排版 PDF 或作者代码后，才能确认这些冲突是否被更正。
+- 非编码独有基因数：详细 Results 为 18 个已知驱动 + 30 个新候选，即 48/175 = 27.4%；Discussion 同时写 20 + 30 = 50、50/175 和 27.4%，但 50/175 实为 28.6%；引言摘要只写 30/175。2026-10-20 哨兵核对确认，当前 ScienceDirect HTML 仍同时保留 Results 的 18 + 30 与 Discussion 的 20 + 30、50/175、27.4%；可见在线全文并未消除这一冲突，在最终版本固化或发布勘误前必须继续保留。
 - 元件与高置信对象：Results 把 1,271 称为 elements，S1 实为 1,271 条 element–tissue–cohort 记录、768 个区域感知元件、730 个坐标。S1 又没有 175 个高置信成员标志；简单按“至少两个非泛癌癌种或双队列”聚合得到 130 个基因，把 pan-cancer 纳入则为 222 个，均不能复现 175。
 - 内含子/基因间元件：Results 为 120 个，其中 64 个连到靶基因、50 个组织特异；S5 只有 48 个坐标，相应 CGC、TF、kinase 列为 17、24、6 个非空元件，而不是正文的 25、36、10。差异可能来自折叠/筛选层级，但附件没有映射表。
 - FoxO 基因数与 P 值：Results/Fig. 4 为 20 个（14 CGC + 6 new），S4 的 FoxO 行列 27 个正式基因符号；S4 全部 132 行的原始 P 与 adjusted P 又完全相同，而 S3 并非如此。
