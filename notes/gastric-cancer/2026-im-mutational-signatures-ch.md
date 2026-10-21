@@ -1,6 +1,6 @@
 # Mutational Signatures and Clonal Hematopoiesis in Intestinal Metaplasia across Countries with Varying Stomach Cancer Incidence
 
-<!-- wechat-style-reviewed: 2026-10-09 -->
+<!-- wechat-style-reviewed: 2026-10-21 -->
 
 发现胃肠化生以后，临床上最难回答的问题往往不是“它是不是癌前病变”，而是“这个人究竟有多大概率会继续进展”。
 
@@ -36,7 +36,7 @@
 
 这不是单纯的技术细节。如果测序深度不够，体量最小的异常克隆会直接从数据里消失，研究者可能误以为癌前组织没有 driver；低 VAF 本身却不能证明这些克隆出现得最早。
 
-高深度 panel 最终识别到 47 个显著突变基因和 2,100 个驱动突变（driver mutations），其中 25 个基因此前未在胃肠化生中报告。
+IntOGen 分析先排除 hypermutated samples，再从其余样本寻找正选择信号。官方 Supplementary Table S3 的 47 个基因都以 1,498 份 non-hypermutated IM 为分母；主文按 combination q < 0.005 报告 47 个显著突变基因和 2,100 个驱动突变，其中 25 个基因此前未在胃肠化生中报告。也就是说，这组 driver discovery 数字不能直接以全部 1,582 份 IM 为分母（`P005.S0019–P005.S0021`、`P019.S0015–P019.S0018`）。
 
 ## 04｜哪些上皮 driver 真正关联早期胃肿瘤
 
@@ -58,9 +58,13 @@
 
 ## 06｜SBS17 为什么不像普通的年龄累积噪音
 
-20 个经 VAF 富集选择的 IM WGS 样本中，作者识别到 SBS1、SBS5/40、SBS17 和 SBS18；“正常胃中不典型”来自 79 例已发表外部正常胃数据，胃癌比较来自 122 例 ICGC 数据，并非直接在这 20 个 matched normal 上重做 signature。映射到 1,095 个胃窦 IM 后，287 个样本（26.2%）可检测到 SBS17，而选择性 WGS 集合为 60%，两者不能当作直接患病率复现。
+20 个经 VAF 富集选择的 IM WGS 样本中，作者识别到 SBS1、SBS5/40、SBS17 和 SBS18；“正常胃中不典型”来自 79 例已发表外部正常胃数据，胃癌比较来自 122 例 ICGC 数据，并非直接在这 20 个 matched normal 上重做 signature。
 
-按复制时序四分位分层后，SBS17 的突变频率从最早复制四分位（T1）到最晚复制四分位（T4）增加 14.5 倍；SBS18、SBS1 和 SBS5/40 的相应倍数仅为 5.0、2.0 和 3.0。SBS17 还与吸烟相关，却没有随年龄显著增加。类器官中的 OXPHOS、氧耗和 8-oxo-dG 结果把它与氧化损伤联系起来，但这些实验仍不能证明 OXPHOS 直接制造了 SBS17。
+靶向 panel 也不是重新无偏搜索全部 COSMIC signatures。Methods 只把 WGS 预选出的 SBS1、SBS5、SBS17a、SBS17b、SBS18 和 SBS40 拟合到 1,095 个胃窦 IM，再合并为四类；论文没有报告判定单样本“检出 SBS17”的最低 exposure 或 fit-quality 阈值。因此，287/1,095（26.2%）是受限 signature projection 的结果；选择性 WGS 集合中的 60% 也不能与它互作直接患病率复现（`P020.S0008–P020.S0015`）。
+
+按复制时序四分位分层后，SBS17 的突变频率从最早复制四分位（T1）到最晚复制四分位（T4）增加 14.5 倍；SBS18、SBS1 和 SBS5/40 的相应倍数仅为 5.0、2.0 和 3.0。SBS17 与吸烟状态的 Wilcoxon P = 6.2 × 10^-3，却没有随年龄显著增加。Fig. 4H 主图未直接给分母；Supplementary Table S1 可复算为从不吸烟 819 人、既往吸烟 141 人、当前吸烟 131 人，另 4 人缺失（有状态者 n = 1,091）。但论文仍未报告效应量、单一 Wilcoxon 的确切两组比较或年龄/地区调整，不能把这个 P 值直接解释为独立吸烟效应（`P011.S0015–P011.S0016`、`P011.S0051`）。
+
+类器官中的 OXPHOS、氧耗和 8-oxo-dG 结果把 SBS17 与氧化损伤联系起来，但 assay 分母并不相同：表达富集比较 6 个 IM 与 4 个正常类器官，OCR 和 8-oxo-dG 各为 3 对 3 个类器官系；论文未报告它们与 20 个 WGS 样本的逐样本配对或样本级链接。这些实验仍不能证明 OXPHOS 直接制造了 SBS17。
 
 ![Fig. 4：SBS17、复制时序与氧化损伤](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig4-page10.png)
 
@@ -72,13 +76,17 @@
 
 作者在 1,067 名受试者中识别到 286 个已报道的克隆性造血（CH）相关基因突变，涉及 225 人，主要 driver 为 DNMT3A、TET2、ASXL1 和 PPM1D。
 
-临床关联分析纳入 765 名 OLGIM II–IV 期受试者，其中 43 人有异型增生、26 人有 EGN。当 CH 变异等位基因频率超过 5% 时，high CH 在多变量分析中仍与 EGN 相关（OR = 4.19，95% CI 1.50–11.74；P = 6.4 × 10^-3）；ARID1A 截短突变的多变量 OR 为 4.54（95% CI 1.52–13.55；P = 6.7 × 10^-3）。只使用 OLGIM、年龄和性别的模型 AUC 为 0.72；加入 mutation count、ARID1A mutation 和 high CH 后，AUC 提高到 0.773。
+这里的 CH 并非统一由外周血检测。作者把配对血液或唾液 DNA 作为 Mutect2 的“tumor”输入、IM 作为对照；候选变异至少有 5 条支持 reads，血液/唾液 VAF 不低于 2%，且至少是配对 IM VAF 的 2 倍，以降低 IM 中白细胞污染的影响。因此，本节所说“血液里的克隆”指造血来源，不等于每位受试者都接受了同一种外周血检测流程（`P020.S0046–P021.S0002`）。
 
-在随访至少 5 年的 GCEP1000 子集中，312 人只有 9 例 EGN；high CH 与 ARID1A 截短突变的多变量 OR 分别为 10.62（95% CI 2.43–46.45）和 11.51（95% CI 2.28–58.20），区间很宽，AUC 则从 0.671 提高到 0.811。Methods 只说明用 `glm` 并经单变量筛选后进入多变量，没有报告独立 train/test、交叉验证、bootstrap、校准或决策曲线；这些很可能是表观 AUC，不能当作泛化性能。
+临床关联分析纳入 765 名 OLGIM II–IV 期受试者。官方 Supplementary Table S1 标出 43 个 Dysplasia flag，其中 26 个同时标为 EGN，另 17 个为非 EGN dysplasia；两者不是 43 + 26 个互斥事件。但这也不是单一纵向预测队列：GCEP1000 提供长期随访的 312 人和 9 例 EGN，近期本地及国际样本的 453 人和 17 例 EGN 只有基线结局。因此，联合分析的 OR 与 AUC 混合了随访中新发和入组时已经存在的结局，不能等同于纯前瞻预测（`P021.S0010–P021.S0014`）。
+
+在这套联合数据中，当 CH 变异等位基因频率超过 5% 时，high CH 在多变量分析中仍与 EGN 相关（OR = 4.19，95% CI 1.50–11.74；P = 6.4 × 10^-3）；ARID1A 截短突变的多变量 OR 为 4.54（95% CI 1.52–13.55；P = 6.7 × 10^-3）。只使用 OLGIM、年龄和性别的模型 AUC 为 0.720（图内区间 0.633–0.808）；加入 mutation count、ARID1A truncating mutation 和 high CH 后为 0.773（0.681–0.865）。不过在 Fig. S5 展示的 operating point 上，灵敏度从 85% 降到 65%，特异度从 54% 升到 81%；论文没有说明阈值如何选择，AUC 上升不等于各项临床性能都上升。
+
+在随访至少 5 年的 GCEP1000 子集中，312 人只有 9 例 EGN；high CH 与 ARID1A 截短突变的多变量 OR 分别为 10.62（95% CI 2.43–46.45）和 11.51（95% CI 2.28–58.20），区间很宽，AUC 则从 0.671（0.511–0.831）提高到 0.811（0.624–0.998）。Methods 的 `glm` 和“单变量显著后进入多变量”只明确对应二元关联分析；即使这个子集有长期随访，作者也没有建模随访时长、删失或固定预测时间窗，不能把它称为 5 年风险模型。Supplementary Fig. S5 虽列出固定的临床与分子变量集，却没有另报 ROC/PR 模型怎样拟合和评估，也没有 train/test、交叉验证、bootstrap、校准或决策曲线。因此这些很可能是表观 AUC，不能当作泛化性能。
 
 ![Fig. 5：CH driver、临床关联与风险模型](../../assets/gastric-cancer/2026-im-mutational-signatures-ch/fig5-page13.png)
 
-简明图注：Fig. 5 在 1,067 名受试者中描绘 CH，风险模型使用 765 人（43 例异型增生、26 例 EGN），并比较临床基线模型与加入 mutation count、ARID1A mutation、high CH 后的模型；AUC 由 0.72 升至 0.773，但事件少且没有独立外部验证。
+简明图注：Fig. 5 在 1,067 名受试者中描绘 CH，风险模型使用 765 人；43 个 Dysplasia flag 中包含 26 个 EGN，并非 69 个互斥事件。模型比较临床基线变量与加入 mutation count、ARID1A truncating mutation、high CH 后的组合；AUC 由 0.720 升至 0.773，但事件少且没有独立外部验证。
 
 ## 08｜血液里的克隆为什么会连接到胃黏膜
 
@@ -89,6 +97,10 @@ CH 原本主要被视为血液系统老化现象。这篇论文更进一步，�
 数据方向与这个模型一致。scRNA-seq 比较 3 个 CH-high 与 10 个 CH-low IM，总 immune cells 的 P = 0.049；bulk RNA-seq 比较 20 个 high CH 与 94 个 non/low CH IM，IgA+ plasma cells 和 mature T cells 的 P 分别为 0.0069 和 0.0034。为处理组大小不平衡，作者将 20 个 high-CH 样本与每次随机抽取的 20 个 low-CH 样本比较 1,000 次；仅 IgA+ plasma-cell abundance 报告了这项稳健性分析，99.4% 的迭代仍是 high CH 更高（比例检验 P = 0.006），原文未为 mature T cells 报告同类下采样结果。IgA+ plasma-cell abundance 与 bacterial reads 相关（r = 0.43，P = 1.1 × 10^-5），与 human reads 则不相关（r = 0.056，P = 0.59）。
 
 菌属分析另从上述 114 份 bulk RNA-seq 中排除 10 份 bacterial reads <0.02% 的样本（最终 n = 104），原文未报告排除后 high/low CH 的各自分母。补表中的菌属差异仍属探索性：high CH 组相对 low CH 组的 Streptococcus、Neisseria、Fusobacterium 和 Gemella 中位丰度分别为 4.1、15.6、9.7 和 6.1 倍（P = 0.0082、0.012、0.0079、0.0011），未见多重比较校正说明。PIGR truncation 与 Streptococcus 丰度相关（单侧 Wilcoxon P = 0.034），与 Helicobacter 则不相关（P = 0.80），这项阴性对照让结论更具体，也仍不足以闭合因果链。
+
+“这些菌可能来自口腔”也有两层样本支持。美国队列报告 32 份唾液样本，并称其有配对 IM 靶向测序数据；主文还报告独立新加坡队列有 173 份唾液样本、来自 154 人。但官方 Supplementary Table S1 只枚举 155 个 Saliva/shotgun-metagenomics 样本 ID，且 155 个 ID 均唯一，表内没有患者映射可以复现 154 人。材料没有解释 173 到 155 的差额，也没有证明两个口径本应完全相同；本文将它登记为未解释的主文—补表分母差异，并列保留而不判断哪一个数字正确（`P003.S0024`、`P015.S0035–P015.S0036`）。
+
+按主文口径，新加坡唾液中丰度最高的 20 个菌属有 13 个也见于 IM RNA-seq；在这 13 个菌属中，IM RNA-seq 的 high CH 组方向都更高，其中 9 个只有未经多重校正的名义 Wilcoxon P < 0.05（`P015.S0037–P015.S0039`）。这支持菌属层面的口腔来源线索，却没有追踪同一菌株从口腔进入胃黏膜。
 
 FISH 和 Stereo-seq 使用的不是 IM，而是胃癌组织。正文没有报告 FISH 的病例分母；Stereo-seq 才是 4 例，其中 2 例检出 Streptococcus 空间簇：1 例与 CXCL8 高表达区域重叠，另 1 例与肠型上皮和 IgA plasma-cell signatures 重叠。预选 oral-microbiome reads 较高的 15 例胃癌切片中，4 例见局灶 Gram-positive cocci。这些结果只能为机制模型提供探索性支持。
 
@@ -120,11 +132,11 @@ KRAS/MAPK-altered IM 和 pyrvinium 类器官结果也提供了干预线索，但
 
 ## 11｜这些结果仍需要冷静看待
 
-首先，跨国家样本很多，但长期进展事件主要依赖新加坡队列。其他地区不少结局只是基线观察；总体模型只有 26 例 EGN，GCEP1000 子集只有 9 例。变量又经同一数据的单变量筛选，没有重采样验证、校准或外部验证，因此“预测未来进展”的证据没有样本总数和表观 AUC 看起来那么强。
+首先，跨国家样本很多，但联合模型并不是纯前瞻队列：长期随访的 GCEP1000 为 312 人、9 例 EGN，近期本地及国际样本为 453 人、17 例基线 EGN。关联分析在同一数据内做单变量筛选，ROC/PR 模型如何拟合与评估则没有另报；也没有 survival/time-to-event 建模、固定预测时间窗、重采样验证、校准或外部验证。因此，“预测未来进展”的证据没有 765 人、26 例 EGN 和表观 AUC 看起来那么强。
 
 其次，高深度靶向 panel 以深度换广度。它适合捕捉低 VAF 克隆，却会遗漏 panel 外 driver、结构变异和非编码调控改变。
 
-第三，SBS17、低甲基化与 OXPHOS 的关系仍以相关和跨队列区域重叠为主；用于 signature discovery 的 20 对 WGS 又是 VAF 富集选择，约 60× 深度仍可能漏掉小亚克隆。pyrvinium 依赖药理抑制，Supplementary Fig. S1 只给每条件 3 次技术重复且未说明独立生物学重复；DCA 实验也没有 SBS17 长期累积读出。
+第三，SBS17、低甲基化与 OXPHOS 的关系仍以相关和跨队列区域重叠为主；用于 signature discovery 的 20 对 WGS 又是 VAF 富集选择，约 60× 深度仍可能漏掉小亚克隆。论文未报告 OXPHOS 表达、OCR/8-oxo-dG 与 WGS 的逐样本链接；SBS17–吸烟分析虽可复算组内分母，却仍未报效应量、确切比较或混杂调整。pyrvinium 依赖药理抑制，Supplementary Fig. S1 只给每条件 3 次技术重复且未说明独立生物学重复；DCA 扰动也只用了一个正常类器官系 PT001N，图注未报独立重复数，更没有 SBS17 长期累积读出。
 
 第四，微生物分析容易受到低丰度 reads、污染和反向因果影响。靶向 panel 本来并非为非 Hp 菌检测而设计；FISH、单细胞和空间数据虽提供多模态支持，但样本量有限，而且原位/空间验证来自胃癌组织。CH–PIGR–IgA–口腔菌这条链仍需要前瞻性队列和扰动实验。
 
@@ -167,10 +179,12 @@ KRAS/MAPK-altered IM 和 pyrvinium 类器官结果也提供了干预线索，但
 
 ### 补充材料定向复核
 
-- Supplementary Table S10（`Sheet 10`, B8:O11、B51:O54）给出正文第 07 节采用的多变量效应量：765 人分析中 high CH 的 EGN OR 4.19（95% CI 1.50–11.74），ARID1A truncation OR 4.54（1.52–13.55）；312 人 GCEP1000 子集中两者分别为 10.62（2.43–46.45）和 11.51（2.28–58.20）。后者仅 9 个 EGN，宽区间提示估计不稳定。
+- Supplementary Table S3 的 47 个显著基因均以 1,498 份 non-hypermutated IM 为 `SAMPLES`/百分比分母，与 Methods 先排除 hypermutated samples 一致。S3 的 `MUTATIONS` 列合计 2,668，但该列未定义是否仅含主文所称的 protein-altering driver mutations，也没有给出 2,668 到 2,100 的映射；因此保留主文 2,100，不把 S3 合计替换为 driver 数或宣称两者矛盾。
+- Supplementary Table S10（`Sheet 10`, B8:O11、B51:O54）给出正文第 07 节采用的多变量效应量：765 人分析中 high CH 的 EGN OR 4.19（95% CI 1.50–11.74），ARID1A truncation OR 4.54（1.52–13.55）；312 人 GCEP1000 子集中两者分别为 10.62（2.43–46.45）和 11.51（2.28–58.20）。后者仅 9 个 EGN，宽区间提示估计不稳定。联合 EGN 模型的 Hong Kong 和 Taiwan 项还出现 OR `0 (0–Inf)`；这提示稀疏数据/分离问题，Methods 未报告惩罚 logistic regression。
 - Supplementary Table S12（`Sheet 12`, C45:F60）列出 high/low CH 的菌属中位丰度倍数与 P 值：Neisseria 15.6/0.012、Streptococcus 4.1/0.0082、Porphyromonas 8.4/0.026、Actinomyces 3.2/0.028、Fusobacterium 9.7/0.0079、Capnocytophaga 11.9/0.042、Leptotrichia 7.0/0.040、Gemella 6.1/0.0011、Haemophilus 13.7/0.031；表内未说明多重比较校正，均按探索性结果解读。
-- Supplementary Table S11 支持 PIGR truncation 与 Streptococcus abundance 的单侧 Wilcoxon P = 0.034，同时给出 Helicobacter 阴性结果 P = 0.80。Supplementary Fig. S5 展示 ROC/PR curves，但没有置信区间、校准或外部验证。
-- Supplementary Fig. S1 的相关药物 panel 每条件只有 3 次技术重复并标为 representative results，未说明独立生物学重复。Supplementary Fig. S2 中 DCA 5 mmol/L、24 小时的 basal/maximal respiration P = 0.0166/0.0386（单侧 Welch）；2 周处理增加 ROS/γH2AX，但图注未给重复数，也没有 SBS17 accumulation 终点。
+- Supplementary Table S11 支持 PIGR truncation 与 Streptococcus abundance 的单侧 Wilcoxon P = 0.034，同时给出 Helicobacter 阴性结果 P = 0.80。Supplementary Fig. S5 给出全体 765 人 clinical 与 clinical+genomic 模型的 AUC 0.720（0.633–0.808）和 0.773（0.681–0.865），GCEP1000 312 人则为 0.671（0.511–0.831）和 0.811（0.624–0.998）；相应 average precision 为 0.094 对 0.178、0.062 对 0.315。图示 operating point 中，全体队列的灵敏度/特异度由 85%/54% 变为 65%/81%，GCEP1000 则由 67%/75% 变为 78%/83%；它没有报告阈值选择、两模型 AUC 差异检验、重采样校正、校准或外部验证。
+- Supplementary Table S1 可枚举 155 个 `Saliva` 样本 ID；它们均来自 Singapore，均标为 shotgun metagenomics 和 Table S12 纳入，且 ID 唯一。补表没有患者映射，也没有解释它与主文 173 份样本/154 人的分母差异，因此不能据此把主文分母改成 155。该表另有 765 行标记 `Figure 5E = Yes`；交叉结局列得到 722 个 Dysplasia/EGN 均否、17 个 Dysplasia 是而 EGN 否、26 个两者均是，说明 26 个 EGN 嵌套在 43 个 Dysplasia flag 中。标记 `Figure 4E,H = Yes` 的 1,095 人中，吸烟状态为 No 819、Previous 141、Yes 131、缺失 4；有状态者共 1,091 人。
+- Supplementary Fig. S1 的相关药物 panel 每条件只有 3 次技术重复并标为 representative results，未说明独立生物学重复。Supplementary Fig. S2 的 DCA 实验只使用一个正常类器官系 PT001N：5 mmol/L、24 小时的 basal/maximal respiration P = 0.0166/0.0386（单侧 Welch）；同一细胞系处理 2 周后 ROS/γH2AX 增加，但图注未给重复数，也没有 SBS17 accumulation 终点。
 
 ---
 
@@ -181,9 +195,9 @@ KRAS/MAPK-altered IM 和 pyrvinium 类器官结果也提供了干预线索，但
 | Fig. 1 | A：六个国家/地区的样本、胃癌年龄标化率及测序/组织学 Hp 阳性率；B：Hp-positive 样本系统发育；C：日本/韩国 clade 与新加坡 clade 的 CagA E106D、R109K、N228H；D：变异在 cagA 上的位置；E：CagA–ASPP2 结构模型；F：两类 CagA 与野生型/不结合 ASPP2 的 reciprocal co-IP。 | 全图队列 1,680 份组织（1,582 IM、98 normal）；高丰度 Hp 比较为韩国 24/106、日本 2/33、新加坡近期 3/218；co-IP 四次独立重复。来源 `P003.S0030–P005.S0018`、图注 `P004.S0018–P004.S0034`。 | `fig1-page4.png` | [01](#01｜只看幽门螺杆菌，为什么还不够) |
 | Fig. 2 | A：1,095 个胃窦 IM 的 36-gene oncoprint 与 EGN forest plot；B：SOX9、ARID1A 等在不同人群的 lollipop/frequency；C：国际队列和 TransGCEP1000 中 ARID1A truncation 与 EGN。 | Chinese-ancestry `n = 909`（新加坡 836、香港 52、美国 13、台湾 8）对 Japanese/Korean `n = 142`；ARID1A 合并 OR 6.2、P = 1.5 × 10^-3。来源 `P005.S0019–P006.S0030`。 | `fig2-page6.png` | [04](#04｜哪些上皮-driver-真正关联早期胃肿瘤) |
 | Fig. 3 | A：KRAS、BRAF、MAP2K1 gain-of-function 与 MAP2K4、MAP3K1、NF1 loss-of-function；B：KRAS/MAPK-mutant bulk RNA GSEA；C：scRNA epithelial type、cell cycle 与 KRAS–ERK score；D：CDX2；E：胃/肠谱系表达；F：severe 对 mild IM organoid；G：pyrvinium 活力。 | Bulk 为 10 个 mutant 对 94 个无可检出改变；down-sampling 1,000 次；organoid 为 6 IM 对 4 normal，Fig. 3G 为 1 μmol/L、72 h、每组 4 个 biological replicates，linear mixed-effects P < 0.0005。来源 `P007.S0001–P009.S0007`、图注 `P008.S0002–P008.S0008` 与 `P009.S0037–P009.S0046`。 | `fig3-page8.png` | [05](#05｜kras–mapk-改变能否提供干预线索) |
-| Fig. 4 | A：20 对 IM–normal WGS 的四类 SBS；B：79 个正常胃、20 个 IM、122 个胃癌；C：各 signature VAF；D：复制时序；E：6 IM 对 4 normal organoid 的 OXPHOS；F：OCR；G：8-oxo-dG；H：年龄和吸烟。 | SBS17 在最晚复制四分位（T4）相对最早复制四分位（T1）增加 14.5×；OCR 的 basal/maximal P = 0.035/0.015；8-oxo-dG 每个 organoid 六次 technical replicates，按个体内 mean ± 1.5 SD 去异常；targeted 映射为 287/1,095。来源 `P009.S0008–P011.S0019`、图注 `P010.S0047–P010.S0057` 与 `P011.S0043–P011.S0052`。 | `fig4-page10.png` | [06](#06｜sbs17-为什么不像普通的年龄累积噪音) |
-| Fig. 5 | A：1,067 名受试者的 CH oncoprint；B：DNMT3A、TET2、ASXL1、PPM1D 与 MSKCC 对照；C：CH 与年龄/IM mutation count；D：CH gene 与吸烟；E：dysplasia/EGN logistic regression。 | 风险模型 `n = 765`（43 dysplasia、26 EGN）；GCEP1000 `n = 312`（20 dysplasia、9 EGN）。Fig. 5C 用 234 个 CHIP-positive 与 861 个 CHIP-negative IM samples，与 1,067 名受试者口径不同。来源 `P012.S0013–P015.S0002`、图注 `P013.S0031–P013.S0037`。 | `fig5-page13.png` | [07](#07｜血液里的克隆能增加多少风险分层信息) |
-| Fig. 6 | A：high CH 关联的 IM drivers；B：PIGR mutation type；C：PIGR 与 CH genes；D：作者提出的屏障—微生物—炎症模型；E：scRNA immune composition；F：bulk deconvolution 与 bacterial/human reads；G：菌属差异；H：Streptococcus/S. anginosus FISH；I：Streptococcus 与 CXCL8 空间重叠。 | scRNA 为 3 high 对 10 low CH；bulk 为 20 对 94，仅 IgA+ plasma-cell abundance 另做 1,000 次平衡下采样；114 份 bulk 中排除 10 份 bacterial reads <0.02% 的样本后，微生物分析 `n = 104`，主文未报排除后的 high/low 分组数；FISH 分母未报告，Stereo-seq 4 例中 2 例检出空间簇。来源 `P015.S0003–P016.S0015`。 | `fig6-page14.png` | [08](#08｜血液里的克隆为什么会连接到胃黏膜) |
+| Fig. 4 | A：20 对 IM–normal WGS 的四类 SBS；B：79 个正常胃、20 个 IM、122 个胃癌；C：各 signature VAF；D：复制时序；E：6 IM 对 4 normal organoid 的 OXPHOS；F：OCR；G：8-oxo-dG；H：年龄和吸烟。 | SBS17 在最晚复制四分位（T4）相对最早复制四分位（T1）增加 14.5×；OCR 与 8-oxo-dG 各用 3 IM 对 3 normal organoid lines，basal/maximal OCR P = 0.035/0.015，8-oxo-dG 每个 organoid 六次 technical replicates；论文未报告这些类器官与 20 个 WGS 样本的逐样本链接。吸烟状态可由 S1 复算为 819/141/131（No/Previous/Yes；另缺失 4），但单一 Wilcoxon 的确切 contrast 未报。Targeted 映射为 287/1,095。来源 `P009.S0008–P011.S0019`、图注 `P010.S0047–P010.S0057` 与 `P011.S0043–P011.S0052`。 | `fig4-page10.png` | [06](#06｜sbs17-为什么不像普通的年龄累积噪音) |
+| Fig. 5 | A：1,067 名受试者的 CH oncoprint；B：DNMT3A、TET2、ASXL1、PPM1D 与 MSKCC 对照；C：CH 与年龄/IM mutation count；D：CH gene 与吸烟；E：dysplasia/EGN logistic regression。 | 风险模型 `n = 765`；S1 的 43 个 Dysplasia flag 包含全部 26 个 EGN，不能相加为 69 个事件。GCEP1000 `n = 312`（20 个 Dysplasia flag、9 个 EGN）。Fig. 5C 用 234 个 CHIP-positive 与 861 个 CHIP-negative IM samples，与 1,067 名受试者口径不同。来源 `P012.S0013–P015.S0002`、图注 `P013.S0031–P013.S0037`。 | `fig5-page13.png` | [07](#07｜血液里的克隆能增加多少风险分层信息) |
+| Fig. 6 | A：high CH 关联的 IM drivers；B：PIGR mutation type；C：PIGR 与 CH genes；D：作者提出的屏障—微生物—炎症模型；E：scRNA immune composition；F：bulk deconvolution 与 bacterial/human reads；G：菌属差异；H：Streptococcus/S. anginosus FISH；I：Streptococcus 与 CXCL8 空间重叠。 | scRNA 为 3 high 对 10 low CH；bulk 为 20 对 94，仅 IgA+ plasma-cell abundance 另做 1,000 次平衡下采样；114 份 bulk 中排除 10 份 bacterial reads <0.02% 的样本后，微生物分析 `n = 104`，主文未报排除后的 high/low 分组数；FISH 分母未报告，Stereo-seq 4 例中 2 例检出空间簇。来源 `P015.S0003–P016.S0015`；A–E 正式图注见 `P014.S0023–P014.S0034`，F–I 续图注见 `P015.S0040–P015.S0048`。 | `fig6-page14.png` | [08](#08｜血液里的克隆为什么会连接到胃黏膜) |
 | Fig. 7 | 在 Correa cascade 上整合 Hp 菌株、上皮 driver/SBS、CH、免疫和微生物，并标出风险分层、pyrvinium 与抗菌等转化设想。 | 概念总结图，不是新增实验；蓝框中的干预均未在患者中验证。来源 `P017.S0001–P017.S0033`。 | `fig7-page17.png` | [09](#09｜这项研究真正改变了哪一步) |
 
 ### 生物学故事前情
@@ -229,7 +243,7 @@ KRAS/MAPK-altered IM 和 pyrvinium 类器官结果也提供了干预线索，但
 
 靶向测序用于捕捉低 VAF IM 突变。作者用统一 pipeline 调用 somatic mutations，并说明 WGS 或模拟 100x WES 只能恢复一小部分低频突变，因此高深度 panel 是本文发现 IM driver 的技术前提。
 
-driver gene 发现用 IntOGen pipeline，整合 7 个互补算法并做组合 q 值。突变签名分析先在 20 个经 VAF 富集选择的 WGS IM 样本上用 SigProfilerAssignment 推断 SBS1、SBS5/40、SBS17、SBS18，再把签名映射到 1,095 个 antrum IM 靶向数据中。CH 调用采用“反向 tumor-normal”思路：把 blood/saliva 当作待检测对象，IM 当作对照，筛选血液/唾液 VAF 更高的造血克隆突变。
+driver gene 发现用 IntOGen pipeline，先排除 hypermutated samples，再在 1,498 份 IM 中整合 7 个互补算法并做组合 q 值。突变签名分析先在 20 个经 VAF 富集选择的 WGS IM 样本上用 SigProfilerAssignment 推断 SBS1、SBS5/40、SBS17、SBS18；靶向数据不是重新搜索全部 signatures，而是把 WGS 得到的 SBS1、SBS5、SBS17a、SBS17b、SBS18、SBS40 六项受限拟合到 1,095 个 antrum IM。CH 调用采用“反向 tumor-normal”思路：把 blood/saliva 当作待检测对象，IM 当作对照，筛选血液/唾液 VAF 更高的造血克隆突变。
 
 临床风险部分用 logistic regression，把年龄、性别、OLGIM、mutation count、ARID1A truncation、CH/高 CH 等变量与 dysplasia 或 EGN 关联。机制部分则通过 bulk/scRNA-seq deconvolution、PathSeq/lefser 微生物分析、FISH、IHC 和 Stereo-seq 连接 CH、PIGR、IgA+ plasma cells 和口腔菌。
 
@@ -259,7 +273,7 @@ Hp 变异也有地区差异。作者在 Hp-positive 样本中看到日本/韩国
 
 中文图注（基于原文图注）：Fig. 2 展示 36 个代表性 driver genes 的 oncoprint、不同人群/地区的关键 driver mutation rate，以及 ARID1A truncating mutations 与 EGN 的关联。图中重点是跨四地华人样本中 SOX9 truncation 频率高，而日本/韩国高风险人群中 ARID1A、ARID2、ERBB3 等更常见。
 
-IntOGen 在 IM 中识别 47 个显著突变基因，共 2,100 个 driver mutations，其中 25 个此前未在 IM 中报告。独立 48 个 IM 仅再次检出其中 35/47（74.5%），不是重跑显著性、频率或结局验证；另有 37/47（78.7%）至少出现在正常胃、TCGA pan-GI cancer 或 IntOGen 胃癌 driver 资源之一。
+IntOGen 在排除 hypermutated samples 后的 1,498 份 IM 中识别 47 个显著突变基因，共 2,100 个 driver mutations，其中 25 个此前未在 IM 中报告。Supplementary Table S3 的 `MUTATIONS` 列合计 2,668，但列定义没有说明它是否等同于主文的 protein-altering driver mutations，不能直接替换 2,100。独立 48 个 IM 仅再次检出其中 35/47（74.5%），不是重跑显著性、频率或结局验证；另有 37/47（78.7%）至少出现在正常胃、TCGA pan-GI cancer 或 IntOGen 胃癌 driver 资源之一。
 
 antrum IM 的平均 somatic mutation count 为 23，平均 VAF 2.9%，中位 VAF 1.7%。日本/韩国样本突变率高于跨四地的华人样本。SOX9 mutation 尤其在 Chinese-ancestry populations 中更常见，909 个样本中 114 个有 SOX9 mutations，其中 94 个是 truncating mutations；而高风险日本/韩国人群中 ARID1A、ARID2、ERBB3、KMT2D、KDM6A、CREBBP、PREX2 更常见。
 
@@ -285,9 +299,9 @@ KRAS/MAPK 通路改变存在于一部分 IM 中。作者观察到 KRASG12D、BRA
 
 20 个经突变 VAF 富集选择的 IM WGS 样本中识别 4 类主导 signature：SBS1、SBS5/40、SBS17、SBS18。正常胃的比较来自已发表的 79 例外部数据，胃癌比较来自 122 例 ICGC 数据，并非直接在这 20 个 matched normal 上重做 signature；SBS17 在 IM 和胃癌中出现、在外部正常胃中不典型。SBS17 mutations 的 VAF 低于其他 SBS mutations，支持其更多代表晚期或 subclonal events；选择性入组与约 60× 深度也限制人群代表性和小克隆检出率。
 
-SBS17 的基因组分布有鲜明特征。按 replication timing 四分位分层后，SBS17 的突变频率从 T1 到 T4 增加 14.5 倍，SBS18、SBS1 和 SBS5/40 的相应倍数只有 5.0、2.0 和 3.0。作者将其与 OXPHOS、氧化损伤、8-oxo-dG 和 nucleotide pool damage 联系起来。IM organoids 的 OXPHOS pathway、basal/maximal OCR 和 8-oxo-dG 水平均高于正常 organoids；DCA 增强 OXPHOS 后可提高 ROS 和 DNA damage，但作者明确承认这还不能证明 OXPHOS 直接造成 SBS17。
+SBS17 的基因组分布有鲜明特征。按 replication timing 四分位分层后，SBS17 的突变频率从 T1 到 T4 增加 14.5 倍，SBS18、SBS1 和 SBS5/40 的相应倍数只有 5.0、2.0 和 3.0。作者将其与 OXPHOS、氧化损伤、8-oxo-dG 和 nucleotide pool damage 联系起来。OXPHOS pathway 比较为 6 个 IM 对 4 个正常类器官，basal/maximal OCR 与 8-oxo-dG 各为 3 对 3 个类器官系；论文未报告这些类器官与 20 个 WGS 样本的逐样本配对或样本级链接。DCA 增强 OXPHOS 后可提高 ROS 和 DNA damage，但作者明确承认这还不能证明 OXPHOS 直接造成 SBS17。
 
-映射到 1,095 个 antrum IM 靶向数据后，SBS5/40 和 SBS1 几乎普遍存在，SBS18 和 SBS17 分别在约 28.9% 和 26.2% 样本中可检测；WGS 选择集中 SBS17 为 60%，两者不能直接当患病率复现。高风险国家 IM 的所有 signature mutation rate 均更高，其中 SBS17 enrichment 更明显。SBS1、SBS5/40、SBS18 与年龄相关，SBS17 不随年龄显著相关，但与吸烟显著相关。它可视为突变过程或暴露候选；本文没有做 SBS17–EGN 关联，不能称为进展风险 biomarker。
+在只拟合 WGS 预选六项 signature 的受限 projection 中，1,095 个 antrum IM 里 SBS5/40 和 SBS1 几乎普遍存在，SBS18 和 SBS17 分别在约 28.9% 和 26.2% 样本中可检测；Methods 未报告单样本 exposure 或 fit-quality 判定阈值。WGS 选择集中 SBS17 为 60%，两者不能直接当患病率复现。高风险国家 IM 的所有 signature mutation rate 均更高，其中 SBS17 enrichment 更明显。SBS1、SBS5/40、SBS18 与年龄相关，SBS17 不随年龄显著相关，但与吸烟显著相关。它可视为突变过程或暴露候选；本文没有做 SBS17–EGN 关联，不能称为进展风险 biomarker。
 
 ##### Hypomethylation in Developing Gastric Cancer
 
@@ -311,9 +325,11 @@ CIN+/MSI+ 组相对另一组有 6,741,487 个低甲基化 CpG（35.7%）和 326,
 
 作者在 1,067 名 IM subjects 中识别 286 个 reported CH gene mutations，分布于 225 人。显著 CH driver genes 为 DNMT3A、TET2、ASXL1、PPM1D，突变谱与既往 MSK-IMPACT 大队列中的 CH 规律一致，例如 DNMT3A R882 missense、TET2/ASXL1 truncation、PPM1D 3' 区域 truncation。
 
+CH 不是统一用外周血得到：作者把配对 blood 或 saliva 作为 Mutect2 的待检输入、IM 作为对照，要求至少 5 条支持 reads、blood/saliva VAF ≥2% 且至少为配对 IM 的 2 倍。Results 对 subtraction 方向的文字与 Methods 相反，本文按参数完整的 Methods 解释，并在冲突栏保留原句问题。
+
 CH carriers 年龄更大，IM somatic mutation rate 更高。ASXL1 mutation 在吸烟者中更常见，符合 CH 与烟草暴露关系的既往认识。关键临床分析中，作者把 CH 分为 CHIP VAF > 2% 和 high CH VAF > 5%。在 765 名 unique IM subjects 中，CHIP、高 CH、mutation rate、ARID1A truncation、年龄、男性、OLGIM stage III/IV 均与 dysplasia 有关；多变量中 high CH、男性、OLGIM stage III 独立关联 dysplasia。
 
-对 EGN 终点，高 CH 和 ARID1A truncation 在多变量模型中仍显著。765 名受试者中只有 26 例 EGN；GCEP1000 长期随访子集为 312 人、9 例 EGN。风险模型中，临床变量 OLGIM、年龄、性别的 AUC 为 0.72；加入 mutation count、ARID1A mutation 和 high CH 后 AUC 升至 0.773。GCEP1000 子集中，AUC 从 0.671 升至 0.811。这个结果支持把 CH 作为候选风险变量，但事件数少且缺少外部验证，尚不能称为可部署的血液预测指标。
+对 EGN 终点，高 CH 和 ARID1A truncation 在多变量模型中仍显著。765 人由长期随访的 GCEP1000 312 人/9 例 EGN 与只有基线结局的近期样本 453 人/17 例 EGN 组成；Results 把 26 例统称为 “progressed to EGN”，与 Methods 的时间轴不一致。风险模型中，临床变量 OLGIM、年龄、性别的 AUC 为 0.720（0.633–0.808）；加入 mutation count、ARID1A truncating mutation 和 high CH 后为 0.773（0.681–0.865）。GCEP1000 子集中，AUC 从 0.671（0.511–0.831）升至 0.811（0.624–0.998）。这个结果支持把 CH 作为候选关联变量，但事件数少、联合模型并非纯前瞻预测且缺少外部验证，尚不能称为可部署的血液预测指标。
 
 ##### CH expansions are associated with altered IM Microbiome-Immune Landscapes
 
@@ -325,11 +341,11 @@ CH carriers 年龄更大，IM somatic mutation rate 更高。ASXL1 mutation 在�
 
 微生物结果支持“屏障-口腔菌-炎症”的模型。PIGR truncation 与 Streptococcus abundance 升高有关（P = 0.034），与 Helicobacter 不相关（P = 0.80）。scRNA-seq 中 high CH IM 的 total immune cells 增多（3 对 10，P = 0.049）；bulk RNA-seq 在 20 对 94 中复现 IgA+ plasma cells（P = 0.0069）和 mature T cells（P = 0.0034）的升高。平衡下采样只针对 IgA+ plasma-cell abundance：20 个 high-CH 样本每次与 20 个随机 low-CH 样本比较，1,000 次中有 99.4% 仍为 high CH 更高（P = 0.006），原文未为 mature T cells 报告同类结果。IgA+ plasma cell abundance 与 bacterial reads 相关（r = 0.43，P = 1.1 × 10^-5），与 human reads 不相关（r = 0.056，P = 0.59）。
 
-CH-high IM 中多个口腔来源菌属升高，包括 Streptococcus、Neisseria、Gemella、Actinomyces、Haemophilus、Porphyromonas、Fusobacterium；补表给出倍数但未说明多重校正。Fig. 6G 的菌属分析从 114 份 bulk RNA-seq 中排除 10 份 bacterial reads <0.02% 的样本，最终 n = 104；原文未报排除后的 high/low CH 分组数。美国配对唾液为 32 份，新加坡为 173 份、来自 154 人；胃与唾液富集菌中 13/20 genera 重合，其中 9/13 显著。FISH 在胃癌组织中的病例分母未报告；Stereo-seq 只做 4 例胃癌，2 例检出 Streptococcus 空间簇。预选 oral-microbiome reads 较高的 15 例胃癌切片中，4 例见局灶 Gram-positive cocci。由于对象不是 IM、样本少且有预选，这部分更适合作为机制假说支持。
+CH-high IM 中多个口腔来源菌属升高，包括 Streptococcus、Neisseria、Gemella、Actinomyces、Haemophilus、Porphyromonas、Fusobacterium；补表给出倍数但未说明多重校正。Fig. 6G 的菌属分析从 114 份 bulk RNA-seq 中排除 10 份 bacterial reads <0.02% 的样本，最终 n = 104；原文未报排除后的 high/low CH 分组数。美国队列报告 32 份唾液样本并称其有配对 IM 靶向数据，原文总口径仍是 32 samples；新加坡主文为 173 份/154 人，而 Supplementary Table S1 只能枚举 155 个唯一 saliva IDs，材料未解释差额。唾液 top-20 genera 与 IM RNA-seq 重合 13 个，其中 9/13 只有未经多重校正的名义 P < 0.05，也没有菌株级来源追踪。FISH 在胃癌组织中的病例分母未报告；Stereo-seq 只做 4 例胃癌，2 例检出 Streptococcus 空间簇。预选 oral-microbiome reads 较高的 15 例胃癌切片中，4 例见局灶 Gram-positive cocci。由于对象不是 IM、样本少且有预选，这部分更适合作为机制假说支持。
 
 #### 作者结论与证据强度
 
-作者直接观察到：跨国家 IM 队列中存在复发 driver genes，且部分 driver frequencies 具有地区差异；ARID1A truncation 与 EGN 相关；KRAS/MAPK-altered IM 有相应 signature 富集和类器官药物敏感性；SBS17 见于 IM/胃癌、在外部正常胃中不典型，并与 late replication、OXPHOS/氧化损伤和吸烟相关；high CH 在本队列内与 dysplasia/EGN 独立相关，并提高内部表观 AUC。
+作者直接观察到：跨国家 IM 队列中存在复发 driver genes，且部分 driver frequencies 具有地区差异；ARID1A truncation 与 EGN 相关；KRAS/MAPK-altered IM 有相应 signature 富集和类器官药物敏感性；SBS17 见于 IM/胃癌、在外部正常胃中不典型，并与 late replication、OXPHOS/氧化损伤和吸烟相关；high CH 在本队列内与 dysplasia/EGN 独立相关，而 high CH 与 mutation count、ARID1A truncation 一并加入临床变量后提高了内部表观 AUC。
 
 合理但仍需验证的是：CH 通过 PIGR、IgA 屏障、口腔菌定植和慢性炎症推动 IM 向胃癌进展。本文有共现、转录组、微生物、FISH 和空间组学证据，但关键因果链条仍缺少前瞻性大队列和实验扰动验证。
 
@@ -339,14 +355,14 @@ CH-high IM 中多个口腔来源菌属升高，包括 Streptococcus、Neisseria�
 
 | 原文句子 ID | 忠实中文含义 | 读者正文对应 | 证据边界 |
 |---|---|---|---|
-| `P003.S0015–P003.S0029`（15/15） | 1,582 个 IM、98 个 normal、六地近期队列与 TransGCEP1000；20 对 WGS、14 人/38 份 EM-seq 及唾液微生物组。 | 02、03 | 不同分析的样本/受试者分母不同；逐人明细已从官方 Supplementary Table S1 取得，但不属于主 PDF。 |
+| `P003.S0015–P003.S0029`（15/15） | 1,582 个 IM、98 个 normal、六地近期队列与 TransGCEP1000；20 对 WGS、14 人/38 份 EM-seq 及唾液微生物组。 | 02、03、08 | 不同分析的样本/受试者分母不同；主文唾液 173 份/154 人与 S1 可枚举 155 个 IDs 的差额未解释。 |
 | `P003.S0030–P005.S0018`（62/62） | Hp 检出、历史感染、地区系统发育、CagA 三个位点、AlphaFold 接触与 co-IP。 | 01 | Hp 丰度受根除年代和 IM 后生态改变影响；CagA–ASPP2 对地区风险的贡献仍是机制推断。 |
-| `P005.S0019–P006.S0030`（52/52） | IntOGen 47 genes/2,100 drivers、独立 48 IM 验证、地区频率、ARID1A–EGN 与深度下采样。 | 03、04 | Panel 限定候选空间；ARID1A 是关联，不是经过外部纵向验证的预测标志。 |
+| `P005.S0019–P006.S0030`（52/52） | IntOGen 47 genes/2,100 drivers、独立 48 IM 验证、地区频率、ARID1A–EGN 与深度下采样。 | 03、04 | 47 genes 的发现分母为 1,498 份 non-hypermutated IM；S3 的 2,668 `MUTATIONS` 口径未定义。Panel 也限定候选空间。 |
 | `P007.S0001–P009.S0007`（58/58） | KRAS/MAPK mutations、10 对 94 bulk GSEA、1,000 次下采样、scRNA cell states、6 对 4 organoids 与药物实验。 | 05 | Pyrvinium 不是单一路径特异抑制剂；药理和类器官结果不能替代遗传扰动或人体预防试验。 |
-| `P009.S0008–P011.S0019`（115/115） | 20 对 WGS 的四类 SBS、克隆结构、SBS17 的 T4 对 T1 14.5×、OXPHOS/OCR/8-oxo-dG/DCA、1,095 个 panel 映射及年龄/吸烟。 | 06 | 60× WGS 对小亚克隆灵敏度有限；SBS17、OXPHOS、吸烟和氧化损伤仍是关联链。 |
+| `P009.S0008–P011.S0019`（115/115） | 20 对 WGS 的四类 SBS、克隆结构、SBS17 的 T4 对 T1 14.5×、OXPHOS/OCR/8-oxo-dG/DCA、1,095 个 panel 映射及年龄/吸烟。 | 06 | Targeted 结果是对六项 WGS-derived signatures 的受限 projection 且未报单样本阈值；DCA 仅一个 PT001N 系，不能闭合 SBS17 因果。 |
 | `P011.S0020–P012.S0005`（38/38） | 14 人/38 份 EM-seq、CIN/MSI 分组、CpG/region 低甲基化以及 SBS17 与晚复制低甲基化区域重叠。 | 06 | 没有纵向顺序或扰动，不能确定甲基化与 SBS17 的因果方向。 |
-| `P012.S0006–P015.S0002`（120/120） | Germline variants；CH calling 结果、年龄/吸烟、765 人临床模型、26 个 EGN 与 GCEP1000 风险分析；Fig. 5 图页。 | 07 | Germline 事件稀少；总体和长期子集 EGN 仅 26/9 例，AUC 没有独立外部验证。 |
-| `P015.S0003–P016.S0015`（61/61） | High CH–PIGR、3 对 10 scRNA、20 对 94 bulk、口腔菌/唾液、Gram/IHC、FISH 与 4 例胃癌 Stereo-seq。 | 08 | 多数证据横断面；FISH/Stereo-seq 来自胃癌而非 IM，空间样本极少。 |
+| `P012.S0006–P015.S0002`（120/120） | Germline variants；CH calling 结果、年龄/吸烟、765 人临床模型、26 个 EGN 与 GCEP1000 风险分析；Fig. 5 图页。 | 07 | Calling 以 blood/saliva 为待检输入；765 人混合 312 人纵向与 453 人 baseline-only 队列，AUC 没有独立外部验证。 |
+| `P015.S0003–P016.S0015`（61/61） | High CH–PIGR、3 对 10 scRNA、20 对 94 bulk、口腔菌/唾液、Gram/IHC、FISH 与 4 例胃癌 Stereo-seq。 | 08 | 32 samples 不是 32 对；13/20 重叠中 9/13 仅名义显著且无菌株追踪；FISH/Stereo-seq 来自胃癌而非 IM。 |
 
 审计结论：主 Results 连续范围 `P003.S0015–P016.S0015` 的 521/521 个 ID 已完成来源区间归类，未归类 ID：无。Manifest 自动标为 `results` 的 165 个 ID 均属主 Results；另有 356 个真实 Results ID 因图页、双栏和跨页续接被误标为 `supplementary`，已人工校正。这里的 521/521 是 ID inventory 完整性，不表示正文逐句复述了每个数字。
 
@@ -378,15 +394,15 @@ Wilcoxon test 用于比较非正态连续变量，例如 mutation count、signat
 
 Pearson/Spearman correlation 用于 signature exposure 与年龄、IgA+ plasma cells 与 bacterial reads 等连续变量关系。Pearson 假设线性关系，Spearman 更关注秩相关；相关性不能证明因果。
 
-Logistic regression 用于 dysplasia/EGN 风险分析。输入包括临床变量和分子变量，输出 OR、P value 和多变量独立关联。本文策略是先单变量筛选，再在同一数据中多变量评估；Methods 未报告 train/test、交叉验证、bootstrap、校准或决策曲线。26/9 个 EGN 事件下存在明显过拟合风险，所报 AUC 应视为未验证的表观区分度。
+Logistic regression 用于 dysplasia/EGN 关联分析。输入包括临床变量和分子变量，输出 OR、P value 和多变量独立关联；Methods 明确说明先做单变量分析，再把显著变量放入多变量分析，但没有说明这一筛选流程也用于 ROC/PR 模型。Supplementary Fig. S5 只列出固定的临床变量集与临床加分子变量集，没有另报模型怎样拟合或评估，也没有 train/test、交叉验证、bootstrap、校准或决策曲线。即便 GCEP1000 有长期随访，论文报告的结局/关联分析仍是二元的；S5 只给 ROC/PR，未报告 time-to-event 方法，因此没有处理随访时长、删失或预测时间窗。联合分析只有 26 个 EGN、部分地点 OR 为 `0 (0–Inf)`，纵向子集只有 9 个 EGN；所报 AUC 应视为稀疏事件下未经验证的表观区分度。
 
 Linear mixed-effects model 用于 organoid drug response/OCR 等实验，适合处理 biological replicates 和个体来源差异。GSEA/fgsea 用于判断 KRAS、ERK、OXPHOS 等 gene sets 是否在排序基因列表中系统富集，输出 NES 和 FDR。
 
 #### 统计模型、机器学习模型或计算框架
 
-IntOGen 是 driver discovery 框架，整合多个算法对突变频率、功能影响、聚集性和背景突变率进行正选择评估。它的优点是降低单一算法偏差；局限是候选基因受 panel 设计限制，不能发现 panel 外 driver。
+IntOGen 是 driver discovery 框架，整合多个算法对突变频率、功能影响、聚集性和背景突变率进行正选择评估。本文先排除 hypermutated samples，以 1,498 份 non-hypermutated IM 为发现分母；它的优点是降低单一算法偏差，局限是候选基因受 panel 设计限制，不能发现 panel 外 driver。
 
-SigProfilerAssignment 是突变签名分解工具，把每个突变按 trinucleotide context 分配到 COSMIC signatures。WGS 更适合签名发现，因为覆盖非编码区域；targeted panel 可做 signature projection，但对 SBS17/SBS18 这类偏 late-replicating noncoding regions 的 signature 敏感性不足。
+SigProfilerAssignment 是突变签名分解工具，把每个突变按 trinucleotide context 分配到 COSMIC signatures。WGS 更适合签名发现，因为覆盖非编码区域；本文对 targeted panel 只拟合 WGS 预选出的六项 signatures，再合并为四类，而且没有报告单样本 exposure/fit-quality 阈值。它是受限 projection，不是无偏 signature discovery；panel 对 SBS17/SBS18 这类偏 late-replicating noncoding regions 的 signature 还可能灵敏度不足。
 
 CIBERSORTx 和 ESTIMATE 用于从 bulk RNA-seq 推断免疫成分。它们依赖 reference signature 和表达去卷积假设，适合生成群体层面证据，但不能替代单细胞验证。
 
@@ -410,10 +426,10 @@ PathSeq、lefser、Kraken2 和 Stereo-seq SAW 用于微生物 reads 识别和空
 - WGS：NEBNext Ultra II DNA Library Prep Kit 建库，NovaSeq 6000 PE150；从突变 VAF 较可观者选择 20 对 IM–normal，平均覆盖 60.5×，对齐 hs37d5 后以 MarkDuplicates 处理重复 reads。该选择不代表总体 IM，约 60× 也可能漏掉小亚克隆（`P003.S0022`、`P018.S0017–P018.S0026`）。
 - Hp/CagA：六个 Hp genes 覆盖 ≥1× 才进入系统发育；961 个 SNVs，RAxML `GTRGAMMA`，FDR <0.05；AlphaFold 3 输入 CagA aa 1–251 与 ASPP2 aa 684–891，原子距离 ≤3.5 Å 定义接触。HEK293T 转染 48 小时后裂解，IP 抗体/磁珠在 4°C overnight，4%–20% SDS-PAGE；co-IP 结果为四次独立重复（`P018.S0032–P019.S0012`）。
 - Organoid 培养液：50% Wnt3A-conditioned、10% R-Spondin-1-conditioned、HEPES 10 mmol/L、GlutaMAX 2 mmol/L、B27 1×、N-acetyl-L-cysteine 1 mmol/L、EGF 50 ng/mL、FGF10 100 ng/mL、noggin 100 ng/mL、gastrin I 1 nmol/L、A83-01 2 μmol/L、Y-27632 10 μmol/L。活力实验每孔 1,000 cells/5 μL Matrigel，处理 3 天；colony assay 每孔 500 cells/5 μL，pyrvinium 100 nmol/L；IC50 用 GraphPad Prism 10.2.3，IM/normal 比较用 `lme4`/`lmerTest`，colony 多重比较用 two-stage Benjamini–Krieger–Yekutieli、Q=1%（`P019.S0022–P019.S0041`）。
-- OXPHOS/氧化损伤：Seahorse 每孔约 150 个、平均直径约 100 μm 的 organoids，依次加入 oligomycin A 5 μmol/L、FCCP 0.5 μmol/L、rotenone 2 μmol/L 与 antimycin A 2 μmol/L；DCA 5 mmol/L 预处理 24 小时，OCR 按 DNA 量归一。ROS 用 CellROX 10 μmol/L、37°C 30 分钟；γH2AX 在 4°C 染色 30 分钟（`P020.S0015–P020.S0035`）。
+- OXPHOS/氧化损伤：通路 GSEA 为 6 个 IM 对 4 个 normal organoids。Seahorse OCR 为 PT001N/PT033N/PT038N 对 PT030IM/PT031IM/PT047IM；8-oxo-dG 为同 3 个 normal lines 对 PT030IM/PT031IM/PT070IM，每系 6 个 technical replicates。论文未报告这些类器官与 20 个 WGS 样本的逐样本配对或样本级链接。Seahorse 每孔约 150 个、平均直径约 100 μm 的 organoids，依次加入 oligomycin A 5 μmol/L、FCCP 0.5 μmol/L、rotenone 2 μmol/L 与 antimycin A 2 μmol/L；DCA 5 mmol/L 预处理 24 小时，OCR 按 DNA 量归一。Supplementary Fig. S2 的 DCA/OCR、2 周 ROS 与 γH2AX 均来自一个正常类器官系 PT001N，图注未报独立重复数。ROS 用 CellROX 10 μmol/L、37°C 30 分钟；γH2AX 在 4°C 染色 30 分钟（`P020.S0015–P020.S0035`）。
 - EM-seq：200 ng genomic DNA 加 lambda negative 与 methylated pUC19 positive controls，Covaris 打断至平均 300 bp，NovaSeq X Plus PE150；BWA-Meth、Picard MarkDuplicates、MethylDackel。Controls 平均甲基化为 1.5% 与 97.5%；methylKit 阈值 FDR <0.001、差异 >10%，聚类用 top 50% variable CpG、Pearson distance、Ward.D2（`P020.S0036–P020.S0045`）。
-- CH/临床模型：blood/saliva 作为 Mutect2 “tumor”、matched IM 作为 control，并关闭 normal-artifact filter；至少 5 条支持 reads、blood/saliva VAF ≥2%，且至少为 matched IM VAF 的 2×。Logistic regression 用 R `glm`，单变量筛选后在同一数据拟合多变量；未报告数据拆分、重采样、校准或决策曲线。GCEP1000 取最早胃窦 biopsy，排除既往 HGD/胃癌和 OLGIM I，近期国际样本只用 baseline outcome，最终 765 人（43 dysplasia、26 EGN）（`P020.S0046–P021.S0014`）。
-- Saliva/microbiome：采集 2 mL 唾液，50°C 60 分钟后每份 500 μL、−80°C 保存；250 μL 用 PowerFecal Pro 提取，6.0 m/s bead-beating 40 秒；NovaSeq X Plus PE150、约 6 GB/样本。PathSeq abundance 以 bacterial/human reads ×10^6 归一；bacterial reads <0.02% 的 RNA-seq 样本排除；lefser 比较菌属，CIBERSORTx relative mode 推断 7 类免疫细胞，ESTIMATE 计算 immune score（`P021.S0015–P021.S0035`）。
+- CH/临床模型：blood/saliva 作为 Mutect2 “tumor”、matched IM 作为 control，并关闭 normal-artifact filter；至少 5 条支持 reads、blood/saliva VAF ≥2%，且至少为 matched IM VAF 的 2×。Logistic regression 用 R `glm`，单变量显著项进入同一数据的多变量关联分析；Supplementary Fig. S5 没有另报 ROC/PR 模型的拟合或评估流程。GCEP1000 取最早胃窦 biopsy，排除既往 HGD/胃癌和 OLGIM I；最终 765 人混合长期随访 GCEP1000 312 人/9 例 EGN 与仅有 baseline outcome 的近期样本 453 人/17 例 EGN（`P020.S0046–P021.S0014`）。
+- Saliva/microbiome：采集 2 mL 唾液，50°C 60 分钟后每份 500 μL、−80°C 保存；250 μL 用 PowerFecal Pro 提取，6.0 m/s bead-beating 40 秒；NovaSeq X Plus PE150、约 6 GB/样本。主文报告新加坡 173 份唾液/154 人，Supplementary Table S1 仅可枚举 155 个唯一 `Saliva`/shotgun IDs 且没有患者映射。PathSeq abundance 以 bacterial/human reads ×10^6 归一；bacterial reads <0.02% 的 RNA-seq 样本排除；lefser 比较菌属，CIBERSORTx relative mode 推断 7 类免疫细胞，ESTIMATE 计算 immune score（`P021.S0015–P021.S0035`）。
 - 原位验证：IHC 的 MPO/CXCL8/CXCL2 分别为 1:10,000、1:100、1:50；Gram stain 为 crystal violet 与 safranin 各 1 分钟。FISH probe 1 μmol/L，88°C 3 分钟预热、42°C overnight；Stereo-seq 用 5 μm FFPE、DNBSEQ-T7 和 SAW `--detect-microorganism`/Kraken2，在 bin50 中去除 bacterial counts <5，并过滤 genes <3、total counts <20 或 mitochondrial transcripts >5% 的 bins；StereoMap/Stereopy 进行 total-count normalization、`log1p` 与 Leiden clustering（`P021.S0036–P022.S0028`）。
 
 ### Methods 证据覆盖审计
@@ -423,11 +439,11 @@ PathSeq、lefser、Kraken2 和 Stereo-seq SAW 用于微生物 reads 识别和空
 | `P018.S0004–P018.S0008`（5/5） | 六地伦理审批、书面知情同意和 Helsinki 声明。 | 界定多中心人体样本合规性。 | 逐中心明细可查官方 Supplementary Table S1；主文没有统一展开。 |
 | `P018.S0009–P018.S0031`（23/23） | Targeted/WGS 建库、PE150、hs37d5、去重复、HaplotypeCaller/Mutect2 与最终过滤。 | 高深度 panel 以灵敏度换取基因组广度。 | Mutect2 为提高灵敏度修改参数；1% VAF 和 5-read 阈值依赖深度。 |
 | `P018.S0032–P019.S0014`（31/31） | Hp coverage/phylogeny、CagA–ASPP2 结构和 co-IP，以及 bulk/scRNA 数据构成。 | 把地区菌株变异连接到蛋白互作，并说明转录组复用。 | “two-way” t test 原文措辞低置信；bulk 104、scRNA 18，其中新增 high-CH 为 10/2。 |
-| `P019.S0015–P019.S0021`（7/7） | IntOGen 七算法与 weighted voting、artifact removal；fgsea 的 KRAS/ERK/intersection top 200。 | Driver discovery 与转录通路验证。 | 候选受 277-gene panel 限制；scRNA cell-cycle 句跨栏截断，细节依赖既往方法。 |
+| `P019.S0015–P019.S0021`（7/7） | IntOGen 七算法与 weighted voting、artifact removal；fgsea 的 KRAS/ERK/intersection top 200。 | Driver discovery 与转录通路验证。 | 先排除 hypermutated samples，S3 的 47 个基因以 1,498 份 IM 为分母；候选仍受 277-gene panel 限制。 |
 | `P019.S0022–P020.S0007`（34/34） | Organoid 培养、RNA-seq、batch correction、药物/colony assay、western blot 与 CDX2/EPCAM staining。 | 在正常与 IM 来源类器官中验证状态和药物敏感性。 | Supplementary Fig. S1 已从官方包复核；关键 panel 仅 3 次技术重复且未说明独立生物学重复，遗传扰动缺失。 |
-| `P020.S0008–P020.S0045`（38/38） | SigProfiler、8-oxo-dG、Seahorse/DCA、ROS/γH2AX、EM-seq、QC 和 methylKit。 | 连接 signature、代谢/氧化读出与甲基化区域。 | 这些实验没有纵向积累 SBS17 的读出，不能闭合机制。 |
-| `P020.S0046–P021.S0014`（18/18） | 反向 CH calling、MSKCC 对照、临床 endpoint、`glm`、纳排和 765 人构成。 | 区分血液克隆与 IM/白细胞污染，并建立临床关联模型。 | Results/Methods 的 MSKCC 总人数不一致；26 个 EGN 限制模型稳定性。 |
-| `P021.S0015–P022.S0028`（70/70） | 唾液 shotgun、PathSeq/lefser、CIBERSORTx/ESTIMATE、IHC、Gram、FISH、Stereo-seq/SAW/Kraken2 与 QC。 | 用多模态证据连接菌属、免疫组成与空间炎症。 | Panel/转录组并非专为低丰度微生物设计；FISH/Stereo-seq 来自胃癌，样本少。 |
+| `P020.S0008–P020.S0045`（38/38） | SigProfiler、8-oxo-dG、Seahorse/DCA、ROS/γH2AX、EM-seq、QC 和 methylKit。 | 连接 signature、代谢/氧化读出与甲基化区域。 | Targeted 只受限拟合六项 WGS-derived signatures；DCA 仅一个正常类器官系且没有 SBS17 累积读出，不能闭合机制。 |
+| `P020.S0046–P021.S0014`（18/18） | 反向 CH calling、MSKCC 对照、临床 endpoint、`glm`、纳排和 765 人构成。 | 区分造血克隆与 IM/白细胞污染，并建立临床关联模型。 | 765 人混合 312 人纵向队列与 453 人 baseline-only 队列；Results/Methods 对 calling 方向、结局时间轴和 MSKCC 总人数的文字不一致。 |
+| `P021.S0015–P022.S0028`（70/70） | 唾液 shotgun、PathSeq/lefser、CIBERSORTx/ESTIMATE、IHC、Gram、FISH、Stereo-seq/SAW/Kraken2 与 QC。 | 用多模态证据连接菌属、免疫组成与空间炎症。 | 主文 173 份/154 人与 S1 可枚举的 155 个 saliva IDs 差额未解释；FISH/Stereo-seq 来自胃癌，样本少。 |
 
 审计结论：主 Methods 连续范围 `P018.S0004–P022.S0028` 的 226/226 个 ID 已完成来源区间归类，未归类 ID：无；数据可用性 `P022.S0029–P022.S0033` 的 5/5 个 ID 同样已归类。Manifest 自动标为 `methods` 的 115 个 ID 均属主 Methods；后 111 个真实 Methods ID 被误标为 `supplementary`，已人工校正。这里的 226/226 是 ID inventory 完整性，不表示每个参数都在笔记中逐句重述。
 
@@ -451,7 +467,12 @@ PathSeq、lefser、Kraken2 和 Stereo-seq SAW 用于微生物 reads 识别和空
 
 - MSKCC 对照总人数在 Results `P012.S0020`/Fig. 5 图注为 24,146，在 Methods `P021.S0003` 为 24,126；不能静默统一。
 - Fig. 5A 以 1,067 名 subjects 为分母；Fig. 5C 图注却写 234 CHIP-positive 加 861 CHIP-negative IM samples，共 1,095 份。受试者与样本可能重复，主 PDF 未给逐一映射。
+- Results `P012.S0014` 写成从 IM 变异中减去 normal variants，字面方向与 Methods `P020.S0048–P021.S0001` 明确的 blood/saliva as “tumor”、IM as control 相反。正文按参数完整的 Methods 描述，原句歧义仍保留。
+- Results `P012.S0046` 称 765 人中的 26 例都 “progressed to EGN”；Methods `P021.S0010–P021.S0014` 却说明其中近期样本 453 人/17 例 EGN 只有 baseline outcome。只有 GCEP1000 的 312 人/9 例 EGN 来自长期随访，不能把联合 26 例统一写成随访进展。
+- Methods `P021.S0006` 把 dysplasia 括注为 low-grade、把 EGN 定义为 high-grade dysplasia 或 adenocarcinoma，文字上像两个分开的终点；但 Supplementary Table S1 在 765 个 Fig. 5E 纳入者中把全部 26 个 EGN 同时标为 Dysplasia，另有 17 个非 EGN Dysplasia。本文按补表登记为嵌套 flags，不把 43 与 26 相加。
 - Methods `P019.S0013` 报 bulk RNA-seq 总数 104；Results/Fig. 6F `P015.S0024`、`P015.S0042` 却是 20 high CH + 94 non/low CH = 114。Fig. 6G 在排除 10 份 bacterial reads <0.02% 样本后为 104，不能消解 Methods 对 bulk 总数的冲突。
+- 主文 `P003.S0024` 报新加坡 173 份唾液样本/154 人；官方 Supplementary Table S1 只枚举 155 个唯一 `Saliva`、shotgun-metagenomics/Table S12 样本 ID，也没有患者映射。材料未解释差额或两个口径是否本应一致，故登记为未解释的分母差异而不判断谁正确。
+- 主文报告 47 个显著基因中的 2,100 个 driver mutations；Supplementary Table S3 的未定义 `MUTATIONS` 列合计 2,668。补表没有说明后者是否包含非 protein-altering events，也没有给出两者映射，因此保留 2,100 且不把 2,668 宣称为确定冲突。
 - `P019.S0010–P019.S0012` 把 CagA co-IP 的检验写成 “Student t test (two-way)”。这可能意指 two-tailed，但原文没有澄清，本笔记保留原措辞。
 - Fig. 3–6 跨双栏/跨页，`P007.S0043–P009.S0002`、`P011.S0042–P012.S0005` 和 `P012.S0052–P015.S0002` 被抽取器拆开；图页坐标轴文字不能单独当作结果来源。
 - 数据可用性在 `P022.S0033` 跨栏后截断于 “Data”；八个 accession 可完整读出，但申请机构名称需结合正文语境理解。
