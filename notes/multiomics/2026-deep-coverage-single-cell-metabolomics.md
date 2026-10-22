@@ -1,6 +1,6 @@
 # Deep-coverage single-cell metabolomics enabled by ion mobility-resolved mass cytometry
 
-<!-- wechat-style-reviewed: 2026-10-13 -->
+<!-- wechat-style-reviewed: 2026-10-22 -->
 
 一次质谱流式类单细胞代谢组采集通常只有约 **0.1 秒**。在这段时间里，仪器既要捕捉阿摩尔（amol，10⁻¹⁸ mol）级的小分子，又要分清真实代谢物、随机噪声和同质量干扰；任何一个信号稍弱，都可能在结果里变成“这个细胞没有该代谢物”。
 
@@ -104,11 +104,15 @@ HSC 内部还分出 retinol-high 864 个与 retinol-low 2,034 个细胞。Fig. 5
 
 作者把肝细胞按代谢谱排成四个 pseudotime 状态：把 25,370 个肝细胞汇总后，状态 1、2、3、4 中老年细胞分别占 **16%、64%、65%、86%**。这四个数是 `P(old | state)` 的 pooled-cell 比例，不是逐鼠比例均值，Source Data 也显示各鼠状态构成差异较大。状态 3 的老年肝细胞富集 arginine、hypoxanthine、spermine 和多种 diacylglycerol；状态 4 则富集 adenosine、nicotinamide、glutathione 与多种寡糖。
 
+这种 pooled-cell 差异对小鼠构成很敏感。1,832 个老年 state 3 细胞在 6 只鼠中依次为 262、243、540、740、27、20 个，其中老年鼠 3 和 4 合计占 **69.9%**；6,989 个 state 4 细胞依次为 2,710、1,015、694、1,350、1,002、218 个，仅老年鼠 1 就占 **38.8%**。按每鼠中位数重算，三种 DG 的 `state 3 > state 4` 都只见于 3/6 只鼠，而 maltopentaose、maltotetraose、maltotriose 的 `state 4 > state 3` 分别只见于 2/6、2/6、1/6 只鼠。汇总方向可能受到小鼠组成影响，细胞层显著性不能替代鼠层一致性。
+
+还要注意分析顺序：同一张 `4,541 peaks × 45,603 cells` 底层计数表先用于归一化、特征选择、降维、整合、聚类和注释；它的肝细胞子集随后进入 Monocle 状态判定，并继续以同源峰数据检验 state 3/4 的代谢物差异。论文没有 held-out 特征，也没有足以按鼠确认同一状态定义和六个代谢物方向的独立验证集；60 周龄 2 只鼠只能提供方向性支持。因此这部分更适合作为状态定义后的探索性描述，而不是独立验证。
+
 Oil Red O 与 PAS 染色把两类状态分别联系到中央静脉附近脂滴积累和门静脉周围糖原储存；来自 **2 只** 60 周龄雄性小鼠的 8,545 个肝细胞也出现相似亚群。这是“空间染色与小规模中间年龄数据方向一致”的支持，不是同一细胞被纵向追踪出的两条命运；两端年龄和 pseudotime 仍不足以证明真实时间轨迹。
 
 ![Fig. 6：衰老肝细胞的代谢状态](../../assets/multiomics/2026-deep-single-cell-metabolomics/fig6-aging-hepatocyte-states.png)
 
-简明图注：Fig. 6 比较年轻与老年小鼠的细胞组成和四个计算状态，并展示老年状态 3 的脂质信号与状态 4 的寡糖信号；轨迹是横断面计算排序，不是谱系追踪。
+简明图注：Fig. 6 比较年轻与老年小鼠的细胞组成和四个计算状态，并展示老年 state 3 的脂质信号与 state 4 的寡糖信号；六只鼠的单鼠方向并不稳定，且状态判定与差异检验复用了同源峰数据，因此应视为横断面探索结果，而不是谱系追踪或独立验证。
 
 ## 09｜这项技术真正改变了什么？
 
@@ -136,7 +140,7 @@ Oil Red O 与 PAS 染色把两类状态分别联系到中央静脉附近脂滴�
 
 第四，**平台目前只有正离子模式**。活细胞 electrolaunching 可能因膜破坏不完全而漏检，蛋白/DNA 共电离会造成离子抑制和复杂多电荷谱，维持细胞完整性的等渗 ammonium formate 又可能降低非极性代谢物溶解度。
 
-第五，**生物学验证仍是横断面小鼠设计，而且细胞数不能替代动物数**。主要年龄比较只有 12 周与 90 周两个端点、每组 6 只雄鼠；60 周补充数据虽有 8,545 个肝细胞，却只来自 2 只雄鼠。state 3/4 的差异代谢检验以 1,832 对 6,989 个细胞呈现，Source Data 证明 P 值来自细胞层 Wilcoxon 后乘以 4,541 个峰作 Bonferroni 校正，但没有把小鼠作为分层或随机效应，仍存在伪重复风险。pseudotime 不能当作真实纵向轨迹，结果也不能外推到雌鼠。
+第五，**生物学验证仍是横断面小鼠设计，而且细胞数不能替代动物数**。主要年龄比较只有 12 周与 90 周两个端点、每组 6 只雄鼠；60 周补充数据虽有 8,545 个肝细胞，却只来自 2 只雄鼠。state 3/4 的差异代谢检验以 1,832 对 6,989 个细胞呈现，P 值来自细胞层 Wilcoxon 后乘以 4,541 个峰作 Bonferroni；其中 state 3 有 69.9% 来自两只鼠、state 4 有 38.8% 来自一只鼠，六个代表代谢物按鼠比较与 pooled-cell 主图方向一致的结果只在 1–3/6 只鼠出现。分析还用同一底层计数表的肝细胞子集判定状态并从同源峰数据寻找差异，没有 held-out 特征；Bonferroni 不能修复小鼠内细胞相关性或这种 post-selection，因此结果仍属探索性。pseudotime 不能当作真实纵向轨迹，结果也不能外推到雌鼠。
 
 第六，**组织解离会改变代谢物**。作者自己指出，临床组织消化可能引入代谢伪影；稀有细胞也可能在混合样本中被忽略。研究中的培养细胞和即时处理小鼠肝脏，不能替代复杂患者标本的系统稳定性评估。
 
@@ -169,7 +173,7 @@ Oil Red O 与 PAS 染色把两类状态分别联系到中央静脉附近脂滴�
 | 07（细胞注释） | 45,603 个肝脏来源单细胞、其中 25,370 个肝细胞、其余三类已注释细胞与其他类别 | `P005.S0051–P006.S0020`、Fig. 5 |
 | 07（HSC 亚群） | 864/2,034 个 HSC、retinol/retinal/glutathione 的倍数与图面 P 值 | `P006.S0021–P006.S0053`；Fig. 5j–l 页面视觉复核 |
 | 08（年龄组成） | 20,042/18,494 个细胞与 HSC 6.8%→9.4% | `P006.S0054–P006.S0060`、Fig. 6b,c |
-| 08（计算状态） | 四个 pseudotime 状态及老年细胞比例 | `P006.S0061–P008.S0024` |
+| 08（计算状态） | 四个 pseudotime 状态、老年细胞比例、逐鼠构成、代表代谢物的逐鼠方向，以及同一底层计数表的肝细胞子集判定状态后再从同源峰数据做差异检验的边界 | `P006.S0061–P008.S0024`；官方 Supplementary Information 内页 S7；MOESM8 `figure6d-h` |
 | 08（正交验证） | Oil Red O、PAS 与 2 只 60 周龄雄鼠的 8,545 个肝细胞 | `P008.S0025–P009.S0001`；官方 Supplementary Information 内页 S5 |
 | 11（检测先验） | 前 600 个细胞、稀有峰与批次边界 | `P013.S0001–P013.S0038`、`P018.S0002–P018.S0010` |
 | 11（结构鉴定） | 分辨率、未注释 MS2 与谱图相似度边界 | `P009.S0035–P009.S0048` |
@@ -208,7 +212,7 @@ Oil Red O 与 PAS 染色把两类状态分别联系到中央静脉附近脂滴�
 - 来源为 Nature 文章页链接的[官方 Supplementary Information](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41592-025-02970-2/MediaObjects/41592_2025_2970_MOESM1_ESM.pdf)，复审文件 SHA-256 为 `82f2827d40bd29d3125e8e4b1dd72fa622f30363ce97ccc279a9dc55fafe6e9a`。该文件共 44 个 PDF 页面，正文页码为 S1–S43；它独立于上述 29 页主论文和 1,038 个 `Pxxx.Sxxxx` ID，以下只用补充页码/表号定位，不伪造主文句子 ID。
 - Supplementary Methods（S4–S5）确认 60 周龄队列为 **2 只雄鼠**、12 周和 90 周主队列各 6 只，并补出 140 mM ammonium formate（pH 7.3）及最终 `4×10^5 cells ml^-1` 的上机细胞密度。细胞在 37 °C/5% CO₂ 培养；贴壁细胞用 DMEM、Jurkat 用 RPMI，均含 10% FBS 和 1% glutamine/pyruvate/penicillin–streptomycin，48–72 h 换液、汇合度低于 80%、胰酶 2–4 min、100g 3 min/4 °C 收集。肝脏用 EGTA 5 ml/min、37 °C 灌流 5 min，再 collagenase 6 min、DNase 37 °C 10 min、70 μm 过滤和 580g 10 min/4 °C 离心；每鼠分 2–4 批、每个肝样本至少采 2,000 个细胞。
 - PRM-PASEF（S5–S6）写明前体隔离窗 `m/z ±0.6 Da`、淌度窗 `±0.03 V s cm^-2`，low/high 质量窗为 50–300/300–1,300 Da，每次 scan 带 marker、每 scan 采 2–6 个离子；每个离子采 1 min、约 10–50 张 MS2 谱，共识谱中位数为 31 张。共识谱按 20 ppm 分组、强度求和并以最高峰归一；120 min HepG2 数据在 7 线程 i7-12700 上约运行 40 min、占 6–20 GB。但 Supplementary Methods S5 写碰撞能 30 eV，Table 5（S41）却把 low/high 两档都列为 10 eV；原文未解释，本文不替作者二选一。
-- MetCell/下游流程（S6–S9）补出 MetCell 1.0.22、SCMeTA 0.2.7、Seurat 5.0.1 与 Monocle 2.26.0；肝脏数据以总离子强度做 LogNormalize、取 2,000 个高变特征和 25 个主成分，再做 CCA integration、邻接图、聚类及 UMAP/t-SNE。软件、函数和大框架由此可定位，但 cluster resolution、邻居数、随机种子和鼠层差异模型仍未报告。
+- MetCell/下游流程（S6–S9）补出 MetCell 1.0.22、SCMeTA 0.2.7、Seurat 5.0.1 与 Monocle 2.26.0；肝脏数据以总离子强度做 LogNormalize、取 2,000 个高变特征和 25 个主成分，再做 CCA integration、邻接图、聚类及 UMAP/t-SNE。S7 显示同一原始计数表用于归一化、高变特征、降维、整合、聚类、注释和差异分析，肝细胞子集又从这张表进入 Monocle 状态判定；没有 held-out 特征，也没有足以按鼠确认同一状态定义和六个代谢物方向的独立验证集，60 周龄 N=2 只作方向性支持。软件、函数和大框架由此可定位，但 cluster resolution、邻居数、随机种子和鼠层差异模型仍未报告。
 - 跨批峰匹配（S7）把 31 个批次的单电荷峰都对齐到随机选取的 old mouse #3，形成 `4,541 singly-charged peaks × 45,603 cells` 的矩阵。这个参考样本选择可能影响跨批特征保留，补充材料没有给更换参考样本的敏感性分析。
 - 分类时，DotPlot 以 cluster average marker expression >0 作为归入相应细胞类型的门槛；FindMarkers 使用双侧 Wilcoxon，并按 4,541 个峰作 Bonferroni。这个阈值没有独立测试集、held-out accuracy 或混淆矩阵支持。
 - 标志物筛选（S8）实际使用 hepatocyte 2,386、LSEC 1,990、Kupffer cell 2,309、HSC 1,449 个细胞，先取各类 FC 前 10 名再人工复核，并要求 marker 为 level 1。人工筛选提高化学身份门槛，却没有提供独立测试集的分类性能。
@@ -347,6 +351,9 @@ Table 2 的 Jurkat/MEF detected 与 M0 L1 正好反向对应 Table 1，singly ch
 - MOESM7 `figure5j-l` 与 MOESM8 `figure6f/figure6g-h` 证明 Fig. 5j–l 和 Fig. 6g–h 的图示 P 值均为细胞层双侧 Wilcoxon 原始 P 乘以 **4,541** 后的 Bonferroni 值。这个分母现已闭合，细胞嵌套于小鼠的伪重复风险并未因此消失。
 - MOESM8 `figure6b-c` 显示 HSC 6.838%→9.434% 是逐鼠已注释细胞比例的组中位数，双侧 Wilcoxon 秩和 `P=0.0411255`；若 pooled 为 6.36%/8.78%，组均值则为 6.494%/8.998%，三种摘要不可互换。
 - MOESM8 `figure6d/e` 显示 16%/64%/65%/86% 是 pooled `P(old | state)`。逐鼠构成高度异质：老鼠 state 3 占各鼠 hepatocytes 的 1.35%–36.86%，state 4 为 14.71%–73.70%，年轻 4 号的 state 4 也达到 38.75%；它不是统一的个体级年龄轨迹。
+- MOESM8 逐鼠重算显示，老年 state 3 的 1,832 个细胞在老年鼠 1–6 中依次为 262、243、540、740、27、20 个，鼠 3 与 4 合计 1,280 个（69.9%）；state 4 的 6,989 个细胞依次为 2,710、1,015、694、1,350、1,002、218 个，鼠 1 单独贡献 2,710 个（38.8%）。这些比例说明 pooled 差异可能受动物构成影响。
+- 以 MOESM8 的逐鼠中位数重算 Fig. 6g–h，DG(38:4)、DG(36:2)、DG(36:4) 的 `state 3 > state 4` 均仅见于 3/6 只老年鼠；maltopentaose、maltotetraose、maltotriose 的 `state 4 > state 3` 分别仅见于 2/6、2/6、1/6。这里记录方向稳定性，不另造鼠层 P 值。
+- Supplementary Methods S7 表明同一 `4,541 peaks × 45,603 cells` 计数表既用于 Seurat 的归一化、高变特征、PCA/CCA、聚类、注释和差异分析，也由其中的 hepatocyte 子集进入 Monocle 状态判定。没有 held-out 特征，也没有足以按鼠确认同一状态定义和六个代谢物方向的独立验证集；60 周龄 N=2 只作方向性支持。因此 state 3/4 的差异代谢物属于状态定义后的 post-selection 描述。
 - MOESM12 `extended_fig_8a/c/e/f` 补齐标准曲线：adenine 0.025–0.8 ppm、nicotinamide 0.05–1.6 ppm、arginine 2.5–20 ppm、alanine 5–40 ppm。它允许核对浓度点，仍不足以恢复未报告的回归权重和完整残差诊断。
 
 ### 主图与完整图注
@@ -413,6 +420,8 @@ Table 2 的 Jurkat/MEF detected 与 M0 L1 正好反向对应 Table 1，singly ch
 - f：老年 state 3 与 state 4 的差异代谢物；双侧 Wilcoxon，P 值经 Bonferroni 校正。
 - g：两个状态的 DG(38:4)、DG(36:2)、DG(36:4)；主图图面依次列出 FC 0.70、0.70、0.74，`P=5.2×10^-13`、`3.9×10^-35`、`1.6×10^-12`。
 - h：两个状态的 maltopentaose、maltotetraose、maltotriose；主图图面依次列出 FC 1.52、1.25、1.11，`P=6.6×10^-117`、`2.9×10^-75`、`4.5×10^-19`。state 3 和 4 分别含 1,832 与 6,989 个老年肝细胞，箱线图为中位数、Q1–Q3 与 1.5×IQR 须线。Source Data 证明 g/h 六个 P 值均为细胞层双侧 Wilcoxon 原始 P 乘以 4,541 后的 Bonferroni 值；图注仍未定义 FC 的分子/分母，本文保留图面数值而不据此另推方向。
+- 逐鼠审计：state 3 的 1,832 个细胞有 69.9% 来自老年鼠 3/4，state 4 的 6,989 个细胞有 38.8% 来自老年鼠 1；三种 DG 与 pooled-cell 主图方向一致的结果各见于 3/6 只鼠，三种寡糖分别见于 2/6、2/6、1/6。细胞层箱线和 Bonferroni P 值没有展示这种动物间异质性。
+- 分析依赖：同一 4,541 峰底层计数表先参与特征选择与聚类，其肝细胞子集再进入 Monocle 状态判定，随后又从同源峰数据检验 state 3/4 差异；没有 held-out 特征，60 周龄 N=2 也不足以按鼠确认同一状态和六个代谢物方向，故 f–h 是 post-selection 的探索性比较。
 
 ### Results 证据覆盖审计
 
@@ -670,6 +679,7 @@ Table 2 的 Jurkat/MEF detected 与 M0 L1 正好反向对应 Table 1，singly ch
 - 38,536 个注释细胞；年轻 20,042、老年 18,494。HSC 6.8%→9.4% 是各鼠已注释细胞比例的组中位数（精确值 6.838%→9.434%），动物 `N=6/组`，双侧 Wilcoxon 秩和 `P=0.0411255`；pooled-cell 比例另为 6.36%→8.78%（`P006.S0055–P006.S0059`; `P008.S0015–P008.S0016`; MOESM8 `figure6b-c`）。
 - 主图 Fig. 6e 目视复核显示 state 1/2/3/4 总细胞数为 12,585/1,851/2,840/8,094，其中老年细胞为 1,975/1,185/1,832/6,989，占 16%/64%/65%/86%；正文句子只明列 state 1/3/4（`P006.S0061–P006.S0065`）。
 - state 3 vs 4 差异代谢物使用细胞层双侧 Wilcoxon；Source Data 证明 Fig. 6g/h 六个图示 P 值都是原始 P 乘以 4,541 后的 Bonferroni 值（`P008.S0038–P008.S0040`）。主图目视复核显示 DG(38:4)/DG(36:2)/DG(36:4) 的 FC 为 0.70/0.70/0.74、P 为 `5.2×10^-13`/`3.9×10^-35`/`1.6×10^-12`，三种寡糖的 FC 为 1.52/1.25/1.11、P 为 `6.6×10^-117`/`2.9×10^-75`/`4.5×10^-19`。图注未明示 FC 分子方向，不据数值另推方向。
+- MOESM8 的逐鼠重算显示 state 3 细胞有 69.9% 来自两只老年鼠、state 4 有 38.8% 来自一只；三种 DG 与 pooled-cell 主图方向一致的结果都只在 3/6 只鼠出现，三种寡糖则分别只在 2/6、2/6、1/6 只鼠出现。Supplementary Methods S7 又显示同一底层计数表的肝细胞子集先用于 Monocle 状态判定，随后从同源峰数据检验状态差异；没有 held-out 特征，因此细胞层 Bonferroni P 值只能作 post-selection 描述。
 - 60 周龄复现含 8,545 hepatocytes；动物数未出现在主文文本包（`P008.S0045–P008.S0049`），官方 Supplementary Methods S5 补出为 2 只雄鼠。
 
 #### 5. 研究设计、比较对象与统计边界
@@ -682,9 +692,9 @@ Table 2 的 Jurkat/MEF detected 与 M0 L1 正好反向对应 Table 1，singly ch
 | 单细胞量是否可信？ | 群体 LC–MS 锚点 vs 单细胞强度分布；FK866 下荧光 vs IM 平台 | 线性换算的绝对量范围、LOD、NAD+ 相对比 | amol–fmol 量级可估计，药理扰动方向与独立平台一致 | 主分析为群体量对单细胞中位数的尺度锚定，mean-to-mean 是敏感性分析；不是同一细胞配对；荧光实际比 0.733 vs IM 0.856，非完全一致 |
 | 代谢物能否注释肝脏细胞类型？ | 纯化四类肝脏细胞筛 marker，再标注肝脏混合细胞 | 四类细胞数、UMAP/marker 表达 | 四类主要肝脏细胞可由功能相关代谢物分开 | 无独立逐细胞真值/混淆矩阵；15.5% 为 Other；纯化与解离可能改变代谢物 |
 | HSC 是否有 retinol-high 亚群？ | 2,898 HSC 无监督分群；外部 scRNA 模块 | 864 vs 2,034，retinol 2.47×，GSH/PUFA 磷脂差异 | 存在 retinol 相关代谢异质性，且与氧化应激转录模块方向相符 | 外部 scRNA 非同一细胞；氧化应激是代谢代理推断，没有直接 ROS 测量 |
-| 年龄是否驱动两种肝细胞状态？ | 12 vs 90 周各 6 鼠；伪时序；组织染色；60 周龄 2 鼠补充队列 | 四状态、两老年分支、DG/寡糖差异、空间染色 | 年龄与两种代谢状态及肝区带图样相关 | 横断面、细胞嵌套于动物；未见混合模型/动物级差异检验；伪时序非真实时间；60 周龄 N=2 只作小规模方向性支持 |
+| 年龄是否驱动两种肝细胞状态？ | 12 vs 90 周各 6 鼠；伪时序；组织染色；60 周龄 2 鼠补充队列 | 四状态、两老年分支、DG/寡糖差异、空间染色 | 年龄与两种代谢状态及肝区带图样相关 | 横断面、细胞嵌套于动物；state 3/4 的动物贡献不均衡，六个代表物的逐鼠方向仅在 1–3/6 只鼠符合 pooled-cell 主图；同一底层计数表的肝细胞子集判定状态后再从同源峰数据检验差异；未见混合模型、动物级差异检验或 held-out 特征；60 周龄 N=2 只作小规模方向性支持 |
 
-统计上最需要冷静看待的是“细胞数很大但动物数不大”。Fig. 6 的 HSC 比例比较明确先逐鼠计算，再以 `N=6 mice/组` 做双侧 Wilcoxon，这是合适的动物级比较；但 state 3/4 的差异代谢物直接以 1,832/6,989 个细胞做 Wilcoxon，再乘 4,541 作 Bonferroni。Source Data 没有显示把小鼠作为分层或随机效应，因此仍可能把同一小鼠内细胞误作独立重复。技术性能部分的 600 cells 和 100 metabolites 同样不是生物学重复数。
+统计上最需要冷静看待的是“细胞数很大但动物数不大”。Fig. 6 的 HSC 比例比较明确先逐鼠计算，再以 `N=6 mice/组` 做双侧 Wilcoxon，这是合适的动物级比较；但 state 3/4 的差异代谢物直接以 1,832/6,989 个细胞做 Wilcoxon，再乘 4,541 作 Bonferroni。前者 69.9% 来自两只鼠，后者 38.8% 来自一只，六个代表代谢物的逐鼠方向只在 1–3/6 只鼠符合 pooled-cell 主图；Source Data 没有显示把小鼠作为分层或随机效应。再加上同一底层计数表的肝细胞子集判定状态、随后从同源峰数据选择差异代谢物，极小 P 值仍可能同时反映鼠内相关性、动物构成与 post-selection。技术性能部分的 600 cells 和 100 metabolites 同样不是生物学重复数。
 
 #### 6. “为什么有效”、真正价值与危险外推
 
@@ -1102,8 +1112,8 @@ Discussion 的正文语义从 `P009.S0002` 延续至 `P010.S0005`（排除页脚
 1. **仪器窗口与累积参数**：Supplementary Table 4（S40）给出默认/选择性 TIMS 的 ramp、accumulation time、low mass 和电压设置；Supplementary Table 5（S41）给出 low/high PRM-PASEF 的前体与采集质量范围。
 2. **MetCell 配置**：Supplementary Table 6（S42）给出 marker m/z/mobility、峰宽、容差、叠加细胞数、LOESS 与注释参数；表下注明数值可调且所列为 HepG2 设置，其中 `intensity_abs_threshold_upper=60,000`、`intensity_abs_threshold_lower=600,000` 的标签/数值次序可疑，仍需用归档代码和真实配置核验。
 3. **样本与实验流程**：Supplementary Methods（S4–S9）补出细胞培养、肝灌流/解离、140 mM ammonium formate（pH 7.3）、`4×10^5 cells ml^-1`、60 周龄 N=2、FK866 `10 nM, 24 h`、LC–MS 提取/仪器/内标，以及部分染色流程。
-4. **软件与分析框架**：同一文件补出 MetCell 1.0.22、SCMeTA 0.2.7、Seurat 5.0.1、Monocle 2.26.0、2,000 个高变特征、25 PCs 和 CCA integration。Supplementary Figs. 1–26 与 Tables 1–6 均在该 44 页文件中，但本次只对支撑上述关键结论的页面定点复核，不把文件存在等同于逐图复现。
-5. **Source Data**：官方 11 个 XLSX 的 44 个工作表已逐表核对，闭合 Fig. 1–6 与 Extended Data Fig. 2/4/7/8/9 的数值口径、Bonferroni 分母、逐鼠比例和标准曲线；文件哈希与关键发现见上方“官方 Source Data 逐表审计”。
+4. **软件与分析框架**：同一文件补出 MetCell 1.0.22、SCMeTA 0.2.7、Seurat 5.0.1、Monocle 2.26.0、2,000 个高变特征、25 PCs 和 CCA integration，并显示同一 4,541 峰底层计数表先用于特征选择与聚类，其肝细胞子集再用于 Monocle 状态判定，随后从同源峰数据做差异分析。Supplementary Figs. 1–26 与 Tables 1–6 均在该 44 页文件中，但本次只对支撑上述关键结论的页面定点复核，不把文件存在等同于逐图复现。
+5. **Source Data**：官方 11 个 XLSX 的 44 个工作表已逐表核对，闭合 Fig. 1–6 与 Extended Data Fig. 2/4/7/8/9 的数值口径、Bonferroni 分母、逐鼠比例和标准曲线；MOESM8 还允许重算 state 3/4 的逐鼠构成及六个代表物的逐鼠方向。文件哈希与关键发现见上方“官方 Source Data 逐表审计”。
 
 ##### 9.2 仍未摄入或仍未报告的关键材料
 
@@ -1111,12 +1121,12 @@ Discussion 的正文语义从 `P009.S0002` 延续至 `P010.S0005`（排除页脚
 - **细胞与动物元数据**：培养基/温度/汇合度和主要解离步骤已有补充说明，但传代号、试剂 lot、禁食/取材时点、细胞活率阈值、每鼠进入质谱的细胞数与丢失原因仍不完整。
 - **上机与 LC–MS**：缓冲液、细胞密度、提取液、仪器、内/外标和四条标准曲线浓度点已有说明；上样体积/等待时间、LC 梯度、回归权重/残差、QC、回收率和基质效应仍不足。
 - **流式与染色**：FK866 剂量/时长、GFP/mCherry 比值以及固定/切片/染色步骤已补出；激光/滤光片、电压、补偿、双细胞门、代表性 gating 图、成像参数和定量规则仍欠缺。
-- **MetCell 与下游分析**：Table 6 和 Supplementary Methods 已补出大量默认值、归一化与 integration 框架，Source Data 也闭合 Bonferroni 分母为 4,541；仍缺 charge-separation line 的完整定义、每批 acquisition-time table、blank 配对、邻居数、cluster resolution、UMAP/Monocle 细参、随机种子，以及差异代谢的鼠层模型。
+- **MetCell 与下游分析**：Table 6 和 Supplementary Methods 已补出大量默认值、归一化与 integration 框架，Source Data 也闭合 Bonferroni 分母为 4,541；同一底层计数表的肝细胞子集判定状态后再从同源峰数据检验差异，这一 post-selection 没有 held-out 特征。另缺 charge-separation line 的完整定义、每批 acquisition-time table、blank 配对、邻居数、cluster resolution、UMAP/Monocle 细参、随机种子，以及差异代谢的鼠层模型。
 - **研究执行记录**：随机化列表、盲法编码/解盲、批次布局、QC 插入、run order、停机/重跑规则及“所有尝试成功”的原始日志仍不可见。
 
 #### 10. 内部不一致、危险假设与证据边界
 
-1. **层级结构被忽略的风险。** Reporting Summary 把层级/复杂设计标 n/a，但细胞嵌套在 6 只/组小鼠内。多处统计以细胞数为 N（如 864 vs 2,034；1,832 vs 6,989），Methods 没有说明按鼠聚合或混合模型，存在 pseudoreplication 风险。
+1. **层级结构、动物构成与 post-selection 被同时忽略。** Reporting Summary 把层级/复杂设计标 n/a，但细胞嵌套在 6 只/组小鼠内。state 3 的 1,832 个老年细胞有 69.9% 来自两只鼠，state 4 的 6,989 个细胞有 38.8% 来自一只；六个代表代谢物与 pooled-cell 主图方向一致的逐鼠结果只在 1–3/6 只鼠出现。多处统计仍以细胞数为 N（如 864 vs 2,034；1,832 vs 6,989），没有按鼠聚合或混合模型；同一底层计数表的肝细胞子集还先用于状态判定、再从同源峰数据做差异检验，且没有 held-out 特征。因此 Bonferroni 后的极小 P 值仍不能排除 pseudoreplication、动物构成和选择后推断。
 2. **多重比较声明冲突。** Reporting Summary 把“assumptions or corrections”标 n/a，图 6 却明确使用 Bonferroni 校正（`P008.S0038`）。
 3. **表单的统计完整性难以从正文核验。** 表单确认 test statistic、CI、effect size、df、P value，但当前图注通常只有 Wilcoxon/P 值，没有统计量或 CI。
 4. **600 细胞叠加可能受顺序影响。** 主 Methods 称 N=600；扩展图称默认取“最前 600 个细胞”（`P018.S0005`）。表单称采集顺序随机化可减轻偏倚，但没有随机化实现或种子，也没有证明前 600 个能代表稀有细胞型。
@@ -1179,7 +1189,7 @@ Discussion 的正文语义从 `P009.S0002` 延续至 `P010.S0005`（排除页脚
 ### 证据强度、原文冲突与不可外推结论
 
 - **“约 800 个代谢物/细胞”存在口径张力：**摘要使用 per cell 表述，但 Results 报告的是 HepG2 数据集 770 个、肝脏混合细胞数据集 809 个分级注释；峰先由 600 个细胞的叠加帧发现，再回到单细胞靶向提取。因此正文只采用“数据集层面约 800 种注释”，不把它改写成每个细胞独立、无缺失地鉴定约 800 种。
-- **统计层级没有被充分处理：**年龄比较的独立生物学重复是每组 6 只小鼠，而若干 state 差异检验直接以细胞为单位。Reporting Summary 又把 hierarchical/complex design 与 effect-size reporting 标为不适用；当前证据不能排除细胞嵌套于小鼠所带来的伪重复。
+- **统计层级和选择后推断没有被充分处理：**年龄比较的独立生物学重复是每组 6 只小鼠，而若干 state 差异检验直接以细胞为单位；动物贡献明显不均衡，state 3 的 69.9% 来自两只鼠，state 4 的 38.8% 来自一只，六个代表物与 pooled-cell 主图方向一致的逐鼠结果仅见于 1–3/6 只鼠。同一底层计数表的肝细胞子集还先用于状态判定、后从同源峰数据做差异检验，没有 held-out 特征。Reporting Summary 又把 hierarchical/complex design 与 effect-size reporting 标为不适用；当前证据不能排除伪重复、动物构成与 post-selection 对极小 P 值的共同影响。
 - **多重校正记录并不完全一致：**Fig. 6f 图注明确使用 Bonferroni 校正，Reporting Summary 的 multiple-comparisons correction 却标为不适用。笔记按具体图注明示 Bonferroni，同时保留表单冲突，不自行推断其他比较也已校正。
 - **随机化、盲法与排除主要来自栅格 Reporting Summary：**表单声明采集顺序随机、采集/处理/分析盲法、无样本排除；主文没有逐项复述，PDF 第 26–29 页又无句子 ID，因此这些信息作为人工视觉转录单列，不能伪装成全文 pack 的句子证据。
 - **低置信解析不被静默修复：**主图图注与双栏正文混排，`P004.S0016`、`P005.S0018`、`P008.S0017` 等同一 ID 混合图注与正文。孤立 P 值与破损公式已通过主 PDF 图面定位并明确标注证据类型；组别顺序等仍无法恢复之处继续标为 `EXTRACTION_CHECK`。

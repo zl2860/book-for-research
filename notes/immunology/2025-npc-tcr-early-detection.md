@@ -1,6 +1,6 @@
 # Immunosequencing identifies signatures of T cell responses for early detection of nasopharyngeal carcinoma
 
-<!-- wechat-style-reviewed: 2026-10-12 -->
+<!-- wechat-style-reviewed: 2026-10-22 -->
 
 在鼻咽癌高发地区做筛查时，最难处理的往往不是已经出现症状的患者，而是一名没有症状、EBV VCA-IgA 却呈阳性的人：他是否已经接近鼻咽癌发生，是否应该优先接受鼻咽镜检查？
 
@@ -50,7 +50,7 @@ Fig. 3D–E 的时间窗比较另以 348 名 VCA-IgA 阳性高风险对照（AR�
 
 ## 04｜这个分数在独立人群中能分开病例和对照吗？
 
-在独立验证中，90 例鼻咽癌的平均 T-score 为 8.46，146 名 VCA-IgA 阴性对照为 4.43，107 名阳性高风险对照为 3.86。与 `T-score≤4` 相比，`4<T-score≤6`、`6<T-score≤10`、`>10` 的病例身份比值比分别为 8.1、17.6、35.3（趋势 `p=2.1×10⁻⁵`）；最高组 95% 置信区间为 13.36–102.81。这是横断面病例身份关联，不是未来患病风险。
+在独立验证中，90 例鼻咽癌的平均 T-score 为 8.46，146 名 VCA-IgA 阴性对照为 4.43，107 名阳性高风险对照为 3.86。四档 T-score 中，病例数/健康对照数依次为 `10/159`、`29/57`、`31/28`、`20/9`；健康对照合并 146 名 VCA-IgA 阴性者与 107 名阳性高风险者。与 `T-score≤4` 相比，`4<T-score≤6`、`6<T-score≤10`、`>10` 的病例身份比值比分别为 8.1、17.6、35.3（趋势 `p=2.1×10⁻⁵`）；最高组 95% 置信区间为 13.36–102.81。这是横断面病例身份关联，不是未来患病风险。
 
 区分病例与全部健康对照的 AUC 为 0.81（95% CI 0.76–0.86）；分别与 VCA-IgA 阴性和阳性对照比较时，AUC 为 0.79 和 0.85。这里的比较说明 T-score 不只是复述 VCA-IgA 阳性状态，但 AUC 衡量的是排序能力，并没有给出真实筛查患病率下的阳性预测值。
 
@@ -58,9 +58,9 @@ Fig. 3D–E 的时间窗比较另以 348 名 VCA-IgA 阳性高风险对照（AR�
 
 前瞻验证只看入组时已经留存的基线血样。34 名后来被诊断为早期鼻咽癌的人各贡献一次基线测量；跨个体比较显示，基线 T-score 与距离诊断的时间呈负相关，`R=-0.63`，`p=7.2×10⁻⁵`。它不能证明同一个人的 T-score 随时间连续升高。
 
-`T-score>4` 的 17 人中位诊断间隔为 4 个月，`T-score≤4` 的 17 人为 27 个月；加速失效时间模型给出的 time ratio 为 0.24，`p=7.6×10⁻⁵`。论文没有报告 `>4` 的预设、训练或独立校准规则。Supplementary Fig. S3G 以 VCA-IgA 1.43 分组同样各 17 人，log-rank `p=0.17`；Fig. 3D–E 将 34 例与合并的 348 名 AR 比较，T-score 趋势 `p=0.003`，VCA-IgA 趋势 `p=0.09`。
+`T-score>4` 的 17 人中位诊断间隔为 4 个月，`T-score≤4` 的 17 人为 27 个月。原文把组间差异写作“约 4.17 倍更短”（95% CI 2.09–8.03，log-rank `p=1.4×10⁻⁴`），但 4.17 不是 4 与 27 的中位数之比；加速失效时间模型另给出 time ratio 0.24、`p=7.6×10⁻⁵`，即模型估计高分组时间约为低分组的 24%，其倒数约为 4.17。论文没有报告 `>4` 的预设、训练或独立校准规则，也没有交代 AFT 的分布假设。Supplementary Fig. S3G 以 VCA-IgA 1.43 分组同样各 17 人，log-rank `p=0.17`；这个 1.43 是图中分组阈值，不同于 Methods 按试剂说明书定义阳性的 1.1，且其选择规则未报告。Fig. 3D–E 将 34 例与合并的 348 名 AR 比较，T-score 趋势 `p=0.003`，VCA-IgA 趋势 `p=0.09`。
 
-相对于诊断间隔超过 18 个月的人，T-score 在诊断前 6–12 个月窗口的 time-dependent AUC 超过 0.80；原文只称 VCA-IgA 即使在诊断前 3 个月仍表现不足。Fig. 3F 只画出点估计曲线与 95% 置信带，没有列出各时点的精确 AUC，也没有报告进入估计的病例与对照（有效风险集）人数；因此不能把曲线上每个时点当作精度相同、已稳定定标的性能。
+相对于诊断间隔超过 18 个月的人，T-score 在诊断前 6–12 个月窗口的 time-dependent AUC 超过 0.80；原文只称 VCA-IgA 即使在诊断前 3 个月仍表现不足。Fig. 3F 只画出点估计曲线与 95% 置信带，没有定义实际分析人群，也没有列出各时点的精确 AUC 或进入估计的病例与对照（有效风险集）人数。Fig. 3D–E 的 348 名 AR 中有 241 人来自横断面发现集，Table S1 又没有随访、事件或删失字段，不能默认这 348 人全部进入了 timeROC，更不能把曲线上每个时点当作精度相同、已稳定定标的性能。
 
 <a id="reader-npc-fig3"></a>
 
@@ -73,6 +73,8 @@ Fig. 3D–E 的时间窗比较另以 348 名 VCA-IgA 阳性高风险对照（AR�
 作者先从 19 名鼻咽癌患者的外周血扩增 EBV 反应性 T 细胞，得到 633 条候选 EBV-reactive CDR3β，再与 VDJdb 参考序列结合，用 GLIPH2 和 GIANA 做相似性聚类。208 条鼻咽癌富集 CDR3β 中有 18 条被注释为潜在 EBV 反应性，其中 12 条同时得到两个算法支持。
 
 HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/208 条唯一 CDR3β 至少与一个 HLA 等位基因显著关联；Supplementary Table 6 将它们按 V/J 展开为 69 条 TCRβ 记录，不能把 69 当作新的唯一序列数。群体关联支持抗原驱动选择，却不能替代完整 TCRαβ 与靶表位验证。
+
+后续进入功能实验的三条 TCR 也不是病例专有。在 HLA 匹配的 VCA-IgA 阴性对照/阳性高风险对照/NPC 中，ID1 的检出率为 26.7%/26.0%/48.8%，ID2 为 13.8%/9.9%/31.5%，ID3 为 6.4%/6.0%/38.6%。这些差距支持病例富集，不支持把任一 TCR 当成 NPC 的特异性单标志物。
 
 <a id="reader-npc-fig4"></a>
 
@@ -100,7 +102,7 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 
 简明图注：Fig. 6 将 17 个肿瘤的单细胞状态与 86 个肿瘤的 bulk 信号连接；Kaplan–Meier 比较只是排除 15 个总体 TIL 极端样本后的 71 例子集，不是协变量调整。
 
-在 10 对血液—肿瘤单细胞样本中，NPC-enriched 克隆在血液的扩增比例为 50.0%，随机匹配为 12.5%，但 `p=0.11`、未达显著；EBV-reactive 为 26.1% 对 13.0%，`p=0.042`。超过 20% 的肿瘤内 NPC-enriched 克隆，其血液对应克隆位于频率前 10%；31 对 bulk TCRβ 也显示共享克隆在血液频率更高。两种尺度支持横断面的血液—肿瘤共享，不证明迁移方向或“进入肿瘤后”才发生表型变化。
+在 10 对血液—肿瘤单细胞样本中，NPC-enriched 克隆在血液的扩增比例为 50.0%，随机匹配为 12.5%，但 `p=0.11`、未达显著；EBV-reactive 为 26.1% 对 13.0%，`p=0.042`。超过 20% 的肿瘤内 NPC-enriched 克隆，其血液对应克隆位于频率前 10%；31 对 bulk TCRβ 也显示共享克隆在血液频率更高。两种尺度支持横断面的血液—肿瘤共享，不证明迁移方向或“进入肿瘤后”才发生表型变化；Methods 也没有报告 10 名患者的 STARTRAC 汇总规则、31 对样本的 Jaccard 是逐人还是 pooled、各频率分箱分母和不确定性，因此图中的极小 P 值不能直接解释为患者层面的重复验证。
 
 <a id="reader-npc-fig7"></a>
 
@@ -118,7 +120,7 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 
 ## 09｜这些结果仍需要冷静看待
 
-首先，最关键的诊断前分析只有 34 例早期鼻咽癌，每人仅一次基线血样；两组各 17 人的 4 个月与 27 个月是跨个体比较，不能写成个体内纵向轨迹。`T-score>4` 和生存 cut-off 的选择规则也未报告；Fig. 3F 还缺各时点的有效风险集、分析人群定义与事件/删失编码，无法判断时点间性能是否稳定。AUC、相关系数和 time ratio 不能替代真实人群患病率下的敏感度、特异度、阳性预测值、复查负担和鼻咽镜资源评估。
+首先，最关键的诊断前分析只有 34 例早期鼻咽癌，每人仅一次基线血样；两组各 17 人的 4 个月与 27 个月是跨个体比较，不能写成个体内纵向轨迹。`T-score>4`、VCA-IgA 1.43 和生存 cut-off 的选择规则也未报告；Fig. 3F 还缺分析人群、各时点有效风险集、事件/删失编码、`times`、cause/weighting 与置信区间算法，无法判断时点间性能是否稳定。AUC、相关系数和 time ratio 不能替代真实人群患病率下的敏感度、特异度、阳性预测值、复查负担和鼻咽镜资源评估。
 
 其次，发现和验证对象主要是中国南方高发地区的广东华人。公共 TCR 同时受 HLA 频率、EBV 流行背景、测序平台和克隆检出深度影响；换到低发地区、其他祖源或其他实验流程，208 条序列与 `T-score>4` 都不能直接照搬。
 
@@ -181,7 +183,7 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 - 关键词：nasopharyngeal carcinoma、TCR beta、CDR3 beta、T-score、EBV VCA-IgA、HLA restriction、TIL、early detection
 - 本地 PDF：`pdfs/processed/npc-tcr-early-detection-cancer-cell-2025.pdf`
 - 前瞻筛查队列注册：NCT00941538
-- 数据来源：作者生成的 bulk TCRβ 矩阵及相关信息存于 National Genomics Data Center，项目号 `PRJCA027151`；单细胞/肿瘤转录组复用 `GSE162025`、`GSE150825`、`GSE102349`。
+- 数据来源：作者生成的 bulk TCRβ 矩阵及相关信息存于 National Genomics Data Center，项目号 `PRJCA027151`；单细胞/肿瘤转录组复用 `GSE162025`、`GSE150825`、`GSE102349`。Results 另称本研究新测 6 份血液 scTCR；Data and code availability 没有为这 6 份样本单独指派 accession，也没有说明它们是否纳入 `PRJCA027151`。
 - 代码来源：论文未提供原创代码；所用软件和版本见 Methods。
 - 官方在线材料：[Supplemental information（Figs. S1–S8；Tables S2、S4–S8）](https://ars.els-cdn.com/content/image/1-s2.0-S1535610825001680-mmc1.pdf)；[Table S1](https://ars.els-cdn.com/content/image/1-s2.0-S1535610825001680-mmc2.xlsx)；[Table S3](https://ars.els-cdn.com/content/image/1-s2.0-S1535610825001680-mmc3.xlsx)。
 - 利益冲突：M.X.、Y.-X.Z.、G.L.、S.Z.、Y.W.、Q.F. 已为本文 NPC-enriched TCRβ 的早诊、风险预测和免疫治疗用途提交待审专利（`P016.S0032-P016.S0033`）。
@@ -190,7 +192,7 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
   - 双栏正文、主图图注和页眉多处交错，Fig. 6–7 及跨页 Results 需按版面语义复位；Key Resources Table 的列发生展平。
   - 自动 Methods 吞入 60 条参考文献；真实 Results/Methods 范围已在文末人工校正并闭合。
   - 官方 Supplemental information 实际为 22 个可渲染页面：第 2–14 页为图像型 Figs. S1–S8、没有可用句子 ID，第 15–22 页为 Tables S2、S4–S8；两个 Excel 分别提供 Tables S1、S3。本次逐项复核，但不纳入主文 151/228 个 ID。
-  - `PRJCA027151`、GEO 源矩阵和未公开分析代码未重算；低置信位置均标为 `EXTRACTION_CHECK`。
+  - `PRJCA027151`、GEO 源矩阵和未公开分析代码未重算；6 份新测血液 scTCR 的 accession 归属不能由已披露文本确认。低置信位置均标为 `EXTRACTION_CHECK`。
 - 图像截取说明：已截取主文 Fig. 1-7，图像位于 `assets/immunology/2025-npc-tcr-early-detection/`。
 
 ---
@@ -199,10 +201,10 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 
 - Fig. S1 给出来源队列流图：16,459 人入组，排除 663 名缺人口学资料者后为 15,796 人；随访得到 14,455 名 VCA-IgA 阴性对照、1,273 名阳性高风险者与 68 例 NPC，最终分析抽取 146、107、34 人。Table S1 的原始 phenotype 大小写法存在 `NPC/npc`、`PRO/pro` 混用，但合并大小写后分母闭合。
 - Table S1 还确认 Fig. 3D–E 的 348 名 AR 是发现集 241 人与验证集 107 人的合并；34 名 prospective cases 各只有一次基线样本。Table S3 则闭合 117 条 NPC vs PC、130 条 NPC vs AR、39 条重叠和 208 条并集。
-- Fig. S3 记录候选序列从 12,437,168 降到 111,129、再排批次效应到 107,779 的流程；VCA-IgA 以 1.43 分组的 17 对 17 人比较为 `p=0.17`。这项阴性结果与正文 T-score 分析应同时保留。
+- Fig. S3 记录候选序列从 12,437,168 降到 111,129、再排批次效应到 107,779 的流程；VCA-IgA 以 1.43 分组的 17 对 17 人比较为 `p=0.17`。1.43 是该图的分组阈值，不同于 Methods 按试剂说明书判定 VCA-IgA 阳性的 1.1，且其选择规则未报告；这项阴性结果与正文 T-score 分析应同时保留。
 - Fig. S2/Table S2 给出 1,061 人的 HLA 频率；Fig. S4 将 19 人实验扩增所得 633 条 CDR3β 对应到 1,395 条带 V/J 的 TCRβ，Table S4 列出 136 条 EBV peptide。Fig. S5/Table S5 列出 18 条潜在 EBV-reactive NPC-enriched CDR3β，其中 12 条同时获两种算法支持。
-- Fig. S6 为 3 条 TCR 的 HLA、内源抗原呈递与细胞毒性对照，各功能 panel 报告 `n=3`。Fig. S7 在肿瘤中记录 NPC-enriched 153 个细胞/17 个 clonotype、EBV-reactive 110/27、重叠 56/2；在 10 份血液中对应为 75/8、478/23、重叠 30/1。
-- Table S6 按 V/J 展开为 69 条 HLA 关联 TCRβ，而正文是 45/208 条唯一 CDR3β；Table S7 使用 6 个新测血液样本，Table S8 只有其中 4 人具有所列 HLA 分型，计数单位与分母不能合并。
+- Fig. S6 为 3 条 TCR 的 HLA、内源抗原呈递与细胞毒性对照，各功能 panel 报告 `n=3`；Methods 只明确杀伤读出使用 triplicate wells，没有说明这些 `n=3` 是否代表独立供者或独立实验。Fig. S7 在肿瘤中记录 NPC-enriched 153 个细胞/17 个 clonotype、EBV-reactive 110/27、重叠 56/2；在 10 份血液中对应为 75/8、478/23、重叠 30/1。
+- Table S6 按 V/J 展开为 69 条 HLA 关联 TCRβ，而正文是 45/208 条唯一 CDR3β；Table S7 使用 6 个新测血液样本，Table S8 只有其中 4 人具有所列 HLA 分型，计数单位与分母不能合并。论文没有为这 6 份新测 scTCR 样本明确指派单独 accession，也没有说明其是否属于 `PRJCA027151`。
 - Fig. S8 的完整 86 例显示 NPC-enriched `>3` 为 45 人、`≤3` 为 41 人，`p=0.021`；EBV-reactive `>23` 为 63 人、`≤23` 为 23 人，`p=0.00041`；CMV/流感 `>1` 为 42 人、`≤1` 为 44 人，`p=0.11`；总体 TIL `>319` 为 64 人、`≤319` 为 22 人，图面 `p=0.00025`。主文 Fig. 6F 排除 15 个 TIL 极端样本后的 71 例是另一分析层级。
 - 现有 Fig. 4 截图在脚注处被截断；原图脚注说明单细胞为 GSE162025，bulk 为 GSE102349 的 100 个肿瘤加本研究 31 个，共 131 个。Methods 却写共同处理 104+31=135 个肿瘤，135→131 的筛选原因未报告。
 
@@ -278,9 +280,11 @@ T-score 的定义很简单：在一个个体的 TCR repertoire 中，完美匹�
 
 原文首先证明数据结构支持后续关联分析。发现队列有 720 人，验证队列包括独立病例和前瞻筛查样本。HLA 频率在发现和验证队列中总体一致，并复现了已知 NPC 风险相关等位基因富集，例如 HLA-A*02:07、B*46:01 在病例中更常见，保护性等位基因如 HLA-A*11:01、B*13:01 在对照中更常见。除已知 NPC 相关 HLA 外，其他常见 HLA 在病例和对照间没有显著差异。这个结果说明研究人群确实带有 NPC 遗传易感背景，同时也提示后续 TCR 关联必须处理 HLA 限制问题。
 
+repertoire 多样性还显示女性 Shannon diversity 高于男性、老年人低于年轻人；验证集中方向复现，但性别差异未达显著（`P003.S0013`）。这说明年龄、性别可能影响背景 repertoire，也解释了候选 TCR 筛选为何需要纳入这些协变量；它不是 NPC 特异效应。
+
 ##### Identification of NPC-enriched CDR3 beta sequences
 
-中文图注（完整 panel 信息）：Fig. 2A 在发现集中比较 NPC 228 例与 PC 251 名、AR 241 名，按 `FDR<0.15` 得到两组 NPC 富集 CDR3β 及其重叠；图面和原文图注的蓝/黄色映射冲突，具体边界见文末。B–D 展示 208 条序列的发生率、累计条数和累计频率，箱线为中位数、上下四分位及 `1.5×IQR`，组间用双侧 Wilcoxon 检验。E 定义 T-score 为个体命中的 208 条序列数。F 在验证集比较 PC 146 名、AR 107 名和 NPC 90 例，同样使用双侧 Wilcoxon。G 以 `T-score≤4` 为参照，三档更高分数的病例身份 OR 为 8.1、17.6、35.3，`P-trend=2.1×10⁻⁵`；最高组 95% CI 13.4–102.8。H 展示发现集、独立验证集和合并数据的 ROC，AUC 分别为 0.896、0.814 和 0.875。HC：healthy controls；来源 `P006.S0030-P006.S0041`。
+中文图注（完整 panel 信息）：Fig. 2A 在发现集中比较 NPC 228 例与 PC 251 名、AR 241 名，按 `FDR<0.15` 得到两组 NPC 富集 CDR3β 及其重叠；图面和原文图注的蓝/黄色映射冲突，具体边界见文末。B–D 展示 208 条序列的发生率、累计条数和累计频率，箱线为中位数、上下四分位及 `1.5×IQR`，组间用双侧 Wilcoxon 检验。E 定义 T-score 为个体命中的 208 条序列数。F 在验证集比较 PC 146 名、AR 107 名和 NPC 90 例，同样使用双侧 Wilcoxon。G 的四档病例数/健康对照数依次为 `10/159`、`29/57`、`31/28`、`20/9`，健康对照合并 PC 146 名与 AR 107 名；以 `T-score≤4` 为参照，三档更高分数的病例身份 OR 为 8.1、17.6、35.3，`P-trend=2.1×10⁻⁵`，最高组 95% CI 13.4–102.8。H 展示发现集、独立验证集和合并数据的 ROC，AUC 分别为 0.896、0.814 和 0.875。HC：healthy controls；来源 `P006.S0030-P006.S0041`、Table S1。
 
 作者在发现队列中分别比较 NPC vs PC 和 NPC vs AR。NPC vs PC 识别 117 条显著富集 CDR3β，NPC vs AR 识别 130 条，其中 39 条重叠，合并得到 208 条 NPC-enriched CDR3β。作者进一步检查这些 208 条序列在对照人群中不随性别或年龄显著偏移，降低年龄/性别造成假阳性的可能。
 
@@ -288,7 +292,7 @@ T-score 的定义很简单：在一个个体的 TCR repertoire 中，完美匹�
 
 ##### Validation of NPC-enriched TCR signature for the early detection of NPC
 
-中文图注（完整 panel 信息）：Fig. 3A 展示基线采血与早期 NPC 临床诊断的时间轴。B 在 34 例前瞻早期病例中比较每人一次基线 T-score 与诊断间隔，阴影为 95% 置信带。C 在同一 34 例中比较 `T-score>4`（17 例，中位 4 个月）与 `≤4`（17 例，中位 27 个月），log-rank `p=1.4×10⁻⁴`；原文另用 AFT 模型得到 time ratio 0.24、`p=7.6×10⁻⁵`，但没有报告阈值选择规则。D–E 将发现集 241 人与验证集 107 人合并的 348 名 AR 对照，与 34 例按诊断前时间分层比较 T-score 和 VCA-IgA；病例组整体趋势分别为 `p=0.003`、`p=0.09`。F 展示两种指标的 time-dependent AUC，线为点估计、阴影为 95% 置信带，但未列各时点的病例数、对照数或有效风险集；来源 `P006.S0007-P006.S0016`、`P007.S0018-P007.S0029`、Table S1。
+中文图注（完整 panel 信息）：Fig. 3A 展示基线采血与早期 NPC 临床诊断的时间轴。B 在 34 例前瞻早期病例中比较每人一次基线 T-score 与诊断间隔，阴影为 95% 置信带。C 在同一 34 例中比较 `T-score>4`（17 例，中位 4 个月）与 `≤4`（17 例，中位 27 个月）；原文把差异写作“约 4.17 倍更短”（95% CI 2.09–8.03，log-rank `p=1.4×10⁻⁴`），但 4.17 不是两项中位数之比。AFT 模型另得 time ratio 0.24、`p=7.6×10⁻⁵`，即高分组估计时间约为低分组的 24%、倒数约 4.17；阈值规则与 AFT 分布假设均未报告。Supplementary Fig. S3G 另以 VCA-IgA 1.43 分组为 17 对 17 人，区别于 Methods 的阳性阈值 1.1。D–E 将发现集 241 人与验证集 107 人合并的 348 名 AR 对照，与 34 例按诊断前时间分层比较 T-score 和 VCA-IgA；病例组整体趋势分别为 `p=0.003`、`p=0.09`。F 展示两种指标的 time-dependent AUC，线为点估计、阴影为 95% 置信带，但没有定义实际分析人群，也未列各时点的病例数、对照数或有效风险集；来源 `P006.S0007-P006.S0016`、`P007.S0018-P007.S0029`、Table S1。
 
 在独立验证集中，90 例 NPC 的 T-score 平均为 8.46，明显高于 PC 的 4.43 和 AR 的 3.86。与 `T-score≤4` 相比，`4<T≤6`、`6<T≤10`、`T>10` 的横断面病例身份 OR 为 8.1、17.6、35.3；最高组 95% CI 为 13.36-102.81。T-score 区分 NPC 与健康对照的 AUC 为 0.81；分别与 PC 和 AR 比较时，AUC 为 0.79 和 0.85。
 
@@ -298,7 +302,7 @@ T-score 的定义很简单：在一个个体的 TCR repertoire 中，完美匹�
 
 ##### Inference of antigen specificity and HLA restriction of NPC-enriched TCRs
 
-中文图注（完整 panel 信息）：Fig. 4A 用 GLIPH2 和 GIANA 对 208 条 NPC-enriched CDR3β 做 EBV 特异性注释。B 中圆点为 NPC-enriched CDR3β，红/蓝三角分别为实验来源/VDJdb 整理的潜在 EBV-reactive CDR3β，白三角为 VDJdb 中潜在非 EBV 反应序列，连线表示 GLIPH2 同簇。C 在合并数据中用单侧 Fisher 精确检验评估 TCRβ–HLA 关联，逐条 TCRβ 以 FDR 0.15 确定 `p=0.003` 阈值；顶部为各 HLA 的关联 TCRβ 数，左侧颜色区分共享同一 CDR3β 的簇，星号表示同一 CDR3β 因不同 BV gene 与不同 HLA 关联。该 panel/Table S6 的 69 条 VJ 展开 TCRβ 不同于正文的 45/208 条唯一 CDR3β。D 比较 HLA 阳性/阴性的 NPC 与健康对照携带相关 TCRβ 的数量，p 值来自 Cochran–Armitage trend test。E 列出肿瘤或 PBMC 单细胞数据中用于功能验证的 3 条完整 TCRαβ；三者在 HLA 匹配 PC/AR 中也有检出，并非病例专有。现有截图裁掉脚注：单细胞数据为 GSE162025，bulk 为 GSE102349 的 100 个肿瘤加本研究 31 个，共 131 个；来源 `P009.S0026-P009.S0040` 及原图脚注。
+中文图注（完整 panel 信息）：Fig. 4A 用 GLIPH2 和 GIANA 对 208 条 NPC-enriched CDR3β 做 EBV 特异性注释。B 中圆点为 NPC-enriched CDR3β，红/蓝三角分别为实验来源/VDJdb 整理的潜在 EBV-reactive CDR3β，白三角为 VDJdb 中潜在非 EBV 反应序列，连线表示 GLIPH2 同簇。C 在合并数据中用单侧 Fisher 精确检验评估 TCRβ–HLA 关联，逐条 TCRβ 以 FDR 0.15 确定 `p=0.003` 阈值；顶部为各 HLA 的关联 TCRβ 数，左侧颜色区分共享同一 CDR3β 的簇，星号表示同一 CDR3β 因不同 BV gene 与不同 HLA 关联。该 panel/Table S6 的 69 条 VJ 展开 TCRβ 不同于正文的 45/208 条唯一 CDR3β。D 比较 HLA 阳性/阴性的 NPC 与健康对照携带相关 TCRβ 的数量，p 值来自 Cochran–Armitage trend test。E 列出用于功能验证的 3 条完整 TCRαβ：ID1 在单细胞/bulk 肿瘤中见于 `1/10` 与 `1/131`，HLA 匹配 PC/AR/NPC 检出率为 26.7%/26.0%/48.8%；ID2 为 `0/10`、`3/131` 与 13.8%/9.9%/31.5%；ID3 为 `2/10`、`4/131` 与 6.4%/6.0%/38.6%。三者均为病例富集而非病例专有。现有截图裁掉脚注：单细胞数据为 GSE162025，bulk 为 GSE102349 的 100 个肿瘤加本研究 31 个，共 131 个；来源 `P009.S0026-P009.S0040` 及原图脚注。
 
 作者首先自建 EBV-reactive TCRβ 参考库。因为东亚常见 HLA 对应的公共 TCR 特异性数据库不足，作者从 19 名 NPC 患者 PBMC 中用 EBV 转化自体 LCL 和 EBV peptide pool 扩增 EBV-specific T cells，筛选扩增超过 10 倍且在至少两个共享 HLA 个体中出现的 TCR，得到 633 条 potentially EBV-reactive CDR3β。再与 VDJdb 高置信 EBV TCR 合并，作为 EBV 参考库。
 
@@ -308,7 +312,7 @@ HLA-TCR 关联分析进一步支持抗原驱动选择。1,061 名有 HLA 信息�
 
 ##### Experimental identification of the target specificity of three NPC-enriched TCRs
 
-中文图注（完整 panel 信息）：Fig. 5A–C 将 TCR-ID1/2/3 转导原代 T 细胞与未转导对照分别和 EBV 阳性或阴性 NPC 靶细胞共培养 48 h；靶细胞表达 luciferase 及相应 HLA-A*02:01、A*24:02 或 C*03:04，HK1 为 EBV 阴性 NPC，HK1+ 与 C666 为 EBV 阳性 NPC，HepG2 为对照。D 中 TCR-Jurkat 与呈递候选表位的 SCT-K562 共培养，分选 trogocytosis 阳性细胞后用 NGS 找靶抗原；E 比较分选前后 K562 的平均荧光和 TCR 染色，F 给出两轮筛选后的富集肽（`n=4`）。G 以不同浓度 BMLF1-GLCTLVAML 或 LF1-GGKLRVWGR 肽刺激 HLA-A*02:01-COS-7，24 h 后读出存活细胞；H 以 BMLF1/LF1 基因内源表达和不同 E:T 比例验证 48 h 杀伤。I 用 EBV gene constructs 筛 TCR-ID2 靶标；J 使用 10 μM 候选肽，K 使用 KFQELNQNNL 浓度梯度，均在 24 h 读出。误差线为 SEM；F 为 `n=4`，A–C、G–K 为 `n=3`。来源 `P010.S0003-P010.S0005`、`P011.S0026-P011.S0041`。
+中文图注（完整 panel 信息）：Fig. 5A–C 将 TCR-ID1/2/3 转导原代 T 细胞与未转导对照分别和 EBV 阳性或阴性 NPC 靶细胞共培养 48 h；靶细胞表达 luciferase 及相应 HLA-A*02:01、A*24:02 或 C*03:04，HK1 为 EBV 阴性 NPC，HK1+ 与 C666 为 EBV 阳性 NPC，HepG2 为对照。D 中 TCR-Jurkat 与呈递候选表位的 SCT-K562 共培养，分选 trogocytosis 阳性细胞后用 NGS 找靶抗原；E 比较分选前后 K562 的平均荧光和 TCR 染色，F 给出两轮筛选后的富集肽（`n=4`）。G 以不同浓度 BMLF1-GLCTLVAML 或 LF1-GGKLRVWGR 肽刺激 HLA-A*02:01-COS-7，24 h 后读出存活细胞；H 以 BMLF1/LF1 基因内源表达和不同 E:T 比例验证 48 h 杀伤。I 用 EBV gene constructs 筛 TCR-ID2 靶标；J 使用 10 μM 候选肽，K 使用 KFQELNQNNL 浓度梯度，均在 24 h 读出。误差线为 SEM；F 为 `n=4`，A–C、G–K 为 `n=3`。Methods 明确杀伤读出使用 triplicate wells，但没有说明 `n=3` 是否为独立供者或独立实验。来源 `P010.S0003-P010.S0005`、`P011.S0026-P011.S0041`。
 
 作者从单细胞 TCR 数据中筛选 3 条用于功能验证的 TCR：TCR-ID1、TCR-ID2、TCR-ID3。入选标准包括有完整 TCRα/β 信息、在血液中发生率高且在肿瘤中可检出、与特定 HLA 显著关联。TCR-ID1 和 ID2 分别与 HLA-A*02:01 和 A*24:02 关联，并被前述聚类注释为 EBV-reactive；TCR-ID3 与 HLA-C*03:04 关联，未被注释为 EBV-reactive。
 
@@ -328,7 +332,7 @@ HLA-TCR 关联分析进一步支持抗原驱动选择。1,061 名有 HLA 信息�
 
 ##### The expansion of NPC-enriched CD8+ T cell clones in blood correlates with their infiltration in NPC tumors
 
-中文图注（完整 panel 信息）：Fig. 7A 使用 10 对血液—肿瘤单细胞样本，放大点表示两处共享完整 TCR pair。B 比较血液中的 8 个 NPC-enriched 与 23 个 EBV-reactive clonotype；相对随机匹配，NPC-enriched 扩增为 50.0% 对 12.5%，但 `p=0.11`，EBV-reactive 为 26.1% 对 13.0%，`p=0.042`。C 用 STARTRAC-transition index 描述横断面共享，不给出迁移方向。D 比较与肿瘤共享（`+`）或只在血液检出（`−`）的 TCRβ 频率，总 repertoire、NPC、EBV 的 p 值分别为 `<2.22×10⁻¹⁶`、`1.2×10⁻⁷`、`1.2×10⁻⁷`。E 将血液 TCRβ 频率分成 10 个分位，以 31 对 bulk TCRβ 样本报告 Jaccard similarity 和共享比例。来源 `P014.S0003-P014.S0005`、`P015.S0032-P015.S0045`。
+中文图注（完整 panel 信息）：Fig. 7A 使用 10 对血液—肿瘤单细胞样本，放大点表示两处共享完整 TCR pair。B 比较血液中的 8 个 NPC-enriched 与 23 个 EBV-reactive clonotype；相对随机匹配，NPC-enriched 扩增为 50.0% 对 12.5%，但 `p=0.11`，EBV-reactive 为 26.1% 对 13.0%，`p=0.042`。C 用 STARTRAC-transition index 描述横断面共享，不给出迁移方向。D 比较与肿瘤共享（`+`）或只在血液检出（`−`）的 TCRβ 频率，总 repertoire、NPC、EBV 的 p 值分别为 `<2.22×10⁻¹⁶`、`1.2×10⁻⁷`、`1.2×10⁻⁷`。E 将血液 TCRβ 频率分成 10 个分位，以 31 对 bulk TCRβ 样本报告 Jaccard similarity 和共享比例。Methods 没有说明 10 人 STARTRAC 的汇总方式、31 对 Jaccard 是逐人还是 pooled、频率分箱分母、权重或不确定性，也没有交代 D 的统计单位与患者内聚类；来源 `P014.S0003-P014.S0005`、`P015.S0032-P015.S0045`。
 
 作者在 10 对配对血液和 NPC 肿瘤单细胞数据中追踪完整 TCRαβ 克隆。NPC-enriched 的血液扩增比较为 50.0% 对 12.5%，但 `p=0.11`、未达显著；EBV-reactive 为 26.1% 对 13.0%，`p=0.042`。血液与肿瘤表型不同，但横断面数据不能证明耗竭发生的先后顺序。
 
@@ -348,7 +352,7 @@ HLA-TCR 关联分析进一步支持抗原驱动选择。1,061 名有 HLA 信息�
 
 发现队列纳入中山大学肿瘤防治中心 2012–2021 年招募的 18–75 岁、未经治疗的 228 例鼻咽癌，以及肇庆社区同年龄范围的 241 名 VCA-IgA 阳性和 251 名阴性对照；所有人均自报为广东华人，对照还要求无癌症和自身免疫病。前瞻验证嵌套于 2008–2015 年招募的 15,796 人筛查队列并随访至 2019 年 12 月 31 日：68 人经鼻咽镜诊断鼻咽癌，排除 19 人诊断资料不完整、5 人无基线血样和 10 人晚期病例后，保留 34 例 T1–T2 病例，每人只分析一次入组基线血样；146 名阴性和 107 名阳性对照与验证病例年龄匹配，男女比例约 1:1。另有 90 例未经治疗的独立验证病例来自广州、四会和中山；Fig. 3D–E 的 348 名 AR 是发现集 241 人与验证集 107 人的合并。所有样本均采于 2022 年末中国 COVID-19 大规模传播之前（`P024.S0007-P024.S0025`；Table S1）。
 
-外周血采入 EDTA 管，全血在提取 gDNA 前保存于 −80°C，PBMC 分离后冻存。VCA-IgA 用 Euroimmun ELISA（`EI 2791-9601 A`）测量，以样本 OD/参照 OD 的比值 rOD 计算，并以 1.1 为阳性判定阈值；DNA 使用 DNeasy Blood Extraction kit（Qiagen `69506`），以 NanoDrop 2000 和琼脂糖凝胶检查浓度与完整性，肿瘤 RNA 使用 AllPrep DNA/RNA Mini Kit（Qiagen `80204`），并以 Qubit 3.0 和 Agilent 4200 TapeStation 质控（`P024.S0031-P025.S0008`）。
+外周血采入 EDTA 管，全血在提取 gDNA 前保存于 −80°C，PBMC 分离后冻存。VCA-IgA 用 Euroimmun ELISA（`EI 2791-9601 A`）测量，以样本 OD/参照 OD 的比值 rOD 计算，并以 1.1 为阳性判定阈值；Supplementary Fig. S3G 的 1.43 是诊断间隔曲线的另一个分组阈值，选择规则未报告，不能与 1.1 互换。DNA 使用 DNeasy Blood Extraction kit（Qiagen `69506`），以 NanoDrop 2000 和琼脂糖凝胶检查浓度与完整性，肿瘤 RNA 使用 AllPrep DNA/RNA Mini Kit（Qiagen `80204`），并以 Qubit 3.0 和 Agilent 4200 TapeStation 质控（`P024.S0031-P025.S0008`）。
 
 #### 外周血 TCRβ 测序与 clonotype 构建
 
@@ -388,9 +392,9 @@ EBV 反应性推断不是只查数据库。作者从 19 名鼻咽癌患者取 PB
 
 多重检验控制使用 FDR，并通过 leave-one-out cross-validation 比较不同 FDR cutoff 下的 cross-entropy loss，选择 q < 0.15、p < 2e-4 作为筛选阈值。这个步骤的统计意义是避免在十万级 TCR 候选中只追求最小 p 值，而是用预测损失辅助选择更可泛化的签名规模。FDR 0.15 比传统 0.05 宽松，说明作者更重视发现候选 TCR 集合，再通过独立验证和机制实验降低假阳性风险。
 
-诊断性能主要用 ROC 曲线和 AUC 评价。横断面分类由 pROC v1.18.0 与 caret v6.0.90 生成 ROC，并做 5 次重复的 10-fold cross-validation；它的输入是个体 T-score 和 NPC/对照标签，回答排序能力。诊断前不同随访窗口的 time-dependent ROC 则使用 timeROC v0.4，除 T-score 外还依赖随访时间与事件/删失状态。原文未交代 Fig. 3F 的分析人群定义、事件/删失编码、时间点向量或各时点的病例/对照有效分母；Table S1 也没有诊断间隔、随访/删失或 VCA-IgA 列，无法单凭已披露表格复原 Fig. 3F。AUC 高不等于临床阳性预测值高；筛查应用还必须结合患病率、阈值、鼻咽镜容量和假阳性成本（`P026.S0024-P026.S0027`）。
+诊断性能主要用 ROC 曲线和 AUC 评价。横断面分类由 pROC v1.18.0 与 caret v6.0.90 生成 ROC，并做 5 次重复的 10-fold cross-validation；它的输入是个体 T-score 和 NPC/对照标签，回答排序能力。诊断前不同随访窗口的 time-dependent ROC 则使用 timeROC v0.4，除 T-score 外还依赖随访时间与事件/删失状态。原文未交代 Fig. 3F 的实际分析人群、事件/删失编码、`times`、cause、weighting、置信区间算法或各时点的病例/对照有效分母；Fig. 3D–E 的 348 名 AR 中有 241 人来自发现集，Table S1 又没有诊断间隔、随访/删失或 VCA-IgA 列，无法断言这 348 人全部进入 timeROC，也无法单凭已披露表格复原 Fig. 3F。AUC 高不等于临床阳性预测值高；筛查应用还必须结合患病率、阈值、鼻咽镜容量和假阳性成本（`P026.S0024-P026.S0027`）。
 
-诊断前部分用了 Pearson correlation、Kaplan-Meier 曲线和 accelerated failure time model。Kaplan–Meier 与 AFT 均由 `survival` v3.4.0 实现，前者以 log-rank test 比较 `T-score>4` 与 `≤4`；AFT model 给出 time ratio。每人只有一次基线测量，且 `>4` 的选择规则未报告，因此这些分析支持跨个体的较短 lead time 关联，不能证明个体内上升或 T-score 导致 NPC 发生（`P026.S0028-P027.S0003`）。
+诊断前部分用了 Pearson correlation、Kaplan-Meier 曲线和 accelerated failure time model。Kaplan–Meier 与 AFT 均由 `survival` v3.4.0 实现，前者以 log-rank test 比较 `T-score>4` 与 `≤4`；原文把差异写作“约 4.17 倍更短”（95% CI 2.09–8.03），但 4.17 不是 4 与 27 的中位数之比。AFT model 另给出 time ratio 0.24，即高分组估计时间约为低分组的 24%、倒数约 4.17；AFT 分布假设未报告。每人只有一次基线测量，且 `>4` 的选择规则未报告，因此这些分析支持跨个体的较短 lead time 关联，不能证明个体内上升或 T-score 导致 NPC 发生（`P026.S0028-P027.S0003`）。
 
 HLA-TCR 关联使用 one-sided Fisher exact test，输入是个体是否携带某 HLA 等位基因和是否携带某 TCR。它适合样本量不大、稀疏列联表的关联检验；方向性检验用于寻找 HLA 携带者中更富集的 TCR。生存分析使用 Kaplan-Meier 和 log-rank test 比较不同 TCR 丰度组的总体生存差异；该结果是预后相关性，不是因果效应，因为总体免疫浸润、治疗敏感性和肿瘤负荷都可能共同影响生存。除 NPC-enriched TCR 和 HLA-TCR 关联采用单侧检验外，其余检验均为双侧；多重检验用 `qvalue` v2.16.0 按 Storey 方法计算 FDR（`P030.S0028-P030.S0030`）。
 
@@ -408,7 +412,7 @@ TCR-ID1、TCR-ID2、TCR-ID3 和对照 TCR-F5 使用 MSCV-based retroviral constr
 
 ##### 肽加载、共培养与读出
 
-peptide 配成 0.01–100 μM 梯度；每孔 50,000 个 K562 或 COS-7 在 100 μl peptide 中于 37°C 孵育 2 h。trogocytosis 筛选以 Jurkat:K562 `10:1`、总计 330,000 个细胞/孔、37°C 共孵育 45 min；原代 T 细胞杀伤通常以 E:T `5:1`、靶细胞 5,000/孔进行，比例梯度覆盖 `5:1、2:1、1:1、1:2、1:5`，共培养 24–48 h。杀伤读出取 triplicate wells，luciferase 按 `100×(maximum−test)/maximum` 计算 specific lysis；流式数据由 BD LSR Fortessa/FACSDiva v8.0.2 采集、FlowJo v10.4 分析（`P028.S0035-P029.S0021`）。
+peptide 配成 0.01–100 μM 梯度；每孔 50,000 个 K562 或 COS-7 在 100 μl peptide 中于 37°C 孵育 2 h。trogocytosis 筛选以 Jurkat:K562 `10:1`、总计 330,000 个细胞/孔、37°C 共孵育 45 min；原代 T 细胞杀伤通常以 E:T `5:1`、靶细胞 5,000/孔进行，比例梯度覆盖 `5:1、2:1、1:1、1:2、1:5`，共培养 24–48 h。杀伤读出取 triplicate wells，luciferase 按 `100×(maximum−test)/maximum` 计算 specific lysis；流式数据由 BD LSR Fortessa/FACSDiva v8.0.2 采集、FlowJo v10.4 分析。Fig. 5A–C、G–K 报告的 `n=3` 是否代表这三个技术孔、独立供者还是独立实验并未说明，因此误差线不能自动解释为生物学重复间变异（`P028.S0035-P029.S0021`）。
 
 ##### SCT 文库与 PCR
 
@@ -416,11 +420,11 @@ Methods 报告 HLA-A*02:01 SCT library 含 675 个 EBV epitopes。寡核苷酸�
 
 ##### 单细胞处理与克隆共享参数
 
-单细胞分析下载 GSE162025 和 GSE150825，以 Cell Ranger v6.0.1 的默认参数比对 GRCh38 3.0.0。低于 3 个细胞检出的基因被删除，只保留检测 200–4,000 个基因且 mitochondrial genes <15% 的细胞；DoubletFinder v2.0.3 的 expected doublet rate 为 5%，SoupX v1.5.2 去 ambient RNA，Seurat v4.0.3 以 RPCA 整合。作者选择 2,000 个高变基因并去除 TCR genes，回归 UMI 总量与 mitochondrial percentage，以 top 35 PCs 聚类；先按 canonical markers 注释 major cell types，再选择 CD3+ T cells 重聚类，并依据 CD8A/CD8B expression、TCR 和 Seurat clusters 选择 CD8+ T cells 再次聚类。UMAP 和 FindAllMarkers 使用默认参数；DEG 要求 average fold change >0.25 且 adjusted `p<0.05`（`P029.S0032-P030.S0015`）。
+单细胞分析下载 GSE162025 和 GSE150825，以 Cell Ranger v6.0.1 的默认参数比对 GRCh38 3.0.0。低于 3 个细胞检出的基因被删除，只保留检测 200–4,000 个基因且 mitochondrial genes <15% 的细胞；DoubletFinder v2.0.3 的 expected doublet rate 为 5%，SoupX v1.5.2 去 ambient RNA，Seurat v4.0.3 以 RPCA 整合。作者选择 2,000 个高变基因并去除 TCR genes，回归 UMI 总量与 mitochondrial percentage，以 top 35 PCs 聚类；先按 canonical markers 注释 major cell types，再选择 CD3+ T cells 重聚类，并依据 CD8A/CD8B expression、TCR 和 Seurat clusters 选择 CD8+ T cells 再次聚类。UMAP 和 FindAllMarkers 使用默认参数；DEG 要求 average fold change >0.25 且 adjusted `p<0.05`（`P029.S0032-P030.S0015`）。Results 另称本研究新测 6 份血液 scTCR（`P009.S0010`）；Table S7 列 6 人、Table S8 只列其中 4 人的 HLA，而 Data and code availability 既未为这 6 份样本单独指派 accession，也未说明其是否纳入 `PRJCA027151`。
 
 细胞 module score 使用 12 个 cytotoxicity genes（PRF1、IFNG、GNLY、NKG7、GZMB、GZMA、GZMH、KLRK1、KLRB1、KLRD1、CTSW、CST7）和 6 个 exhaustion genes（LAG3、TIGIT、PDCD1、CTLA4、HAVCR2、TOX）。完成 cluster 注释后只保留有 TCR 信息的细胞；TCRalpha/beta 只保留 high-confidence、productive、full-length，同一细胞多个链时取 UMI 最高者，同一 TCRalpha/beta pair 定义 clonotype，至少 2 个细胞才视为 clonal，clonality/diversity 用 `vegan` v2.5.7。clonotype 再按 CDR3β exact match 注释为 208 条 NPC-enriched、633 条扩增实验来源 EBV-reactive，或 VDJdb 的 245 条 CDR3β（247 条带 V/J TCRβ）（`P030.S0016-P030.S0023`）。
 
-配对单细胞样本以 alpha、beta 链都相同定义共享克隆，bulk 数据则以相同 TCRbeta 同时见于血液和肿瘤定义共享；STARTRAC v0.1.0 计算 transition index，Jaccard index 衡量总体共享（`P030.S0024-P030.S0027`）。
+配对单细胞样本以 alpha、beta 链都相同定义共享克隆，bulk 数据则以相同 TCRbeta 同时见于血液和肿瘤定义共享；STARTRAC v0.1.0 计算 transition index，Jaccard index 衡量总体共享。Methods 没有报告 10 名患者的 transition index 如何汇总、31 对 bulk 的 Jaccard 是逐人计算还是 pooled、10 个频率分箱各自的分母、权重或不确定性，也未说明 Fig. 7D 极小 p 值所用统计单位以及是否处理患者内聚类；因此这些 p 值不能直接当作患者层面的独立重复（`P030.S0024-P030.S0027`）。
 
 ### 生物学与临床意义
 
@@ -527,7 +531,8 @@ STARTRAC 的 transition index 在本文配对横断面数据中量化血液与�
 #### 数字口径、原文不一致与证据边界
 
 - Results 将 34 例描述为 stage I/II，Methods 写为 T1–T2；分期组别和 T 分类并非同一口径，本文并列保留，不自行统一。
-- 34 名 prospective cases 各有一次基线血样；Fig. 3D–E 的 348 名 AR 是发现集 241 人加验证集 107 人。论文没有报告 `T-score>4` 或 Fig. 6/S8 生存 cut-off 的选择规则，Fig. 3F 也未给出各时点的精确 AUC、事件/对照有效分母、分析人群定义、事件/删失编码或 timeROC 参数；不能把跨个体 lead-time 关联写成个体内纵向轨迹，也不能把各时点视为精度相同的稳定性能估计。
+- 原文把 4 个月对 27 个月的组间差异写作“约 4.17 倍更短”，但 4.17 不是两项中位数之比；它对应 AFT time ratio 0.24 的倒数。本文分别报告中位数、原文 95% CI/log-rank 与 AFT time ratio，不把 4.17 改写成中位数倍数。
+- 34 名 prospective cases 各有一次基线血样；Fig. 3D–E 的 348 名 AR 是发现集 241 人加验证集 107 人，其中 241 人来自横断面发现集。论文没有报告 `T-score>4`、VCA-IgA 1.43 或 Fig. 6/S8 生存 cut-off 的选择规则，AFT 分布假设也缺失；Fig. 3F 未给出精确 AUC、实际分析人群、各时点有效风险集、事件/删失编码、`times`、cause、weighting 或置信区间算法。不能把跨个体 lead-time 关联写成个体内纵向轨迹，也不能默认 348 名 AR 全部进入 timeROC，或把各时点视为精度相同的稳定性能估计。
 - T-score 固定签名是 208 条唯一 CDR3β；HLA 共现分析使用 730 条按 `CDR3+V+J` 定义的 TCRβ，聚类模块又写为 518 条带 TRBV/TRBJ 的 TCRβ。208 与 730 不是同一计数单位，但原文没有交代 730 到 518 的模块过滤，不能静默合并。
 - 正文 45/208 条唯一 CDR3β 有 HLA 关联，Table S6 则按 V/J 展开为 69 条 TCRβ；Fig. 4 脚注的 131 个 bulk 肿瘤与 Methods 的 104+31=135 个也不一致。两组都属于计数/筛选口径冲突。
 - VDJdb 高置信 EBV 参考库按唯一 CDR3β 计为 245 条，纳入 TRBV/TRBJ 定义后计为 247 条 TCRβ（`P027.S0034`、`P030.S0023`）。这是两个计数单位，不应把 245 静默改成 247，也不能与 208 条 NPC 固定签名合并。
@@ -535,4 +540,6 @@ STARTRAC 的 transition index 在本文配对横断面数据中量化血液与�
 - Results 写表位库含 676 个 oligonucleotides，Methods 写 SCT library 含 675 个 epitopes；Results 写逐一测试 86 个 EBV ORF genes，Methods 写 85 个 ORF、另将 BPLF1 拆成 3 个质粒。这两组口径均保留为待核对，不自行修正。
 - 正文及解析写 `BRFR3`，Fig. 5I–K 写 `BFRF3`；本文不依据常识替作者统一靶基因名。
 - 86 是 bulk 生存来源池，71 是排除 15 个总体 T 细胞浸润极端样本后的 Fig. 6F 子集；完整 86 例总体 TIL 图面 `p=0.00025`，71 例中仍为 `p=0.00066`，不能把删极端值称为协变量调整。10 对是完整单细胞 TCRαβ，31 对是 bulk TCRβ。
+- Fig. 5A–C、G–K 标注 `n=3`，Methods 只明确杀伤读出取 triplicate wells，没有定义独立供者或独立实验层级。Fig. 7 也未披露 10 人 STARTRAC 汇总、31 对 Jaccard 的逐人/pooled 口径、频率分箱分母、权重、不确定性和 Fig. 7D 的患者内聚类处理；极小 p 值不能据此解释为患者层面的重复验证。
+- Results 使用 6 份本研究新测血液 scTCR，Table S7 列 6 人、Table S8 只列其中 4 人的 HLA。Data and code availability 仅明确将作者生成的 bulk TCRβ 矩阵关联到 `PRJCA027151`，未为这 6 份 scTCR 单独指派 accession，也未说明它们是否包含在该项目中。
 - 18 条 EBV 反应性来自计算聚类注释，45 条来自 HLA 共现；只有 3 条 TCR 完成功能实验。共享、相关和生存结果均不能替代迁移方向、抗原特异性或抗肿瘤因果证明。
