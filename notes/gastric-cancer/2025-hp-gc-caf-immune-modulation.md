@@ -1,12 +1,12 @@
 # Spatial and functional dissection of cancer-associated fibroblasts-mediated immune modulation in H. pylori-associated gastric cancer
 
-<!-- wechat-style-reviewed: 2026-10-15 -->
+<!-- wechat-style-reviewed: 2026-10-25 -->
 
 在 H. pylori 阳性胃癌切片里，癌细胞、成纤维细胞和免疫细胞常同时出现。真正难回答的不是“有没有炎症”，而是哪类基质状态与调节性 T 细胞聚集、细胞毒性 T 细胞参与减少相伴。
 
 单细胞测序可以拆分细胞状态，却会丢掉原有位置；空间转录组保留位置，但仅凭共定位仍不能证明谁在调控谁。若只比较细胞比例，很容易把感染状态、Lauren 病理分型（肠型/弥漫型）和组织结构混为一谈。
 
-这项研究分析了 71 例 FFPE（福尔马林固定石蜡包埋）胃癌的靶向空间转录组，并整合中国、美国和新加坡 58 例胃癌、250,310 个单细胞。TCGA、ACRG 两个公共胃癌队列提供混合组织（bulk）表达关联，4 个来自同一 HGC-27 细胞系的 LACE-seq 文库提供 RNA–蛋白结合证据；LACE-seq 是定位 RNA 结合蛋白靶位点的测序方法，这些证据层级不能相互替代。
+这项研究分析了 71 例 FFPE（福尔马林固定石蜡包埋）胃癌的靶向空间转录组；对应的 GEO Series 元数据登记为 71 张肿瘤组织切片、200,182 个空间单细胞转录组。研究另整合中国、美国和新加坡 58 例胃癌、250,310 个单细胞；TCGA、ACRG 提供混合组织（bulk）表达关联，4 个来自同一 HGC-27 细胞系的 LACE-seq 文库提供 RNA–蛋白结合证据。LACE-seq 用于定位 RNA 结合蛋白靶位点，这些层级不能相互替代。
 
 作者给出的答案是两条互补但证据强度不同的 CAF（癌相关成纤维细胞）轴：THBS1+ CAF 与 Treg（调节性 T 细胞）空间邻近，并指向 WNT5–FZD 信号；ZFP36 则与 FN1 负相关，并有 RNA 结合证据支持其结合 FN1 3′UTR。两条轴共同提出了 H. pylori 相关胃癌的基质免疫抑制模型，但尚未完成 CAF 特异性扰动验证。
 
@@ -20,7 +20,9 @@
 
 ## 02｜这项研究到底做了多大规模？
 
-空间发现队列来自香港 Prince of Wales Hospital，包含 1999–2006 年诊断的 71 例 FFPE 胃癌，使用 CosMx SMI 的 980-plex 加定制 ISH 探针定位主要细胞、CAF 亚型和 T 细胞亚群。这是靶向面板，不是无偏全转录组；因此“差异最突出”只适用于面板覆盖范围。
+空间发现队列来自香港 Prince of Wales Hospital，包含 1999–2006 年诊断的 71 例 FFPE 胃癌，使用 CosMx SMI 的 980-plex 加定制 ISH 探针定位主要细胞、CAF 亚型和 T 细胞亚群。GEO Series [GSE308624](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE308624) 的元数据将对应数据登记为 71 张肿瘤组织切片，共产生 200,182 个空间单细胞转录组。
+
+这是靶向面板，不是无偏全转录组；因此“差异最突出”只适用于面板覆盖范围。GEO 的 71 条样本记录和临床工作簿记录了样本、FOV、组织、性别、年龄、分级、分期、淋巴结与 TNM 等信息，却没有 H. pylori 或 Lauren 分型，因而不能补出感染阳性/阴性或病理亚型的组内分母。
 
 单细胞层面整合了中国 10 例、美国 22 例和新加坡 26 例胃癌，共 58 例、250,310 个细胞。外部关联来自 TCGA STAD 与 ACRG；ZFP36 靶标则在 HGC-27 胃癌细胞的 4 个 LACE-seq 文库中评估。
 
@@ -163,7 +165,7 @@ THBS1 轴对应 Treg 富集的空间生态位，ZFP36–FN1 轴则与细胞毒 T
 - 研究领域: 胃癌、H. pylori、癌相关成纤维细胞、空间转录组、单细胞转录组、肿瘤免疫微环境
 - 关键词: CAF, gastric cancer, spatial transcriptomics, H. pylori, Lauren classification, Treg, CTL, THBS1, ZFP36, FN1
 - 本地 PDF: `pdfs/processed/hp-gc-caf-immune-modulation-molecular-cancer-2025.pdf`
-- 数据来源: 空间数据 GEO `GSE308624`；LACE-seq GEO `GSE309051`；Singapore scRNA-seq `GSE183904`；ACRG `GSE62254`；另使用 USA cohort、TCGA 与 MSigDB 的 `GSE7460`/`GSE25087` Treg gene sets（`P018.S0035-P018.S0041`）。整合中的 China cohort 含 10 例、92,439 个细胞（`P003.S0014`；`P010.S0003`），但 Data availability 未列 accession 或直接下载地址，Methods 只给招募机构和参考文献，因此该部分不能仅凭本文数据声明独立取得。
+- 数据来源: 空间数据 GEO [`GSE308624`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE308624)；LACE-seq GEO `GSE309051`；Singapore scRNA-seq `GSE183904`；ACRG `GSE62254`；另使用 USA cohort、TCGA 与 MSigDB 的 `GSE7460`/`GSE25087` Treg gene sets（`P018.S0035-P018.S0041`）。2026-10-25 复核 `GSE308624` 的 Series SOFT：71 条 GSM 记录，Overall design 报告 71 张肿瘤组织切片和 200,182 个空间单细胞转录组；GSM characteristics 含 `tissue`，配套临床工作簿有 71 条数据行，列为 `sample`、`FOV`、`Sex`、`Age`、`Grade`、`Stage#`、`Stage`、`LN`、`T`、`N`、`M`，两处均未提供 H. pylori 或 Lauren 字段（下载文件 SHA-256：`7a9d9445640eba6d50e200a585e3e5ea248e6089d90e426884125a6d20fc62d5`）。整合中的 China cohort 含 10 例、92,439 个细胞（`P003.S0014`；`P010.S0003`），但 Data availability 未列 accession 或直接下载地址，Methods 只给招募机构和参考文献，因此该部分不能仅凭本文数据声明独立取得。
 - 代码来源: 作者公开的 [SAI 实现与分析脚本](https://github.com/AI-Lab-Pathology/SAI)（`P018.S0042`）。截至 2026-10-15，该仓库没有 tag 或 release，依赖清单未钉版本；本文复现审计固定在论文发表前最后一个公开实现 [commit `8cc7029`](https://github.com/AI-Lab-Pathology/SAI/tree/8cc7029dbe0108091aa44eb534cbb3fc42792c1b)，但论文未指定生成主图所用的 commit。
 - PDF 解析质量:
   - 使用 `scripts/build_pdf_llm_pack.py` 先抽取全文，再基于句子 ID 写作。
@@ -242,7 +244,7 @@ CAF 不是一种均质细胞。作者沿用其既往 pan-cancer CAF 分类，把
 
 #### 研究设计与数据结构
 
-空间转录组队列来自香港 Prince of Wales Hospital 的 71 例 FFPE 胃癌样本，诊断时间为 1999-2006 年。作者使用 NanoString CosMx SMI 做空间转录组和蛋白成像，识别主要细胞类型、CAF 亚型、T 细胞亚群及空间互作。
+空间转录组队列来自香港 Prince of Wales Hospital 的 71 例 FFPE 胃癌样本，诊断时间为 1999-2006 年。作者使用 NanoString CosMx SMI 做空间转录组和蛋白成像，识别主要细胞类型、CAF 亚型、T 细胞亚群及空间互作；对应 GEO Series 元数据登记为 71 张肿瘤组织切片和 200,182 个空间单细胞转录组，但没有提供 H. pylori 或 Lauren 分层字段。
 
 单细胞 RNA-seq 由三个独立胃癌队列整合：China cohort 10 例、USA cohort 22 例、Singapore cohort 26 例，合计超过 250,000 个细胞。外部预后和免疫浸润关联来自 TCGA STAD 和 ACRG 胃癌队列。ZFP36 靶标验证使用 HGC-27 细胞做 LACE-seq。
 
@@ -348,7 +350,7 @@ SCENIC regulon 分析提示 ZFP36+ CAF 富集 ATF3、JUN、FOS 等 stress/immune
 
 #### 研究对象、样本和数据结构
 
-空间转录组使用 71 例 FFPE 胃癌组织，来自香港 Prince of Wales Hospital 1999-2006 年诊断患者（`P003.S0009-P003.S0013`）。单细胞数据来自 China 10 例、USA 22 例、Singapore 26 例，后两者包含公开数据来源和 GEO GSE183904（`P003.S0014-P003.S0017`）。China cohort 贡献 92,439 个细胞（`P010.S0003`），但 Data availability 没有列出 accession 或直接下载地址；Methods 只给招募机构和参考文献，因此 250,310 个整合细胞中这一部分存在数据取得缺口。HGC-27 胃癌细胞系用于 LACE-seq，而不是用于 CAF 功能实验（`P003.S0017-P003.S0021`）。
+空间转录组使用 71 例 FFPE 胃癌组织，来自香港 Prince of Wales Hospital 1999-2006 年诊断患者（`P003.S0009-P003.S0013`）。GEO `GSE308624` 将仓库规模登记为 71 张肿瘤组织切片和 200,182 个空间单细胞转录组；71 条样本记录及临床工作簿均没有 H. pylori 或 Lauren 字段，因此仓库不能复原论文的感染/病理分层人数。单细胞数据来自 China 10 例、USA 22 例、Singapore 26 例，后两者包含公开数据来源和 GEO GSE183904（`P003.S0014-P003.S0017`）。China cohort 贡献 92,439 个细胞（`P010.S0003`），但 Data availability 没有列出 accession 或直接下载地址；Methods 只给招募机构和参考文献，因此 250,310 个整合细胞中这一部分存在数据取得缺口。HGC-27 胃癌细胞系用于 LACE-seq，而不是用于 CAF 功能实验（`P003.S0017-P003.S0021`）。
 
 #### 实验流程和数据生成
 
