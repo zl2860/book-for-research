@@ -1,6 +1,6 @@
 # Single cell resolved spatial immune repertoire unveils spatial heterogeneity of lymphoid aggregates in human immune disorders
 
-<!-- wechat-style-reviewed: 2026-09-23 -->
+<!-- wechat-style-reviewed: 2026-10-28 -->
 
 一张肿瘤切片上，两群相邻的 T 细胞可能表达相似的活化基因，却来自完全不同的受体克隆。常规空间转录组能告诉我们细胞在哪里、表达了什么，却很难把完整 TCR/BCR 序列、细胞坐标和组织形态同时接起来。
 
@@ -52,7 +52,7 @@
 
 其中 `974/26,825` 个细胞获得成对 TCRα/β；最大成对克隆包含 `111` 个细胞。其 TCRα `CAATASSGSWQLIF`、TCRβ `CASSRDRLGTSQNTLYF` 已在既往研究中被报道识别 OVA 肽 SIINFEKL。这说明预期抗原相关序列能在文库中被找回，属于序列层面的内部一致性；它没有提供独立空间真值，不能验证图像配准、细胞分割或该克隆的细胞归属。
 
-但本文没有重新完成肽-MHC 结合或功能激活实验。Results 另称该“top expanded T cell clone”的细胞群（原文计为 `87` 个细胞）整体呈现 Tcf7、Il7r 等 stemness marker 和多种 granzyme 相关表达，并称其中 `16%` 位于淋巴聚集体；Fig. 1j 则给 top paired clone `N=111`，其中淋巴聚集体占 `16.2%`（约 18 个细胞）。`87/111` 并不接近 `16%`，Results 也未交代 87 的分母，因此两组数字无法统一，marker 也不能消除这一计数冲突。
+但本文没有重新完成肽-MHC 结合或功能激活实验。Results 的原句是：在“top expanded T cell clone”中，位于淋巴聚集体的有 `87` 个细胞、占 `16%`，并由同一句继续描述这些聚集体内细胞的 Tcf7、Il7r 等 stemness marker 和多种 granzyme 相关表达。因此，`87` 是聚集体内细胞数，不是该克隆的总数；按 `87/16%` 反推，总规模约为 `544` 个细胞，但原文没有显式报告总分母。Fig. 1j 则给 top paired clone `N=111`，其中淋巴聚集体占 `16.2%`（约 18 个细胞）。原文没有说明 top expanded clone 与 top paired clone 是否采用同一克隆定义；两组口径不能统一，marker 也不能外推到聚集体外的其余克隆细胞。
 
 ## 06｜ccRCC 的微小淋巴聚集体只是细胞扎堆吗？
 
@@ -163,7 +163,7 @@
 - 自动标签为 title 17、other 24、abstract 12、introduction 35、results 111、supplementary 65、methods 339、references 441。自动分节不能直接用于审计。
 - 真正 Results 的物理范围为 `P006.S0008-P015.S0009`，共 150 个 ID：113 个内容型 Results、36 个重复页眉/版权行、1 个纯行号；正文内容实际结束于 `P015.S0008`。
 - `P007.S0014-P011.S0013` 被误标为 supplementary，实际是 Results；`P015.S0010-P016.S0017` 被误标为 results，实际是 Discussion；`P016.S0018-P018.S0006` 被误标为 methods，仍是 Discussion。
-- PDF 第 19–30 页的 Methods/availability 物理区域共 275 个 ID，其中 213 个为语义方法/数据句，49 个为页眉或 DOI，13 个为纯行号空壳。自动 methods 还混入 25 个 Discussion、8 个第 31 页声明区 ID 和 31 个第 43 页参考文献 ID。
+- PDF 第 19–30 页的 Methods/availability 物理区域共 275 个 ID，其中 213 个是正文 `.text` 内容 ID，另有 48 个重复版权页眉、1 个纯 DOI `.text` 行和 13 个 numeric-only `.text` 行。后 14 个非页眉记录不能整条丢弃：其中若干 manifest `heading` 或 PDF 原始行承载 PCR、环化、公式和 accession 参数，已逐页目视核对并保留，但不计入 213 个正文 `.text` 内容 ID。自动 methods 还混入 25 个 Discussion、8 个第 31 页声明区 ID 和 31 个第 43 页参考文献 ID。
 - `P006.S0008-P006.S0013`、`P009.S0013`、`P011.S0014` 存在跨栏吞句或两个小节共用一个 ID；TCRα 序列、PCR 列表、Shannon 公式与 `STT0000123` 被识别为 heading，须回看 PDF 原页或 manifest `pages[].lines`。
 - 主图 1–4 和图注均在主 PDF 中；Supplementary Table 1 与 Supplementary Figs. 1–11 不在 inbox，也未嵌入主 PDF。前者包含全部 primer/oligo 序列，缺失会直接阻断完整湿实验复现。
 
@@ -191,7 +191,7 @@
 - g：说明 bin50（25 μm）与 cell bin 的生成；空间图显示肿瘤解剖结构，UMAP 显示按核图分割的 T 细胞。每个细胞至少有 1 条 TCRα 或 TCRβ 读段，`N=26,825`。
 - h：将 bin50 解剖结构与 cell-bin T 细胞亚群叠加，展示各 T 细胞状态在组织中的分布。
 - i：配对 TCRα/β 克隆的大小与排名；成对细胞 `N=974`。
-- j：最大成对 T 细胞克隆在不同组织区的分布，`N=111`；图内淋巴聚集体占 `16.2%`，约合 18 个细胞。Results 却写 87 个细胞占 16%，分母无法统一，属于原稿冲突。
+- j：最大成对 T 细胞克隆在不同组织区的分布，`N=111`；图内淋巴聚集体占 `16.2%`，约合 18 个细胞。Results 另写 top expanded clone 中位于聚集体的 87 个细胞占 16%（隐含总数约 544），但未说明 top expanded 与 top paired 是否为同一克隆定义，二者无法统一。
 
 #### Figure 2｜Stereo-XCR-seq profiles lymphoid aggregates in ccRCC tumor microenvironment
 
@@ -242,7 +242,7 @@ Results 的连续物理范围为 `P006.S0008-P015.S0009`，共 150 个 ID。下�
 |---|---|---:|---|
 | Stereo-XCR-seq 原理 | `P006.S0008-P006.S0016`; `P007.S0005-P007.S0009` | 14 | [03｜工作流](#03｜作者怎样把坐标、受体序列和转录组接起来？)；短读筛选与分割边界见 [13｜冷静看待](#13｜这些结果仍需要冷静看待) |
 | Application and benchmarking | `P007.S0010-P007.S0015`; `P008.S0005-P008.S0011` | 13 | [02｜样本规模](#02｜这项研究到底用了多大规模？)、[04｜性能](#04｜stereo-xcr-seq-的性能提升有多大？)；跨平台非同批头对头比较见同节 |
-| OVA-MC38 high-resolution mapping | `P008.S0012-P008.S0018`; `P009.S0005-P009.S0013` | 16 | [05｜已知抗原模型](#05｜已知抗原模型能证明空间定位可靠吗？)；87/16% 与 111/16.2% 冲突及抗原验证边界均在该节 |
+| OVA-MC38 high-resolution mapping | `P008.S0012-P008.S0018`; `P009.S0005-P009.S0013` | 16 | [05｜已知抗原模型](#05｜已知抗原模型能证明空间定位可靠吗？)；87/16% 与 111/16.2% 的克隆定义/分母冲突及抗原验证边界均在该节 |
 | ccRCC lymphoid aggregates | `P009.S0014-P009.S0017`; `P010.S0005-P010.S0015`; `P011.S0005-P011.S0014` | 25 | [06｜ccRCC 聚集体](#06｜ccrcc-的微小淋巴聚集体只是细胞扎堆吗？)；单患者、空间相关与机制推断边界见该节及 [13](#13｜这些结果仍需要冷静看待) |
 | NSCLC clonal activities | `P011.S0015-P011.S0016`; `P012.S0005-P012.S0019`; `P013.S0005-P013.S0010` | 23 | [07｜TLS](#07｜同一肺癌里的五个-tls-真的相同吗？)、[08｜浆细胞聚集体](#08｜浆细胞聚集体与-tls-呈现相同的克隆活动吗？)；CSR 时序与图注冲突在正文/附录保留 |
 | IBD clonal origins | `P013.S0011-P013.S0016`; `P014.S0005-P014.S0016`; `P015.S0005-P015.S0008` | 22 | [09｜Crohn 克隆](#09｜crohn-病变克隆来自哪里？)；对照特有 50 个、39 个 mutated IgL 分母、检出概率与最近邻推断边界均已写明 |
@@ -254,7 +254,7 @@ Results 的连续物理范围为 `P006.S0008-P015.S0009`，共 150 个 ID。下�
 |---|---|---|
 | `P007.S0011` | 原文将各样本检出范围写为 TCR 的 44–116 个 V、20–32 个 D、22–64 个 J 基因，以及 BCR 的 164–171 个 V、32 个 D、18 个 J 基因。 | 原句混用 “on average” 与范围；逐样本值在缺失补图，不等于每个样本、每条链都完整。 |
 | `P008.S0008-P008.S0009` | 作者称各 isotype 的 CDR3 类型和非淋巴器官淋巴细胞检出数高于既有工具，并称 Stereo-XCR-seq 是当时唯一同时给出单细胞分辨率与细胞形态的平台。 | 证据位于本地缺失的 Supplementary Fig. 3，且属于跨研究比较，不按统一 benchmark 解读。 |
-| `P009.S0012` | Results 称 top expanded T cell clone 的细胞群（原文计为 87 个细胞）整体呈现 Tcf7、Il7r、Sell、Ccr7、Mki67 等 stemness marker，以及 Gzma/Gzmd/Gzmf/Gzmg/Gzmc/Gzmb 相关表达。 | 同句又写其中 16% 在聚集体，与 Fig. 1j 的 111/16.2% 不能统一；marker 不解决分母冲突。 |
+| `P009.S0012` | Results 称 top expanded T cell clone 中有 87 个细胞（16%）位于淋巴聚集体；同句继续描述这些聚集体内细胞呈现 Tcf7、Il7r、Sell、Ccr7、Mki67 等 stemness marker，以及 Gzma/Gzmd/Gzmf/Gzmg/Gzmc/Gzmb 相关表达。 | 87 是聚集体内细胞数而非克隆总数；87/16% 隐含总数约 544。Fig. 1j 则给 top paired clone 111/16.2%，原文未说明两者是否为同一克隆定义；marker 也不能外推到聚集体外细胞。 |
 | `P009.S0017`、`P010.S0005-P010.S0010` | ccRCC 共检出 35,110 个基因；IGL/IGK 相关基因 Moran 指数居前；IgL 克隆按 ≥20、6–19、2–5、1 个细胞分层，大克隆比小克隆更集中。 | IGL/IgL 共享起始文库与 CID；克隆阈值为作者操作性定义，均不是独立空间真值。 |
 | `P010.S0012-P010.S0013` | 同一 ccRCC 中 61 个聚集体面积中位数为 5,000 μm²，原文与既有研究报告的 10,000 μm² 最小可分辨面积比较。 | 跨研究方法口径对照，未在同一切片上头对头检验；61 个聚集体也不是 61 位患者。 |
 | `P011.S0011-P011.S0012` | TCR 指数提示局部扩增，但 T 细胞比 B/浆细胞更弥散、Moran 指数更低、细胞间距更大；作者提出 CXCL9/10 趋化解释。 | 空间分布为观察，趋化与迁移方向是未做扰动或追踪的机制推测。 |
@@ -313,9 +313,9 @@ Results 的连续物理范围为 `P006.S0008-P015.S0009`，共 150 个 ID。下�
 
 ### Methods 证据覆盖审计
 
-下表只统计 213 个语义 Methods/availability ID；49 个页眉/DOI 与 13 个纯行号在下一节单独闭合。混合句只计一次，因此各行互斥。
+下表只统计 213 个正文 `.text` 内容型 Methods/availability ID；48 个重复版权页眉、1 个纯 DOI `.text` 行与 13 个 numeric-only `.text` 行在下一节单独闭合。后 14 个非页眉记录中若干 `heading`/原始 PDF 行仍承载实质方法参数，已目视核对并写入上方方法小节，但不计入这 213 个 `.text` ID。混合句只计一次，因此各行互斥。
 
-| 方法模块 | 来源 ID | 语义 ID 数 | 参数与边界落点 |
+| 方法模块 | 来源 ID | 正文 `.text` 内容 ID 数 | 参数与边界落点 |
 |---|---|---:|---|
 | Tissue/cohort/ethics | `P019.S0005-P019.S0021`; `P020.S0005` | 18 | [样本、模型与伦理](#样本、模型与伦理) |
 | Stereo-seq tissue/library | `P020.S0006-P020.S0021` | 16 | [Stereo-seq 切片与建库](#stereo-seq-切片与建库) |
@@ -333,12 +333,12 @@ Results 的连续物理范围为 `P006.S0008-P015.S0009`，共 150 个 ID。下�
 | IBD lineage | `P029.S0020-P029.S0024`; `P030.S0005-P030.S0007` | 8 | [分割、克隆、聚集体与谱系规则](#分割、克隆、聚集体与谱系规则)；IgH/IgL 冲突及最近邻边界已保留 |
 | Shannon index | `P030.S0009`; `P030.S0011-P030.S0014` | 5 | [分割、克隆、聚集体与谱系规则](#分割、克隆、聚集体与谱系规则) |
 | Data/code remaining IDs | `P030.S0015-P030.S0018` | 4 | [论文基本信息](#论文基本信息)；未提供固定代码仓库与环境锁 |
-| **语义 Methods/availability 合计** |  | **213/213** | **全部映射到上方参数小节；原文未报告的默认值、版本、重复数和统计细节不作推定，并集中列入统计缺口与冲突边界** |
+| **正文 `.text` 内容型 Methods/availability 合计** |  | **213/213** | **全部映射到上方参数小节；被排除的 DOI/numeric-only `.text` 行中的 heading/raw-line 参数另经 PDF 目视核对；原文未报告的默认值、版本、重复数和统计细节不作推定，并集中列入统计缺口与冲突边界** |
 
 ### 原文冲突、低置信解析与证据边界
 
 - `P009.S0016` 把 1,831 个 TCR 与 7,317 个 BCR CDR3 引向 Fig. 1b，但 Fig. 1b 实际是流程耗时图，属于原稿引图冲突。
-- `P009.S0012` 写 top expanded T cell clone 有 87 个细胞、16% 位于淋巴聚集体；Fig. 1j 则给 top paired clone `N=111`、其中淋巴聚集体占 16.2%（约 18 个细胞）。87、16% 和 111 无法共用同一分母，原稿也未说明两处是否为不同克隆。
+- `P009.S0012` 写 top expanded T cell clone 中位于淋巴聚集体的有 87 个细胞、占 16%，即隐含该口径总数约 544；Fig. 1j 则给 top paired clone `N=111`、其中淋巴聚集体占 16.2%（约 18 个细胞）。原稿未说明 top expanded 与 top paired 是否采用同一克隆定义，不能共用分母；同句 marker 也只归于聚集体内的 87 个细胞。
 - Fig. 2e 图内将相关 P 值显示为 `p=0`，Results 写 `P<0.0001`；本文采用后者并保留显示/舍入冲突。Fig. 2h 图题写 mutated plasma cells，Results 则写 B/plasma cells，分母口径不能静默统一。
 - Fig. 3e 的图内图例与完整图注对内外圈含义相反；Results 将 `CARQIITMSINWIDPW` 写作 IgM→IgA/G，Fig. 3i 图注只写 IgM→IgA。
 - CSR Methods 字面流程先从肿瘤内 TLS 检出的 IgH CDR3 选候选，再逐空间 cluster 计数；Results 与 Fig. 3g 图注未明确说明这一预筛是否贯穿图中面积归一化比较，故其精确分母存在歧义。
@@ -358,11 +358,11 @@ Results 的连续物理范围为 `P006.S0008-P015.S0009`，共 150 个 ID。下�
 | Introduction | `P004.S0007-P006.S0007` | 35 | 已用于技术困境与研究问题 |
 | Results 物理区域 | `P006.S0008-P015.S0009` | 150 | 113 内容型、36 页眉、1 纯行号 |
 | Discussion | `P015.S0010-P018.S0006` | 51 | 自动误标 results/methods 的部分已校正 |
-| Methods/availability 物理区域 | `P019.S0001-P030.S0019` | 275 | 213 语义方法、49 页眉/DOI、13 纯行号 |
+| Methods/availability 物理区域 | `P019.S0001-P030.S0019` | 275 | 213 个正文 `.text` 内容 ID、48 个重复版权页眉、1 个纯 DOI `.text` 行、13 个 numeric-only `.text` 行；被排除 `.text` 行的 heading/raw-line 参数另经目视核对 |
 | 声明、致谢与作者贡献 | `P031.S0001-P031.S0023` | 23 | 非 Methods |
-| Fig. 1–4 与完整图注区域 | `P032.S0001-P039.S0027` | 160 | 144 图注内容 ID + 16 重复页眉 |
+| Fig. 1–4 与完整图注区域 | `P032.S0001-P039.S0027` | 160 | 32 个重复版权 boilerplate、6 个纯排版行号 `.text` 行、122 个其余记录（含 `3.` 等 panel/枚举标签与跨页碎片）；39/39 个 panel 均已对 PDF 目视闭合 |
 | References | `P040.S0001-P043.S0051` | 297 | 最后 31 个被自动误标 methods |
-| **全文合计** |  | **1,044** | **1,044/1,044 已完成语义分类** |
+| **全文合计** |  | **1,044** | **1,044/1,044 已完成物理 ID 归类；必要的 heading/raw-line 内容另经 PDF 目视核对** |
 
 ### 发布前检查
 
@@ -373,6 +373,6 @@ Results 的连续物理范围为 `P006.S0008-P015.S0009`，共 150 个 ID。下�
 - [x] 关键结果包含样本、数字和比较对象；
 - [x] 四张主图紧跟对应叙事，完整 panel 注释放入技术附录；
 - [x] 有具体的“这些结果仍需要冷静看待”；
-- [x] 113/113 语义 Results、213/213 语义 Methods 和 1,044/1,044 全文 ID 已闭合；
+- [x] 113/113 内容型 Results、213/213 正文 `.text` 内容型 Methods、160/160 主图区物理 ID 和 1,044/1,044 全文 ID 已闭合；
 - [x] 缺失补充材料、低置信解析、原文冲突和证据边界均已保留；
 - [x] `STYLE_REVIEW_LOG.md`、目录、HonKit 构建与链接检查已完成。
