@@ -1,6 +1,6 @@
 # Disease diagnostics using machine learning of B cell and T cell receptor sequences
 
-<!-- wechat-style-reviewed: 2026-10-10 -->
+<!-- wechat-style-reviewed: 2026-11-02 -->
 
 面对急性 COVID-19、慢性 HIV、系统性红斑狼疮、1 型糖尿病和流感疫苗接种后的反应，这项研究要检验的是：它们是否会在外周血 BCR/TCR 中留下可彼此区分的模式。真正困难的不只是发现“免疫系统变了”，而是判断这种变化更像哪一种状态。
 
@@ -40,6 +40,8 @@ Mal-ID 试图读取的是采血时的免疫状态，而不是一个终身不变�
 
 两种指标对 abstention 的处理也不同：AUROC/AUPRC 排除没有概率输出的样本，accuracy 把它们计为错误。550 份样本中，2.9 个百分点因模型 2 没有匹配 CDR3 cluster 而 abstain；其余 11.8 个百分点属于没有 abstain 的误分类。错误组的前两名预测概率差更小，与较低的模型决策置信度一致，但这项组间比较不能说明误分类的原因。AUROC 衡量排序，accuracy 衡量既定决策规则后的分类，两者不能互换。
 
+错误方向也不对称：更多健康对照被判为某种疾病，假阳性多于假阴性。作者同时说明，健康对照并未被确证排除面板中的全部疾病；因此这些结果既可能包含决策阈值问题，也可能受到对照标签不完全影响，不能把全部错误都归为同一种模型失败。
+
 BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合的 85.3%；但 Fig. 2B 的 BCR-only 评价还多含 66 份没有配对 TCR 的样本，因此这不是严格同一分母的消融比较。仅用 CDR3 聚类时，BCR 与 TCR 的 AUROC 分别为 0.89 和 0.80；现有结果仍支持两类受体与多种信号层级互补。
 
 若把多疾病模型转为狼疮二分类器，阈值可换取 `97%` 灵敏度/`86%` 特异度，或 `84%` 灵敏度/`95%` 特异度；一个平衡点为 `93%`/`90%`。这些数字来自同一研究的交叉验证概念验证，不是前瞻临床定标结果。
@@ -66,11 +68,13 @@ BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合
 
 仅用年龄、性别或祖源预测疾病，AUROC 分别为 0.68、0.59 和 0.79，三者合并为 0.85；在有完整人口学信息的个体中，从集成特征回归这些变量后，Mal-ID AUROC 从 0.98 降到 0.96。已测人口学变量贡献了一部分信号，但没有解释全部内部性能；这个完整人口学信息子集的精确样本量未在主文报告，明细依赖未进入本地证据包的表 S7。
 
+健康供者内部也存在年龄信号，但同样受 abstention 影响：区分 50 岁及以上个体的 AUROC 为 0.75 时，排除了 19% 没有匹配任何年龄 CDR3 cluster 的样本；把这些 abstention 计为错误后，accuracy 只有 54%。这组数字不能只用 0.75 概括。
+
 外部 BCR 队列的情况更棘手：COVID-19 病例全为亚洲人，健康对照为白人或非裔，人口学模型的 AUROC 同样达到 1.0，尽管 accuracy 只有 58%。因此，这个外部小队列不能单独排除祖源与地理混杂；治疗、近期感染和疾病严重程度等未测变量也仍然存在。
 
 ## 07｜它学到的是抗原特异性，还是更宽的免疫状态？
 
-只用 BCR 同种型比例，疾病 AUROC 为 0.68，明显低于 Mal-ID 的 0.98 以上；模型确实使用了序列内部信息，但这一同种型比例对照的精确样本量未在主文单列，Fig. S14 也未进入本地证据包。SHAP 分析在 COVID-19 14、HIV 21、流感疫苗 8、狼疮 22 和 1 型糖尿病 22 份阳性样本中，把 IGHV1-24/IGHV2-70、IGHV4-34/IGHV4-59 等既有线索排在前列，但 SHAP 解释的是模型行为，不是这些基因的因果作用。
+只用 BCR 同种型比例，疾病 AUROC 为 0.68，明显低于 Mal-ID 的 0.98 以上；模型确实使用了序列内部信息，但这一同种型比例对照的精确样本量未在主文单列，Fig. S14 也未进入本地证据包。SHAP 分析使用训练流程中的 train-2 正类样本，分别为 COVID-19 14、HIV 21、流感疫苗 8、狼疮 22 和 1 型糖尿病 22 份；它把 IGHV1-24/IGHV2-70、IGHV4-34/IGHV4-59 等既有线索排在前列，但这不是独立 held-out 解释集，SHAP 也只解释模型行为，不证明这些基因具有因果作用。
 
 要看模型在患者层面优先使用哪些 V 基因—同种型组合，先看 Fig. 3。
 
@@ -78,7 +82,7 @@ BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合
 
 ![Fig. 3：模型优先使用的 IGHV 与同种型线索](../../assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig3-ighv-isotype-shap.png)
 
-简明图注：Fig. 3A–E 分别汇总 COVID-19 14、HIV 21、流感疫苗 8、狼疮 22 和 1 型糖尿病 22 份阳性样本的 IGHV—同种型 SHAP 贡献；数值重标到 0–1，只解释模型行为，不证明机制。
+简明图注：Fig. 3A–E 分别汇总 train-2 中 COVID-19 14、HIV 21、流感疫苗 8、狼疮 22 和 1 型糖尿病 22 份正类样本的 IGHV—同种型 SHAP 贡献；数值重标到 0–1，这不是独立 held-out 解释集，只解释模型行为，不证明机制。
 
 外部已知 binder 给出了更严格的检验。COVID-19 BCR 的模型 3 AUROC 按 IGHV 分层最高为 0.78，AUPRC 相对基线最高 6.9 倍；图中明确给出完整样本量的 IGHV1-24 比较为 79 条 binder 对 1,777 条健康供者序列。流感 BCR 最高为 0.65 和 4.0 倍，已知 SARS-CoV-2 特异 TCR 的最高 AUROC 只有 0.56、AUPRC 相对基线最高 1.30 倍；这两类分析的各分层样本量未在本地主 PDF 报告，缺失补充材料时不能补造。
 
@@ -119,6 +123,7 @@ BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合
 ### 本文目录
 
 - [基本信息](#基本信息)
+- [利益冲突、专利与许可](#利益冲突、专利与许可)
 - [本论文主图](#本论文主图)
 - [生物学故事前情](#生物学故事前情)
 - [重要缩写表](#重要缩写表)
@@ -170,6 +175,16 @@ BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合
   - `P005-P007` 与 `P009-P014` 多处跨栏融合，结构和句序属于低置信；所有关键数字已回看相邻正文、图注和现有截图，按页面版式复原，不按抽取顺序补意。
   - 主文补充表格和补充图仅在正文中被引用，未作为完整对象进入本地 PDF 解析包。
 - 重要数字提示：原文在研究摘要处写健康对照为 220 人，在方法处写健康对照为 217 人；本文保留该不一致，不自行修正。
+
+### 利益冲突、专利与许可
+
+- 与本文直接相关的专利：M.E.Z.、E.C.、J.K.M.、N.S.、R.T.、A.K. 和 S.D.B. 是与本稿相关专利申请的共同发明人（`P016.S0046`）。原文没有披露专利题名或权利要求，不能进一步具体化其覆盖范围，也不能只用“作者声明利益冲突”概括。
+- S.D.B. 曾就与本研究无关的主题为 Regeneron、Sanofi、Novartis、Genentech、Visterra 和 Janssen 提供咨询，并持有 AbCellera Biologics 股票。A.K. 是 Ravel Biotechnology 联合创始人，在 PatchBio、SerImmune、AINovo、TensorBio 和 OpenTargets 任科学顾问，曾任 Illumina 顾问，并持有 DeepGenomics、Immunai 和 Freenome 股份（`P016.S0047-P016.S0049`）。
+- C.A.B. 报告来自 Catamaran Bio、DeepCell、Immunebridge、Sangamo Therapeutics 和 Revelation Biosciences、且涉及与本研究无关主题的咨询或科学顾问委员会报酬；J.D.G. 曾为 Eli Lilly、Gilead、GSK 和 Karius 提供咨询，获得 Eli Lilly、Gilead、Regeneron、Merck 的研究支持，并与 Adaptive Biotechnologies、Monogram Biosciences 和 Labcorp 有本研究之外的协作服务协议；R.T. 是 Genentech 顾问（`P016.S0050-P016.S0052`）。
+- J.A.J. 曾为 AbbVie、Janssen、Novartis 和 GlaxoSmithKline 提供咨询，并有经 Oklahoma Medical Research Foundation 授权给 Progentec Biosciences 的无关专利。J.T.M. 曾为 AbbVie、Alexion、Alumis、Amgen、AstraZeneca、Aurinia、GlaxoSmithKline、Lilly、Merck、Pfizer、Provention、Remegen、Sanofi、UCB 和 Zenas 提供咨询，并获得 AstraZeneca、Bristol Myers Squibb 和 GlaxoSmithKline 的本研究之外研究支持（`P016.S0053-P016.S0056`）。
+- K.C.N. 是无关专利的发明人或共同发明人，是 Alladapt、BeforeBrands、IgGenix 和 Latitude 的科学联合创始人，持有这些公司以及 Seed、Excellergy、ClostraBio 和 Cour Pharmaceuticals 的股份，并曾为 Regeneron 和 Novartis 提供与本研究无关的咨询。S.E.H. 从 Sanofi Vaccines、Lumen、Novavax 和 Merck 获得咨询费，并是核苷修饰 mRNA 疫苗平台专利的共同发明人（`P016.S0057-P016.S0061`）。
+- J.R.H. 是 Regeneron 顾问，并获得 Merck 和 Gilead 的研究支持；R.S.C. 是 Alladapt Therapeutics、Phylaxis、Genentech 和 Blueprint Therapeutics 的顾问委员会成员，并持有 Intrommune Therapeutics 股票；J.K.M. 持有 Tempus AI 股票。其余作者声明无利益冲突（`P016.S0062-P016.S0066`）。
+- 作者归档代码为 `release-202408`，原文限定非商业使用（`P016.S0077`）。代码许可、相关专利和作者商业关系是三个不同层面的边界，均不改变结果本身，但会影响复用、转化和独立验证时的判断。
 
 ### 本论文主图
 
@@ -471,6 +486,8 @@ Fig. 1 图内 ID 为 `P003.S0021-P003.S0026`、`P003.S0035-P003.S0069`，图注�
 #### 自动标签闭合与低置信范围
 
 解析清单的自动 Results/Methods 共 628 个 ID，已逐一核对 `628/628`，未覆盖为 0。自动 `results` 296 个 ID 中，189 个含主文 Results 语义，107 个是摘要残片、图内/图注、页眉或页脚；另从自动 Discussion 标签找回 `P007.S0027-P007.S0031` 的 5 个实际 Results ID，因此校正后的正文证据为 194 个。自动 `methods` 332 个 ID 中，278 个含 Methods 语义，54 个是引言、作者单位、页眉、Discussion 或 Fig. 1 标签。自动标签闭合不代表章节语义正确。
+
+利益冲突、相关专利和商业关系位于 `P016.S0046-P016.S0066`，已在独立小节完整登记；它们不属于 Results/Methods，因此不进入上述 628 个自动标签分母。数据、代码和非商业许可继续由 `P016.S0067-P016.S0077` 单独核对。
 
 需要保留的 `EXTRACTION_CHECK` 包括：
 
