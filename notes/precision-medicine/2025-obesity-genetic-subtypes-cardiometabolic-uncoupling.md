@@ -1,6 +1,6 @@
 # Genetic subtyping of obesity reveals biological insights into the uncoupling of adiposity from its cardiometabolic comorbidities
 
-<!-- wechat-style-reviewed: 2026-10-14 -->
+<!-- wechat-style-reviewed: 2026-11-02 -->
 
 门诊里两位 BMI 相近的人，可能走向完全不同的结局：一位同时出现高血糖、高血压和血脂异常，另一位暂时没有这些心代谢问题。只用 BMI 给两人贴上同一个“肥胖”标签，体重相近这个事实被保留了，风险为什么不同却被抹平了。
 
@@ -46,9 +46,9 @@ BMI 只回答体重相对身高有多高，不能回答脂肪储存在哪里、�
 
 MRI 子样本把这种差异具体化：内脏/腹部皮下脂肪比分析的 n=7,786，两个评分的标准化 \(\beta\) 分别为 −0.05（95% CI −0.07 至 −0.03）和 −0.01（−0.02 至 0）；肝脂分析的 n=7,719，两个方向分别为 −0.03（−0.05 至 −0.01）和 +0.03（0.02 至 0.05）。这些数字来自较小的影像子样本，不能沿用全体 373,747 人的分母。
 
-性别分层后，这种较有利的脂肪分布关联在女性中更明显，主要来自女性腹部脂肪累积的效应更小；臀围和臀股部脂肪的效应、以及心代谢性状关联在男女间没有明显差异。一般体脂评分则未见同样的性别特异效应。
+性别分层的描述性点估计显示，这种较有利的脂肪分布关联在女性中更明显，主要来自女性腹部脂肪累积的效应更小；臀围和臀股部脂肪的效应、以及心代谢性状关联在男女间没有明显差异。一般体脂评分未见同样的分层图景。但原文只写“tended to differ”并并列男女估计，没有报告正式的遗传评分×性别交互统计量或交互 P 值，因此不能据此确认性别效应修饰。
 
-心代谢方向更清楚。评分每增加一个“十等位基因”等尺度单位，较高的解耦评分与更低 LDL-C、总胆固醇、甘油三酯、HbA1c、血糖和血压，以及更高 HDL-C 相关；一般体脂评分的方向大多相反。这里是以 BFP GWAS 效应加权后再缩放的评分，不是简单多出十个未加权风险等位基因。两种整体关联轮廓差异为 \(P<0.0001\)，但论文没有给出可以用于个人诊断的绝对分数阈值。
+心代谢方向更清楚。评分每增加一个“十等位基因”等尺度单位，较高的解耦评分与更低 LDL-C、总胆固醇、甘油三酯、HbA1c、血糖和血压，以及更高 HDL-C 相关；一般体脂评分的方向大多相反。这里是以 BFP GWAS 效应加权后再缩放的评分，不是简单多出十个未加权风险等位基因。作者报告两种整体关联轮廓差异为 \(P<0.0001\)，但 Methods、Supplementary Table 7 和示例代码都没有给出对应的总体检验、统计量、自由度或分析单位，因而这个整体 P 值无法独立复核；论文也没有给出可以用于个人诊断的绝对分数阈值。
 
 ![Fig. 2：总体与八个簇遗传评分对应的脂肪和心代谢性状轮廓](../../assets/precision-medicine/2025-obesity-genetic-subtypes/fig2-grs-trait-profiles.png)
 
@@ -186,7 +186,7 @@ HOLBAEK 的 3,457 名儿童和青少年提供了时间更早的横断面证据�
 | 原文图表 | 样本与比较 | 核心信息 | 图像文件 | 正文位置 |
 |---|---|---|---|---|
 | Fig. 1 | UK Biobank 最多 452,768 人；3 个脂肪性状×8 个心代谢性状 | 24 个双性状经 GWAS、方向约束和共定位得到 266 个变异 | `assets/precision-medicine/2025-obesity-genetic-subtypes/fig1-study-overview.png` | [02｜这项研究到底做了多大规模](#02｜这项研究到底做了多大规模) |
-| Fig. 2 | UK Biobank 评分队列最多 373,747 人；MRI 脂肪指标 n=4,098–7,786；每十等位基因变化 | 比较总体解耦、一般体脂和八个簇评分的脂肪/代谢轮廓 | `assets/precision-medicine/2025-obesity-genetic-subtypes/fig2-grs-trait-profiles.png` | [04｜心代谢风险较低，是否就意味着肥胖变得无害](#04｜心代谢风险较低，是否就意味着肥胖变得无害) |
+| Fig. 2 | UK Biobank 评分队列最多 373,747 人；小样本体脂分布指标 n=4,098–7,787，其中 Methods 明示的七项 MRI 指标 n=4,467–7,787；每十等位基因变化 | 比较总体解耦、一般体脂和八个簇评分的脂肪/代谢轮廓 | `assets/precision-medicine/2025-obesity-genetic-subtypes/fig2-grs-trait-profiles.png` | [04｜心代谢风险较低，是否就意味着肥胖变得无害](#04｜心代谢风险较低，是否就意味着肥胖变得无害) |
 | Fig. 3 | UK Biobank 373,747 人；PheWAS 扫描 10,965 个结局，图中展示 23 个 | 心代谢保护与承重/机械性风险并存 | `assets/precision-medicine/2025-obesity-genetic-subtypes/fig3-phewas-disease-outcomes.png` | [04｜心代谢风险较低，是否就意味着肥胖变得无害](#04｜心代谢风险较低，是否就意味着肥胖变得无害) |
 | Fig. 4 | 266 个 lead variants×11 个单性状；251 个入八簇、15 个为 noise | NAvMix 得到八种不同关联轮廓 | `assets/precision-medicine/2025-obesity-genetic-subtypes/fig4-eight-genetic-clusters.png` | [05｜八个遗传簇到底有什么不同](#05｜八个遗传簇到底有什么不同) |
 | Fig. 5 | 266 个解耦 lead variants（205 loci）与 647 个一般 BFP lead variants | 解耦变异偏外周组织，一般 BFP 变异偏中枢 | `assets/precision-medicine/2025-obesity-genetic-subtypes/fig5-tissue-cell-enrichment.png` | [07｜为什么脂肪增加后，代谢后果可能不同](#07｜为什么脂肪增加后，代谢后果可能不同) |
@@ -204,7 +204,7 @@ Fig. 1 为单面板流程图。输入为 BFP、BMI、WHR 三个脂肪性状和 T
 
 #### Fig. 3 完整注释
 
-森林图比较 \(GRS_{uncoupling}\)（洋红）和 \(GRS_{BFP}\)（蓝）对疾病结局的 OR 和 95% CI，效应均按加权评分的“每十等位基因”等尺度变化。图示 23 项结局：肥胖、脂代谢障碍、非胰岛素依赖型糖尿病、原发性高血压、慢性缺血性心脏病、急性心肌梗死、心绞痛、腹股沟疝、哮喘、胃食管疾病、未特指急性下呼吸道感染、膈疝、其他慢阻肺、蜂窝织炎、睡眠障碍、髋关节病、多关节病、膝关节病、肺气肿、静脉炎/血栓性静脉炎、下肢静脉曲张、肺栓塞和下肢溃疡。10,965 是主文声称的全部扫描结局数，图注没有说明 23 项的展示规则；Supplementary Table 8 给出逐项病例/对照数，但 GRS8 只有 6,642 行，明显少于其他评分的约 10,965 行。来源：`P004.S0015–P004.S0022`、`P005.S0001–P005.S0008`、`P005.S0022–P005.S0026`。
+森林图比较 \(GRS_{uncoupling}\)（洋红）和 \(GRS_{BFP}\)（蓝）对疾病结局的 OR 和 95% CI，效应均按加权评分的“每十等位基因”等尺度变化。图示 23 项结局：肥胖、脂代谢障碍、非胰岛素依赖型糖尿病、原发性高血压、慢性缺血性心脏病、急性心肌梗死、心绞痛、腹股沟疝、哮喘、胃食管疾病、未特指急性下呼吸道感染、膈疝、其他慢阻肺、蜂窝织炎、睡眠障碍、髋关节病、多关节病、膝关节病、肺气肿、静脉炎/血栓性静脉炎、下肢静脉曲张、肺栓塞和下肢溃疡。10,965 是主文声称的全部扫描结局数，图注没有说明 23 项的展示规则；Supplementary Table 8 共 105,328 个数据行，但逐评分并非等量：总体解耦评分 10,964 行，GRS1–5 各 10,965 行，GRS6 10,966 行，GRS7 10,965 行，GRS8 仅 6,642 行，一般 BFP 评分 10,966 行。尤其 GRS8 比名义上的 10,965 个结局少 4,323 行，表内没有解释。来源：`P004.S0015–P004.S0022`、`P005.S0001–P005.S0008`、`P005.S0022–P005.S0026`。
 
 #### Fig. 4 完整注释
 
@@ -263,7 +263,7 @@ LDSC v1.0.1 初始截距 1.09–1.18，作者以 `SE×sqrt(LDSC intercept)` 做 
 
 NAvMix 用 266 个变异对 11 个单性状的 \(\beta\) 做方向聚类，以 BFP-increasing allele 统一方向、最大成员概率分配、BIC 选簇数并允许 noise cluster。Supplementary Table 6 明确给出八簇 251 个变异和 15 个 `Noise*`；脚注说明 noise 不进入 GRS1–8、但进入总体 \(GRS_{uncoupling}\)。软件版本、候选簇数、初始化、seed 和成员概率仍未报告。来源：`P015.S0020–P015.S0029`。
 
-十个 GRS 为总体解耦、八簇和一般 BFP；全部以本研究 BFP GWAS \(\beta\) 加权并缩放到“每十等位基因”等尺度。Methods 中一般 BFP 评分由 647 个 lead variants 构成，阈值写作 \(P<5\times10^{-9}\)，并在 1 Mb 内按 \(r^2<0.1\) clumping、移除 MHC；这与 Results 的 \(P<5\times10^{-10}\) 冲突。GRS2 在聚类时对应较低 WHR，后续分析翻转效应/参考等位基因，以统一为较高脂肪方向。连续性状调整年龄、性别、芯片、中心和 10 PCs 后逆正态化。PHESANT 对连续/二元结局分别做线性/逻辑回归，但 Methods 未给 PheWAS 多重校正阈值。来源：`P015.S0030–P015.S0042`。
+十个 GRS 为总体解耦、八簇和一般 BFP；全部以本研究 BFP GWAS \(\beta\) 加权并缩放到“每十等位基因”等尺度。Methods 中一般 BFP 评分由 647 个 lead variants 构成，阈值写作 \(P<5\times10^{-9}\)，并在 1 Mb 内按 \(r^2<0.1\) clumping、移除 MHC；这与 Results 的 \(P<5\times10^{-10}\) 冲突。GRS2 在聚类时对应较低 WHR，后续分析翻转效应/参考等位基因，以统一为较高脂肪方向。连续性状调整年龄、性别、芯片、中心和 10 PCs 后逆正态化。PHESANT 对连续/二元结局分别做线性/逻辑回归，但 Methods 未给 PheWAS 多重校正阈值；也没有定义 Results 所报两种整体轮廓差异 `P<0.0001` 的总体检验，或男女分层结果的遗传评分×性别交互检验。来源：`P004.S0006–P004.S0014`、`P015.S0030–P015.S0042`。
 
 ARIC/BioMe 的 incident T2D/CHD 用 Cox，调整年龄、性别和 10 PCs，BioMe 另调 ancestry，再逆方差合并。Supplementary Table 11 给出 meta 分母：CHD 3,922 例/24,099 名对照，T2D 2,763/21,464；ARIC 分别为 1,693/7,368 和 1,947/6,422，BioMe 为 2,229/16,731 和 816/15,042。Cox 时间起点、删失、比例风险检验和分祖源异质性仍未报告。ARIC 活动量以休闲中高强度 MET-hours/week 前 30% 和后 70% 分层，没有正式交互项。来源：`P015.S0043–P016.S0003`。
 
@@ -302,7 +302,7 @@ DEPICT 只纳入至少 10 个基因的 GO、KEGG、REACTOME 条目；Supplementa
 | 补充材料 | 实际数据范围 | 新增可核验信息 | 仍需保留的边界 |
 |---|---:|---|---|
 | Tables 1–5 | UKB 基线；266 个变异的 24 个双性状、11 个单性状和性别分层结果；既有位点重叠 | 闭合 266 个 lead variants、205 loci 和既有/新增位点映射 | 主文的人工共定位窗口和候选筛选过程仍无逐步日志 |
-| Tables 6–8 | 266 个 GRS 权重；240 个 GRS–性状组合；105,328 行 PheWAS | 251 个变异进入八簇，15 个为 noise；总体评分保留全部 266 个 | Table 8 的评分行数不齐：GRS8 仅 6,642 行，其他评分约 10,965 行，不能把簇级扫描视作完整等量矩阵 |
+| Tables 6–8 | 266 个 GRS 权重；240 个 GRS–性状组合；105,328 行 PheWAS | 251 个变异进入八簇，15 个为 noise；总体评分保留全部 266 个 | Table 8 的评分行数不齐：总体解耦 10,964；GRS1–5 各 10,965；GRS6 10,966；GRS7 10,965；GRS8 6,642；一般 BFP 10,966，不能把簇级扫描视作完整等量矩阵 |
 | Tables 9–12 | ARIC 基线、连续性状、事件 meta 和活动分层 | 事件/对照数及活动层内 HR 已闭合 | Table 9 的总 N=9,241，女 4,866+男 4,355=9,221，均与 Methods 的 9,240 不一致；活动层人数也不覆盖全体且无交互检验 |
 | Tables 13–14 | HOLBAEK 基线和 24 个 Trait 标签的 230 个评分结果，其中 22 个有 `ALL` 汇总行 | 给出 HOMA-IR、胰岛素、C-peptide、ALP 和血脂异常的 n、效应与 \(P\) 值 | Methods 称跨 23 个性状做 BH；表内没有校正后 \(P\) 值，不能把单项 nominal \(P\) 当作 FDR 结果 |
 | Tables 15–17 | 418 个组织结果；47,240 个基因集结果；100 个通路归类 | 解耦组织 23/209 项、基因集 286/4,724 项达到 FDR<0.05；一般 BFP 分别为 0/209 和 116/4,724；八簇基因集均为 0 | 簇级通路只按 nominal \(P\) 探索，不能升级为确定机制 |
@@ -313,7 +313,7 @@ DEPICT 只纳入至少 10 个基因的 GO、KEGG、REACTOME 条目；Supplementa
 ### Extended Data Fig. 1–8 审计
 
 - Extended Data Fig. 1：以 BMI−TC 为例说明双性状构造，只是表型定义，不是结果验证。来源：`P019.S0002–P019.S0004`。
-- Extended Data Fig. 2：UK Biobank 总体及八簇 GRS 的性别特异关联；Supplementary Tables 4 和 7 已核到逐项结果。主文相关 GRS 上下文指向 Table 7，Reporting Summary 又把 Table 4 关联到 sex-specific analyses；两表分别对应 lead-variant 性别分层和 GRS 性状分析，原汇总说明仍不够精确。来源：`P020.S0002–P020.S0009`、`P028.S0016–P028.S0017`。
+- Extended Data Fig. 2：UK Biobank 总体及八簇 GRS 的男女分层关联；Supplementary Tables 4 和 7 已核到逐项结果，但原文未报告正式的 GRS×sex 交互统计量或交互 P 值。主文相关 GRS 上下文指向 Table 7，Reporting Summary 又把 Table 4 关联到 sex-specific analyses；两表分别对应 lead-variant 性别分层和 GRS 性状分析，原汇总说明仍不够精确。来源：`P004.S0008–P004.S0014`、`P020.S0002–P020.S0009`、`P028.S0016–P028.S0017`。
 - Extended Data Fig. 3：标题写 ARIC 且 A 明确为 n=9,240；B–C 图注却写 UK Biobank，无法仅据本地 PDF 判断是混合队列面板还是文字错误。来源：`P021.S0002–P021.S0010`。
 - Extended Data Fig. 4：HOLBAEK 的连续与二元性状；连续性状标准化，二元结局以 OR=1 为零效应线，星号部分只在人群队列分析。来源：`P022.S0002–P022.S0010`。
 - Extended Data Fig. 5：总体解耦与一般 BFP 位点通路，图示 nominal、未校正 \(P<0.01\)；Supplementary Table 16 的完整结果为解耦 286 项、一般 BFP 116 项达到 FDR<0.05，其中分别有 152 和 32 项达到 FDR<0.01。来源：`P023.S0002–P023.S0010`。
@@ -349,7 +349,9 @@ DEPICT 只纳入至少 10 个基因的 GO、KEGG、REACTOME 条目；Supplementa
 - GCTA 版本：主 Methods 为 1.94.4（`P014.S0055`），Reporting Summary 为 1.94.2（`P027.S0014`）。
 - 补充表数量：Data availability 写 Supplementary Tables 1–21（`P017.S0012`），Reporting Summary 写 1–20（`P028.S0002`）。
 - ARIC 样本数：Methods 为 9,240；Supplementary Table 9 总数为 9,241，但女性与男性相加只有 9,221；Table 10 的逐性状 n 又为 8,490–9,235。
-- PheWAS 补表完整性：Supplementary Table 8 中 GRS8 只有 6,642 个结局行，而其他评分约有 10,965 行；表内没有解释 4,323 行差异。
+- 总体轮廓检验：Results 只报告 `P<0.0001`（`P004.S0006–P004.S0007`）；Methods、Supplementary Table 7 和示例代码均未定义相应检验、统计量、自由度或分析单位，无法独立复核。
+- 性别分层：Results 以“tended to differ”和“more pronounced”描述男女点估计（`P004.S0008–P004.S0014`），但未报告 GRS×sex 交互检验，不能从一组更明显或一组显著推断正式效应修饰。
+- PheWAS 补表完整性：Supplementary Table 8 共 105,328 行；总体解耦 10,964 行，GRS1–5 各 10,965 行，GRS6 10,966 行，GRS7 10,965 行，GRS8 6,642 行，一般 BFP 10,966 行。GRS8 比名义 10,965 少 4,323 行，其他评分也存在一行级差异，表内均未解释。
 - 候选基因输入：Results 称 1,623 个候选，Supplementary Table 20 实际为 1,604 个 gene–locus 行、1,461 个唯一基因，且四个 lead positions 没有候选行。
 - BioMe Methods 写“生成十个 GRS”，随后只列总体解耦和一般 BFP 两个评分（`P015.S0047`）。
 - 糖代谢样本从 452,768 到 448,071 恰差 4,697 名胰岛素治疗者，Methods 又称另排除 804 名极端 glucose/HbA1c 者，未说明重叠（`P013.S0028`、`P013.S0033`）。

@@ -1,6 +1,6 @@
 # Predictability of B cell clonal persistence and immunosurveillance in breast cancer
 
-<!-- wechat-style-reviewed: 2026-10-10 -->
+<!-- wechat-style-reviewed: 2026-11-02 -->
 
 当同一名转移性乳腺癌患者的肝、肺或淋巴结病灶同时被取样时，一个真正棘手的问题才会出现：同一种 B 细胞克隆若在多个病灶中都能找到，它只是被重复抽到，还是参与了跨部位、持续存在的免疫反应？
 
@@ -164,6 +164,7 @@ Fig. 2 图注把患者 308 和 315 的病灶两两比较统一写为 36 对和 2
 - 代码与示例处理数据：`sjslab/BCR-Immunosurveillance`。
 - PDF 归档：`pdfs/processed/s41590-024-01821-0.pdf`
 - 官方在线材料：[Reporting Summary](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41590-024-01821-0/MediaObjects/41590_2024_1821_MOESM1_ESM.pdf)；[Supplementary Tables 1–3](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41590-024-01821-0/MediaObjects/41590_2024_1821_MOESM2_ESM.xlsx)。
+- 利益冲突：R.J.M.B.-R. 是 Alchemab Therapeutics 共同创始人，并担任 Alchemab Therapeutics、GSK、Roche、EnaraBio 和 UCB 顾问；S.S.、J.D.、J.O.、R.M.、D.K.F. 和 J.D.G. 现任或曾任 Alchemab Therapeutics 雇员；J.S. 是 Mosaic Biomedicals 共同创始人，持有 Mosaic Biomedicals 和 Northern Biologics 权益，并获得 Mosaic Biomedicals、Northern Biologics、Roche/Glycart、Hoffmann-La Roche 和 AstraZeneca 的研究支持；其余作者声明无利益冲突（`P013.S0088-P013.S0093`）。
 - PDF 解析质量：
   - 使用 `scripts/build_pdf_llm_pack.py` 建立句子级解析包 `tmp/b-cell-clonal-persistence-llm-pack.md`；本地 PDF 共 25 页、898 个句子 ID。
   - 自动分节只标出 14 个 Results ID，并把主文余下结果误标为 `methods` 或 `supplementary`。人工按论文语义校正后，Results 为 `P002.S0020-P007.S0034`（306 个 ID），Methods 为 `P010.S0002-P013.S0007`（201 个 ID）；两套范围在文末分别闭合。
@@ -474,7 +475,7 @@ MRDARCY、Immcantation、OLGA、TRUST4、MCPcounter、GSVA 和 graph centrality 
 
 #### 自动标签闭合与解析边界
 
-自动 `results` 标签为 `P002.S0020-P002.S0033`，共 `14/14`，均属真实 Results。自动 `methods` 共 `328/328`，其中 127 个实际是 `P002.S0034-P004.S0016` 的 Results，201 个才是 `P010.S0002-P013.S0007` 的 Methods。自动 `supplementary` 共 `230/230`，其中 165 个实际是 `P004.S0017-P007.S0034` 的 Results，65 个为 `P014.S0002-P022.S0008` 的扩展数据/附属内容。校正后的全包分布为 title 38、other 19、Results 306、discussion 27、references 242、Methods 201、supplementary 65，总计 898。
+自动 `results` 标签为 `P002.S0020-P002.S0033`，共 `14/14`，均属真实 Results。自动 `methods` 共 `328/328`，其中 127 个实际是 `P002.S0034-P004.S0016` 的 Results，201 个才是 `P010.S0002-P013.S0007` 的 Methods。自动 `supplementary` 共 `230/230`，其中 165 个实际是 `P004.S0017-P007.S0034` 的 Results，65 个为 `P014.S0002-P022.S0008` 的扩展数据/附属内容。自动 `references` 还误纳入 `P008.S0005` 的 Online content 续句、`P013.S0069-P013.S0094` 的致谢/贡献/利益声明/附加信息，以及 `P014.S0001` 的 DOI 页眉，共 28 个非引文 ID。校正后的全包分布为 title 38、other 47、Results 306、discussion 27、references 214、Methods 201、supplementary 65，总计 898。
 
 需要保留的 `EXTRACTION_CHECK` 包括：
 
@@ -483,4 +484,5 @@ MRDARCY、Immcantation、OLGA、TRUST4、MCPcounter、GSVA 和 graph centrality 
 - Fig. 4a/b 图注的 4 名多灶患者与 `n=5` 淋巴结、`n=22` 其他病灶无法闭合；Supplementary Table 1 中四人只有 5+18 个病灶，而 5+22 等于全队列 27 灶；
 - Results 主要换栏/跨页重排：`P002.S0020-P002.S0026`、`P002.S0046→P003.S0046`、`P004.S0066→P005.S0020-P005.S0021`、`P005.S0022→P005.S0045`、`P005.S0053→P006.S0012`、`P006.S0013-P006.S0023`、`P006.S0024→P007.S0001`；
 - Methods 标题或栏序打断：`P010.S0002-P010.S0006`、`P010.S0040-P010.S0047`、`P011.S0053→P012.S0001`、`P013.S0002-P013.S0006`；
+- references 自动标签边界：`P008.S0005`、`P013.S0069-P013.S0094`、`P014.S0001` 共 28 个 ID 实为 Online content 续句、出版后置信息或 DOI 页眉，已归入 other；真实引文为 214 个 ID；
 - 官方补充工作簿与图像型 Reporting Summary 已另行复核，但不纳入 898 个文本 ID；行数/唯一序列、逐样本模态、RNA 可用性选择、技术重复、accession 及原文字面异常均已在上文并列记录，不静默修正。
