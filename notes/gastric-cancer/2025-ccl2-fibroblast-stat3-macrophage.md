@@ -1,6 +1,6 @@
 # Spatial dissection of tumour microenvironments in gastric cancers reveals the immunosuppressive crosstalk between CCL2+ fibroblasts and STAT3-activated macrophages
 
-<!-- wechat-style-reviewed: 2026-10-29 -->
+<!-- wechat-style-reviewed: 2026-11-03 -->
 
 同样是胃癌，有些肿瘤里免疫细胞能够进入恶性上皮周围；另一些肿瘤却被致密的成纤维细胞包围，巨噬细胞聚集，真正执行杀伤的 T 细胞很少。病理上可以看到这种差别，但很难回答：究竟是哪类细胞在组织这种“免疫冷”环境？
 
@@ -94,7 +94,13 @@ CAF-conditioned medium 可增强 THP-1 单核细胞迁移；加入 200 ng/mL CCL
 
 第三，体外实验和小鼠模型支持 CCL2–STAT3 候选链条，但中和/敲低 CCL2 只验证了迁移，没有做 CCL2–pSTAT3 rescue；也没有抑制或敲低 macrophage STAT3 后观察 Jurkat IFNG 或原代 CD8 增殖能否恢复。CCL2 knockdown 使用永生化 CAF47/hTERT 稳定株，小鼠共接种 MGF 也经 hTERT 永生化，不能等同于未改造原代 fibroblast。主 Fig. 5 的迁移、RNA-seq/GSEA、pSTAT3 blot 与 IFNG readout 均未完整报告独立 biological n 或统计单位，小鼠也没有进行轴上干预且未报告每组动物数。论文没有排除 CCL2 以外的其他 macrophage STAT3 上游信号，也未证明阻断 CCL2、CCR2 或 STAT3 能改善免疫治疗结局。
 
-最后，675 例组织芯片全部来自 stage II/III 胃切标本，每例仅取肿瘤中心和侵袭前沿各一个 2 mm core；作者没有说明两个 cores 如何汇总为患者级 DAB 比例或发生冲突时如何定类。这里按 pancytokeratin、CD45RB、actin 中面积最高者重新定义的是组织学代理分型，并没有直接套用 9 例 Visium 的 12 细胞聚类规则，只能算概念复现。生存结果只见 Kaplan–Meier/log-rank，未报告调整后 Cox、HR 或置信区间；两个 cores 也不能保证充分覆盖整块肿瘤异质性。Table S4 中 MSI、EBV、TP53、HER2 实际可用分母仅为 508、541、651、652，缺失原因和处理未报告。队列数字也不能合并引用：正文和 Table S4 表头均为 228/126/321，Fig. 6 分类标签为 226/126/320，而 Kaplan–Meier 曲线起点为 320 个 fibrotic 加 354 个 non-fibrotic，共 674 例；正文/图内与图注的 log-rank P 又分别为 0.015 和 0.0023。Table S4 的 histologic subtype 三行分别相加只得到 225/127/320，这是表内分类单元格与表头未对齐，不是第三套亚型样本量。158 例标志物子队列中每张 DFS 曲线实际纳入 152 例；两类染色的线性关联虽为 P < 0.001，但那是样本级三档阳性的 linear-by-linear χ²，不是定量空间共定位检验，DFS 也均不显著。结果不能直接外推到 stage I/IV，也不能证明独立预后或形成稳定标志物。
+最后，675 例组织芯片全部来自 stage II/III 胃切标本，每例仅取肿瘤中心和侵袭前沿各一个 2 mm core，两个 cores 的患者级归并规则却未报告。该队列依 pancytokeratin、CD45RB、actin 中 DAB 面积最高者建立的是组织学代理分型，不是 9 例 Visium 聚类规则的直接外部复现。两个 2 mm cores 也不能保证充分覆盖整块肿瘤的空间异质性。
+
+生存曲线起点为 320 个 fibrotic 和 354 个 non-fibrotic 病例，正文/图内的 log-rank `P = 0.015` 与图注的 `P = 0.0023` 不一致。原文只报告 Kaplan–Meier/log-rank，没有调整后 Cox、HR 或置信区间，因此不能据此证明独立预后，也不能外推到 stage I/IV。
+
+MSI、EBV、TP53、HER2 的实际可用分母只有 508、541、651、652，比 675 例总队列少，缺失原因和处理未报告。正文、图内、图注和 Table S4 的亚型计数还有多套冲突口径，完整数字保留在技术附录，不应合并引用。
+
+158 例标志物染色子队列中，每张 DFS 曲线实际只纳入 152 例，比较均不显著（`P = 0.27` 和 `P = 0.45`）。两类染色的 `P < 0.001` 是样本级三档阳性的线性关联，不是定量空间共定位检验；这些结果还不足以形成稳定预后标志物。
 
 ---
 

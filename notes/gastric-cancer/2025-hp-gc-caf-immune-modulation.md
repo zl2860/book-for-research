@@ -1,6 +1,6 @@
 # Spatial and functional dissection of cancer-associated fibroblasts-mediated immune modulation in H. pylori-associated gastric cancer
 
-<!-- wechat-style-reviewed: 2026-10-25 -->
+<!-- wechat-style-reviewed: 2026-11-03 -->
 
 在 H. pylori 阳性胃癌切片里，癌细胞、成纤维细胞和免疫细胞常同时出现。真正难回答的不是“有没有炎症”，而是哪类基质状态与调节性 T 细胞聚集、细胞毒性 T 细胞参与减少相伴。
 
@@ -118,9 +118,11 @@ THBS1 轴对应 Treg 富集的空间生态位，ZFP36–FN1 轴则与细胞毒 T
 
 第四，原文内部有五处不能静默消除的不一致：Results 写 THBS1/ZFP36 在 H. pylori 阳性组上调，Fig. 5B 图注却写阴性组；亚型结果写 THBS1 偏 matCAF、ZFP36 偏 proCAF，后文又把两者概括为 proCAF 程序；Methods 称生存按中位数分组，但 ACRG 的 ZFP36 高、低组实际为 24 对 276 例；补充 Fig. S1B 的纵轴写 `log₂(diffuse/intestinal)`，图注却把红色解释为 intestinal 更强、蓝色解释为 diffuse 更强，方向与比值符号相反；Methods `P006.S0016` 声称报告精确 P 值，但 Fig. 5E/F 与 Fig. 6F 只给 `P < 0.05`。对 S1B 只登记“轴标签—图注冲突”，不替作者裁决颜色含义。
 
-最后，SAI 是作者自定义、本研究报告设 `n_neighbors=30` 的距离惩罚指标，结果会受组织密度和参数影响；本地 PDF 中公式还有符号抽取噪音。作者公开代码的论文同期末次实现（commit [`8cc7029`](https://github.com/AI-Lab-Pathology/SAI/tree/8cc7029dbe0108091aa44eb534cbb3fc42792c1b)）实际请求 `t+1` 个近邻，并在显式传入原坐标查询后没有删除查询细胞：31 个返回索引构成局部邻域，再据此筛选 center/target 细胞，公式归一化分母仍为 `t=30`。论文、README 和函数说明均未交代是否有意纳入自身，也不能确认发表图一定由该 commit 生成；Fig. 3、4、6 的 SAI 因而需要在“原公开实现”与“排除自身后固定 30 个近邻”之间做敏感性复算。原文还没有交代历史队列的 H. pylori 判定方式、THBS1+ CAF 的精确阈值，以及空间统计如何处理患者和视野内聚类。
+最后，SAI 是作者自定义、且依赖邻域口径的空间指标。论文报告 `n_neighbors=30`，却未说明是否排除查询细胞；论文同期公开实现会纳入自身，且论文未锁定生成主图的代码版本，因此 Fig. 3、4、6 需要在“排除自身、固定 30 个近邻”的口径下做敏感性复算。
 
-出版社在线补充文件共 7 页、只含 Fig. S1–S6；本次已建立独立补充包并完成 38/38 个句子 ID 的范围审计。它补齐了通讯网络、marker、FN1 3′UTR motif、SCENIC 与 T 细胞分群的图注，但没有补充表或独立 Source Data，也没有给出 Fig. 6F 的患者/FOV 分母、THBS1+ 阈值或新的功能扰动结果；因此不能用补图消除上述证据边界。
+历史队列的 H. pylori 判定方式、THBS1+ CAF 的精确阈值，以及空间统计如何处理患者和视野内聚类也未报告。commit、近邻索引与归一化分母的实现差异完整保留在技术附录。
+
+出版社在线补充文件共 7 页、只含 Fig. S1–S6。它补齐了通讯网络、marker、FN1 3′UTR motif、SCENIC 与 T 细胞分群的图注，却没有补充表或独立 Source Data，也没有给出 Fig. 6F 的患者/FOV 分母、THBS1+ 阈值或新的功能扰动结果，因此不能消除上述证据边界。
 
 ---
 
