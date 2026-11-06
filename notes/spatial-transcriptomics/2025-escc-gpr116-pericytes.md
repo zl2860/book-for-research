@@ -1,6 +1,6 @@
 # Single-cell multi-omic and spatial profiling of esophageal squamous cell carcinoma reveals the immunosuppressive role of GPR116+ pericytes in cancer metastasis
 
-<!-- wechat-style-reviewed: 2026-10-16 -->
+<!-- wechat-style-reviewed: 2026-11-06 -->
 
 食管鳞状细胞癌（ESCC）真正棘手的时刻，往往不是病理已经确认肿瘤，而是患者初诊时转移已经发生。论文引用的临床背景显示，超过一半患者初诊时已有转移，5 年总生存率约为 20%；只盯着肿瘤细胞本身，很难解释为什么有些原发灶更早形成转移能力。
 
@@ -63,7 +63,7 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 
 这组结果把证据从人体关联推进到了模型内因果，但仍不能排除 Prrx1 敲除改变其他周细胞状态，也不能把足垫或尾静脉模型直接外推成人类自然转移过程。
 
-## 05｜PRRX1–EGFL6–integrin β1–NF-κB 这条证据链怎样建立？
+## 05｜PRRX1 如何塑造 GPR116+ 周细胞状态？
 
 作者先找 GPR116+ 周细胞的上游。三个筛选条件分别得到 33 个在该亚群中活化的调控因子、282 个相对 GPR116− 周细胞高表达的基因，以及 66 个在转移患者周细胞中上调的基因；交集只剩 PRRX1、SOX4 和 HIF1A，PRRX1 与 GPR116+ 亚群标志的相关最强。
 
@@ -77,9 +77,11 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 
 简明图注：图 2 从 33 个活化调控因子、282 个亚群差异基因和 66 个转移相关基因的交集锁定 PRRX1，再用流式、snATAC-seq、ChIP、报告基因与 Prrx1 条件敲除补强；这些实验支持 PRRX1 参与塑造该状态，但 HEK293T 中的启动子实验和小鼠模型不能单独证明人体肿瘤内的全部调控路径。
 
-下游链条从 EGFL6 开始。它是 GPR116+ 相对 GPR116− 周细胞中上调最强的基因；在 KYSE150、KYSE410 侵袭实验中，重组 EGFL6 按 0、12.5、25 ng ml⁻¹ 呈剂量依赖性促进作用（各组 n=3），并伴随 EMT 改变。配体–受体分析随后提出 integrin β1；Supplementary Methods 说明免疫共沉淀是在 HEK293T 中双质粒共转染后的外源 co-IP，只支持二者可处于同一复合物，不能当作 ESCC 细胞内源结合或直接界面证据。
+## 06｜EGFL6–integrin β1–NF-κB 如何把信号传给肿瘤细胞？
 
-药理拯救使用 25 ng ml⁻¹ rEGFL6，并加入 ATN-161 30 μM 或 BAY 11-7082 10 μM，在两种细胞系中各做 n=3；侵袭、p-p65 和 EMT 读出均随抑制而下降。论文把 ATN-161 定义为 integrin α5β1 拮抗剂，并把 volociximab 引作抗 α5β1 抗体，因此这里最准确的说法是“α5β1 相关药理阻断支持该轴”，而不是泛指所有 integrin β1 功能；研究也没有用 ITGB1 遗传扰动排除靶外效应。原文没有给这些比较可直接转录的精确效应量，因此不从图形反推数值。
+下游链条从 EGFL6 开始。它是 GPR116+ 相对 GPR116− 周细胞中上调最强的基因；在 KYSE150、KYSE410 侵袭实验中，重组 EGFL6 的三个浓度梯度均以每组 n=3 比较，结果显示剂量依赖性促侵袭并伴随 EMT 改变。配体–受体分析随后提出 integrin β1；Supplementary Methods 说明免疫共沉淀是在 HEK293T 中双质粒共转染后的外源 co-IP，只支持二者可处于同一复合物，不能当作 ESCC 细胞内源结合或直接界面证据。
+
+药理拯救在两种细胞系中各以每组 n=3 比较 α5β1 相关阻断或 NF-κB 抑制；侵袭、p-p65 和 EMT 读出均随抑制而下降。论文把 ATN-161 定义为 integrin α5β1 拮抗剂，并把 volociximab 引作抗 α5β1 抗体，因此这里最准确的说法是“α5β1 相关药理阻断支持该轴”，而不是泛指所有 integrin β1 功能；研究也没有用 ITGB1 遗传扰动排除靶外效应。完整浓度参数保留在技术附录；原文没有给这些比较可直接转录的精确效应量，因此不从图形反推数值。
 
 图 5 的价值在于展示“候选—结合—通路—拯救—在体阻断”的顺序，而不是只画一条机制箭头。
 
@@ -87,15 +89,15 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 
 ![Fig. 5：EGFL6–integrin β1–NF-κB 机制证据链](../../assets/spatial-transcriptomics/2025-escc-gpr116-pericytes/fig5-egfl6-integrin-nfkb.png)
 
-简明图注：图 5 由通信推断提出 EGFL6–integrin β1，继而以 HEK293T 外源 co-IP、NF-κB/EMT 读出、ATN-161 30 μM、BAY 11-7082 10 μM 的拯救及 volociximab 小鼠实验补强；ATN-161 与 volociximab 更具体地指向 α5β1，外源 IP 和药理实验仍不能替代 ESCC 内源结合或 ITGB1 遗传验证。
+简明图注：图 5 由通信推断提出 EGFL6–integrin β1，继而以 HEK293T 外源 co-IP、NF-κB/EMT 读出、ATN-161 或 BAY 11-7082 拯救及 volociximab 小鼠实验补强；ATN-161 与 volociximab 更具体地指向 α5β1，外源 IP 和药理实验仍不能替代 ESCC 内源结合或 ITGB1 遗传验证。
 
 这条链之所以有解释力，是因为它同时连接了周细胞状态的形成和肿瘤细胞端的可干预输出。但论文没有完成 EGFL6 特异性功能缺失实验，也没有用 ITGB1 遗传扰动排除药理非特异性，因此“唯一且必需的通路”仍未被证明。
 
-## 06｜为什么同一亚群还会压低抗肿瘤免疫？
+## 07｜为什么同一亚群还会压低抗肿瘤免疫？
 
 多重免疫荧光图注把 Fig. 6a 的相关分析写成 `n=15` 份 ESCC 肿瘤组织，Extended Data Fig. 7m 又写转移 8 份、非转移 7 份；但两份官方 Source Data 都只有 15 个 ROI 行，且全部来自两个样本 ID：T21（M，8 个 ROI）与 T23（NM，7 个 ROI）。按这 15 个 ROI，GPR116+α-SMA+ 比例与 PD-1+CD8+、FOXP3+CD4+ 比例的 Pearson 相关分别为 `r=0.69, P=0.0047` 和 `r=0.62, P=0.013`。方向可以描述，但 ROI 嵌套在两位患者内，这两个 P 值不能当作 15 位独立患者的推断，也不能单凭空间图像判断诱导方向。
 
-共培养把证据向功能推进了一步。与 GPR116− 周细胞相比，GPR116+ 周细胞使 PD-1+CD8+ T 细胞和 FOXP3+CD4+ Treg 比例上升（每组 n=4）；其条件培养基降低 PBMC 杀伤，并降低 CD8+ T 细胞的 CD107a、GZMB 和 perforin（每组 n=3）。这里的 PBMC 来自健康供者，先用 CD3 5 μg ml⁻¹、IL-2 10 ng ml⁻¹ 和 CD28 5 μg ml⁻¹ 激活 48 h，并非 ESCC 患者免疫细胞；这些变化还可能来自状态转变、增殖或选择性存活，实验未做完整谱系追踪。
+共培养把证据向功能推进了一步。与 GPR116− 周细胞相比，GPR116+ 周细胞使 PD-1+CD8+ T 细胞和 FOXP3+CD4+ Treg 比例上升（每组 n=4）；其条件培养基降低 PBMC 杀伤，并降低 CD8+ T 细胞的 CD107a、GZMB 和 perforin（每组 n=3）。这里的 PBMC 来自健康供者，先经 CD3、IL-2 和 CD28 激活 48 h，并非 ESCC 患者免疫细胞；完整激活浓度保留在技术附录。这些变化还可能来自状态转变、增殖或选择性存活，实验未做完整谱系追踪。
 
 同一周细胞亚群还使 ESCC 细胞 PD-L1 上调，而 integrin β1 抑制剂可削弱该效应（每组 n=3）。这为后续联合 αPD-1 提供了机制理由：阻断 integrin β1 可能同时压低侵袭信号和一部分免疫抑制输出。但“机制理由”不等于患者中的免疫治疗增敏已经得到证实。
 
@@ -107,7 +109,7 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 
 简明图注：图 6 的组织相关性实际来自 T21 与 T23 两个样本的 15 个 ROI，不能当作 15 位患者；共培养和条件培养基实验分别以每组 n=3–4 支持 Treg/PD-1+CD8+ 比例、CD8 效应读出和 PD-L1 方向变化，但没有完成谱系追踪或患者治疗验证。
 
-## 07｜血清 EGFL6 现在能回答什么问题？
+## 08｜血清 EGFL6 现在能回答什么问题？
 
 第一个出口是血清 EGFL6。作者合并两个中心的 135 位 ESCC 患者，并以 60 位健康者作对照；研究内 ROC 中，EGFL6 区分 ESCC 与健康者的 AUC 为 0.983，区分作者标注的 M 与 NM 病例的 AUC 为 0.912。肺癌 M/NM 队列的 AUC 为 0.902，胃癌为 0.808；这些数字比较的是各研究队列内的分类表现，不是与现行筛查或影像流程的头对头临床比较。Fig. 4o 的生存曲线和补充表 4 的 ESCC 临床关联只有 54 例（N0 25、N1–N3 29）；只有这个临床子集能确认 M/NM 组数对应 N 分期，不能将该定义或 54 例生存分母外推给完整 135 例 ROC 队列。
 
@@ -121,7 +123,7 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 
 因此，真正的价值是提出一个可在血液中检测、值得独立验证的候选标志物。当前材料没有独立训练/测试划分、预设阈值、校准、前瞻性筛查或决策曲线，不能把 AUC 写成已经可用于早诊；肺癌和胃癌结果也没有证明 EGFL6 来自同一周细胞亚群或遵循同一机制。
 
-## 08｜integrin β1 阻断能否增强 αPD-1？
+## 09｜α5β1 相关药理阻断能否增强 αPD-1？
 
 第二个出口更准确地说是 α5β1 相关药理阻断。足垫模型中，对照组近端腘窝和髂淋巴结转移均为 6/6，远端肾门淋巴结为 4/6；抗 α5β1 抗体 volociximab 组近端只报告 1/6 的少量浸润，远端为 0/6。随后，α5β1 拮抗剂 ATN-161 与 αPD-1 在 AKR 皮下模型（每组 n=7）和 4NQO 自发 ESCC 模型（每组 n=4）中均表现为联合组优于任一单药；这仍不是 ITGB1 遗传扰动，也不能据此概括全部 β1-containing integrin。
 
@@ -135,7 +137,7 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 
 这里可以说“联合显示临床前增益”，不能直接说“协同”或“改善临床结局”：论文没有报告正式交互作用检验，也没有患者接受这一联合方案。体重、血液学和器官组织学未见明显异常，只能说明这些小样本、有限观察期的小鼠实验没有发现相应安全信号。
 
-## 09｜对新的空间肿瘤研究，哪些设计可以直接迁移？
+## 10｜对新的空间肿瘤研究，哪些设计可以直接迁移？
 
 最值得迁移的不是某一个标志物，而是一条候选收敛路径：先在患者层比较中寻找通信变化突出的稀有细胞，再做亚群拆分；随后用空间侵袭前沿过滤候选，以组织成像确认位置，最后才进入体外扰动、遗传模型和药理验证。空间信息在这里是功能实验前的优先级过滤器，不是因果结论本身。
 
@@ -145,7 +147,7 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 
 对胃癌等其他癌种，只能迁移设计，不能直接搬运机制。本文胃癌血清队列中 EGFL6 区分转移的 AUC 为 0.808，但没有证明其来源仍是 GPR116+ 周细胞，也没有复现 PRRX1–EGFL6–integrin β1 轴；新的癌种必须重新确认细胞来源、空间位置和通路依赖。
 
-## 10｜这些结果仍需要冷静看待：哪些结论还不能下？
+## 11｜这些结果仍需要冷静看待：哪些结论还不能下？
 
 第一，患者层发现样本只有 12 位，空间队列只有 5 位，而且比较的是已经有或没有转移的原发灶。117,169 个细胞和 195,366 个空间伪点位提高的是细胞或空间单位层面的观测密度，不能替代患者层重复，也不能确定 GPR116+ 周细胞是在转移前出现还是转移后的反应。
 
@@ -155,7 +157,7 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 
 第四，临床转化仍缺独立验证。血清 EGFL6 的高 AUC 来自研究内队列，没有预设临床阈值与前瞻性验证；α5β1 相关药理阻断和 αPD-1 联合只有小鼠证据，尚无人类疗效数据，也没有 ITGB1 遗传扰动证明这一受体节点的专一性。免疫功能实验使用健康供者激活 PBMC，不能直接代表 ESCC 患者免疫状态。
 
-第五，原文和随文材料存在必须保留的冲突：Fig. 4 图注与队列构成把 ESCC 血清转移/非转移人数写反；主文与 Reporting Summary 对 CD146 门控、随机化和动物伦理机构的表述不一致；整合周细胞队列同时出现 53、54、55 三种可推得的总数；Fig. 6a/Extended Data Fig. 7m 的图注把 `n=15` 写成组织，而 Source Data 暴露为两个样本的 15 个 ROI。官方 Supplementary Information、Tables 1–7 与 20 个 Source Data 文件现已全部补回审计，Supplementary Figs. 1–2 只展示 T 细胞门控，不能裁决 CD146+/CD146− 的周细胞分选冲突。完整清单均保留在技术附录，不能用一种表述静默覆盖另一种。
+第五，原文和随文材料存在必须保留的冲突：Fig. 4 图注与队列构成把 ESCC 血清转移/非转移人数写反；主文与 Reporting Summary 对 CD146 门控、随机化和动物伦理机构的表述不一致；整合周细胞队列同时出现 53、54、55 三种可推得的总数；Fig. 6a/Extended Data Fig. 7m 的图注把 `n=15` 写成组织，而 Source Data 暴露为两个样本的 15 个 ROI。官方 Supplementary Information、Tables 1–7 与 20 个 Source Data 文件曾在 2026-10-16 审阅中补回审计，Supplementary Figs. 1–2 只展示 T 细胞门控，不能裁决 CD146+/CD146− 的周细胞分选冲突；这些原始补充文件当前未随仓库保留，本轮无法离线重算。完整清单均保留在技术附录，不能用一种表述静默覆盖另一种。
 
 ---
 
@@ -172,12 +174,13 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 - **02：**`P016.S0010–P016.S0013`、`P016.S0031`、`P016.S0055`；`P003.S0039`、`P016.S0041–P016.S0042`；`P003.S0009`、`P003.S0024–P003.S0026`、`P005.S0074–P006.S0015`；`P016.S0021–P016.S0023`、`P006.S0036–P006.S0038`、`P009.S0036–P009.S0039`、`P011.S0045–P011.S0064`
 - **03：**`P003.S0048–P005.S0078`；`P002.S0060–P002.S0062`、`P003.S0025–P003.S0026`、`P006.S0009–P006.S0016`
 - **04：**`P007.S0004–P009.S0009`、`P016.S0044–P016.S0049`、`P017.S0008–P017.S0010`；`P009.S0010–P009.S0021`；`P009.S0022–P009.S0027`
-- **05：**`P006.S0017–P006.S0024`；`P006.S0040–P006.S0064`；`P008.S0020–P008.S0022`；`P009.S0028–P009.S0047`、`P009.S0066–P011.S0020`；`P029.S0008–P029.S0009`、`P011.S0050`、`P014.S0027`、`P014.S0031`、`P014.S0035`、`SI:P009.S0012–P010.S0003`
-- **06：**`P011.S0030–P011.S0035`；`P011.S0036–P011.S0040`；`P011.S0041–P011.S0047`；`SI:P006.S0009`；Fig. 6a Source Data
-- **07：**`P009.S0055–P009.S0064`
-- **08：**`P011.S0021–P011.S0029`、`P011.S0050–P011.S0064`、`P014.S0027`、`P014.S0031`、`P014.S0035`
-- **09：**`P009.S0062–P009.S0065`
-- **10：**`P016.S0041–P017.S0007`；`P017.S0028–P017.S0035`、`P018.S0045`
+- **05：**`P006.S0017–P006.S0024`；`P006.S0040–P006.S0064`
+- **06：**`P008.S0020–P008.S0022`；`P009.S0028–P009.S0047`、`P009.S0066–P011.S0020`；`P029.S0008–P029.S0009`、`P011.S0050`、`P014.S0027`、`P014.S0031`、`P014.S0035`、`SI:P009.S0012–P010.S0003`
+- **07：**`P011.S0030–P011.S0035`；`P011.S0036–P011.S0040`；`P011.S0041–P011.S0047`；`SI:P006.S0009`；Fig. 6a Source Data
+- **08：**`P009.S0055–P009.S0064`
+- **09：**`P011.S0021–P011.S0029`、`P011.S0050–P011.S0064`、`P014.S0027`、`P014.S0031`、`P014.S0035`
+- **10：**`P009.S0062–P009.S0065`
+- **11：**`P016.S0041–P017.S0007`；`P017.S0028–P017.S0035`、`P018.S0045`
 
 ### 基本信息
 
@@ -218,19 +221,20 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 - Results 的 574 个自动分类 ID 经版面复位后分为 228 个真实叙事 ID、39 个正式图注 ID、307 个图内标签/坐标/单值/页眉页脚或错序 ID；228 个真实叙事 ID 均在逐句表覆盖。
 - 主文 Methods 的真实范围为 `P016.S0002–P018.S0063`，183/183 个 ID 均逐句覆盖。reporting summary 的 215 个 ID 被脚本误标为 Methods，作为报告质量材料审计，不混入主文 Methods 分母。
 - Discussion 用于作者结论、局限和证据边界，核心范围为 `P011.S0065–P013.S0037`。
-- 主 PDF 不内嵌正文引用的 Supplementary Note、Tables 1–7、Figs. 1–2 或独立 Source Data；本次从出版社文章页补回全部 23 个 MOESM 文件。Supplementary Information 另生成 15 页、285 个 ID 的 pack，已 285/285 范围审计；补充表、109 张 source-data worksheets 与 6 份未裁剪 immunoblot 作为结构化文件逐项盘点，不混入主 PDF 的 Results/Methods 分母。（主文引用：`P016.S0013`、`P016.S0018`、`P016.S0025–P016.S0026`、`P016.S0038–P016.S0039`、`P016.S0050`、`P017.S0008–P017.S0011`、`P018.S0009`、`P009.S0071–P009.S0072`、`P018.S0062`）
+- 主 PDF 不内嵌正文引用的 Supplementary Note、Tables 1–7、Figs. 1–2 或独立 Source Data；2026-10-16 审阅时曾从出版社文章页补回并审计全部 23 个 MOESM 文件。Supplementary Information 另生成 15 页、285 个 ID 的 pack，已 285/285 范围审计；补充表、109 张 source-data worksheets 与 6 份未裁剪 immunoblot 作为结构化文件逐项盘点，不混入主 PDF 的 Results/Methods 分母。（主文引用：`P016.S0013`、`P016.S0018`、`P016.S0025–P016.S0026`、`P016.S0038–P016.S0039`、`P016.S0050`、`P017.S0008–P017.S0011`、`P018.S0009`、`P009.S0071–P009.S0072`、`P018.S0062`）
+- 当前本地可复核范围：仓库保留 Supplementary Information 的文本 pack 与 manifest，但 manifest 的 `source_pdf` 指向已不存在的临时路径，MOESM1 原始 PDF、MOESM3 补充表工作簿及 MOESM4–23 Source Data 原始文件也未随仓库保留。因此，下文 7 张补充表、109 张 worksheets、15 个 ROI 来自 2 个样本及重复 Patient ID 等结论属于上述历史审计记录；本轮可核对保存的来源 ID 和审计文字，不能离线重新计算这些结构化底表。
 
 ### 本论文主图
 
 | 原文图表 | 原文图题/核心信息 | 是否截取 | 实际图像文件 | 放置位置 |
 |---|---|---|---|---|
 | Fig. 1 | *Cellular dynamics reveal the role of GPR116+ pericytes in ESCC metastasis*：从 12 例患者的多组学设计、117,169 个 scRNA-seq 细胞和细胞通讯/空间邻近，推进到三个周细胞亚群、GPR116+ 周细胞的临床富集、组织验证、生存与多变量 Cox。（来源：`P003.S0002–P003.S0009`、`P003.S0024–P003.S0028`、`P003.S0029–P003.S0050`、`P006.S0005–P006.S0016`） | 是 | `fig1-cellular-landscape-gpr116-pericytes.png` | [03｜为什么锁定 GPR116+ 周细胞](#reader-escc-fig1) |
-| Fig. 2 | *PRRX1 drives the differentiation of GPR116+ pericytes*：SCENIC 与三重候选交集锁定 PRRX1，继而以表达、蛋白、过表达/敲低、snATAC、ChIP 和 Cspg4-CreERT;Prrx1 cKO 验证其调控作用；荧光素酶报告实验位于 Extended Data Fig. 3i，而非主图 Fig. 2。（来源：`P003.S0021–P003.S0023`、`P003.S0051–P003.S0055`、`P006.S0017–P006.S0064`、`P024.S0038–P024.S0041`） | 是 | `fig2-prrx1-differentiation.png` | [05｜PRRX1–EGFL6–integrin β1–NF-κB 这条证据链怎样建立？](#reader-escc-fig2) |
+| Fig. 2 | *PRRX1 drives the differentiation of GPR116+ pericytes*：SCENIC 与三重候选交集锁定 PRRX1，继而以表达、蛋白、过表达/敲低、snATAC、ChIP 和 Cspg4-CreERT;Prrx1 cKO 验证其调控作用；荧光素酶报告实验位于 Extended Data Fig. 3i，而非主图 Fig. 2。（来源：`P003.S0021–P003.S0023`、`P003.S0051–P003.S0055`、`P006.S0017–P006.S0064`、`P024.S0038–P024.S0041`） | 是 | `fig2-prrx1-differentiation.png` | [05｜PRRX1 如何塑造 GPR116+ 周细胞状态？](#reader-escc-fig2) |
 | Fig. 3 | *GPR116+ pericytes contribute to ESCC metastasis*：CellChat、high-EMT 肿瘤细胞、侵袭前沿空间梯度、多重 IF、3D/2D 侵袭，以及尾静脉肺转移、足垫淋巴转移和 Prrx1 cKO 模型构成“定位—功能—在体干预”证据链。（来源：`P006.S0002–P006.S0005`、`P006.S0038–P006.S0039`、`P006.S0065–P007.S0007`、`P007.S0038–P007.S0042`、`P009.S0005–P009.S0027`） | 是 | `fig3-escc-metastasis.png` | [04｜它真的推动转移吗](#reader-escc-fig3) |
-| Fig. 4 | *The prometastatic role and clinical implications of EGFL6*：EGFL6 的周细胞来源、Prrx1 cKO 后组织/血清下降、重组蛋白促侵袭与 EMT、组织队列/生存、ESCC 血清 ROC，以及肺癌和胃癌转移预测。（来源：`P006.S0035–P006.S0038`、`P006.S0067–P006.S0069`、`P009.S0028–P009.S0065`） | 是 | `fig4-egfl6-biomarker.png` | [07｜血清 EGFL6 现在能回答什么问题？](#reader-escc-fig4) |
-| Fig. 5 | *GPR116+ pericytes induce metastasis via the EGFL6–integrin β1–NF-κB axis*：配体–受体推断、HEK293T 外源 EGFL6–integrin β1 co-IP、ITGB1/EMT/NF-κB 状态、EGFL6 剂量反应、ATN-161 或 BAY 11-7082 拯救，以及 volociximab 抑制多级淋巴结转移。（来源：`P009.S0002–P009.S0005`、`P009.S0037–P009.S0040`、`P009.S0066–P011.S0029`；`SI:P011.S0009`） | 是 | `fig5-egfl6-integrin-nfkb.png` | [05｜机制证据链怎样建立](#reader-escc-fig5) |
-| Fig. 6 | *Immunosuppressive properties of GPR116+ pericytes*：组织空间相关、周细胞–T 细胞共培养、PD-1+CD8+ 与 FOXP3+CD4+ Treg 扩增、PBMC 杀伤和 CD8 效应分子下降，以及肿瘤 PD-L1 上调被 integrin β1 抑制剂逆转。（来源：`P009.S0036–P009.S0039`、`P009.S0069–P009.S0073`、`P011.S0030–P011.S0047`） | 是 | `fig6-immunosuppression.png` | [06｜为什么同一亚群还会压低抗肿瘤免疫？](#reader-escc-fig6) |
-| Fig. 7 | *Integrin β1 inhibitor enhances the antitumor effect of αPD-1*：在 AKR 皮下移植模型和 4NQO 自发 ESCC 模型中比较 isotype、ATN-161、αPD-1 与联合治疗，同时评估原发瘤、肺转移、体重、血液学和脏器组织学。（来源：`P011.S0044–P011.S0064`、`P011.S0074–P011.S0079`） | 是 | `fig7-atn161-pd1-combination.png` | [08｜integrin β1 阻断能否增强 αPD-1？](#reader-escc-fig7) |
+| Fig. 4 | *The prometastatic role and clinical implications of EGFL6*：EGFL6 的周细胞来源、Prrx1 cKO 后组织/血清下降、重组蛋白促侵袭与 EMT、组织队列/生存、ESCC 血清 ROC，以及肺癌和胃癌转移预测。（来源：`P006.S0035–P006.S0038`、`P006.S0067–P006.S0069`、`P009.S0028–P009.S0065`） | 是 | `fig4-egfl6-biomarker.png` | [08｜血清 EGFL6 现在能回答什么问题？](#reader-escc-fig4) |
+| Fig. 5 | *GPR116+ pericytes induce metastasis via the EGFL6–integrin β1–NF-κB axis*：配体–受体推断、HEK293T 外源 EGFL6–integrin β1 co-IP、ITGB1/EMT/NF-κB 状态、EGFL6 剂量反应、ATN-161 或 BAY 11-7082 拯救，以及 volociximab 抑制多级淋巴结转移。（来源：`P009.S0002–P009.S0005`、`P009.S0037–P009.S0040`、`P009.S0066–P011.S0029`；`SI:P011.S0009`） | 是 | `fig5-egfl6-integrin-nfkb.png` | [06｜EGFL6–integrin β1–NF-κB 如何把信号传给肿瘤细胞？](#reader-escc-fig5) |
+| Fig. 6 | *Immunosuppressive properties of GPR116+ pericytes*：组织空间相关、周细胞–T 细胞共培养、PD-1+CD8+ 与 FOXP3+CD4+ Treg 扩增、PBMC 杀伤和 CD8 效应分子下降，以及肿瘤 PD-L1 上调被 integrin β1 抑制剂逆转。（来源：`P009.S0036–P009.S0039`、`P009.S0069–P009.S0073`、`P011.S0030–P011.S0047`） | 是 | `fig6-immunosuppression.png` | [07｜为什么同一亚群还会压低抗肿瘤免疫？](#reader-escc-fig6) |
+| Fig. 7 | *Integrin β1 inhibitor enhances the antitumor effect of αPD-1*：在 AKR 皮下移植模型和 4NQO 自发 ESCC 模型中比较 isotype、ATN-161、αPD-1 与联合治疗，同时评估原发瘤、肺转移、体重、血液学和脏器组织学。（来源：`P011.S0044–P011.S0064`、`P011.S0074–P011.S0079`） | 是 | `fig7-atn161-pd1-combination.png` | [09｜α5β1 相关药理阻断能否增强 αPD-1？](#reader-escc-fig7) |
 
 <a id="extended-data-status"></a>
 
@@ -367,7 +371,7 @@ GPR116 在这里首先是一个细胞状态标签。研究真正要验证的，�
 - 原代周细胞来自新鲜 ESCC 组织中的血管片段，在 Matrigel/PDGF-BB 和周细胞培养基中培养 14 天，再消化、洗涤和扩增。（来源：`P017.S0012–P017.S0023`）
 - 主文 Methods 写明以 PE-CD146 和 488-GPR116 染色，从单细胞悬液中分选 CD146+GPR116+ 周细胞，并用 FlowJo 10.8.1 分析。（来源：`P017.S0024–P017.S0027`）
 - 机制实验包括 PRRX1 操作、snATAC/ChIP/报告基因、EGFL6 重组蛋白、IP、2D/3D 侵袭、EMT/NF-κB 免疫印迹、周细胞条件培养基、T 细胞/PBMC 共培养和流式 readout。（来源：`P006.S0040–P006.S0060`、`P009.S0044–P009.S0047`、`P009.S0066–P011.S0020`、`P011.S0036–P011.S0042`）
-- Supplementary Information 已补回流式抗体 panel、健康供者 PBMC 的 CD3 5 μg ml⁻¹、IL-2 10 ng ml⁻¹、CD28 5 μg ml⁻¹、48 h 激活，EGFL6 12.5/25 ng ml⁻¹ 侵袭条件，以及 ChIP、ELISA、qPCR 和多重 IF 等步骤；Fig. 5/Extended Data Fig. 6 图内另给 rEGFL6 25 ng ml⁻¹、ATN-161 30 μM、BAY 11-7082 10 μM。仍未完整报告所有批次、独立重复定义、随机种子或周细胞分选门控图。Supplementary Figs. 1–2 是 Fig. 6 免疫 readout 的 T 细胞门控，不是 GPR116+ 周细胞分选门控。（来源：`P008.S0020–P008.S0022`、`P009.S0071–P009.S0072`、`P029.S0008–P029.S0009`；`SI:P006.S0008–P012.S0021`）
+- Supplementary Information 已补回流式抗体 panel、健康供者 PBMC 的 CD3 5 μg ml⁻¹、IL-2 10 ng ml⁻¹、CD28 5 μg ml⁻¹、48 h 激活，EGFL6 0/12.5/25 ng ml⁻¹ 侵袭条件，以及 ChIP、ELISA、qPCR 和多重 IF 等步骤；Fig. 5/Extended Data Fig. 6 图内另给 rEGFL6 25 ng ml⁻¹、ATN-161 30 μM、BAY 11-7082 10 μM。仍未完整报告所有批次、独立重复定义、随机种子或周细胞分选门控图。Supplementary Figs. 1–2 是 Fig. 6 免疫 readout 的 T 细胞门控，不是 GPR116+ 周细胞分选门控。（来源：`P008.S0020–P008.S0022`、`P009.S0071–P009.S0072`、`P029.S0008–P029.S0009`；`SI:P006.S0008–P012.S0021`）
 
 ##### 6. 小鼠模型和干预
 
@@ -1318,9 +1322,9 @@ Methods 显示的验证链包括：scRNA-seq、Stereo-seq 与配对 snRNA+ATAC �
 | 实验统计 | Prism 9 | 具体检验按 panel 映射；Tukey；双侧；P 阈值 | 原始 n、独立重复单位、配对结构、方差假设 |
 | 生存 | Kaplan–Meier/log-rank；多变量 Cox | HR、95% CI、HR=1 | 协变量、事件数、缺失、比例风险检验 |
 
-##### 3. 补充材料补回的复现信息与剩余缺口
+##### 3. 历史补充材料审计的复现信息与剩余缺口
 
-Supplementary Information、Tables 1–7 与 Source Data 已从官方文章页补回。现在可核：12 人逐例模态、10x 5′ v2/Multiome 与测序读长、Stereo-seq 建库条件、Tables 2–4 的临床病理分母、Table 5 的 DEG 字段、Table 6 的全部 signatures、Table 7 的引物/siRNA，以及多项流式、侵袭、ChIP、ELISA 和免疫印迹步骤。Supplementary Information 的 15 页、285/285 个 ID 已作范围审计；7 张表、109 张 Source Data worksheets 与 6 个 blot PDF 已逐文件盘点。
+2026-10-16 审阅时，Supplementary Information、Tables 1–7 与 Source Data 曾从官方文章页补回。当时可核：12 人逐例模态、10x 5′ v2/Multiome 与测序读长、Stereo-seq 建库条件、Tables 2–4 的临床病理分母、Table 5 的 DEG 字段、Table 6 的全部 signatures、Table 7 的引物/siRNA，以及多项流式、侵袭、ChIP、ELISA 和免疫印迹步骤。Supplementary Information 的 15 页、285/285 个 ID 已作范围审计；7 张表、109 张 Source Data worksheets 与 6 个 blot PDF 已逐文件盘点。当前仓库仅保留文本 pack、manifest 与审计记录，原始 MOESM 文件不可离线重算。
 
 材料补回并未等于完全复现：仍缺 CellChat 人工加入的 21 个受体清单、统一测序深度/批次、若干默认参数与随机种子、周细胞完整 gating/补偿图，以及血清重复 Patient ID 的取样含义和患者级 ROC 聚合规则。更重要的是，新文件暴露了整合队列 53/54/55 三套分母、Fig. 6 的 ROI 伪重复、Supplementary Methods“局部晚期”与 Table 1 stage I 病例、以及 CD146+/− 等源内冲突；这些不能用“已有 Source Data”自动消解。
 
@@ -1368,7 +1372,7 @@ Supplementary Information、Tables 1–7 与 Source Data 已从官方文章页�
 15. **组织免疫相关存在严重 ROI 伪重复风险。** Fig. 6a 和 Extended Data Fig. 7m 的 Source Data 是相同 15 个 ROI，只来自 T21 与 T23 两个样本；图注却把它们写成 n=15 份组织或 M 8/NM 7。患者层独立重复为 2，不能按 15 个独立组织解释相关和组间 P 值。
 16. **整合周细胞队列分母无法闭合。** 图注为 M 29/NM 25，Fig. 1h Source Data 为 28/25，Supplementary Note 又在“54 samples”后写 26/29；Extended Data Fig. 2f 的 54 个 sample IDs 还包含只有 10 个周细胞的 P2_T，与 >50 纳入规则冲突。
 17. **签名之间存在数学耦合。** GPR116+ 周细胞 signature 本身含 EGFL6，与 EGFL6 的相关分析部分自相关；它又与 mesenchymal signature 共享 ACTA2、COL1A1、COL3A1，相关可混入共同基质丰度，不能全归为特异生物学耦合。（Supplementary Table 6）
-18. **官方材料已补回，但仍有明确复现缺口。** 23 个 MOESM 已盘点，Supplementary Information 285/285 个 ID、7 张表、109 张 source-data worksheets 和 6 个 blot PDF 均已审计；仍缺 21 个 EGFL6 受体清单、周细胞完整 gating、若干批次/随机参数与重复样本解释。（来源：`P016.S0013`、`P016.S0018`、`P016.S0025–P016.S0026`、`P016.S0038–P016.S0039`、`P017.S0008–P017.S0011`、`P018.S0009`、`P018.S0062`）
+18. **历史审计补回过官方材料，但当前不能离线重跑。** 2026-10-16 审阅曾盘点 23 个 MOESM，Supplementary Information 285/285 个 ID、7 张表、109 张 source-data worksheets 和 6 个 blot PDF 均已审计；当前本地只保留文本 pack、manifest 与审计记录。即使按历史审计，仍缺 21 个 EGFL6 受体清单、周细胞完整 gating、若干批次/随机参数与重复样本解释。（来源：`P016.S0013`、`P016.S0018`、`P016.S0025–P016.S0026`、`P016.S0038–P016.S0039`、`P017.S0008–P017.S0011`、`P018.S0009`、`P018.S0062`）
 
 ### 深度研究洞察
 
@@ -1504,11 +1508,11 @@ Supplementary Information、Tables 1–7 与 Source Data 已从官方文章页�
 - **逐句表行级重复 ID：**无。教学章节为溯源而再次引用 ID，不计作逐句表重复。
 - **边界排除：**`P018.S0064` 起为 References；`P019.S0035`–`P027.S0032` 为 Extended Data；`P027.S0033`–`P035.S0017` 为参考文献/报告表前页；`P035.S0018`–`P039.S0015` 为 reporting summary 误标，共 215 个，不计入真实 Methods 分母。
 - **低置信/断句 ID：**共 69 个：`P016.S0020`–`P016.S0021`、`P016.S0029`–`P016.S0030`、`P016.S0044`–`P016.S0045`；`P017.S0001`、`P017.S0013`–`P017.S0020`、`P017.S0036`–`P017.S0037`、`P017.S0039`–`P017.S0040`、`P017.S0043`–`P017.S0044`、`P017.S0051`–`P017.S0054`、`P017.S0058`–`P017.S0060`；`P018.S0001`、`P018.S0004`–`P018.S0005`、`P018.S0007`–`P018.S0008`、`P018.S0012`–`P018.S0017`、`P018.S0019`–`P018.S0021`、`P018.S0026`–`P018.S0039`、`P018.S0041`–`P018.S0042`、`P018.S0048`–`P018.S0049`、`P018.S0052`–`P018.S0055`、`P018.S0057`–`P018.S0061`。
-- **补充材料边界：**Supplementary Information 285/285 个 ID 已范围审计，Tables 1–7 与 20 个 Source Data 文件已盘点；它们独立于主文 183/183 Methods 分母。仍缺的参数已在“复现信息与剩余缺口”中逐项列明。
+- **补充材料边界：**2026-10-16 历史审计已覆盖 Supplementary Information 285/285 个 ID，并盘点 Tables 1–7 与 20 个 Source Data 文件；它们独立于主文 183/183 Methods 分母。当前仓库未保留原始 MOESM 文件，不能离线重算；仍缺的参数已在“复现信息与剩余缺口”中逐项列明。
 
 <a id="low-confidence-materials"></a>
 
 #### 低置信解析与补充材料边界
 
 - Results 的 26 个低置信/混排 ID 和 Methods 的 69 个低置信/断句 ID 均在对应逐句行或审计清单显式标出，没有通过无依据补词“修复”。
-- Extended Data Fig. 1–7 随主 PDF 可见并已按 panel 解读；官方 Supplementary Information、Tables 1–7、Supplementary Figs. 1–2 与 20 个 Source Data 文件本次均已补回。它们补齐模态分配、队列协变量、DEG/签名、siRNA、建库参数和部分原始数值，同时暴露 ROI 独立单位、重复 Patient ID、三套整合队列分母与周细胞门控等新边界；这些冲突均显式保留。
+- Extended Data Fig. 1–7 随主 PDF 可见并已按 panel 解读；官方 Supplementary Information、Tables 1–7、Supplementary Figs. 1–2 与 20 个 Source Data 文件曾在 2026-10-16 审阅中补回。它们当时补齐模态分配、队列协变量、DEG/签名、siRNA、建库参数和部分原始数值，同时暴露 ROI 独立单位、重复 Patient ID、三套整合队列分母与周细胞门控等新边界；这些冲突均显式保留。当前本地只保留文本 pack、manifest 与审计记录，原始结构化文件不可离线重算。
