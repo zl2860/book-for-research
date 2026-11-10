@@ -1,6 +1,6 @@
 # Immunosequencing identifies signatures of T cell responses for early detection of nasopharyngeal carcinoma
 
-<!-- wechat-style-reviewed: 2026-10-22 -->
+<!-- wechat-style-reviewed: 2026-11-10 -->
 
 在鼻咽癌高发地区做筛查时，最难处理的往往不是已经出现症状的患者，而是一名没有症状、EBV VCA-IgA 却呈阳性的人：他是否已经接近鼻咽癌发生，是否应该优先接受鼻咽镜检查？
 
@@ -58,9 +58,15 @@ Fig. 3D–E 的时间窗比较另以 348 名 VCA-IgA 阳性高风险对照（AR�
 
 前瞻验证只看入组时已经留存的基线血样。34 名后来被诊断为早期鼻咽癌的人各贡献一次基线测量；跨个体比较显示，基线 T-score 与距离诊断的时间呈负相关，`R=-0.63`，`p=7.2×10⁻⁵`。它不能证明同一个人的 T-score 随时间连续升高。
 
-`T-score>4` 的 17 人中位诊断间隔为 4 个月，`T-score≤4` 的 17 人为 27 个月。原文把组间差异写作“约 4.17 倍更短”（95% CI 2.09–8.03，log-rank `p=1.4×10⁻⁴`），但 4.17 不是 4 与 27 的中位数之比；加速失效时间模型另给出 time ratio 0.24、`p=7.6×10⁻⁵`，即模型估计高分组时间约为低分组的 24%，其倒数约为 4.17。论文没有报告 `>4` 的预设、训练或独立校准规则，也没有交代 AFT 的分布假设。Supplementary Fig. S3G 以 VCA-IgA 1.43 分组同样各 17 人，log-rank `p=0.17`；这个 1.43 是图中分组阈值，不同于 Methods 按试剂说明书定义阳性的 1.1，且其选择规则未报告。Fig. 3D–E 将 34 例与合并的 348 名 AR 比较，T-score 趋势 `p=0.003`，VCA-IgA 趋势 `p=0.09`。
+`T-score>4` 的 17 人中位诊断间隔为 4 个月，`T-score≤4` 的 17 人为 27 个月。原文把组间差异写作“约 4.17 倍更短”（95% CI 2.09–8.03，log-rank `p=1.4×10⁻⁴`），但 4.17 不是 4 与 27 的中位数之比；加速失效时间模型另给出 time ratio 0.24、`p=7.6×10⁻⁵`，即模型估计高分组时间约为低分组的 24%，其倒数约为 4.17。论文没有报告 `>4` 的预设、训练或独立校准规则，也没有交代 AFT 的分布假设。
 
-相对于诊断间隔超过 18 个月的人，T-score 在诊断前 6–12 个月窗口的 time-dependent AUC 超过 0.80；原文只称 VCA-IgA 即使在诊断前 3 个月仍表现不足。Fig. 3F 只画出点估计曲线与 95% 置信带，没有定义实际分析人群，也没有列出各时点的精确 AUC 或进入估计的病例与对照（有效风险集）人数。Fig. 3D–E 的 348 名 AR 中有 241 人来自横断面发现集，Table S1 又没有随访、事件或删失字段，不能默认这 348 人全部进入了 timeROC，更不能把曲线上每个时点当作精度相同、已稳定定标的性能。
+Supplementary Fig. S3G 以 VCA-IgA 1.43 分组同样各 17 人，log-rank `p=0.17`；这个 1.43 是图中分组阈值，不同于 Methods 按试剂说明书定义阳性的 1.1，且其选择规则未报告。
+
+Fig. 3D–E 将 34 例与合并的 348 名 AR 比较，T-score 趋势 `p=0.003`，VCA-IgA 趋势 `p=0.09`。
+
+相对于诊断间隔超过 18 个月的人，T-score 在诊断前 6–12 个月窗口的 time-dependent AUC 超过 0.80；原文只称 VCA-IgA 即使在诊断前 3 个月仍表现不足。
+
+Fig. 3F 只画出点估计曲线与 95% 置信带，没有定义实际分析人群，也没有列出各时点的精确 AUC 或进入估计的病例与对照（有效风险集）人数。Fig. 3D–E 的 348 名 AR 中有 241 人来自横断面发现集，Table S1 又没有随访、事件或删失字段，不能默认这 348 人全部进入了 timeROC，更不能把曲线上每个时点当作精度相同、已稳定定标的性能。
 
 <a id="reader-npc-fig3"></a>
 
@@ -68,7 +74,7 @@ Fig. 3D–E 的时间窗比较另以 348 名 VCA-IgA 阳性高风险对照（AR�
 
 简明图注：Fig. 3B–C 基于 34 人各一次基线测量，D–E 的 348 名 AR 则合并发现集 241 人与验证集 107 人；4 个月与 27 个月是跨个体分组差异，不是个体内纵向轨迹，`>4` 也尚未完成临床定标。F 未报告各时点进入 AUC 估计的病例与对照人数。
 
-## 06｜这些 TCR 为什么可能与鼻咽癌有关？
+## 06｜哪些线索把这些 TCR 与 EBV 和 HLA 联系起来？
 
 作者先从 19 名鼻咽癌患者的外周血扩增 EBV 反应性 T 细胞，得到 633 条候选 EBV-reactive CDR3β，再与 VDJdb 参考序列结合，用 GLIPH2 和 GIANA 做相似性聚类。208 条鼻咽癌富集 CDR3β 中有 18 条被注释为潜在 EBV 反应性，其中 12 条同时得到两个算法支持。
 
@@ -80,7 +86,9 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 
 ![Fig. 4：EBV 反应性推断与 HLA-TCR 关联](../../assets/immunology/2025-npc-tcr-early-detection/fig4-ebv-hla.png)
 
-简明图注：Fig. 4 把 208 条候选与 EBV TCR 聚类并检验 HLA 共现；18 条潜在 EBV 反应性、45 条唯一 CDR3β/69 条 VJ 展开记录都是候选注释。现有截图裁掉了脚注：单细胞来源为 GSE162025，bulk 为 GSE102349 的 100 个肿瘤加本研究 31 个，共 131 个。
+简明图注：Fig. 4 把 208 条候选与 EBV TCR 聚类并检验 HLA 共现；18 条潜在 EBV 反应性、45 条唯一 CDR3β/69 条 VJ 展开记录都是候选注释。
+
+## 07｜3 条代表性 TCR 真能识别相关靶点吗？
 
 作者最终只挑选 3 条具有完整 TCRαβ、血液与肿瘤检出及 HLA 线索的 TCR 做功能验证。TCR-ID1 和 ID2 杀伤 EBV 阳性的 HK1+、C666 细胞，不杀伤 EBV 阴性的 HK1 和 HepG2；TCR-ID3 可杀伤 EBV 阳性和阴性鼻咽癌细胞，却不杀伤 HepG2。进一步筛选把 ID1 连接到两个 EBV 表位；ID2 靶点在正文写作 `BRFR3`，Fig. 5I–K 却写作 `BFRF3`，本文不自行统一。
 
@@ -90,11 +98,15 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 
 简明图注：Fig. 5 将统计签名推进到 TCR—HLA—抗原层面，但只覆盖 3 条 TCR；其结果不能外推到全部 208 条序列。
 
-## 07｜外周血信号真的连到了肿瘤组织吗？
+## 08｜这些 TCR 在肿瘤中留下了什么证据？
 
 在 17 个治疗前鼻咽癌肿瘤的公开单细胞数据中，作者检出 153 个携带鼻咽癌富集 TCR 的 CD8 T 细胞，覆盖 17 个 clonotype；潜在 EBV 反应性 CD8 T 细胞为 110 个、覆盖 27 个 clonotype。两组重叠的 2 个 clonotype 包含 56 个细胞；终末耗竭比例分别为 8.50% 与 20.91%。相对随机匹配克隆，NPC-enriched 与 EBV-reactive 克隆扩增比例为 70.0% 对 23.5%（`p=0.025`）和 37.0% 对 22.2%（`p=0.011`）。
 
-86 个鼻咽癌肿瘤的 bulk RNA-seq 用于重建 TCR 与免疫生态。TCR 丰度与总体 TIL 的 Spearman 相关分别为 EBV 0.89、NPC 0.56、CMV/流感 0.68；完整 86 例中总体 TIL 本身也与生存相关（Supplementary Fig. S8 图面 `p=0.00025`）。排除总体 TIL 最高 7 例和最低 8 例后剩 71 例，NPC-enriched 以 `>3` 分为 37 对 34 人（`p=0.042`），EBV-reactive 以 `>23` 分为 56 对 15 人（`p=0.0011`），CMV/流感以 `>1` 分为 35 对 36 人（`p=0.18`），总体 TIL 以 `>319` 分为 57 对 14 人（`p=0.00066`）。排除极端值不是连续协变量调整，论文也没有用多变量 Cox 模型控制分期、治疗或说明 cut-off 选择规则。
+86 个鼻咽癌肿瘤的 bulk RNA-seq 用于重建 TCR 与免疫生态。TCR 丰度与总体 TIL 的 Spearman 相关分别为 EBV 0.89、NPC 0.56、CMV/流感 0.68；完整 86 例中总体 TIL 本身也与生存相关（Supplementary Fig. S8 图面 `p=0.00025`）。
+
+排除总体 TIL 最高 7 例和最低 8 例后剩 71 例，NPC-enriched 以 `>3` 分为 37 对 34 人（`p=0.042`），EBV-reactive 以 `>23` 分为 56 对 15 人（`p=0.0011`），CMV/流感以 `>1` 分为 35 对 36 人（`p=0.18`），总体 TIL 以 `>319` 分为 57 对 14 人（`p=0.00066`）。
+
+排除极端值不是连续协变量调整，论文也没有用多变量 Cox 模型控制分期、治疗或说明 cut-off 选择规则。
 
 <a id="reader-npc-fig6"></a>
 
@@ -102,7 +114,13 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 
 简明图注：Fig. 6 将 17 个肿瘤的单细胞状态与 86 个肿瘤的 bulk 信号连接；Kaplan–Meier 比较只是排除 15 个总体 TIL 极端样本后的 71 例子集，不是协变量调整。
 
-在 10 对血液—肿瘤单细胞样本中，NPC-enriched 克隆在血液的扩增比例为 50.0%，随机匹配为 12.5%，但 `p=0.11`、未达显著；EBV-reactive 为 26.1% 对 13.0%，`p=0.042`。超过 20% 的肿瘤内 NPC-enriched 克隆，其血液对应克隆位于频率前 10%；31 对 bulk TCRβ 也显示共享克隆在血液频率更高。两种尺度支持横断面的血液—肿瘤共享，不证明迁移方向或“进入肿瘤后”才发生表型变化；Methods 也没有报告 10 名患者的 STARTRAC 汇总规则、31 对样本的 Jaccard 是逐人还是 pooled、各频率分箱分母和不确定性，因此图中的极小 P 值不能直接解释为患者层面的重复验证。
+## 09｜血液中的扩增克隆与肿瘤内克隆如何对应？
+
+在 10 对血液—肿瘤单细胞样本中，NPC-enriched 克隆在血液的扩增比例为 50.0%，随机匹配为 12.5%，但 `p=0.11`、未达显著；EBV-reactive 为 26.1% 对 13.0%，`p=0.042`。
+
+超过 20% 的肿瘤内 NPC-enriched 克隆，其血液对应克隆位于频率前 10%；31 对 bulk TCRβ 也显示共享克隆在血液频率更高。
+
+两种尺度支持横断面的血液—肿瘤共享，不证明迁移方向或“进入肿瘤后”才发生表型变化；Methods 也没有报告 10 名患者的 STARTRAC 汇总规则、31 对样本的 Jaccard 是逐人还是 pooled、各频率分箱分母和不确定性，因此图中的极小 P 值不能直接解释为患者层面的重复验证。
 
 <a id="reader-npc-fig7"></a>
 
@@ -110,7 +128,7 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 
 简明图注：Fig. 7 同时包含 10 对单细胞血液—肿瘤样本和 31 对 bulk TCRβ 样本；完全配对 TCRαβ 的单细胞共享与仅按 TCRβ 判断的 bulk 共享不是同一个证据层级。
 
-## 08｜它真正改变了哪一步？
+## 10｜它真正改变了哪一步？
 
 对筛查流程而言，T-score 最现实的定位不是取代 VCA-IgA、EBV ctDNA 或鼻咽镜，而是在 VCA-IgA 阳性、家族史阳性等高风险人群中增加一层候选优先级。研究中 `T-score>4` 的 17 名诊断前病例有 12 人在 6 个月内被诊断，但这个比例来自已经确定会发病的病例子集，且 `>4` 的选择规则未报告，不能当作普通筛查人群的阳性预测值或既定临床阈值。
 
@@ -118,7 +136,7 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 
 对后续机制或治疗研究而言，真正可执行的产物是候选 TCR 的优先级，而不是已经可用的 TCR-T 产品。只有 3 条 TCR 完成功能验证，多数序列仍缺少配对 TCRα、明确表位和体内效应证据。
 
-## 09｜这些结果仍需要冷静看待
+## 11｜这些结果仍需要冷静看待
 
 首先，最关键的诊断前分析只有 34 例早期鼻咽癌，每人仅一次基线血样；两组各 17 人的 4 个月与 27 个月是跨个体比较，不能写成个体内纵向轨迹。`T-score>4`、VCA-IgA 1.43 和生存 cut-off 的选择规则也未报告；Fig. 3F 还缺分析人群、各时点有效风险集、事件/删失编码、`times`、cause/weighting 与置信区间算法，无法判断时点间性能是否稳定。AUC、相关系数和 time ratio 不能替代真实人群患病率下的敏感度、特异度、阳性预测值、复查负担和鼻咽镜资源评估。
 
@@ -126,7 +144,7 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 
 再次，机制闭环只覆盖少数代表性 TCR。TCRβ-only 丢失多数 TCRα 配对；统计富集、HLA 共现、肿瘤检出和生存相关都不能证明全部 208 条序列具有肿瘤特异性或抗肿瘤功能。肿瘤浸润与生存关联也可能同时受到总体炎症、HLA-I 表达、肿瘤负荷和治疗敏感性影响。
 
-最后，本地主 PDF 共 30 页、1,196 个句子 ID，双栏正文、图注和页眉在 Fig. 6–7 附近发生交错。官方 Supplementary PDF 与 Tables S1/S3 已另行取得并复核；其中图片页没有句子 ID，仍不能与主文 inventory 混算。原文的 208/730/518、45/69、245/247 与肿瘤 135/131 使用了不同计数或筛选口径；6 名作者另有相关待审专利。完整范围与冲突见技术附录。
+最后，本地主 PDF 的双栏正文、图注和页眉在 Fig. 6–7 附近发生交错，官方 Supplementary PDF 与 Tables S1/S3 已另行取得并复核。原文的 208/730/518、45/69、245/247 与肿瘤 135/131 使用了不同计数或筛选口径；6 名作者另有相关待审专利。完整解析范围、补充材料状态与冲突见技术附录。
 
 ---
 
@@ -216,9 +234,9 @@ HLA 关联提供了第二层线索。在 1,061 名有 HLA 信息的人中，45/2
 | Fig. 2 | NPC-enriched TCR signature for NPC classification：208 条 NPC 富集 CDR3β 与 T-score 分类 | 是 | `assets/immunology/2025-npc-tcr-early-detection/fig2-tcr-classification.png` | [03｜208 条公共 TCR 的筛选](#reader-npc-fig2) |
 | Fig. 3 | NPC-enriched TCR signature for NPC early diagnosis：T-score 与临床诊断前时间间隔、VCA-IgA 对比 | 是 | `assets/immunology/2025-npc-tcr-early-detection/fig3-early-diagnosis.png` | [05｜诊断前信号](#reader-npc-fig3) |
 | Fig. 4 | EBV antigen-recognition and HLA restriction of NPC-enriched TCRs：EBV 反应性注释与 HLA-TCR 关联 | 是 | `assets/immunology/2025-npc-tcr-early-detection/fig4-ebv-hla.png` | [06｜EBV/HLA 线索](#reader-npc-fig4) |
-| Fig. 5 | Identification of the cognate epitopes for NPC-enriched TCRs：3 条 TCR 的 NPC 细胞反应性和表位识别 | 是 | `assets/immunology/2025-npc-tcr-early-detection/fig5-cognate-epitopes.png` | [06｜3 条 TCR 的功能验证](#reader-npc-fig5) |
-| Fig. 6 | Tumor-infiltrating NPC-enriched and EBV-reactive CD8+ T cells：TME 表型、克隆扩增与生存 | 是 | `assets/immunology/2025-npc-tcr-early-detection/fig6-tumor-infiltrating-cd8.png` | [07｜肿瘤浸润与生存](#reader-npc-fig6) |
-| Fig. 7 | Peripheral expansion of NPC-enriched T cell clones correlates with their infiltration in NPC tumors：血液-肿瘤克隆共享 | 是 | `assets/immunology/2025-npc-tcr-early-detection/fig7-blood-tumor-sharing.png` | [07｜血液—肿瘤克隆共享](#reader-npc-fig7) |
+| Fig. 5 | Identification of the cognate epitopes for NPC-enriched TCRs：3 条 TCR 的 NPC 细胞反应性和表位识别 | 是 | `assets/immunology/2025-npc-tcr-early-detection/fig5-cognate-epitopes.png` | [07｜3 条 TCR 的功能验证](#reader-npc-fig5) |
+| Fig. 6 | Tumor-infiltrating NPC-enriched and EBV-reactive CD8+ T cells：TME 表型、克隆扩增与生存 | 是 | `assets/immunology/2025-npc-tcr-early-detection/fig6-tumor-infiltrating-cd8.png` | [08｜肿瘤浸润与生存](#reader-npc-fig6) |
+| Fig. 7 | Peripheral expansion of NPC-enriched T cell clones correlates with their infiltration in NPC tumors：血液-肿瘤克隆共享 | 是 | `assets/immunology/2025-npc-tcr-early-detection/fig7-blood-tumor-sharing.png` | [09｜血液—肿瘤克隆共享](#reader-npc-fig7) |
 
 ### 生物学故事前情
 
