@@ -1,6 +1,6 @@
 # Spatial omics at the forefront: emerging technologies, analytical innovations, and clinical applications
 
-<!-- wechat-style-reviewed: 2026-10-29 -->
+<!-- wechat-style-reviewed: 2026-11-11 -->
 
 一块肿瘤组织被消化成单细胞以后，研究者可以知道里面有哪些肿瘤细胞、T 细胞和成纤维细胞，却很难再回答一个病理学上极具体的问题：T 细胞真的进入了肿瘤核心，还是被挡在基质边界之外？
 
@@ -60,17 +60,19 @@
 
 例如，三级淋巴结构的价值不只是同时存在 B 细胞和 T 细胞，而是这些细胞是否形成有组织的抗原呈递和局部免疫成熟结构。免疫排斥区也不是“T 细胞少”，而是细胞聚集在基质或肿瘤边缘却未进入实质。空间邻近使这些假说可被定位，但邻近本身仍不能证明真实接触、信号传递或因果作用。
 
-Box 2 分别定义了细胞、邻域、生态位、群落、区域、分区梯度、生态型、原型和全肿瘤生态系统九个术语；Fig. 4 本身只画出“单细胞—多细胞生态位—空间群落—全肿瘤生态系统”四层。临床相关信号可能出现在较高层级：不是某个细胞独自决定治疗反应，而是肿瘤细胞、抗原呈递细胞、T 细胞和基质是否组成了可重复的结构。
-
 ![Fig. 3：肿瘤微环境中的九类空间 niche](../../assets/spatial-transcriptomics/2026-spatial-omics-review/fig3-spatial-mapping-tme-niches.png)
 
 简明图注：Fig. 3 总结九类具有生物学意义的空间结构；它是跨研究的概念图，不代表本综述新生成的患者数据。
+
+## 06｜为什么不同空间尺度不能相互替代？
+
+Box 2 分别定义了细胞、邻域、生态位、群落、区域、分区梯度、生态型、原型和全肿瘤生态系统九个术语；Fig. 4 本身只画出“单细胞—多细胞生态位—空间群落—全肿瘤生态系统”四层。临床相关信号可能出现在较高层级：不是某个细胞独自决定治疗反应，而是肿瘤细胞、抗原呈递细胞、T 细胞和基质是否组成了可重复的结构。
 
 ![Fig. 4：从单细胞到全肿瘤生态的空间层级](../../assets/spatial-transcriptomics/2026-spatial-omics-review/fig4-spatial-archetypes-hierarchy.png)
 
 简明图注：Fig. 4 强调空间结论依赖分析尺度；cell、niche、community 与 ecosystem 回答的是不同问题，不能相互替代。
 
-## 06｜怎样从临床问题反推样本和平台？
+## 07｜怎样从临床问题反推样本和平台？
 
 作者提出的顺序是：先写清临床问题和结局（endpoint），再决定患者、时间点、部位、保存方式、平台和验证策略。癌前病变可做阶段性或纵向采样；转移研究可横断面比较原发灶与不同转移灶，并按问题配对正常组织或血液；疗效研究可比较基线与治疗中，或治疗前后、原发与复发样本。微小残留病灶（MRD）是一线治疗后仍存在、却低于常规影像和血清标志物检出限的残留肿瘤；卵巢癌二次探查腹腔镜在临床完全缓解期取样只是一个实例，其他癌种可采用情境特异的影像引导活检，Fig. 5 还展示了用治疗中样本预测 MRD 状态。不同目的不能合并成固定的“治疗前—中—后—复发前”时间轴。
 
@@ -82,7 +84,7 @@ Box 2 分别定义了细胞、邻域、生态位、群落、区域、分区梯�
 
 简明图注：Fig. 5 把癌前、转移、MRD 和治疗反应连接到取样、空间分析和临床部署；这是一条研究设计路线，不是已经完成验证的临床产品清单。
 
-## 07｜空间发现怎样变成可用的标志物或靶点？
+## 08｜空间发现怎样变成可用的标志物或靶点？
 
 临床部署通常不会原样报告成千上万个空间特征。更现实的路径是先用高多重度平台发现稳定结构，再把它蒸馏为低多重度免疫荧光、标准病理图像、有限标志物组合或可重复的组织评分，并在独立队列完成阈值、校准和结局验证。
 
@@ -90,7 +92,7 @@ Box 2 分别定义了细胞、邻域、生态位、群落、区域、分区梯�
 
 空间分析也可以提出药物靶点、治疗组合或风险模型假说，但被引研究启动试验、发现相关生态位，和试验证明疗效是三件不同的事。作者真正强调的是从发现到可部署检测的连续验证，而不是把高维图谱直接送入临床决策。
 
-## 08｜对胃癌癌前病变研究，哪些设计可以迁移？
+## 09｜对胃癌癌前病变研究，哪些设计可以迁移？
 
 可以把 H. pylori 感染、慢性炎症、萎缩、肠化、异型增生和早癌当作阶段轴，但不要只做横断面“图谱比赛”。先预设可验证终点，例如肠化进展、异型增生发生、早癌检出或根除后的逆转，再决定每个阶段需要的病例数、随访和取样位置。
 
@@ -98,7 +100,7 @@ Box 2 分别定义了细胞、邻域、生态位、群落、区域、分区梯�
 
 最终输出应是可复核的空间终点，而不是一张更复杂的图。任何候选上皮状态、免疫生态位、基质边界或微生物界面都需要独立队列、平台重测、阈值校准和功能证据；这是从该综述迁移出的研究设计建议，不是原文已经证明的胃癌标志物。
 
-## 09｜这些结果仍需要冷静看待
+## 10｜这些结果仍需要冷静看待
 
 首先，这是一篇叙述性综述。原文没有报告系统检索、纳排标准、偏倚评价或 meta-analysis；被引研究跨癌种、平台、保存方式和分析流程，不能合并成一个统一效应，也没有可供本综述独立验证的作者 cohort。
 
@@ -177,8 +179,8 @@ Box 2 分别定义了细胞、邻域、生态位、群落、区域、分区梯�
 | Table 1 | Comparison of major commercial high-resolution spatial transcriptomic profiling platforms：高分辨率商业空间转录组平台比较 | 是 | `assets/spatial-transcriptomics/2026-spatial-omics-review/table1-commercial-spatial-transcriptomics-platforms-p1.png` | [03｜平台取舍](#03｜分辨率越高，平台就一定越好吗？) |
 | Fig. 2 | Computational tools and analytical frameworks for spatial omics：空间组学数据处理、单细胞/亚细胞分析、空间组织、进化、多模态整合和 3D 重建 | 是 | `assets/spatial-transcriptomics/2026-spatial-omics-review/fig2-computational-tools-frameworks.png` | [04｜分析链](#04｜拿到空间坐标后，怎样避免停在漂亮地图？) |
 | Fig. 3 | Spatial mapping of TME niches：肿瘤微环境中九类重要空间 niche | 是 | `assets/spatial-transcriptomics/2026-spatial-omics-review/fig3-spatial-mapping-tme-niches.png` | [05｜空间生态位](#05｜九类空间生态位，真正新增了什么信息？) |
-| Fig. 4 | Hierarchy of spatial archetypes across scales：从细胞、niche、community 到 whole-tumor ecosystem 的空间层级 | 是 | `assets/spatial-transcriptomics/2026-spatial-omics-review/fig4-spatial-archetypes-hierarchy.png` | [05｜空间生态位](#05｜九类空间生态位，真正新增了什么信息？) |
-| Fig. 5 | From spatial insights to clinical impact：空间组学从临床场景、研究设计、空间洞察到临床部署的路线图 | 是 | `assets/spatial-transcriptomics/2026-spatial-omics-review/fig5-spatial-insights-clinical-impact.png` | [06｜临床设计](#06｜怎样从临床问题反推样本和平台？) |
+| Fig. 4 | Hierarchy of spatial archetypes across scales：从细胞、niche、community 到 whole-tumor ecosystem 的空间层级 | 是 | `assets/spatial-transcriptomics/2026-spatial-omics-review/fig4-spatial-archetypes-hierarchy.png` | [06｜空间尺度](#06｜为什么不同空间尺度不能相互替代？) |
+| Fig. 5 | From spatial insights to clinical impact：空间组学从临床场景、研究设计、空间洞察到临床部署的路线图 | 是 | `assets/spatial-transcriptomics/2026-spatial-omics-review/fig5-spatial-insights-clinical-impact.png` | [07｜临床设计](#07｜怎样从临床问题反推样本和平台？) |
 
 ### 生物学故事前情
 
