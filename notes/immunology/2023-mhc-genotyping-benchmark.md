@@ -1,6 +1,6 @@
 # Benchmark of tools for in silico prediction of MHC class I and class II genotypes from NGS data
 
-<!-- wechat-style-reviewed: 2026-10-17 -->
+<!-- wechat-style-reviewed: 2026-11-12 -->
 
 做新抗原或 TCR–HLA 分析时，研究者常只有现成的 WES 或 RNA-seq，没有配套 PCR-HLA 分型。此时一个看似工程化的选择——用哪个 HLA caller——可能一路影响可呈递肽、新抗原负荷和 HLA 杂合性等下游结果。
 
@@ -16,17 +16,19 @@ HLA 分型至少要拆成四个问题：WES 的 MHC-I、WES 的 MHC-II、RNA-seq
 
 计算资源同样会改变答案。最高准确率若要求百 GiB 内存或十几个小时单样本运行，在 TCGA 级队列中可能不可用；反过来，最快的工具若在特定位点频繁失败，也会把技术缺失误写成生物学差异。
 
-## 02｜这项 benchmark 如何定义“分对了”？
+## 02｜这项 benchmark 到底覆盖了多大规模？
 
 直接 benchmark 的 WES 部分最多使用 1,012 个 1000 Genomes 样本：HLA-A/B/C 分别为 1,012/1,011/1,010 例，DQB1/DRB1 为 1,008/1,000 例，DQA1 只有 68 例，平均 HLA depth 为 `40× ± 16.7×`。Geuvadis RNA 各位点为 A 373、B/C 372、DQB1 371、DRB1 362、DQA1 53 例，平均 HLA depth 为 `2,807× ± 1,300×`。
 
 这些样本用既往 PCR-derived HLA calls 作金标准。NCI-60 虽收集 58 个细胞系，真正可与 PCR 逐位点比较的 WES 只有 HLA-A/B/C 各 37/24/16 例、DPB1/DQB1/DRB1 各 52/47/35 例，RNA 的 HLA-A/B/C 各 38/25/17 例。研究还在 TCGA 的 9,162 个正常血液 WES 和 9,761 个原发肿瘤 RNA-seq 中检查群体频率与工具间一致性，但资源最重的 RNA 工具只运行了子集。
 
+## 03｜作者如何定义“分对了”？
+
 作者把工具输出和金标准统一到 second-field resolution，并按 IPD-IMGT G-group 归并。准确率按 allele 计算：每个样本、每个位点的两个预测等位基因分别与金标准比较，正确数除以 `2 × 样本数`。代码中预测值与金标准的实际处理顺序及歧义规则并不完全相同，详见技术附录。
 
 未产生调用也进入 accuracy 的错误分母，因此该指标混合了“叫错”和“没叫出”。文中的 98% 或 99% 是 allele-level accuracy，MHC-I/II 汇总值又是逐基因准确率的算术平均，并非把所有样本—位点合并后的加权比例；它不等于每位患者的完整多位点 genotype 有 98% 或 99% 全部正确。工具间 concordance 还会排除任一工具未调用的样本，不能单凭高一致性判断可调用性。
 
-## 03｜只有 WES 时，MHC-I 和 MHC-II 分别怎么选？
+## 04｜只有 WES 时，MHC-I 和 MHC-II 分别怎么选？
 
 在最多 1,012 个 1000 Genomes WES 样本中，MHC-I 的 Optitype 准确率为 98.0%，高于 Polysolver 的 94.9% 和 HLA*LA 的 94.4%。若任务只覆盖 HLA-A、HLA-B、HLA-C，Optitype 是最强单工具基线。
 
@@ -40,7 +42,7 @@ MHC-II 的排名不同：HLA-HD 为 96.2%，HLA*LA 为 95.7%，且只有这两�
 
 覆盖度也给出了实际门槛。作者随机抽取 100 个 WES 和 100 个 RNA 文件，按 100%、50%、10%、5%、1% reads 降采样，再用线性插值估计：达到 90% accuracy 时，Optitype 的 WES MHC-I 约需 12.2× 平均 HLA read depth，HLA-HD 的 WES MHC-II 约需 17.4×。这不是外部验证阈值，更不是所有 panel 的固定门槛。
 
-## 04｜RNA-seq 准确率更高，就一定更适合吗？
+## 05｜RNA-seq 准确率更高，就一定更适合吗？
 
 在高覆盖 Geuvadis RNA-seq benchmark 中，MHC-I 的 arcasHLA 和 Optitype 分别达到 99.4% 和 99.2%，HLA-HD 为 98.0%；MHC-II 则由 HLA-HD、PHLAT 和 arcasHLA 领先，分别为 99.4%、98.9% 和 98.1%，而 seq2HLA 的 MHC-II 为 87.8%。这些 class-level 数值是逐位点 allele-level accuracy 的算术平均；各位点最多 373 例，DQA1 只有 53 例。
 
@@ -48,7 +50,7 @@ MHC-II 的排名不同：HLA-HD 为 96.2%，HLA*LA 为 95.7%，且只有这两�
 
 所以，RNA-seq 的高准确率部分来自 HLA reads 较多。低表达 MHC-II、肿瘤纯度变化或免疫浸润差异都可能改变可调用性；“没有读到”不能解释为胚系等位基因不存在。
 
-## 05｜准确率和计算成本之间差多少？
+## 06｜准确率和计算成本之间差多少？
 
 所有工具都在单 CPU core 条件下比较。WES 中，Optitype 和 HLA*LA 的中位单样本运行时间约为 2.48 小时和 1.84 小时；HLA*LA、xHLA 的中位峰值内存约为 36.3 GiB 和 22.9 GiB。
 
@@ -58,7 +60,7 @@ RNA-seq 的反差更大：HLA-HD 中位约 15.0 小时、峰值内存约 103.1 G
 
 简明图注：Fig. 1 在各 10 个 TCGA WES 或 RNA-seq 文件、单 CPU core 条件下比较 13 个工具；部分工具所需的额外 realignment 未计入，因此实际流程成本可能更高。
 
-## 06｜为什么 4 工具投票只明显帮助 WES？
+## 07｜为什么 4 工具投票只明显帮助 WES？
 
 所有工具同时把同一样本分错的比例很低：WES 中位约 0.79%，RNA-seq 约 0.68%。作者据此用多数投票整合错误不完全重叠的调用结果。
 
@@ -70,7 +72,7 @@ WES 的 HLA-DQB1 最能说明收益：最佳单工具 HLA*LA 为 93.2%，共识�
 
 简明图注：Fig. 4 展示逐步纳入工具后的 allele-level accuracy，并标出各位点达到最高准确率所需的最小组合；它支持条件化组合，不支持“工具越多越好”。
 
-## 07｜TCGA 大队列验证真正补上了什么？
+## 08｜TCGA 大队列验证真正补上了什么？
 
 1000 Genomes 可能曾参与部分工具开发，而且其主 benchmark 没有 HLA-DPA1、DPB1 的 PCR 金标准；NCI-60 后来只为 DPB1 补了 52 个 WES 可比细胞系，DPA1 仍无直接 benchmark。作者因此在 TCGA 中比较预测等位基因频率与同族群 PCR 参考频率，并计算工具间一致性；Caucasian American 7,935 例和 African American 938 例是总体祖源分层规模，不是每个工具、位点都共享的有效分母。
 
@@ -84,13 +86,13 @@ Fig. 3 需要与这条边界一起读：颜色更深只表示 TCGA 预测频率�
 
 简明图注：Fig. 3 按 African American 与 Caucasian American 分层，比较 TCGA 预测等位基因频率与 AFND 参考频率的 Pearson `r`；颜色表示 `r`，点大小表示 P 值，缺失点表示相应工具不能评估该位点。该图只支持群体分布合理性。
 
-## 08｜这篇 benchmark 真正改变了什么？
+## 09｜这篇 benchmark 真正改变了什么？
 
 它把工具选择从单一排行榜变成条件化决策：先按 WES/RNA、MHC-I/II 分层，再把覆盖、表达、样本量和计算资源纳入同一判断。
 
 对肿瘤免疫研究，它可帮助降低 HLA genotype 这个上游变量的系统误差，并把 failed call rate、HLA read depth、工具版本和数据库版本变成前置质控。论文没有直接量化这些误差对新抗原或疗效分析的影响；对移植配型、药物超敏或细胞治疗等临床决策，PCR/认证 HLA typing 仍不能被本文的 NGS caller 替代。
 
-## 09｜这些结果仍需要冷静看待
+## 10｜这些结果仍需要冷静看待
 
 第一，工具是在 2020 年末筛选，并使用研究当时的软件和 IPD-IMGT/HLA 数据库。到 2026 年复用这些排名时，必须重新核对版本、参考序列和推荐参数。
 
@@ -185,10 +187,10 @@ Figures S1-S14 的图题/图注范围依次为 `s004:P001.S0010-P001.S0013`、`P
 
 | 原文图表 | 原文图题/核心信息 | 是否截取 | 图像文件 | 放置位置 |
 |---|---|---|---|---|
-| Fig. 1 | Computational resource consumption of the 13 selected tools：不同 HLA caller 的单样本运行时间和内存占用 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig1-computational-resources.png` | [05｜准确率和计算成本之间差多少？](#05｜准确率和计算成本之间差多少？) |
-| Fig. 2 | HLA allele prediction accuracies：1000 Genomes 金标准直接 benchmark 中 WES/RNA 的 MHC-I 和 MHC-II 准确率 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig2-prediction-accuracies.png` | [03｜只有 WES 时，MHC-I 和 MHC-II 分别怎么选？](#03｜只有-wes-时，mhc-i-和-mhc-ii-分别怎么选？) |
-| Fig. 3 | Correlations between observed and expected allele frequencies：TCGA 大队列中预测等位基因频率与群体参考频率的相关性 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig3-allele-frequency-correlation.png` | [07｜TCGA 大队列验证真正补上了什么？](#07｜tcga-大队列验证真正补上了什么？) |
-| Fig. 4 | Accuracies of meta-prediction models with an increasing number of included tools：多工具 majority voting 共识模型 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig4-consensus-metaclassifier.png` | [06｜为什么 4 工具投票只明显帮助 WES？](#06｜为什么-4-工具投票只明显帮助-wes？) |
+| Fig. 1 | Computational resource consumption of the 13 selected tools：不同 HLA caller 的单样本运行时间和内存占用 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig1-computational-resources.png` | [06｜准确率和计算成本之间差多少？](#06｜准确率和计算成本之间差多少？) |
+| Fig. 2 | HLA allele prediction accuracies：1000 Genomes 金标准直接 benchmark 中 WES/RNA 的 MHC-I 和 MHC-II 准确率 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig2-prediction-accuracies.png` | [04｜只有 WES 时，MHC-I 和 MHC-II 分别怎么选？](#04｜只有-wes-时，mhc-i-和-mhc-ii-分别怎么选？) |
+| Fig. 3 | Correlations between observed and expected allele frequencies：TCGA 大队列中预测等位基因频率与群体参考频率的相关性 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig3-allele-frequency-correlation.png` | [08｜TCGA 大队列验证真正补上了什么？](#08｜tcga-大队列验证真正补上了什么？) |
+| Fig. 4 | Accuracies of meta-prediction models with an increasing number of included tools：多工具 majority voting 共识模型 | 是 | `assets/immunology/2023-mhc-genotyping-benchmark/fig4-consensus-metaclassifier.png` | [07｜为什么 4 工具投票只明显帮助 WES？](#07｜为什么-4-工具投票只明显帮助-wes？) |
 
 ### 生物学故事前情
 
