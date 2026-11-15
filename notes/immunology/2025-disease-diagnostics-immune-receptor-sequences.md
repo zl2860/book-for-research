@@ -1,6 +1,6 @@
 # Disease diagnostics using machine learning of B cell and T cell receptor sequences
 
-<!-- wechat-style-reviewed: 2026-11-02 -->
+<!-- wechat-style-reviewed: 2026-11-15 -->
 
 面对急性 COVID-19、慢性 HIV、系统性红斑狼疮、1 型糖尿病和流感疫苗接种后的反应，这项研究要检验的是：它们是否会在外周血 BCR/TCR 中留下可彼此区分的模式。真正困难的不只是发现“免疫系统变了”，而是判断这种变化更像哪一种状态。
 
@@ -34,7 +34,7 @@ Mal-ID 试图读取的是采血时的免疫状态，而不是一个终身不变�
 
 简明图注：Fig. 1 从外周血 IgH/TRB 测序开始，分别训练组成、CDR3 聚类和语言模型，再在患者层面整合六个基础模型；问号表示患者的大多数序列并不知道是否与疾病直接相关。
 
-## 04｜内部测试的 0.986 到底意味着什么？
+## 04｜0.986 与 85.3% 为什么不是同一件事？
 
 在 542 人的 550 份配对样本中，各折分别计算、再汇总的 class-size-weighted one-versus-one multiclass AUROC 为 0.986。550 份 held-out test prediction 只在计算混淆矩阵和 label-based accuracy 时合并；按最高预测概率直接给标签，准确率为 85.3%。
 
@@ -42,7 +42,11 @@ Mal-ID 试图读取的是采血时的免疫状态，而不是一个终身不变�
 
 错误方向也不对称：更多健康对照被判为某种疾病，假阳性多于假阴性。作者同时说明，健康对照并未被确证排除面板中的全部疾病；因此这些结果既可能包含决策阈值问题，也可能受到对照标签不完全影响，不能把全部错误都归为同一种模型失败。
 
+## 05｜两类受体联合是否真的更好？
+
 BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合的 85.3%；但 Fig. 2B 的 BCR-only 评价还多含 66 份没有配对 TCR 的样本，因此这不是严格同一分母的消融比较。仅用 CDR3 聚类时，BCR 与 TCR 的 AUROC 分别为 0.89 和 0.80；现有结果仍支持两类受体与多种信号层级互补。
+
+## 06｜狼疮阈值能直接用于临床吗？
 
 若把多疾病模型转为狼疮二分类器，阈值可换取 `97%` 灵敏度/`86%` 特异度，或 `84%` 灵敏度/`95%` 特异度；一个平衡点为 `93%`/`90%`。这些数字来自同一研究的交叉验证概念验证，不是前瞻临床定标结果。
 
@@ -52,7 +56,7 @@ BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合
 
 简明图注：Fig. 2 的 AUROC 先在各折计算；混淆矩阵则合并 550 份 held-out prediction。组件 AUROC、最高概率分类和狼疮灵敏度—特异度曲线回答的是不同问题。
 
-## 05｜换实验室或测序方式后，还能直接使用吗？
+## 07｜换实验室或测序方式后，还能直接使用吗？
 
 外部 BCR 队列只有 7 例 COVID-19 和 6 名健康供者：全体 13 人的排序 AUROC 为 1.0，但直接六分类准确率只有 69%；用一小部分外部样本调阈值后，剩余样本达到 100%，主文没有报告校准集与剩余评估集各自的精确分母。
 
@@ -62,7 +66,7 @@ BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合
 
 因此，外部结果支持的是框架可以迁移；它同时表明疾病先验、类别构成和测序技术改变后，需要重新校准，甚至重新训练。
 
-## 06｜模型是否只是记住了批次、年龄或祖源？
+## 08｜模型是否只是记住了批次、年龄或祖源？
 
 内部批次留出包括 10 例使用不同样本处理流程的 COVID-19 患者和 13 份重新建库的健康样本；另一个留出队列中，5 例狼疮有 4 例分类正确、2 名健康对照均正确。13 名健康供者的技术重复里，9 人两次都判对且类别概率相关性至少 97%，其余样本出现 abstention 或分歧。
 
@@ -72,7 +76,7 @@ BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合
 
 外部 BCR 队列的情况更棘手：COVID-19 病例全为亚洲人，健康对照为白人或非裔，人口学模型的 AUROC 同样达到 1.0，尽管 accuracy 只有 58%。因此，这个外部小队列不能单独排除祖源与地理混杂；治疗、近期感染和疾病严重程度等未测变量也仍然存在。
 
-## 07｜它学到的是抗原特异性，还是更宽的免疫状态？
+## 09｜它学到的是抗原特异性，还是更宽的免疫状态？
 
 只用 BCR 同种型比例，疾病 AUROC 为 0.68，明显低于 Mal-ID 的 0.98 以上；模型确实使用了序列内部信息，但这一同种型比例对照的精确样本量未在主文单列，Fig. S14 也未进入本地证据包。SHAP 分析使用训练流程中的 train-2 正类样本，分别为 COVID-19 14、HIV 21、流感疫苗 8、狼疮 22 和 1 型糖尿病 22 份；它把 IGHV1-24/IGHV2-70、IGHV4-34/IGHV4-59 等既有线索排在前列，但这不是独立 held-out 解释集，SHAP 也只解释模型行为，不证明这些基因具有因果作用。
 
@@ -96,13 +100,13 @@ BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合
 
 简明图注：外部 binder 与健康序列均未用于训练；Fig. 4 明示的 IGHV1-24 比较共 1,856 条序列（79 条 binder 对 1,777 条健康序列），其余结果按 34 个 V gene 分层但未逐层报告样本量。模型 2 更精确但召回低，模型 3 召回更高但假阳性更多。
 
-## 08｜这项研究真正改变了什么？
+## 10｜这项研究真正改变了什么？
 
 它显示，在这组经过整理的闭集队列中，BCR 与 TCR 可以作为分布式免疫状态读数，而且组成、公共序列和语言模型表示提供互补信息。对研究而言，这套框架可以把“受体库有没有变化”推进到“哪些层级共同区分状态”，并为后续抗原验证提供候选线索。
 
 临床价值目前更接近问题定义，而不是成品检测。论文没有测试治疗反应或复发的纵向监测；狼疮低活动患者的结果只提示模型可能更敏感于当前免疫活动，也可能在疾病静息期漏掉既往诊断。若要检验这些用途，必须按目标重新建队列、设标签和定阈值。
 
-## 09｜这些结果仍需要冷静看待
+## 11｜这些结果仍需要冷静看待
 
 第一，这是六个预先定义类别的闭集分类，其中还包含流感疫苗接种后状态。真实患者可能有合并症、近期感染、疫苗接种、免疫抑制治疗或训练集中没有的新疾病，模型目前不会可靠处理开放集或多标签问题。
 
@@ -191,9 +195,9 @@ BCR-only 和 TCR-only 的准确率分别为 74.0% 和 75.1%，低于两者联合
 | 原文图 | 原文图题/核心信息 | 是否截取 | 图像文件 | 放置位置 |
 |---|---|---|---|---|
 | 图 1 | Mal-ID framework：BCR/TCR 测序、三类模型、集成预测、生物学验证和临床阈值应用 | 是 | `assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig1-mal-id-framework.png` | [03｜三种表示与集成](#reader-malid-fig1) |
-| 图 2 | Mal-ID classifies disease using IgH and TRB sequences：六类免疫状态分类、模型组件比较、狼疮诊断阈值 | 是 | `assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig2-classification-performance.png` | [04｜内部性能与阈值](#reader-malid-fig2) |
-| 图 3 | Disease-associated IGHV genes and isotypes prioritized by model 3 using protein language embeddings：模型 3 的 IGHV/同种型 SHAP 解释 | 是 | `assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig3-ighv-isotype-shap.png` | [07｜SHAP 线索](#reader-malid-fig3) |
-| 图 4 | Models 2 and 3 learn SARS-CoV-2 antigen-specific sequence patterns：外部 SARS-CoV-2 结合抗体序列验证 | 是 | `assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig4-known-sars-cov-2-binders.png` | [07｜外部 binder 验证](#reader-malid-fig4) |
+| 图 2 | Mal-ID classifies disease using IgH and TRB sequences：六类免疫状态分类、模型组件比较、狼疮诊断阈值 | 是 | `assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig2-classification-performance.png` | [04–06｜内部性能与阈值](#reader-malid-fig2) |
+| 图 3 | Disease-associated IGHV genes and isotypes prioritized by model 3 using protein language embeddings：模型 3 的 IGHV/同种型 SHAP 解释 | 是 | `assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig3-ighv-isotype-shap.png` | [09｜SHAP 线索](#reader-malid-fig3) |
+| 图 4 | Models 2 and 3 learn SARS-CoV-2 antigen-specific sequence patterns：外部 SARS-CoV-2 结合抗体序列验证 | 是 | `assets/immunology/2025-disease-diagnostics-immune-receptor-sequences/fig4-known-sars-cov-2-binders.png` | [09｜外部 binder 验证](#reader-malid-fig4) |
 
 ### 生物学故事前情
 
