@@ -1,6 +1,6 @@
 # Predictability of B cell clonal persistence and immunosurveillance in breast cancer
 
-<!-- wechat-style-reviewed: 2026-11-02 -->
+<!-- wechat-style-reviewed: 2026-11-15 -->
 
 当同一名转移性乳腺癌患者的肝、肺或淋巴结病灶同时被取样时，一个真正棘手的问题才会出现：同一种 B 细胞克隆若在多个病灶中都能找到，它只是被重复抽到，还是参与了跨部位、持续存在的免疫反应？
 
@@ -38,9 +38,11 @@ BCR 序列为这种追踪提供了谱系标记。同一克隆在抗原经历中�
 
 跨样本共享很容易受到测序深度影响。在患者 308 和 315 的 Fig. 2 重叠分析中，作者按最低样本深度的 90% 进行 10,000 次下采样，并使用重叠结果的中位数，以降低“测得越深、看起来共享越多”的偏差。
 
-## 04｜B 细胞反应真的与 T 细胞和肿瘤变化同步吗？
+## 04｜B 与 T 细胞反应真的同步吗？
 
 在全部 27 个转移灶中，转录组反卷积得到的 B 细胞与 T 细胞丰度高度相关，决定系数 `R²=0.79`；两类细胞的活化程度也相关，`R²=0.65`。在患者 308 和 315 中，BCR 与 TCR 的克隆共享结构在不同病灶间也呈相关；不同患者之间的共享很低。
+
+## 05｜免疫克隆共享与肿瘤演化如何对应？
 
 肿瘤基因组层面的分析主要集中在至少有 4 个转移灶数据的患者 308 和 315。病灶间共享的 BCR/TCR 序列数量与共享体细胞突变数量相关，`R²=0.22–0.78`，`P≤0.011`。
 
@@ -52,7 +54,7 @@ Fig. 2 图注把患者 308 和 315 的病灶两两比较统一写为 36 对和 2
 
 简明图注：Fig. 2 中，27 个转移灶显示 B/T 细胞浸润相关；克隆共享与突变、新抗原的比较主要来自患者 308 和 315，属于结构关联而非因果证据。
 
-## 05｜跨病灶或跨时间留下来的克隆有什么不同？
+## 06｜跨病灶或跨时间留下来的克隆有什么不同？
 
 早期队列 10 人、25 个样本共识别 94,495 个独特 BCR 克隆；转移性队列的多灶子集 4 人、23 个病灶为 155,451 个。一个克隆能在越多治疗时间点或越多转移灶中被检测到，它在单个样本中的平均克隆大小通常也越大；两种趋势的有序回归均为 `P<2.2×10⁻¹⁶`。
 
@@ -66,7 +68,7 @@ Fig. 2 图注把患者 308 和 315 的病灶两两比较统一写为 36 对和 2
 
 简明图注：Fig. 3 中，94,495 个早期队列克隆来自 10 人/25 个样本，155,451 个转移队列克隆来自多灶子集 4 人/23 个病灶；共享或持久克隆更扩增，但不等于已验证的肿瘤抗原特异性。
 
-## 06｜只看网络位置，能否提前排出候选优先级？
+## 07｜只看网络位置，能否提前排出候选优先级？
 
 在扩增克隆内部，并不是每条 BCR 变体都跨病灶或跨时间出现。度中心性较高的序列更常在多个转移灶中检测到，也更常跨多个治疗时间点保留；两项关联的 P 值均小于 `2.2×10⁻¹⁶`。
 
@@ -78,7 +80,7 @@ Fig. 2 图注把患者 308 和 315 的病灶两两比较统一写为 36 对和 2
 
 简明图注：Fig. 4 的高中心性序列更常跨病灶或跨时间出现；`degree > 2` 的超过 80% 准确率来自删去中间 degree 后的同数据集阈值汇总，不是独立验证，也不是患者结局或治疗反应预测。
 
-## 07｜为什么中心性可能标记跨部位共享的克隆？
+## 08｜为什么中心性可能标记跨部位共享的克隆？
 
 作者提出的解释与克隆多样化位置有关。论文报告淋巴结转移灶相较其他病灶具有更低的 clonal unevenness，也就是更高的克隆多样性；mean clone size、Shannon 和 Gini 三类指标均为 `P<0.05`、effect size `>1.33`，Fig. 4b 的免疫监视克隆 per-site proportion 比较为 `P=0.030`。
 
@@ -90,7 +92,7 @@ Fig. 2 图注把患者 308 和 315 的病灶两两比较统一写为 36 对和 2
 
 但研究没有直接观察 B 细胞从淋巴结迁移到其他病灶，也没有证明网络中心节点就是谱系祖先或功能最优抗体。因此，“多样化场所”和“局部最优状态”都应保留为作者提出的解释模型。
 
-## 08｜这项工作真正改变了什么？
+## 09｜这项工作真正改变了什么？
 
 它首先改变了候选序列的排序方式。从肿瘤浸润 B 细胞中获得大量 BCR 后，研究者不必只按丰度或突变数挑选，而可以把“是否跨病灶共享、是否跨时间持久、在克隆网络中是否居中”作为额外优先级，再进入抗原结合和功能实验。
 
@@ -98,7 +100,7 @@ Fig. 2 图注把患者 308 和 315 的病灶两两比较统一写为 36 对和 2
 
 真正可执行的价值仍是“缩小需要验证的候选范围”。现有结果还不能把高中心性 BCR 当作治疗抗体，也不能据此预测患者生存或治疗获益。
 
-## 09｜这些结果仍需要冷静看待
+## 10｜这些结果仍需要冷静看待
 
 首先，clone 数量很大，但独立患者数很小：空间队列只有 8 人，155,451 个转移队列克隆实际来自 4 人/23 个病灶的多灶子集，深入的肿瘤—免疫克隆结构分析又主要来自患者 308 和 315；时间队列只有 10 人，治疗完成后的活检仅 5 次。两队列 18 名受试者均为女性，大量 sequence-level 观测不能替代患者层面的外部验证。
 
@@ -185,9 +187,9 @@ Fig. 2 图注把患者 308 和 315 的病灶两两比较统一写为 36 对和 2
 | 原文图 | 原文图题/核心信息 | 是否截取 | 图像文件 | 放置位置 |
 |---|---|---|---|---|
 | Fig. 1 | Description of breast cancer cohorts and overview of study design：转移性乳腺癌 warm autopsy 多部位采样和早期乳腺癌新辅助治疗序贯采样的研究设计 | 是 | `assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig1-study-design.png` | [02｜空间与时间队列](#reader-bcell-fig1) |
-| Fig. 2 | Site-specific B cell infiltration correlates with T cell infiltration and tumor genomic landscape：BCR/TCR 克隆结构与肿瘤突变和 MHC II neoantigen 架构相关 | 是 | `assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig2-b-t-tumor-coevolution.png` | [04｜B/T 细胞与肿瘤变化](#reader-bcell-fig2) |
-| Fig. 3 | Immunosurveilling and persistent clones are enlarged and distinct from private clones：跨部位免疫监视和治疗中持久存在的 BCR 克隆更扩增、更抗原经验化 | 是 | `assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig3-shared-persistent-clones.png` | [05｜共享与持久克隆](#reader-bcell-fig3) |
-| Fig. 4 | Higher BCR centrality describes clonal structure and predicts B cell immunosurveillance and persistence：BCR degree centrality 可预测跨部位免疫监视和时间持久性 | 是 | `assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig4-bcr-centrality.png` | [06｜中心性候选排序](#reader-bcell-fig4) |
+| Fig. 2 | Site-specific B cell infiltration correlates with T cell infiltration and tumor genomic landscape：BCR/TCR 克隆结构与肿瘤突变和 MHC II neoantigen 架构相关 | 是 | `assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig2-b-t-tumor-coevolution.png` | [04–05｜B/T 协同与肿瘤演化](#reader-bcell-fig2) |
+| Fig. 3 | Immunosurveilling and persistent clones are enlarged and distinct from private clones：跨部位免疫监视和治疗中持久存在的 BCR 克隆更扩增、更抗原经验化 | 是 | `assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig3-shared-persistent-clones.png` | [06｜共享与持久克隆](#reader-bcell-fig3) |
+| Fig. 4 | Higher BCR centrality describes clonal structure and predicts B cell immunosurveillance and persistence：BCR degree centrality 可预测跨部位免疫监视和时间持久性 | 是 | `assets/immunology/2024-b-cell-clonal-persistence-breast-cancer/fig4-bcr-centrality.png` | [07｜中心性候选排序](#reader-bcell-fig4) |
 
 ### 生物学故事前情
 
